@@ -1,0 +1,34 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://brk4f1xehrs1"
+path="res://.godot/imported/Vitaliy Tsygankov - TS Remarker Regular 2.otf-c17b0a2b17f39a04cdcce5153887b1f7.fontdata"
+
+[deps]
+
+source_file="res://assets/fonts/Vitaliy Tsygankov - TS Remarker Regular 2.otf"
+dest_files=["res://.godot/imported/Vitaliy Tsygankov - TS Remarker Regular 2.otf-c17b0a2b17f39a04cdcce5153887b1f7.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+disable_embedded_bitmaps=true
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=1
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}

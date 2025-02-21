@@ -1,0 +1,108 @@
+[gd_scene load_steps=17 format=3 uid="uid://dbwc1snsif3bw"]
+
+[ext_resource type="Texture2D" uid="uid://cvbe6q2qoc5w1" path="res://assets/bg/menu.png" id="1_0givn"]
+[ext_resource type="Theme" uid="uid://cuxkfo2hoq3nw" path="res://assets/themes/big_button.tres" id="2_301le"]
+[ext_resource type="Texture2D" uid="uid://cueb2rqppimm0" path="res://assets/buttons/ready/Info-Idle.png" id="2_j3h28"]
+[ext_resource type="Texture2D" uid="uid://dqcqdalkw4ykg" path="res://assets/buttons/ready/Info-Click.png" id="3_skxd1"]
+[ext_resource type="Texture2D" uid="uid://dia0dqame0gn7" path="res://assets/buttons/ready/Cart-Idle.png" id="4_4n2ir"]
+[ext_resource type="Texture2D" uid="uid://cl6frjepjvmdd" path="res://assets/buttons/ready/Cart-Click.png" id="5_l414e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j80l0"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_raryu"]
+texture = ExtResource("2_j3h28")
+expand_margin_top = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ugnx6"]
+texture = ExtResource("2_j3h28")
+expand_margin_top = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g4ql4"]
+texture = ExtResource("3_skxd1")
+
+[sub_resource type="Theme" id="Theme_cxk4u"]
+Button/styles/focus = SubResource("StyleBoxEmpty_j80l0")
+Button/styles/hover = SubResource("StyleBoxTexture_raryu")
+Button/styles/normal = SubResource("StyleBoxTexture_ugnx6")
+Button/styles/pressed = SubResource("StyleBoxTexture_g4ql4")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pmucg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y1mjv"]
+texture = ExtResource("4_4n2ir")
+expand_margin_top = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n4nlm"]
+texture = ExtResource("4_4n2ir")
+expand_margin_top = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4iltm"]
+texture = ExtResource("5_l414e")
+
+[sub_resource type="Theme" id="Theme_01foe"]
+Button/styles/focus = SubResource("StyleBoxEmpty_pmucg")
+Button/styles/hover = SubResource("StyleBoxTexture_y1mjv")
+Button/styles/normal = SubResource("StyleBoxTexture_n4nlm")
+Button/styles/pressed = SubResource("StyleBoxTexture_4iltm")
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_right = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_0givn")
+
+[node name="MarginFooter" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -170.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="Footer" type="HBoxContainer" parent="MarginFooter"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 10
+
+[node name="Info" type="Button" parent="MarginFooter/Footer"]
+custom_minimum_size = Vector2(85, 72)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme = SubResource("Theme_cxk4u")
+
+[node name="Control" type="Control" parent="MarginFooter/Footer"]
+visible = false
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+
+[node name="Shop" type="Button" parent="MarginFooter/Footer"]
+custom_minimum_size = Vector2(85, 72)
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_01foe")
+
+[node name="Start" type="Button" parent="MarginFooter/Footer"]
+custom_minimum_size = Vector2(300, 110)
+layout_mode = 2
+size_flags_horizontal = 10
+theme = ExtResource("2_301le")
+text = "1 день"

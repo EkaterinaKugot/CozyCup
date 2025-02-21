@@ -1,0 +1,123 @@
+[gd_scene load_steps=14 format=3 uid="uid://bprqmeqewkl7i"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_6ufo0"]
+[ext_resource type="Texture2D" uid="uid://d3o3g53rp42k8" path="res://assets/buttons/ready/Levels-Idle.png" id="2_8o5h3"]
+[ext_resource type="Texture2D" uid="uid://pe7ut1bglwjh" path="res://assets/buttons/ready/Levels-Click.png" id="3_ov3og"]
+[ext_resource type="PackedScene" uid="uid://dg81uujaakw1n" path="res://scenes/game_elements/dropping_menu.tscn" id="4_arens"]
+
+[sub_resource type="Animation" id="Animation_fr6rt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DroppingMenu:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4d317"]
+resource_name = "fade_in_drop_menu"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DroppingMenu:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_k00y3"]
+resource_name = "fade-out_elements_menu"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DroppingMenu:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nbm8w"]
+_data = {
+"RESET": SubResource("Animation_fr6rt"),
+"fade_in_elements_menu": SubResource("Animation_4d317"),
+"fade_out_elements_menu": SubResource("Animation_k00y3")
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tfare"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2316s"]
+texture = ExtResource("2_8o5h3")
+expand_margin_top = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_svkye"]
+texture = ExtResource("2_8o5h3")
+expand_margin_top = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qe4fl"]
+texture = ExtResource("3_ov3og")
+
+[sub_resource type="Theme" id="Theme_gkvka"]
+Button/styles/focus = SubResource("StyleBoxEmpty_tfare")
+Button/styles/hover = SubResource("StyleBoxTexture_2316s")
+Button/styles/normal = SubResource("StyleBoxTexture_svkye")
+Button/styles/pressed = SubResource("StyleBoxTexture_qe4fl")
+
+[node name="Hud" type="CanvasLayer"]
+script = ExtResource("1_6ufo0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_nbm8w")
+}
+
+[node name="HeaderControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HeaderControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="Header" type="HBoxContainer" parent="HeaderControl/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="DropMenu" type="Button" parent="HeaderControl/MarginContainer/Header"]
+custom_minimum_size = Vector2(85, 72)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 0
+theme = SubResource("Theme_gkvka")
+
+[node name="DroppingMenu" parent="." instance=ExtResource("4_arens")]
+visible = false
