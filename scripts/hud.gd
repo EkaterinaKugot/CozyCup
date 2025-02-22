@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var drop_menu = $HeaderControl/MarginContainer/Header/DropMenu as Button
+@onready var drop_menu = $HeaderControl/MarginRight/Header/DropMenu as Button
 @onready var elements_menu = $DroppingMenu
 @onready var animation_elements_menu = $AnimationPlayer
 

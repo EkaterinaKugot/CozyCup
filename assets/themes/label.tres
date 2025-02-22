@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c4tabrpgy32o7"]
+
+[ext_resource type="FontFile" uid="uid://uai4bjll1pc1" path="res://assets/fonts/Moderustic-Regular.ttf" id="1_y3r8a"]
+
+[resource]
+Label/colors/font_color = Color(0.12549, 0.180392, 0.321569, 1)
+Label/font_sizes/font_size = 24
+Label/fonts/font = ExtResource("1_y3r8a")

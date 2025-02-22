@@ -1,16 +1,18 @@
-[gd_scene load_steps=29 format=3 uid="uid://bprqmeqewkl7i"]
+[gd_scene load_steps=34 format=3 uid="uid://bprqmeqewkl7i"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_6ufo0"]
 [ext_resource type="Texture2D" uid="uid://d3o3g53rp42k8" path="res://assets/buttons/ready/Levels-Idle.png" id="2_8o5h3"]
-[ext_resource type="Texture2D" uid="uid://x4elm1wip7g8" path="res://assets/custom_ui/money_part1.png" id="2_inymy"]
-[ext_resource type="FontFile" uid="uid://uai4bjll1pc1" path="res://assets/fonts/Moderustic-Regular.ttf" id="3_bq4e7"]
+[ext_resource type="Texture2D" uid="uid://x4elm1wip7g8" path="res://assets/custom_ui/сurrency_panel1.png" id="2_inymy"]
 [ext_resource type="Texture2D" uid="uid://pe7ut1bglwjh" path="res://assets/buttons/ready/Levels-Click.png" id="3_ov3og"]
-[ext_resource type="Texture2D" uid="uid://c65w4lmqn7u0" path="res://assets/custom_ui/money_part2.png" id="3_u1a13"]
+[ext_resource type="Texture2D" uid="uid://c65w4lmqn7u0" path="res://assets/custom_ui/сurrency_panel2.png" id="3_u1a13"]
 [ext_resource type="Texture2D" uid="uid://c51t6ui5sjq7g" path="res://assets/icons/wallet.png" id="4_2nyt5"]
 [ext_resource type="PackedScene" uid="uid://dg81uujaakw1n" path="res://scenes/game_elements/dropping_menu.tscn" id="4_arens"]
 [ext_resource type="Texture2D" uid="uid://cqmve1yby7eg0" path="res://assets/icons/diamond.png" id="6_difm8"]
 [ext_resource type="Texture2D" uid="uid://bmjw6bkfnvbtb" path="res://assets/buttons/ready/add_diamod_idle.png" id="7_rqvsb"]
 [ext_resource type="Texture2D" uid="uid://bpiorlx61fb4q" path="res://assets/buttons/ready/add_diamod_click.png" id="8_dp3d2"]
+[ext_resource type="Texture2D" uid="uid://bqmkjylljvhev" path="res://assets/custom_ui/info_panel.png" id="11_hyohb"]
+[ext_resource type="Texture2D" uid="uid://y5yhdnbf6odf" path="res://assets/icons/sunset.png" id="12_dme7n"]
+[ext_resource type="Texture2D" uid="uid://tq1ahgjbl5vn" path="res://assets/icons/rating.png" id="12_owken"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pmesg"]
 
@@ -63,6 +65,17 @@ Button/styles/focus = SubResource("StyleBoxEmpty_tfare")
 Button/styles/hover = SubResource("StyleBoxTexture_2316s")
 Button/styles/normal = SubResource("StyleBoxTexture_svkye")
 Button/styles/pressed = SubResource("StyleBoxTexture_qe4fl")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_onpss"]
+texture = ExtResource("11_hyohb")
+expand_margin_left = 4.0
+expand_margin_top = 3.0
+expand_margin_right = 10.0
+expand_margin_bottom = 11.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wasl2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kt844"]
 
 [sub_resource type="Animation" id="Animation_fr6rt"]
 length = 0.001
@@ -130,38 +143,40 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="HeaderControl"]
+[node name="MarginRight" type="MarginContainer" parent="HeaderControl"]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = 1
+anchor_left = 1.0
 anchor_right = 1.0
+offset_left = -590.0
 offset_bottom = 132.0
-grow_horizontal = 2
+grow_horizontal = 0
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 30
 
-[node name="Header" type="HBoxContainer" parent="HeaderControl/MarginContainer"]
+[node name="Header" type="HBoxContainer" parent="HeaderControl/MarginRight"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 theme_override_constants/separation = 10
 
-[node name="MoneyPanel" type="PanelContainer" parent="HeaderControl/MarginContainer/Header"]
+[node name="MoneyPanel" type="PanelContainer" parent="HeaderControl/MarginRight/Header"]
 custom_minimum_size = Vector2(200, 72)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_pmesg")
 
-[node name="TextPanel" type="Panel" parent="HeaderControl/MarginContainer/Header/MoneyPanel"]
+[node name="TextPanel" type="Panel" parent="HeaderControl/MarginRight/Header/MoneyPanel"]
 custom_minimum_size = Vector2(160, 61)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_6xf34")
 
-[node name="Label" type="Label" parent="HeaderControl/MarginContainer/Header/MoneyPanel/TextPanel"]
+[node name="Label" type="Label" parent="HeaderControl/MarginRight/Header/MoneyPanel/TextPanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -174,18 +189,15 @@ offset_right = 7.0
 offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.12549, 0.180392, 0.321569, 1)
-theme_override_fonts/font = ExtResource("3_bq4e7")
-theme_override_font_sizes/font_size = 24
 text = "100"
 
-[node name="IconPanel" type="Panel" parent="HeaderControl/MarginContainer/Header/MoneyPanel"]
+[node name="IconPanel" type="Panel" parent="HeaderControl/MarginRight/Header/MoneyPanel"]
 custom_minimum_size = Vector2(72, 72)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_30mh1")
 
-[node name="TextureRect" type="TextureRect" parent="HeaderControl/MarginContainer/Header/MoneyPanel/IconPanel"]
+[node name="TextureRect" type="TextureRect" parent="HeaderControl/MarginRight/Header/MoneyPanel/IconPanel"]
 custom_minimum_size = Vector2(44, 44)
 layout_mode = 1
 anchors_preset = 8
@@ -202,21 +214,21 @@ grow_vertical = 2
 texture = ExtResource("4_2nyt5")
 expand_mode = 1
 
-[node name="DiamondPanel" type="PanelContainer" parent="HeaderControl/MarginContainer/Header"]
+[node name="DiamondPanel" type="PanelContainer" parent="HeaderControl/MarginRight/Header"]
 custom_minimum_size = Vector2(210, 72)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_pmesg")
 
-[node name="TextPanel" type="Panel" parent="HeaderControl/MarginContainer/Header/DiamondPanel"]
+[node name="TextPanel" type="Panel" parent="HeaderControl/MarginRight/Header/DiamondPanel"]
 custom_minimum_size = Vector2(170, 61)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_6xf34")
 
-[node name="Label" type="Label" parent="HeaderControl/MarginContainer/Header/DiamondPanel/TextPanel"]
+[node name="Label" type="Label" parent="HeaderControl/MarginRight/Header/DiamondPanel/TextPanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -229,19 +241,16 @@ offset_right = 24.5
 offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.12549, 0.180392, 0.321569, 1)
-theme_override_fonts/font = ExtResource("3_bq4e7")
-theme_override_font_sizes/font_size = 24
 text = "30
 "
 
-[node name="IconPanel" type="Panel" parent="HeaderControl/MarginContainer/Header/DiamondPanel"]
+[node name="IconPanel" type="Panel" parent="HeaderControl/MarginRight/Header/DiamondPanel"]
 custom_minimum_size = Vector2(72, 72)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_30mh1")
 
-[node name="TextureRect" type="TextureRect" parent="HeaderControl/MarginContainer/Header/DiamondPanel/IconPanel"]
+[node name="TextureRect" type="TextureRect" parent="HeaderControl/MarginRight/Header/DiamondPanel/IconPanel"]
 custom_minimum_size = Vector2(44, 44)
 layout_mode = 1
 anchors_preset = 8
@@ -258,24 +267,147 @@ grow_vertical = 2
 texture = ExtResource("6_difm8")
 expand_mode = 1
 
-[node name="Button" type="Button" parent="HeaderControl/MarginContainer/Header/DiamondPanel"]
+[node name="Button" type="Button" parent="HeaderControl/MarginRight/Header/DiamondPanel"]
 custom_minimum_size = Vector2(44, 44)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 theme = SubResource("Theme_fqo6a")
 
-[node name="Control" type="Control" parent="HeaderControl/MarginContainer/Header"]
+[node name="Control" type="Control" parent="HeaderControl/MarginRight/Header"]
 custom_minimum_size = Vector2(5, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="DropMenu" type="Button" parent="HeaderControl/MarginContainer/Header"]
+[node name="DropMenu" type="Button" parent="HeaderControl/MarginRight/Header"]
 custom_minimum_size = Vector2(85, 72)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 theme = SubResource("Theme_gkvka")
+
+[node name="MarginLeft" type="MarginContainer" parent="HeaderControl"]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HeaderControl/MarginLeft"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 15
+
+[node name="DateTimePanel" type="PanelContainer" parent="HeaderControl/MarginLeft/HBoxContainer"]
+custom_minimum_size = Vector2(190, 65)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_onpss")
+
+[node name="IconPanel" type="Panel" parent="HeaderControl/MarginLeft/HBoxContainer/DateTimePanel"]
+custom_minimum_size = Vector2(85, 65)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_wasl2")
+
+[node name="TextureRect" type="TextureRect" parent="HeaderControl/MarginLeft/HBoxContainer/DateTimePanel/IconPanel"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -36.0
+offset_bottom = 36.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("12_dme7n")
+expand_mode = 1
+
+[node name="TextContainer" type="VBoxContainer" parent="HeaderControl/MarginLeft/HBoxContainer/DateTimePanel"]
+custom_minimum_size = Vector2(113, 65)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/separation = -10
+
+[node name="Day" type="Label" parent="HeaderControl/MarginLeft/HBoxContainer/DateTimePanel/TextContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "1 день"
+
+[node name="Time" type="Label" parent="HeaderControl/MarginLeft/HBoxContainer/DateTimePanel/TextContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "10:00"
+
+[node name="RatingPanel" type="PanelContainer" parent="HeaderControl/MarginLeft/HBoxContainer"]
+custom_minimum_size = Vector2(150, 65)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_onpss")
+
+[node name="IconPanel" type="Panel" parent="HeaderControl/MarginLeft/HBoxContainer/RatingPanel"]
+custom_minimum_size = Vector2(75, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_wasl2")
+
+[node name="TextureRect" type="TextureRect" parent="HeaderControl/MarginLeft/HBoxContainer/RatingPanel/IconPanel"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -30.0
+offset_bottom = 30.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("12_owken")
+expand_mode = 1
+
+[node name="TextPanel" type="Panel" parent="HeaderControl/MarginLeft/HBoxContainer/RatingPanel"]
+custom_minimum_size = Vector2(75, 65)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_kt844")
+
+[node name="Day" type="Label" parent="HeaderControl/MarginLeft/HBoxContainer/RatingPanel/TextPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -15.0
+offset_right = 18.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "???
+"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 reset_on_save = false
