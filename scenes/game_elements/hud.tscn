@@ -1,9 +1,68 @@
-[gd_scene load_steps=14 format=3 uid="uid://bprqmeqewkl7i"]
+[gd_scene load_steps=29 format=3 uid="uid://bprqmeqewkl7i"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_6ufo0"]
 [ext_resource type="Texture2D" uid="uid://d3o3g53rp42k8" path="res://assets/buttons/ready/Levels-Idle.png" id="2_8o5h3"]
+[ext_resource type="Texture2D" uid="uid://x4elm1wip7g8" path="res://assets/custom_ui/money_part1.png" id="2_inymy"]
+[ext_resource type="FontFile" uid="uid://uai4bjll1pc1" path="res://assets/fonts/Moderustic-Regular.ttf" id="3_bq4e7"]
 [ext_resource type="Texture2D" uid="uid://pe7ut1bglwjh" path="res://assets/buttons/ready/Levels-Click.png" id="3_ov3og"]
+[ext_resource type="Texture2D" uid="uid://c65w4lmqn7u0" path="res://assets/custom_ui/money_part2.png" id="3_u1a13"]
+[ext_resource type="Texture2D" uid="uid://c51t6ui5sjq7g" path="res://assets/icons/wallet.png" id="4_2nyt5"]
 [ext_resource type="PackedScene" uid="uid://dg81uujaakw1n" path="res://scenes/game_elements/dropping_menu.tscn" id="4_arens"]
+[ext_resource type="Texture2D" uid="uid://cqmve1yby7eg0" path="res://assets/icons/diamond.png" id="6_difm8"]
+[ext_resource type="Texture2D" uid="uid://bmjw6bkfnvbtb" path="res://assets/buttons/ready/add_diamod_idle.png" id="7_rqvsb"]
+[ext_resource type="Texture2D" uid="uid://bpiorlx61fb4q" path="res://assets/buttons/ready/add_diamod_click.png" id="8_dp3d2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pmesg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6xf34"]
+texture = ExtResource("2_inymy")
+expand_margin_right = 2.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_30mh1"]
+texture = ExtResource("3_u1a13")
+expand_margin_left = 4.0
+expand_margin_top = 2.0
+expand_margin_right = 4.0
+expand_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eykj2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tgl5j"]
+texture = ExtResource("7_rqvsb")
+expand_margin_top = 1.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_77qag"]
+texture = ExtResource("7_rqvsb")
+expand_margin_top = 1.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wfy53"]
+texture = ExtResource("8_dp3d2")
+
+[sub_resource type="Theme" id="Theme_fqo6a"]
+Button/styles/focus = SubResource("StyleBoxEmpty_eykj2")
+Button/styles/hover = SubResource("StyleBoxTexture_tgl5j")
+Button/styles/normal = SubResource("StyleBoxTexture_77qag")
+Button/styles/pressed = SubResource("StyleBoxTexture_wfy53")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tfare"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2316s"]
+texture = ExtResource("2_8o5h3")
+expand_margin_top = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_svkye"]
+texture = ExtResource("2_8o5h3")
+expand_margin_top = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qe4fl"]
+texture = ExtResource("3_ov3og")
+
+[sub_resource type="Theme" id="Theme_gkvka"]
+Button/styles/focus = SubResource("StyleBoxEmpty_tfare")
+Button/styles/hover = SubResource("StyleBoxTexture_2316s")
+Button/styles/normal = SubResource("StyleBoxTexture_svkye")
+Button/styles/pressed = SubResource("StyleBoxTexture_qe4fl")
 
 [sub_resource type="Animation" id="Animation_fr6rt"]
 length = 0.001
@@ -59,33 +118,8 @@ _data = {
 "fade_out_elements_menu": SubResource("Animation_k00y3")
 }
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tfare"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2316s"]
-texture = ExtResource("2_8o5h3")
-expand_margin_top = 5.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_svkye"]
-texture = ExtResource("2_8o5h3")
-expand_margin_top = 5.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qe4fl"]
-texture = ExtResource("3_ov3og")
-
-[sub_resource type="Theme" id="Theme_gkvka"]
-Button/styles/focus = SubResource("StyleBoxEmpty_tfare")
-Button/styles/hover = SubResource("StyleBoxTexture_2316s")
-Button/styles/normal = SubResource("StyleBoxTexture_svkye")
-Button/styles/pressed = SubResource("StyleBoxTexture_qe4fl")
-
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_6ufo0")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-reset_on_save = false
-libraries = {
-"": SubResource("AnimationLibrary_nbm8w")
-}
 
 [node name="HeaderControl" type="Control" parent="."]
 layout_mode = 3
@@ -94,14 +128,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="HeaderControl"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
+offset_bottom = 132.0
 grow_horizontal = 2
-grow_vertical = 2
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 30
@@ -109,15 +143,145 @@ theme_override_constants/margin_bottom = 30
 
 [node name="Header" type="HBoxContainer" parent="HeaderControl/MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 8
 size_flags_vertical = 0
 theme_override_constants/separation = 10
+
+[node name="MoneyPanel" type="PanelContainer" parent="HeaderControl/MarginContainer/Header"]
+custom_minimum_size = Vector2(200, 72)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pmesg")
+
+[node name="TextPanel" type="Panel" parent="HeaderControl/MarginContainer/Header/MoneyPanel"]
+custom_minimum_size = Vector2(160, 61)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_6xf34")
+
+[node name="Label" type="Label" parent="HeaderControl/MarginContainer/Header/MoneyPanel/TextPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.0
+offset_top = -15.0
+offset_right = 7.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.12549, 0.180392, 0.321569, 1)
+theme_override_fonts/font = ExtResource("3_bq4e7")
+theme_override_font_sizes/font_size = 24
+text = "100"
+
+[node name="IconPanel" type="Panel" parent="HeaderControl/MarginContainer/Header/MoneyPanel"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_30mh1")
+
+[node name="TextureRect" type="TextureRect" parent="HeaderControl/MarginContainer/Header/MoneyPanel/IconPanel"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.0
+offset_top = -24.0
+offset_right = 22.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_2nyt5")
+expand_mode = 1
+
+[node name="DiamondPanel" type="PanelContainer" parent="HeaderControl/MarginContainer/Header"]
+custom_minimum_size = Vector2(210, 72)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pmesg")
+
+[node name="TextPanel" type="Panel" parent="HeaderControl/MarginContainer/Header/DiamondPanel"]
+custom_minimum_size = Vector2(170, 61)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_6xf34")
+
+[node name="Label" type="Label" parent="HeaderControl/MarginContainer/Header/DiamondPanel/TextPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.5
+offset_top = -15.0
+offset_right = 24.5
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.12549, 0.180392, 0.321569, 1)
+theme_override_fonts/font = ExtResource("3_bq4e7")
+theme_override_font_sizes/font_size = 24
+text = "30
+"
+
+[node name="IconPanel" type="Panel" parent="HeaderControl/MarginContainer/Header/DiamondPanel"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_30mh1")
+
+[node name="TextureRect" type="TextureRect" parent="HeaderControl/MarginContainer/Header/DiamondPanel/IconPanel"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_difm8")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="HeaderControl/MarginContainer/Header/DiamondPanel"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme = SubResource("Theme_fqo6a")
+
+[node name="Control" type="Control" parent="HeaderControl/MarginContainer/Header"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="DropMenu" type="Button" parent="HeaderControl/MarginContainer/Header"]
 custom_minimum_size = Vector2(85, 72)
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 8
 size_flags_vertical = 0
 theme = SubResource("Theme_gkvka")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_nbm8w")
+}
 
 [node name="DroppingMenu" parent="." instance=ExtResource("4_arens")]
 visible = false
