@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=2 format=3 uid="uid://ddrr3l80lr5lg"]
+
+[ext_resource type="Script" path="res://src/scripts/models/ingredient.gd" id="1_6uqm8"]
+
+[resource]
+script = ExtResource("1_6uqm8")
+id = "topping_cocoa"
+name = "Какао"
+category = 4
+purchase_cost = 3
+unlock_cost = 0

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=2 format=3 uid="uid://cba6tsenk25xq"]
+
+[ext_resource type="Script" path="res://src/scripts/models/ingredient.gd" id="1_5ticw"]
+
+[resource]
+script = ExtResource("1_5ticw")
+id = "sweetness_sugar"
+name = "Сахар"
+category = 3
+purchase_cost = 3
+unlock_cost = 0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://dg81uujaakw1n"]
 
-[ext_resource type="Script" path="res://scripts/dropping_menu.gd" id="1_5siam"]
+[ext_resource type="Script" path="res://src/scripts/dropping_menu.gd" id="1_5siam"]
 [ext_resource type="Texture2D" uid="uid://okwdwouck5u7" path="res://assets/buttons/ready/Recipe_Idle.png" id="1_eiqky"]
 [ext_resource type="Texture2D" uid="uid://dj2he6mq44gb6" path="res://assets/buttons/ready/Recipe_Click.png" id="2_qq4og"]
 [ext_resource type="Texture2D" uid="uid://btg1581qib3kc" path="res://assets/buttons/ready/Gear-Idle.png" id="3_1f66e"]

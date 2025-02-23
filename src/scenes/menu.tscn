@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dqcqdalkw4ykg" path="res://assets/buttons/ready/Info-Click.png" id="3_skxd1"]
 [ext_resource type="Texture2D" uid="uid://dia0dqame0gn7" path="res://assets/buttons/ready/Cart-Idle.png" id="4_4n2ir"]
 [ext_resource type="Texture2D" uid="uid://cl6frjepjvmdd" path="res://assets/buttons/ready/Cart-Click.png" id="5_l414e"]
-[ext_resource type="PackedScene" uid="uid://bprqmeqewkl7i" path="res://scenes/game_elements/hud.tscn" id="7_f817k"]
+[ext_resource type="PackedScene" uid="uid://bprqmeqewkl7i" path="res://src/scenes/game_elements/hud.tscn" id="7_f817k"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j80l0"]
 
@@ -91,7 +91,6 @@ size_flags_vertical = 8
 theme = SubResource("Theme_cxk4u")
 
 [node name="Control" type="Control" parent="MarginFooter/Footer"]
-visible = false
 custom_minimum_size = Vector2(5, 0)
 layout_mode = 2
 

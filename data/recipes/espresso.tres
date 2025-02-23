@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=2 format=3 uid="uid://bbkkjanelg1tp"]
+
+[ext_resource type="Script" path="res://src/scripts/models/recipe.gd" id="1_ss8ja"]
+
+[resource]
+script = ExtResource("1_ss8ja")
+name = "Эспрессо"
+description = "Крепкий кофе, приготовленный под давлением, основа для многих напитков."
+ingredients = {
+0: 0,
+1: 0,
+2: 1,
+3: 0,
+4: 0,
+5: 0
+}
+steps = Array[int]([2])
+unlock_cost = 0

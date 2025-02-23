@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=2 format=3 uid="uid://dp8ymt7o43fk4"]
+
+[ext_resource type="Script" path="res://src/scripts/models/ingredient.gd" id="1_446oe"]
+
+[resource]
+script = ExtResource("1_446oe")
+id = "dairy_milk"
+name = "Молоко"
+category = 0
+purchase_cost = 10
+unlock_cost = 0
