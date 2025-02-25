@@ -1,14 +1,147 @@
 # progress.gd
 extends Resource
+class_name Progress
 
-@export var day: int = 1
-@export var duration_day: int = 10
-@export var rating: float = 5
-@export var money: int = 100
-@export var diamonds: int = 30
+signal not_enough_money(error_message: String)
+signal not_enough_diamonds(error_message: String)
 
-@export var opened_ingredients: Array[Recipe] = []
-@export var opened_recipes: Array[Ingredient] = []
+@export var number_start: int = 0:
+	get:
+		return number_start
+	set(value):
+		assert(value >= 0, "The value of number_start cannot be less than 0")
+		number_start = value		
+@export var day: int = 1:
+	get:
+		return day
+	set(value):
+		assert(value >= 1, "The value of day cannot be less than 1")
+		day = value		
+@export var option_duration_day: Dictionary = {10: [10, 8], 12: [9, 9], 14: [8, 10]}:
+	get:
+		return option_duration_day
+@export var duration_day: int = option_duration_day.keys()[0]:
+	get:
+		return duration_day
+	set(value):
+		assert(value in option_duration_day.keys(), "The value of duration_day cannot have such a value")
+		duration_day = value
+@export var rating: float = 5.0:
+	get:
+		return rating
+	set(value):
+		assert(value >= 1, "The value of rating cannot be less than 1")
+		rating = value		
+@export var money: int = 100:
+	get:
+		return money
+	set(value):
+		if value < 0:
+			var error_message = "The value of money cannot be less than 0"
+			push_error(error_message)  # Выводим ошибку в консоль
+			emit_signal("not_enough_money", error_message)  # Отправляем сигнал
+			return
+		money = value	
+@export var diamonds: int = 30:
+	get:
+		return diamonds
+	set(value):
+		if value < 0:
+			if value < 0:
+				var error_message = "The value of diamonds cannot be less than 0"
+				push_error(error_message)  # Выводим ошибку в консоль
+				emit_signal("not_enough_diamonds", error_message)  # Отправляем сигнал
+				return
+		diamonds = value
 
-@export var music: int = 7
-@export var sounds: int = 7
+
+@export var opened_ingredients: Dictionary = {}:
+	get:
+		return opened_ingredients
+	set(value):
+		assert(value.size() >= 0, "The size of opened_ingredients cannot be less than 0")
+		opened_ingredients = value
+@export var opened_recipes: Array[Recipe] = []:
+	get:
+		return opened_recipes
+	set(value):
+		assert(value.size() >= 0, "The size of opened_recipes cannot be less than 0")
+		opened_recipes = value
+
+@export var music: int = 7:
+	get:
+		return music
+	set(value):
+		assert(value >= 0 and value <= 10, "The value of music should be from 0 to 10")
+		music = value	
+@export var sounds: int = 7:
+	get:
+		return sounds
+	set(value):
+		assert(value >= 0 and value <= 10, "The value of sounds should be from 0 to 10")
+		sounds = value
+	
+func add_number_start() -> void:
+	number_start += 1
+	
+func add_day() -> void:
+	day += 1
+
+func change_duration_day_on_12() -> void:
+	duration_day = option_duration_day.keys()[1]
+	
+func change_duration_day_on_14() -> void:
+	duration_day = option_duration_day.keys()[2]
+	
+func change_rating(rating_per_day: float) -> void:
+	assert(rating_per_day >= 1 and rating_per_day <= 5, "The value of rating_per_day should be from 1 to 5")
+	rating = (rating + rating_per_day) / 2
+	
+func add_money(value: int) -> void:
+	assert(value >= 0, "The value of value cannot be less than 0")
+	money += value
+	
+func sub_money(value: int) -> void:
+	assert(value >= 0, "The value of value cannot be less than 0")
+	money -= value
+	
+func add_diamonds(value: int) -> void:
+	assert(value >= 0, "The value of value cannot be less than 0")
+	diamonds += value
+	
+func sub_diamonds(value: int) -> void:
+	assert(value >= 0, "The value of value cannot be less than 0")
+	diamonds -= value
+	
+func add_new_opened_ingredients(ingredient: Ingredient, number: int = 3) -> void:
+	assert(number >= 0, "The value of value cannot be less than 0")
+	opened_ingredients[ingredient] = number
+
+func add_number_ingredient(ingredient: Ingredient, number: int) -> void:
+	assert(number >= 1, "The value of value cannot be less than 1")
+	assert(ingredient in opened_ingredients.keys(), "There is no such value in opened_ingredients")
+	opened_ingredients[ingredient] += number
+	
+func sub_number_ingredient(ingredient: Ingredient, number: int) -> void:
+	assert(number >= 1, "The value of value cannot be less than 1")
+	assert(ingredient in opened_ingredients.keys(), "There is no such value in opened_ingredients")
+	opened_ingredients[ingredient] -= number
+	
+func add_new_opened_recipes(recipe: Recipe) -> void:
+	opened_recipes.append(recipe)
+
+func add_music(value: int) -> void:
+	assert(value >= 0, "The value of value cannot be less than 0")
+	music += value
+	
+func sub_music(value: int) -> void:
+	assert(value >= 0, "The value of value cannot be less than 0")
+	music -= value
+	
+func add_sounds(value: int) -> void:
+	assert(value >= 0, "The value of value cannot be less than 0")
+	sounds += value
+	
+func sub_sounds(value: int) -> void:
+	assert(value >= 0, "The value of value cannot be less than 0")
+	sounds -= value

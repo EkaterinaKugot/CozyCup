@@ -18,6 +18,3 @@ func on_drop_menu_pressed() -> void:
 		elements_menu.visible = true
 		animation_elements_menu.play("fade_in_elements_menu")
 		elements_menu.set_process(true)
-
-func _process(delta: float) -> void:
-	pass

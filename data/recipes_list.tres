@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="RecipeList" load_steps=6 format=3 uid="uid://dop7vgqxhyaxc"]
+
+[ext_resource type="Script" path="res://src/scripts/models/recipe.gd" id="1_38xm7"]
+[ext_resource type="Script" path="res://src/scripts/models/recipes_list.gd" id="2_ib03n"]
+[ext_resource type="Resource" uid="uid://cxqrlc0gqmgg" path="res://data/recipes/espresso.tres" id="2_uw3ol"]
+[ext_resource type="Resource" uid="uid://b440u84ssgutb" path="res://data/recipes/аmericano.tres" id="3_djhe1"]
+[ext_resource type="Resource" uid="uid://c08isl6w3whlc" path="res://data/recipes/cappuccino.tres" id="4_1wfjb"]
+
+[resource]
+script = ExtResource("2_ib03n")
+recipes = Array[ExtResource("1_38xm7")]([ExtResource("2_uw3ol"), ExtResource("3_djhe1"), ExtResource("4_1wfjb")])

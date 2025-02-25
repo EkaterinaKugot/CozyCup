@@ -2,4 +2,6 @@
 extends Resource
 class_name IngredientList
 
-@export var ingredients: Array[Ingredient]  # Массив Ingredient
+@export var ingredients: Array[Ingredient]:  # Массив Ingredient
+	get:
+		return ingredients

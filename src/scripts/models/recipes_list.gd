@@ -2,4 +2,6 @@
 extends Resource
 class_name RecipeList
 
-@export var recipes: Array[Recipe]  # Массив Recipe
+@export var recipes: Array[Recipe]:  # Массив Recipe
+	get:
+		return recipes

@@ -7,5 +7,6 @@ script = ExtResource("1_446oe")
 id = "dairy_milk"
 name = "Молоко"
 category = 0
+is_basic = true
 purchase_cost = 10
 unlock_cost = 0

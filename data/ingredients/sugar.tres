@@ -7,5 +7,6 @@ script = ExtResource("1_5ticw")
 id = "sweetness_sugar"
 name = "Сахар"
 category = 3
+is_basic = true
 purchase_cost = 3
 unlock_cost = 0
