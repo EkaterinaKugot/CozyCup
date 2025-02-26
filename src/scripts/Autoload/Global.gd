@@ -30,7 +30,7 @@ func load_progress() -> void:
 		add_basic_ingredients()
 		add_basic_recipes()
 		
-	progress.number_start += 1
+	progress.number_start = 0
 	#print(progress.number_start)
 	#print(progress.opened_ingredients)
 		

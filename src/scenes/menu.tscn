@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://dbwc1snsif3bw"]
+[gd_scene load_steps=19 format=3 uid="uid://dbwc1snsif3bw"]
 
 [ext_resource type="Texture2D" uid="uid://cvbe6q2qoc5w1" path="res://assets/bg/menu.png" id="1_0givn"]
+[ext_resource type="Script" path="res://src/scripts/menu.gd" id="1_qsttu"]
 [ext_resource type="Theme" uid="uid://cuxkfo2hoq3nw" path="res://assets/themes/big_button.tres" id="2_301le"]
 [ext_resource type="Texture2D" uid="uid://cueb2rqppimm0" path="res://assets/buttons/ready/Info-Idle.png" id="2_j3h28"]
 [ext_resource type="Texture2D" uid="uid://dqcqdalkw4ykg" path="res://assets/buttons/ready/Info-Click.png" id="3_skxd1"]
@@ -53,14 +54,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_qsttu")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -5.0
-offset_right = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_0givn")
@@ -108,3 +108,5 @@ theme = ExtResource("2_301le")
 text = "1 день"
 
 [node name="Hud" parent="." instance=ExtResource("7_f817k")]
+
+[connection signal="leve_hud_invisible" from="." to="Hud" method="_on_menu_leve_hud_invisible"]

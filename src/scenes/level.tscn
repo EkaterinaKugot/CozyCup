@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://dqep1bkdlhaxw"]
+
+[ext_resource type="Texture2D" uid="uid://baha0i2u0uaft" path="res://assets/bg/bg_кофейня.png" id="1_5brse"]
+[ext_resource type="PackedScene" uid="uid://bprqmeqewkl7i" path="res://src/scenes/game_elements/hud.tscn" id="1_bsjtt"]
+[ext_resource type="Script" path="res://src/scripts/level.gd" id="1_tvj43"]
+[ext_resource type="Texture2D" uid="uid://b3mmanfks1yi6" path="res://assets/bg/ft_кофейня.png" id="2_a14fi"]
+[ext_resource type="PackedScene" uid="uid://d2slfierus85g" path="res://src/scenes/game_elements/bottom_hud.tscn" id="3_c4ymp"]
+[ext_resource type="Texture2D" uid="uid://b8w2t8ntw05l2" path="res://assets/clients/girl1.png" id="4_vt6j8"]
+
+[node name="Level" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tvj43")
+
+[node name="Hud" parent="." instance=ExtResource("1_bsjtt")]
+
+[node name="BottomHud" parent="." instance=ExtResource("3_c4ymp")]
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_5brse")
+expand_mode = 1
+
+[node name="Client" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 100.0
+offset_top = -300.0
+offset_right = 637.0
+offset_bottom = 300.0
+grow_vertical = 2
+texture = ExtResource("4_vt6j8")
+expand_mode = 1
+
+[node name="FT" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_a14fi")
+expand_mode = 1
+
+[connection signal="leve_hud_visible" from="." to="Hud" method="_on_level_leve_hud_visible"]

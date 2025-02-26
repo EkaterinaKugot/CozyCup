@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8ksd5j65n25j"
-path="res://.godot/imported/Small_Click.png-b9bc3deadfd855e0196e831f64595d0a.ctex"
+uid="uid://bcjgov88cg1s4"
+path="res://.godot/imported/left_idle.png-0d62f6118c48319b447fb75ae6d92d06.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/buttons/ready/Small_Click.png"
-dest_files=["res://.godot/imported/Small_Click.png-b9bc3deadfd855e0196e831f64595d0a.ctex"]
+source_file="res://assets/buttons/ready/left_idle.png"
+dest_files=["res://.godot/imported/left_idle.png-0d62f6118c48319b447fb75ae6d92d06.ctex"]
 
 [params]
 

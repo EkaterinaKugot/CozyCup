@@ -1,6 +1,6 @@
-[gd_scene load_steps=34 format=3 uid="uid://bprqmeqewkl7i"]
+[gd_scene load_steps=35 format=3 uid="uid://bprqmeqewkl7i"]
 
-[ext_resource type="Script" path="res://src/scripts/hud.gd" id="1_6ufo0"]
+[ext_resource type="Script" path="res://src/scripts/game_elements/hud.gd" id="1_6ufo0"]
 [ext_resource type="Texture2D" uid="uid://d3o3g53rp42k8" path="res://assets/buttons/ready/Levels-Idle.png" id="2_8o5h3"]
 [ext_resource type="Texture2D" uid="uid://x4elm1wip7g8" path="res://assets/custom_ui/сurrency_panel1.png" id="2_inymy"]
 [ext_resource type="Texture2D" uid="uid://pe7ut1bglwjh" path="res://assets/buttons/ready/Levels-Click.png" id="3_ov3og"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bqmkjylljvhev" path="res://assets/custom_ui/info_panel.png" id="11_hyohb"]
 [ext_resource type="Texture2D" uid="uid://y5yhdnbf6odf" path="res://assets/icons/sunset.png" id="12_dme7n"]
 [ext_resource type="Texture2D" uid="uid://tq1ahgjbl5vn" path="res://assets/icons/rating.png" id="12_owken"]
+[ext_resource type="PackedScene" uid="uid://dhbmvpvb5re8k" path="res://src/scenes/game_elements/level_hud.tscn" id="13_yxiih"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pmesg"]
 
@@ -176,7 +177,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_6xf34")
 
-[node name="Label" type="Label" parent="HeaderControl/MarginRight/Header/MoneyPanel/TextPanel"]
+[node name="Money" type="Label" parent="HeaderControl/MarginRight/Header/MoneyPanel/TextPanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -189,7 +190,7 @@ offset_right = 7.0
 offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "100"
+text = "0"
 
 [node name="IconPanel" type="Panel" parent="HeaderControl/MarginRight/Header/MoneyPanel"]
 custom_minimum_size = Vector2(72, 72)
@@ -228,7 +229,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_6xf34")
 
-[node name="Label" type="Label" parent="HeaderControl/MarginRight/Header/DiamondPanel/TextPanel"]
+[node name="Diamonds" type="Label" parent="HeaderControl/MarginRight/Header/DiamondPanel/TextPanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -241,7 +242,7 @@ offset_right = 24.5
 offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "30
+text = "0
 "
 
 [node name="IconPanel" type="Panel" parent="HeaderControl/MarginRight/Header/DiamondPanel"]
@@ -344,13 +345,13 @@ theme_override_constants/separation = -10
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
-text = "1 день"
+text = "0 день"
 
 [node name="Time" type="Label" parent="HeaderControl/MarginLeft/HBoxContainer/DateTimePanel/TextContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
-text = "10:00"
+text = "00:00"
 
 [node name="RatingPanel" type="PanelContainer" parent="HeaderControl/MarginLeft/HBoxContainer"]
 custom_minimum_size = Vector2(150, 65)
@@ -391,7 +392,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxEmpty_kt844")
 
-[node name="Day" type="Label" parent="HeaderControl/MarginLeft/HBoxContainer/RatingPanel/TextPanel"]
+[node name="Number" type="Label" parent="HeaderControl/MarginLeft/HBoxContainer/RatingPanel/TextPanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -408,6 +409,10 @@ size_flags_horizontal = 4
 size_flags_vertical = 6
 text = "???
 "
+
+[node name="LevelHud" parent="HeaderControl/MarginLeft/HBoxContainer" instance=ExtResource("13_yxiih")]
+visible = false
+layout_mode = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 reset_on_save = false
