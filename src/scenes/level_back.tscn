@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://7qyq0hkpqyjg"]
+[gd_scene load_steps=7 format=3 uid="uid://7qyq0hkpqyjg"]
 
 [ext_resource type="Script" path="res://src/scripts/level_back.gd" id="1_32isi"]
 [ext_resource type="PackedScene" uid="uid://bprqmeqewkl7i" path="res://src/scenes/game_elements/hud.tscn" id="1_y6el2"]
 [ext_resource type="Texture2D" uid="uid://uagg8pnp32t1" path="res://assets/bg/Стена_1.png" id="2_0wymm"]
 [ext_resource type="PackedScene" uid="uid://d2slfierus85g" path="res://src/scenes/game_elements/bottom_hud.tscn" id="3_l8q3j"]
+[ext_resource type="PackedScene" uid="uid://d1kugduqhbikx" path="res://src/scenes/items/coffee_machine.tscn" id="5_tnew2"]
+[ext_resource type="PackedScene" uid="uid://gqgabx0r6aej" path="res://src/scenes/items/milk_frother.tscn" id="6_5p2x0"]
 
 [node name="LevelBack" type="Control"]
 layout_mode = 3
@@ -12,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_32isi")
 
 [node name="Hud" parent="." instance=ExtResource("1_y6el2")]
@@ -28,7 +31,25 @@ grow_vertical = 2
 texture = ExtResource("2_0wymm")
 expand_mode = 1
 
+[node name="TestText" type="Label" parent="."]
+layout_mode = 0
+offset_left = 389.0
+offset_top = 285.0
+offset_right = 668.0
+offset_bottom = 348.0
+theme_override_font_sizes/font_size = 50
+text = "Сработало!"
+
+[node name="CoffeeMachine" parent="." instance=ExtResource("5_tnew2")]
+position = Vector2(184, 437)
+scale = Vector2(1.2, 1.2)
+
+[node name="MilkFrother" parent="." instance=ExtResource("6_5p2x0")]
+position = Vector2(822, 443)
+
 [connection signal="level_hud_visible" from="." to="Hud" method="_on_level_level_hud_visible"]
 [connection signal="back_button_pressed" from="BottomHud" to="." method="_on_bottom_hud_back_button_pressed"]
 [connection signal="left_button_pressed" from="BottomHud" to="." method="_on_bottom_hud_left_button_pressed"]
 [connection signal="right_button_pressed" from="BottomHud" to="." method="_on_bottom_hud_right_button_pressed"]
+[connection signal="coffee_machine_pressed" from="CoffeeMachine" to="." method="_on_coffee_machine_coffee_machine_pressed"]
+[connection signal="milk_frother_pressed" from="MilkFrother" to="." method="_on_milk_frother_milk_frother_pressed"]

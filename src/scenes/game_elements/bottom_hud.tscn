@@ -1,12 +1,12 @@
 [gd_scene load_steps=23 format=3 uid="uid://d2slfierus85g"]
 
 [ext_resource type="Script" path="res://src/scripts/game_elements/bottom_hud.gd" id="1_7fgxh"]
-[ext_resource type="Texture2D" uid="uid://bcjgov88cg1s4" path="res://assets/buttons/ready/left_idle.png" id="1_g447p"]
-[ext_resource type="Texture2D" uid="uid://trt11lhse2mv" path="res://assets/buttons/ready/left_click.png" id="2_6y6t8"]
-[ext_resource type="Texture2D" uid="uid://bx5wo4fkisuya" path="res://assets/buttons/ready/bot_idle.png" id="3_bwciq"]
-[ext_resource type="Texture2D" uid="uid://dt5avav5ug173" path="res://assets/buttons/ready/bot_click.png" id="4_w1ss6"]
-[ext_resource type="Texture2D" uid="uid://cyakqgeb1obpr" path="res://assets/buttons/ready/right_idle.png" id="5_wnje1"]
-[ext_resource type="Texture2D" uid="uid://dy8p6m5vae8s" path="res://assets/buttons/ready/right_click.png" id="6_82hv4"]
+[ext_resource type="Texture2D" uid="uid://bcjgov88cg1s4" path="res://assets/ui/buttons/ready/left_idle.png" id="1_g447p"]
+[ext_resource type="Texture2D" uid="uid://trt11lhse2mv" path="res://assets/ui/buttons/ready/left_click.png" id="2_6y6t8"]
+[ext_resource type="Texture2D" uid="uid://bx5wo4fkisuya" path="res://assets/ui/buttons/ready/bot_idle.png" id="3_bwciq"]
+[ext_resource type="Texture2D" uid="uid://dt5avav5ug173" path="res://assets/ui/buttons/ready/bot_click.png" id="4_w1ss6"]
+[ext_resource type="Texture2D" uid="uid://cyakqgeb1obpr" path="res://assets/ui/buttons/ready/right_idle.png" id="5_wnje1"]
+[ext_resource type="Texture2D" uid="uid://dy8p6m5vae8s" path="res://assets/ui/buttons/ready/right_click.png" id="6_82hv4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ud1a1"]
 
@@ -70,11 +70,12 @@ script = ExtResource("1_7fgxh")
 
 [node name="FooterControl" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 15
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="FooterControl"]

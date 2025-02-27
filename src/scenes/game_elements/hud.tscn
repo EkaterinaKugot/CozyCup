@@ -1,16 +1,16 @@
 [gd_scene load_steps=35 format=3 uid="uid://bprqmeqewkl7i"]
 
 [ext_resource type="Script" path="res://src/scripts/game_elements/hud.gd" id="1_6ufo0"]
-[ext_resource type="Texture2D" uid="uid://d3o3g53rp42k8" path="res://assets/buttons/ready/Levels-Idle.png" id="2_8o5h3"]
-[ext_resource type="Texture2D" uid="uid://x4elm1wip7g8" path="res://assets/custom_ui/сurrency_panel1.png" id="2_inymy"]
-[ext_resource type="Texture2D" uid="uid://pe7ut1bglwjh" path="res://assets/buttons/ready/Levels-Click.png" id="3_ov3og"]
-[ext_resource type="Texture2D" uid="uid://c65w4lmqn7u0" path="res://assets/custom_ui/сurrency_panel2.png" id="3_u1a13"]
+[ext_resource type="Texture2D" uid="uid://d3o3g53rp42k8" path="res://assets/ui/buttons/ready/Levels-Idle.png" id="2_8o5h3"]
+[ext_resource type="Texture2D" uid="uid://x4elm1wip7g8" path="res://assets/ui/custom_ui/сurrency_panel1.png" id="2_inymy"]
+[ext_resource type="Texture2D" uid="uid://pe7ut1bglwjh" path="res://assets/ui/buttons/ready/Levels-Click.png" id="3_ov3og"]
+[ext_resource type="Texture2D" uid="uid://c65w4lmqn7u0" path="res://assets/ui/custom_ui/сurrency_panel2.png" id="3_u1a13"]
 [ext_resource type="Texture2D" uid="uid://c51t6ui5sjq7g" path="res://assets/icons/wallet.png" id="4_2nyt5"]
 [ext_resource type="PackedScene" uid="uid://dg81uujaakw1n" path="res://src/scenes/game_elements/dropping_menu.tscn" id="4_arens"]
 [ext_resource type="Texture2D" uid="uid://cqmve1yby7eg0" path="res://assets/icons/diamond.png" id="6_difm8"]
-[ext_resource type="Texture2D" uid="uid://bmjw6bkfnvbtb" path="res://assets/buttons/ready/add_diamod_idle.png" id="7_rqvsb"]
-[ext_resource type="Texture2D" uid="uid://bpiorlx61fb4q" path="res://assets/buttons/ready/add_diamod_click.png" id="8_dp3d2"]
-[ext_resource type="Texture2D" uid="uid://bqmkjylljvhev" path="res://assets/custom_ui/info_panel.png" id="11_hyohb"]
+[ext_resource type="Texture2D" uid="uid://bmjw6bkfnvbtb" path="res://assets/ui/buttons/ready/add_diamod_idle.png" id="7_rqvsb"]
+[ext_resource type="Texture2D" uid="uid://bpiorlx61fb4q" path="res://assets/ui/buttons/ready/add_diamod_click.png" id="8_dp3d2"]
+[ext_resource type="Texture2D" uid="uid://bqmkjylljvhev" path="res://assets/ui/custom_ui/info_panel.png" id="11_hyohb"]
 [ext_resource type="Texture2D" uid="uid://y5yhdnbf6odf" path="res://assets/icons/sunset.png" id="12_dme7n"]
 [ext_resource type="Texture2D" uid="uid://tq1ahgjbl5vn" path="res://assets/icons/rating.png" id="12_owken"]
 [ext_resource type="PackedScene" uid="uid://dhbmvpvb5re8k" path="res://src/scenes/game_elements/level_hud.tscn" id="13_yxiih"]
@@ -137,11 +137,9 @@ script = ExtResource("1_6ufo0")
 
 [node name="HeaderControl" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
 grow_horizontal = 2
-grow_vertical = 2
 mouse_filter = 2
 
 [node name="MarginRight" type="MarginContainer" parent="HeaderControl"]

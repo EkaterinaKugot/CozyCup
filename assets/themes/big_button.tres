@@ -1,8 +1,8 @@
 [gd_resource type="Theme" load_steps=8 format=3 uid="uid://cuxkfo2hoq3nw"]
 
 [ext_resource type="FontFile" uid="uid://cjerwpg0gbr0p" path="res://assets/fonts/Goosberry.otf" id="1_3l0bj"]
-[ext_resource type="Texture2D" uid="uid://bmfw27jxussh1" path="res://assets/buttons/basis/Big_Idle.png" id="2_a0vtv"]
-[ext_resource type="Texture2D" uid="uid://bp8ha1pshqeif" path="res://assets/buttons/basis/Big_Click.png" id="3_iatfr"]
+[ext_resource type="Texture2D" uid="uid://bmfw27jxussh1" path="res://assets/ui/buttons/basis/Big_Idle.png" id="2_a0vtv"]
+[ext_resource type="Texture2D" uid="uid://bp8ha1pshqeif" path="res://assets/ui/buttons/basis/Big_Click.png" id="3_iatfr"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_el2o7"]
 

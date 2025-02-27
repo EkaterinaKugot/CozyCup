@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://gqgabx0r6aej"]
+
+[ext_resource type="Script" path="res://src/scripts/items/milk_frother.gd" id="1_6p48b"]
+[ext_resource type="Texture2D" uid="uid://cc50sqhdyt2nx" path="res://assets/items/92e7a023-8c1f-4909-8d27-5155560dc669.png" id="1_n652f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gcnah"]
+size = Vector2(188, 376)
+
+[node name="MilkFrother" type="Area2D"]
+script = ExtResource("1_6p48b")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("1_n652f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gcnah")
