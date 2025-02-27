@@ -53,4 +53,7 @@ grow_vertical = 2
 texture = ExtResource("2_a14fi")
 expand_mode = 1
 
-[connection signal="leve_hud_visible" from="." to="Hud" method="_on_level_leve_hud_visible"]
+[connection signal="level_hud_visible" from="." to="Hud" method="_on_level_level_hud_visible"]
+[connection signal="back_button_pressed" from="BottomHud" to="." method="_on_bottom_hud_back_button_pressed"]
+[connection signal="left_button_pressed" from="BottomHud" to="." method="_on_bottom_hud_left_button_pressed"]
+[connection signal="right_button_pressed" from="BottomHud" to="." method="_on_bottom_hud_right_button_pressed"]

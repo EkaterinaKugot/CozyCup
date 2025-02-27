@@ -42,11 +42,11 @@ func on_drop_menu_pressed() -> void:
 		elements_menu.set_process(true)
 
 
-func _on_level_leve_hud_visible() -> void:
+func _on_level_level_hud_visible() -> void:
 	level_hud.visible = true
 	level_hud.set_process(true)
 
 
-func _on_menu_leve_hud_invisible() -> void:
+func _on_menu_level_hud_invisible() -> void:
 	level_hud.visible = false
 	level_hud.set_process(false)

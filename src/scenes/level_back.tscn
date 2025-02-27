@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://7qyq0hkpqyjg"]
+
+[ext_resource type="Script" path="res://src/scripts/level_back.gd" id="1_32isi"]
+[ext_resource type="PackedScene" uid="uid://bprqmeqewkl7i" path="res://src/scenes/game_elements/hud.tscn" id="1_y6el2"]
+[ext_resource type="Texture2D" uid="uid://uagg8pnp32t1" path="res://assets/bg/Стена_1.png" id="2_0wymm"]
+[ext_resource type="PackedScene" uid="uid://d2slfierus85g" path="res://src/scenes/game_elements/bottom_hud.tscn" id="3_l8q3j"]
+
+[node name="LevelBack" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_32isi")
+
+[node name="Hud" parent="." instance=ExtResource("1_y6el2")]
+
+[node name="BottomHud" parent="." instance=ExtResource("3_l8q3j")]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_0wymm")
+expand_mode = 1
+
+[connection signal="level_hud_visible" from="." to="Hud" method="_on_level_level_hud_visible"]
+[connection signal="back_button_pressed" from="BottomHud" to="." method="_on_bottom_hud_back_button_pressed"]
+[connection signal="left_button_pressed" from="BottomHud" to="." method="_on_bottom_hud_left_button_pressed"]
+[connection signal="right_button_pressed" from="BottomHud" to="." method="_on_bottom_hud_right_button_pressed"]
