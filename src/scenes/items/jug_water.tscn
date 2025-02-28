@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://tgtg1i8048sh"]
+
+[ext_resource type="Texture2D" uid="uid://cmdknm2sr8hqn" path="res://assets/items/jug_water.png" id="1_10lsr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b63yy"]
+radius = 107.0
+height = 254.0
+
+[node name="JugWater" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.882, 1)
+texture = ExtResource("1_10lsr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 1)
+shape = SubResource("CapsuleShape2D_b63yy")

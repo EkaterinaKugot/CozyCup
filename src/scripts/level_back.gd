@@ -1,12 +1,11 @@
 extends Control
 
-@onready var test_text = $TestText as Label
-
 signal level_hud_visible()
+
+var coffee_machine = CoffeeMachine.new()
 
 func _ready() -> void:
 	emit_signal("level_hud_visible")
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -25,8 +24,7 @@ func _on_bottom_hud_right_button_pressed() -> void:
 
 
 func _on_coffee_machine_coffee_machine_pressed() -> void:
-	test_text.visible = not test_text.visible
-
+	coffee_machine.number_grains += 1
 
 func _on_milk_frother_milk_frother_pressed() -> void:
-	test_text.visible = not test_text.visible
+	pass

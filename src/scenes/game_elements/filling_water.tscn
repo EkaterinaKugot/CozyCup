@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://bl1r5cagt565b"]
+
+[ext_resource type="Texture2D" uid="uid://qkwjmiv5ivtg" path="res://assets/ui/custom_ui/water_under.png" id="1_jmmca"]
+[ext_resource type="Texture2D" uid="uid://r0coudorv1uq" path="res://assets/ui/custom_ui/water_over.png" id="2_q4hsy"]
+[ext_resource type="Texture2D" uid="uid://bpj0vw71r17p4" path="res://assets/ui/custom_ui/water_progress.png" id="3_3ghmh"]
+[ext_resource type="Script" path="res://src/scripts/game_elements/progress_filling_water.gd" id="4_3ap30"]
+[ext_resource type="Texture2D" uid="uid://buj4lghim00kk" path="res://assets/ui/custom_ui/water_glow_effect.png" id="5_2slb6"]
+
+[node name="FillingWater" type="Node2D"]
+
+[node name="ProgressFillingWater" type="TextureProgressBar" parent="."]
+offset_right = 105.0
+offset_bottom = 105.0
+max_value = 10.0
+fill_mode = 3
+texture_under = ExtResource("1_jmmca")
+texture_over = ExtResource("2_q4hsy")
+texture_progress = ExtResource("3_3ghmh")
+script = ExtResource("4_3ap30")
+
+[node name="GlowEffect" type="Sprite2D" parent="ProgressFillingWater"]
+z_index = -1
+position = Vector2(49.5, 49.5)
+texture = ExtResource("5_2slb6")

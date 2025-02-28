@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b07v0wat56pqh"]
+
+[ext_resource type="Texture2D" uid="uid://bn8u1ne0p6er4" path="res://assets/items/grain_package.png" id="1_v76cu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqbj2"]
+size = Vector2(177, 250)
+
+[node name="GrainPackage" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_v76cu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -1)
+shape = SubResource("RectangleShape2D_aqbj2")

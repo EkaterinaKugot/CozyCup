@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://7qyq0hkpqyjg"]
+[gd_scene load_steps=11 format=3 uid="uid://7qyq0hkpqyjg"]
 
 [ext_resource type="Script" path="res://src/scripts/level_back.gd" id="1_32isi"]
 [ext_resource type="PackedScene" uid="uid://bprqmeqewkl7i" path="res://src/scenes/game_elements/hud.tscn" id="1_y6el2"]
@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://d2slfierus85g" path="res://src/scenes/game_elements/bottom_hud.tscn" id="3_l8q3j"]
 [ext_resource type="PackedScene" uid="uid://d1kugduqhbikx" path="res://src/scenes/items/coffee_machine.tscn" id="5_tnew2"]
 [ext_resource type="PackedScene" uid="uid://gqgabx0r6aej" path="res://src/scenes/items/milk_frother.tscn" id="6_5p2x0"]
+[ext_resource type="PackedScene" uid="uid://c1xxsux85ntph" path="res://src/scenes/items/coffee_cup.tscn" id="7_ett10"]
+[ext_resource type="PackedScene" uid="uid://b07v0wat56pqh" path="res://src/scenes/items/grain_package.tscn" id="8_121ie"]
+[ext_resource type="PackedScene" uid="uid://dwrm6j6g1x23q" path="res://src/scenes/items/cow_milk.tscn" id="9_c82fh"]
+[ext_resource type="PackedScene" uid="uid://tgtg1i8048sh" path="res://src/scenes/items/jug_water.tscn" id="10_apwmq"]
 
 [node name="LevelBack" type="Control"]
 layout_mode = 3
@@ -31,21 +35,26 @@ grow_vertical = 2
 texture = ExtResource("2_0wymm")
 expand_mode = 1
 
-[node name="TestText" type="Label" parent="."]
-layout_mode = 0
-offset_left = 389.0
-offset_top = 285.0
-offset_right = 668.0
-offset_bottom = 348.0
-theme_override_font_sizes/font_size = 50
-text = "Сработало!"
-
 [node name="CoffeeMachine" parent="." instance=ExtResource("5_tnew2")]
-position = Vector2(184, 437)
-scale = Vector2(1.2, 1.2)
+position = Vector2(164, 490)
 
 [node name="MilkFrother" parent="." instance=ExtResource("6_5p2x0")]
-position = Vector2(822, 443)
+position = Vector2(1130, 475)
+scale = Vector2(0.85, 0.85)
+
+[node name="CoffeeCup" parent="." instance=ExtResource("7_ett10")]
+position = Vector2(861, 526)
+scale = Vector2(0.95, 0.95)
+
+[node name="GrainPackage" parent="." instance=ExtResource("8_121ie")]
+position = Vector2(104, 175)
+scale = Vector2(0.85, 0.85)
+
+[node name="CowMilk" parent="." instance=ExtResource("9_c82fh")]
+position = Vector2(1207, 154)
+
+[node name="JugWater" parent="." instance=ExtResource("10_apwmq")]
+position = Vector2(581, 449)
 
 [connection signal="level_hud_visible" from="." to="Hud" method="_on_level_level_hud_visible"]
 [connection signal="back_button_pressed" from="BottomHud" to="." method="_on_bottom_hud_back_button_pressed"]
