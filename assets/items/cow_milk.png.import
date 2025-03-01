@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bn8u1ne0p6er4"
-path="res://.godot/imported/grain_package.png-83e2d71eb93b29bcfd03a061e5dfbcc2.ctex"
+uid="uid://b4q4mh46wfbud"
+path="res://.godot/imported/cow_milk.png-7243d8197ee2b5be12ba43b3121b39f5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/items/grain_package.png"
-dest_files=["res://.godot/imported/grain_package.png-83e2d71eb93b29bcfd03a061e5dfbcc2.ctex"]
+source_file="res://assets/items/cow_milk.png"
+dest_files=["res://.godot/imported/cow_milk.png-7243d8197ee2b5be12ba43b3121b39f5.ctex"]
 
 [params]
 

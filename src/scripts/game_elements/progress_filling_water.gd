@@ -16,11 +16,10 @@ func _gui_input(event):
 	if event is InputEventMouseButton or event is InputEventScreenTouch:
 		if event.pressed:
 			is_holding = true
-			#print($GlowEffect.visible)
-			$GlowEffect.visible = true
+			$"../GlowEffect".visible = true
 		else:
 			is_holding = false
-			$GlowEffect.visible = false
+			$"../GlowEffect".visible = false
 
 func _process(delta):
 	if is_holding:

@@ -54,7 +54,6 @@ signal not_enough_diamonds(error_message: String)
 				return
 		diamonds = value
 
-
 @export var opened_ingredients: Dictionary = {}:
 	get:
 		return opened_ingredients
@@ -126,6 +125,9 @@ func sub_number_ingredient(ingredient: Ingredient, number: int) -> void:
 	assert(number >= 1, "The value of value cannot be less than 1")
 	assert(ingredient in opened_ingredients.keys(), "There is no such value in opened_ingredients")
 	opened_ingredients[ingredient] -= number
+
+func check_number_ingredient(ingredient: Ingredient, number: int) -> bool:
+	return opened_ingredients[ingredient] - number >= 0
 	
 func add_new_opened_recipes(recipe: Recipe) -> void:
 	opened_recipes.append(recipe)
@@ -145,3 +147,10 @@ func add_sounds(value: int) -> void:
 func sub_sounds(value: int) -> void:
 	assert(value >= 0, "The value of value cannot be less than 0")
 	sounds -= value
+	
+func select_ingredients_by_category(category: Ingredient.Category) -> Dictionary:
+	var result = {}
+	for ingredient in opened_ingredients.keys():
+		if ingredient.category == category:
+			result[ingredient] = opened_ingredients[ingredient]
+	return result

@@ -8,6 +8,10 @@
 
 [node name="FillingWater" type="Node2D"]
 
+[node name="GlowEffect" type="Sprite2D" parent="."]
+position = Vector2(49.5, 49.5)
+texture = ExtResource("5_2slb6")
+
 [node name="ProgressFillingWater" type="TextureProgressBar" parent="."]
 offset_right = 105.0
 offset_bottom = 105.0
@@ -17,8 +21,3 @@ texture_under = ExtResource("1_jmmca")
 texture_over = ExtResource("2_q4hsy")
 texture_progress = ExtResource("3_3ghmh")
 script = ExtResource("4_3ap30")
-
-[node name="GlowEffect" type="Sprite2D" parent="ProgressFillingWater"]
-z_index = -1
-position = Vector2(49.5, 49.5)
-texture = ExtResource("5_2slb6")

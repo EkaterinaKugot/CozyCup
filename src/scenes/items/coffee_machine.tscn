@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1kugduqhbikx"]
+[gd_scene load_steps=5 format=3 uid="uid://d1kugduqhbikx"]
 
 [ext_resource type="Texture2D" uid="uid://btv1t20p7klb8" path="res://assets/items/CoffeeMachine.png" id="1_8v32c"]
 [ext_resource type="Script" path="res://src/scripts/items/coffee_machine.gd" id="1_iglmr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qrcfm"]
-size = Vector2(231.99, 307.5)
+size = Vector2(234.99, 153.375)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5b4dt"]
+size = Vector2(234, 153)
 
 [node name="CoffeeMachine" type="Area2D"]
 script = ExtResource("1_iglmr")
@@ -13,6 +16,10 @@ script = ExtResource("1_iglmr")
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("1_8v32c")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2.99512, 0)
+[node name="AddGrainsShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -76.6875)
 shape = SubResource("RectangleShape2D_qrcfm")
+
+[node name="StartCoffeeShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 76.5)
+shape = SubResource("RectangleShape2D_5b4dt")

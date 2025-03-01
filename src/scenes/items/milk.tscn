@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwrm6j6g1x23q"]
+
+[ext_resource type="Script" path="res://src/scripts/items/milk.gd" id="1_5nl32"]
+[ext_resource type="Texture2D" uid="uid://b4q4mh46wfbud" path="res://assets/items/cow_milk.png" id="1_ty6bb"]
+[ext_resource type="Texture2D" uid="uid://r3qafe0vd2fo" path="res://assets/ui/custom_ui/milk_glow_effect.png" id="2_gmnoc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ryi45"]
+size = Vector2(142, 351)
+
+[node name="Milk" type="Area2D"]
+script = ExtResource("1_5nl32")
+
+[node name="GlowEffect" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_gmnoc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ty6bb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_ryi45")

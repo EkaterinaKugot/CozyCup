@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://dhbmvpvb5re8k"]
 
-[ext_resource type="Script" path="res://level_hud.gd" id="1_5qvdt"]
+[ext_resource type="Script" path="res://src/scripts/game_elements/level_hud.gd" id="1_5qvdt"]
 [ext_resource type="Texture2D" uid="uid://cno6o1y1isqrr" path="res://assets/ui/buttons/ready/order_idle.png" id="2_lv7bf"]
 [ext_resource type="Texture2D" uid="uid://cdh2g1g1fi5a0" path="res://assets/ui/buttons/ready/order_click.png" id="3_ttyo8"]
 [ext_resource type="Texture2D" uid="uid://bny1vij75e8qj" path="res://assets/ui/custom_ui/timer_under.png" id="4_nf8vv"]
