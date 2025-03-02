@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4q4mh46wfbud"
-path="res://.godot/imported/cow_milk.png-7243d8197ee2b5be12ba43b3121b39f5.ctex"
+uid="uid://r3qafe0vd2fo"
+path="res://.godot/imported/milk_glow_effect.png-22833a8e4a29ce08b9df01e0c1b27621.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/items/cow_milk.png"
-dest_files=["res://.godot/imported/cow_milk.png-7243d8197ee2b5be12ba43b3121b39f5.ctex"]
+source_file="res://assets/ui/custom_ui/glow_effect/milk_glow_effect.png"
+dest_files=["res://.godot/imported/milk_glow_effect.png-22833a8e4a29ce08b9df01e0c1b27621.ctex"]
 
 [params]
 

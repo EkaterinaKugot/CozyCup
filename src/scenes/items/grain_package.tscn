@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/scripts/items/grain_package.gd" id="1_jtso6"]
 [ext_resource type="Texture2D" uid="uid://bn8u1ne0p6er4" path="res://assets/items/grains_medium.png" id="1_v76cu"]
-[ext_resource type="Texture2D" uid="uid://cpxst8w7g556y" path="res://assets/ui/custom_ui/grains_glow_effect.png" id="2_mqdsk"]
+[ext_resource type="Texture2D" uid="uid://cpxst8w7g556y" path="res://assets/ui/custom_ui/glow_effect/grains_glow_effect.png" id="2_mqdsk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqbj2"]
 size = Vector2(296, 414)

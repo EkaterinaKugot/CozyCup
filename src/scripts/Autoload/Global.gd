@@ -24,6 +24,7 @@ func save_progress() -> void:
 # Загрузка данных прогресса
 func load_progress() -> void:
 	if ResourceLoader.exists(progress_path):
+		#DirAccess.remove_absolute(progress_path)
 		progress = ResourceLoader.load(progress_path)
 	else:
 		progress = Progress.new()

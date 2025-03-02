@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://buj4lghim00kk"
-path="res://.godot/imported/water_glow_effect.png-764cf892bcdac2fa4ec114bbe7b998f4.ctex"
+uid="uid://bw5qusjlf6ftr"
+path="res://.godot/imported/jug_water_glow_effect.png-618e17399ec7737223decbcd45f7855b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/custom_ui/water_glow_effect.png"
-dest_files=["res://.godot/imported/water_glow_effect.png-764cf892bcdac2fa4ec114bbe7b998f4.ctex"]
+source_file="res://assets/ui/custom_ui/glow_effect/jug_water_glow_effect.png"
+dest_files=["res://.godot/imported/jug_water_glow_effect.png-618e17399ec7737223decbcd45f7855b.ctex"]
 
 [params]
 

@@ -1,15 +1,15 @@
 extends Control
 
+@onready var jug_water = $JugWater
 var scene_grain_package = preload("res://src/scenes/items/grain_package.tscn")
 var scene_milk = preload("res://src/scenes/items/milk.tscn")
 
-var opened_grains: Dictionary = Global.progress.select_ingredients_by_category(Ingredient.Category.GRAINS)
-var opened_milk: Dictionary = Global.progress.select_ingredients_by_category(Ingredient.Category.MILK)
-
-var grain_package_instances: Dictionary = {}
-var milk_instances: Dictionary = {}
-var start_position_grain_package = Vector2(80, 180)
-var start_position_milk = Vector2(1220, 180)
+var opened_ingredients: Dictionary
+var instances_ingredients: Dictionary
+var value_properties: Dictionary = {
+	Ingredient.Category.GRAINS: {"position": Vector2(80, 180), "scale": Vector2(0.4, 0.4), "idx_position": 1}, 
+	Ingredient.Category.MILK: {"position": Vector2(1220, 180), "scale": Vector2(0.45, 0.45), "idx_position": -1}
+}
 
 var current_ingredient: Ingredient = null
 
@@ -17,16 +17,35 @@ signal level_hud_visible()
 
 func _ready() -> void:
 	emit_signal("level_hud_visible")
-	grain_package_instances = load_ingredients(opened_grains, scene_grain_package)
-	milk_instances = load_ingredients(opened_milk, scene_milk)
 	
-func load_ingredients(dict: Dictionary, scene) -> Dictionary:
+	opened_ingredients[Ingredient.Category.GRAINS] = Global.progress.select_ingredients_by_category(
+		Ingredient.Category.GRAINS
+	)
+	opened_ingredients[Ingredient.Category.MILK] = Global.progress.select_ingredients_by_category(
+		Ingredient.Category.MILK
+	)
+	opened_ingredients[Ingredient.Category.WATER] = Global.progress.select_ingredients_by_category(
+		Ingredient.Category.WATER
+	)
+	
+	instances_ingredients[Ingredient.Category.GRAINS] = load_ingredients(
+		opened_ingredients[Ingredient.Category.GRAINS], scene_grain_package
+	)
+	instances_ingredients[Ingredient.Category.MILK] = load_ingredients(
+		opened_ingredients[Ingredient.Category.MILK], scene_milk
+	)
+	print(opened_ingredients[Ingredient.Category.WATER].keys())
+	instances_ingredients[Ingredient.Category.WATER] = {
+		jug_water: opened_ingredients[Ingredient.Category.WATER].keys()[0]
+	}
+	jug_water.ingredient = instances_ingredients[Ingredient.Category.WATER][jug_water]
+	jug_water.connect("ingredient_pressed", change_current_ingredient)
+	
+func load_ingredients(ingredients: Dictionary, scene) -> Dictionary:
 	var result = {}
-	var size_scale_grains = Vector2(0.4, 0.4)
-	var size_scale_milk = Vector2(0.45, 0.45)
 	var count = 0
 	
-	for ingredient in dict.keys():
+	for ingredient in ingredients.keys():
 		var instance = scene.instantiate()
 		instance.connect("ingredient_pressed", change_current_ingredient)
 		instance.ingredient = ingredient
@@ -35,17 +54,12 @@ func load_ingredients(dict: Dictionary, scene) -> Dictionary:
 		var sprite = instance.get_node("Sprite2D")
 		if sprite:
 			sprite.texture = load("res://assets/items/{0}.png".format([ingredient.id]))
-
-		if ingredient.category == Ingredient.Category.GRAINS:
-			instance.scale = size_scale_grains
-			instance.position = start_position_grain_package
-			instance.position.x += size_x
-		elif ingredient.category == Ingredient.Category.MILK:
-			instance.scale = size_scale_milk
-			instance.position = start_position_milk
-			instance.position.x -= size_x
+		
+		instance.scale = value_properties[ingredient.category]["scale"]
+		instance.position = value_properties[ingredient.category]["position"]
+		instance.position.x += size_x * value_properties[ingredient.category]["idx_position"]
 			
-		result[instance] = dict[ingredient]
+		result[instance] = ingredient
 		
 		add_child(instance)
 		count += 1
@@ -66,23 +80,13 @@ func change_current_ingredient(ingredient: Ingredient) -> void:
 
 func find_instance_by_ingredients(ingredient: Ingredient):
 	var instance
-	if ingredient.category == Ingredient.Category.GRAINS:
-		instance = find_instance(ingredient, opened_grains, grain_package_instances)
-	elif ingredient.category == Ingredient.Category.MILK:
-		instance = find_instance(ingredient, opened_milk, milk_instances)
-	return instance
-	
-func find_instance(ingredient: Ingredient, opened_items: Dictionary, opened_instances: Dictionary):
-	var count = 0
-	for i in opened_items.keys():
-		if i == ingredient:
+	for inst in instances_ingredients[ingredient.category].keys():
+		if instances_ingredients[ingredient.category][inst] == ingredient:
+			instance = inst
 			break
-		count += 1
-	var count2 = 0
-	for instance in opened_instances.keys():
-		if count2 == count:
-			return instance
-		count2 += 1		
+			
+	assert(instance != null, "The value of instance cannot be null")
+	return instance
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

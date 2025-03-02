@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://7qyq0hkpqyjg"]
+[gd_scene load_steps=11 format=3 uid="uid://7qyq0hkpqyjg"]
 
 [ext_resource type="Script" path="res://src/scripts/level_back.gd" id="1_32isi"]
 [ext_resource type="PackedScene" uid="uid://bprqmeqewkl7i" path="res://src/scenes/game_elements/hud.tscn" id="1_y6el2"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://gqgabx0r6aej" path="res://src/scenes/items/milk_frother.tscn" id="6_5p2x0"]
 [ext_resource type="PackedScene" uid="uid://q1x88n2h4bdv" path="res://src/scenes/game_elements/grains_container.tscn" id="6_nfdi1"]
 [ext_resource type="PackedScene" uid="uid://c1xxsux85ntph" path="res://src/scenes/items/coffee_cup.tscn" id="7_ett10"]
+[ext_resource type="Script" path="res://src/scripts/items/jug_water.gd" id="8_r1an1"]
 [ext_resource type="PackedScene" uid="uid://tgtg1i8048sh" path="res://src/scenes/items/jug_water.tscn" id="10_apwmq"]
 
 [node name="LevelBack" type="Control"]
@@ -43,16 +44,17 @@ offset_top = -98.0
 offset_right = 42.0
 offset_bottom = -58.0
 
+[node name="JugWater" parent="." instance=ExtResource("10_apwmq")]
+position = Vector2(653, 448)
+scale = Vector2(0.9, 0.9)
+script = ExtResource("8_r1an1")
+
 [node name="MilkFrother" parent="." instance=ExtResource("6_5p2x0")]
 position = Vector2(1130, 475)
 scale = Vector2(0.85, 0.85)
 
 [node name="CoffeeCup" parent="." instance=ExtResource("7_ett10")]
 position = Vector2(865, 553)
-scale = Vector2(0.9, 0.9)
-
-[node name="JugWater" parent="." instance=ExtResource("10_apwmq")]
-position = Vector2(653, 448)
 scale = Vector2(0.9, 0.9)
 
 [connection signal="level_hud_visible" from="." to="Hud" method="_on_level_level_hud_visible"]

@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_446oe")
-id = "cow_milk"
+id = "milk_cow"
 name = "Молоко"
 category = 0
 is_basic = true

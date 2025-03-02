@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://r3qafe0vd2fo"
-path="res://.godot/imported/milk_glow_effect.png-f82d69738c3caf648a779eaba55f65b0.ctex"
+uid="uid://cpxst8w7g556y"
+path="res://.godot/imported/grains_glow_effect.png-0f55789dd6dd32e100e65ce11d54d681.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/custom_ui/milk_glow_effect.png"
-dest_files=["res://.godot/imported/milk_glow_effect.png-f82d69738c3caf648a779eaba55f65b0.ctex"]
+source_file="res://assets/ui/custom_ui/glow_effect/grains_glow_effect.png"
+dest_files=["res://.godot/imported/grains_glow_effect.png-0f55789dd6dd32e100e65ce11d54d681.ctex"]
 
 [params]
 
