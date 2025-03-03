@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://tgtg1i8048sh"]
+[gd_scene load_steps=5 format=3 uid="uid://tgtg1i8048sh"]
 
 [ext_resource type="Texture2D" uid="uid://cmdknm2sr8hqn" path="res://assets/items/jug_water.png" id="1_10lsr"]
 [ext_resource type="Texture2D" uid="uid://bw5qusjlf6ftr" path="res://assets/ui/custom_ui/glow_effect/jug_water_glow_effect.png" id="1_or8nx"]
+[ext_resource type="Script" path="res://src/scripts/items/jug_water.gd" id="1_yqg6j"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b63yy"]
 radius = 107.0
 height = 254.0
 
 [node name="JugWater" type="Area2D"]
+script = ExtResource("1_yqg6j")
 
 [node name="GlowEffect" type="Sprite2D" parent="."]
 visible = false

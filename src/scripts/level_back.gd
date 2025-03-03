@@ -34,11 +34,11 @@ func _ready() -> void:
 	instances_ingredients[Ingredient.Category.MILK] = load_ingredients(
 		opened_ingredients[Ingredient.Category.MILK], scene_milk
 	)
-	print(opened_ingredients[Ingredient.Category.WATER].keys())
+
 	instances_ingredients[Ingredient.Category.WATER] = {
-		jug_water: opened_ingredients[Ingredient.Category.WATER].keys()[0]
+		opened_ingredients[Ingredient.Category.WATER].keys()[0]: jug_water
 	}
-	jug_water.ingredient = instances_ingredients[Ingredient.Category.WATER][jug_water]
+	jug_water.ingredient = instances_ingredients[Ingredient.Category.WATER].keys()[0]
 	jug_water.connect("ingredient_pressed", change_current_ingredient)
 	
 func load_ingredients(ingredients: Dictionary, scene) -> Dictionary:
@@ -59,9 +59,10 @@ func load_ingredients(ingredients: Dictionary, scene) -> Dictionary:
 		instance.position = value_properties[ingredient.category]["position"]
 		instance.position.x += size_x * value_properties[ingredient.category]["idx_position"]
 			
-		result[instance] = ingredient
+		result[ingredient] = instance
 		
 		add_child(instance)
+		instance.update_number()
 		count += 1
 	return result
 		
@@ -80,9 +81,9 @@ func change_current_ingredient(ingredient: Ingredient) -> void:
 
 func find_instance_by_ingredients(ingredient: Ingredient):
 	var instance
-	for inst in instances_ingredients[ingredient.category].keys():
-		if instances_ingredients[ingredient.category][inst] == ingredient:
-			instance = inst
+	for ingr in instances_ingredients[ingredient.category].keys():
+		if ingr == ingredient:
+			instance = instances_ingredients[ingredient.category][ingr]
 			break
 			
 	assert(instance != null, "The value of instance cannot be null")

@@ -1,6 +1,7 @@
 extends Area2D
 
 @onready var glow_effect = $GlowEffect
+@onready var number = $Number
 var item_pressed: bool = false
 var ingredient: Ingredient
 
@@ -19,6 +20,8 @@ func _input_event(_viewport, event, _shape_idx):
 		glow_effect.visible = not glow_effect.visible
 		ingredient_pressed.emit(ingredient)
 
+func update_number() -> void:
+	number.text = str(get_parent().opened_ingredients[ingredient.category][ingredient])
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
