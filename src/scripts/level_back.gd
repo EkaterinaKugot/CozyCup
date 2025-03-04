@@ -4,12 +4,14 @@ extends Control
 var scene_grain_package = preload("res://src/scenes/items/grain_package.tscn")
 var scene_milk = preload("res://src/scenes/items/milk.tscn")
 
+@onready var milk_frother = $MilkFrother
+
+var WIDTH
+var HEIGHT
+
 var opened_ingredients: Dictionary
 var instances_ingredients: Dictionary
-var value_properties: Dictionary = {
-	Ingredient.Category.GRAINS: {"position": Vector2(80, 180), "scale": Vector2(0.4, 0.4), "idx_position": 1}, 
-	Ingredient.Category.MILK: {"position": Vector2(1220, 180), "scale": Vector2(0.45, 0.45), "idx_position": -1}
-}
+var value_properties: Dictionary 
 
 var current_ingredient: Ingredient = null
 
@@ -17,6 +19,18 @@ signal level_hud_visible()
 
 func _ready() -> void:
 	emit_signal("level_hud_visible")
+	
+	WIDTH = get_viewport().size.x
+	HEIGHT = get_viewport().size.y
+	milk_frother.position = Vector2(1150, 475)
+	value_properties = {
+		Ingredient.Category.GRAINS: {
+			"position": Vector2(80, 190), "scale": Vector2(0.45, 0.45), "idx_position": 1
+		}, 
+		Ingredient.Category.MILK: {
+			"position": Vector2(1200, 190), "scale": Vector2(0.5, 0.5), "idx_position": -1
+		}
+	}
 	
 	opened_ingredients[Ingredient.Category.GRAINS] = Global.progress.select_ingredients_by_category(
 		Ingredient.Category.GRAINS

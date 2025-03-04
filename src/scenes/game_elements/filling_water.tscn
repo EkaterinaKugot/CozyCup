@@ -7,8 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://buj4lghim00kk" path="res://assets/ui/custom_ui/glow_effect/water_glow_effect.png" id="5_2slb6"]
 
 [node name="FillingWater" type="Node2D"]
+scale = Vector2(1.2, 1.2)
 
 [node name="GlowEffect" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(49.5, 49.5)
 texture = ExtResource("5_2slb6")
 

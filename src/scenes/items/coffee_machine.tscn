@@ -1,16 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://d1kugduqhbikx"]
+[gd_scene load_steps=9 format=3 uid="uid://d1kugduqhbikx"]
 
 [ext_resource type="Texture2D" uid="uid://btv1t20p7klb8" path="res://assets/items/CoffeeMachine.png" id="1_8v32c"]
 [ext_resource type="Script" path="res://src/scripts/items/coffee_machine.gd" id="1_iglmr"]
 [ext_resource type="Texture2D" uid="uid://bd7faejcftw22" path="res://assets/ui/custom_ui/glow_effect/coffee_kettle_glow_effect.png" id="3_1i3ar"]
 [ext_resource type="Texture2D" uid="uid://byy4svjurdk5x" path="res://assets/items/coffee_kettle.png" id="4_gth6k"]
+[ext_resource type="Script" path="res://src/scripts/items/coffee_kettle_progress.gd" id="4_mavwi"]
 [ext_resource type="Script" path="res://src/scripts/items/coffee_kettle.gd" id="5_gvenk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qrcfm"]
-size = Vector2(234.99, 153.375)
+size = Vector2(218.495, 153.375)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5b4dt"]
-size = Vector2(234, 153)
+size = Vector2(228, 153)
 
 [node name="CoffeeMachine" type="Area2D"]
 script = ExtResource("1_iglmr")
@@ -20,25 +21,37 @@ scale = Vector2(0.35, 0.35)
 texture = ExtResource("1_8v32c")
 
 [node name="AddGrainsShape" type="CollisionShape2D" parent="."]
-position = Vector2(0, -76.6875)
+position = Vector2(-8.2475, -76.6875)
 shape = SubResource("RectangleShape2D_qrcfm")
 
 [node name="StartCoffeeShape" type="CollisionShape2D" parent="."]
-position = Vector2(0, 76.5)
+position = Vector2(-3, 76.5)
 shape = SubResource("RectangleShape2D_5b4dt")
 
 [node name="CoffeeKettle" type="Area2D" parent="."]
 visible = false
 position = Vector2(27, 51)
 scale = Vector2(0.35, 0.35)
+script = ExtResource("5_gvenk")
 
-[node name="GlowEffect" type="Sprite2D" parent="CoffeeKettle"]
-visible = false
-texture = ExtResource("3_1i3ar")
+[node name="CoffeeKettleProgress" type="TextureProgressBar" parent="CoffeeKettle"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -312.5
+offset_top = -217.0
+offset_right = 312.5
+offset_bottom = 217.0
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 3
+texture_progress = ExtResource("3_1i3ar")
+script = ExtResource("4_mavwi")
 
 [node name="CoffeeKettle" type="Sprite2D" parent="CoffeeKettle"]
 texture = ExtResource("4_gth6k")
-script = ExtResource("5_gvenk")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CoffeeKettle"]
 polygon = PackedVector2Array(-168.571, -140, -120, -151.429, 17.1429, -151.429, 68.5714, -142.857, 154.286, -145.714, 188.571, -120, 240, 28.5714, 225.714, 62.8571, 140, 111.429, 122.857, 131.429, 125.714, 140, 88.5714, 148.571, -45.7143, 154.286, -191.429, 145.714, -208.571, 140, -200, 131.429, -225.714, 114.286, -220, 5.71428, -202.857, -68.5714, -185.714, -117.143)

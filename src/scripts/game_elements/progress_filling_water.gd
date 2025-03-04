@@ -14,7 +14,9 @@ func _ready() -> void:
 
 func _gui_input(event):
 	if event is InputEventMouseButton or event is InputEventScreenTouch:
-		if event.pressed:
+		var current_ingredient: Ingredient = get_tree().root.get_node("LevelBack").current_ingredient
+		if event.pressed and current_ingredient != null and \
+		 current_ingredient.category == Ingredient.Category.WATER:
 			is_holding = true
 			$"../GlowEffect".visible = true
 		else:
