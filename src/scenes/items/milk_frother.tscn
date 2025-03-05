@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://gqgabx0r6aej"]
+[gd_scene load_steps=7 format=3 uid="uid://gqgabx0r6aej"]
 
 [ext_resource type="Script" path="res://src/scripts/items/milk_frother.gd" id="1_6p48b"]
 [ext_resource type="Texture2D" uid="uid://cc50sqhdyt2nx" path="res://assets/items/MilkFrother.png" id="1_n652f"]
+[ext_resource type="Texture2D" uid="uid://blbcetitbry63" path="res://assets/ui/custom_ui/glow_effect/milk_kettle_glow_effect.png" id="3_lqx8r"]
+[ext_resource type="Texture2D" uid="uid://df7f6cmtf5uwu" path="res://assets/items/milk_kettle.png" id="4_53r7m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gcnah"]
-size = Vector2(188, 376)
+size = Vector2(144, 158)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3lgqo"]
+size = Vector2(184, 213)
 
 [node name="MilkFrother" type="Area2D"]
 script = ExtResource("1_6p48b")
@@ -13,5 +18,35 @@ script = ExtResource("1_6p48b")
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("1_n652f")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="AddMilkShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -106)
 shape = SubResource("RectangleShape2D_gcnah")
+
+[node name="StartMilkShape" type="CollisionShape2D" parent="."]
+position = Vector2(4, 79.5)
+shape = SubResource("RectangleShape2D_3lgqo")
+
+[node name="MilkKettle" type="Area2D" parent="."]
+visible = false
+scale = Vector2(0.35, 0.35)
+
+[node name="MilkKettleProgress" type="TextureProgressBar" parent="MilkKettle"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -265.714
+offset_top = -100.0
+offset_right = 352.286
+offset_bottom = 465.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_progress = ExtResource("3_lqx8r")
+
+[node name="MilkKettle" type="Sprite2D" parent="MilkKettle"]
+position = Vector2(45.7143, 185.714)
+texture = ExtResource("4_53r7m")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MilkKettle"]
+polygon = PackedVector2Array(-180, -17.1429, -134.286, -31.4286, -97.1429, -37.1429, -20, -40, 45.7143, -40, 102.857, -34.2857, 117.143, -28.5714, 117.143, -17.1429, 197.143, -14.2857, 231.429, 5.71429, 251.429, 42.8571, 274.286, 214.286, 268.571, 245.714, 254.286, 274.286, 228.571, 297.143, 194.286, 311.429, 177.143, 314.286, 157.143, 314.286, 162.857, 354.286, 157.143, 380, 142.857, 400, 74.2857, 414.286, -17.1429, 417.143, -100, 411.429, -162.857, 397.143, -177.143, 377.143, -182.857, 357.143, -142.857, 20)

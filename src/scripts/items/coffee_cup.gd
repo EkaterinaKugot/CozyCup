@@ -1,0 +1,68 @@
+extends Area2D
+
+var is_overlapping = false
+var current_area: Area2D
+@onready var glow_effect = $GlowEffect
+@onready var coffee_kettle = $"../CoffeeMachine/CoffeeKettle"
+
+var coffee_cup_ingredient = preload("res://src/scenes/game_elements/coffee_cup_ingredient.tscn")
+var dict_instance: Dictionary = {}
+
+signal clean_coffee_kettle()
+func _ready() -> void:
+	connect("area_entered", _on_area_entered)
+	connect("area_exited", _on_area_exited)
+	coffee_kettle.connect("сoffee_delivered", add_ingredient)
+	
+	display_ingredients()
+		
+	
+func add_ingredient() -> void:
+	CoffeeCup.add_ingredient(CoffeeMachine.ingredient_in_kettle, CoffeeMachine.number_coffee_shots) # добавили
+	
+	CoffeeMachine.clean_coffee_kettle() # очистили чайник
+	clean_coffee_kettle.emit()
+	
+	display_ingredients()  # отображаем ингредиенты
+	
+func display_ingredients() -> void:
+	var array_ingredients = CoffeeCup.array_ingredients() 
+	var y = 50
+	for ingredient in array_ingredients: # отображаем добавленное
+		var instance_coffee_cup_ingredient
+		if ingredient in dict_instance.keys():
+			instance_coffee_cup_ingredient = dict_instance[ingredient]
+		else:
+			instance_coffee_cup_ingredient = coffee_cup_ingredient.instantiate()
+			var icon = instance_coffee_cup_ingredient.get_node("Icon") # добавляем иконку
+			icon.texture = load("res://assets/icons/{0}_icon.png".format([ingredient.id]))
+			instance_coffee_cup_ingredient.position = Vector2(55, y) # устанавливаем позицию
+			
+			add_child(instance_coffee_cup_ingredient)
+			
+		var label_number = instance_coffee_cup_ingredient.get_node("Number") # обновляем количество
+		label_number.text = str(CoffeeCup.added_ingredients[ingredient])
+		
+		dict_instance[ingredient] = instance_coffee_cup_ingredient
+		y -= 30
+	print("array_ingredients: ", array_ingredients)
+	print("dict_instance: ", dict_instance)
+	
+# Срабатывает при входе в другую область
+func _on_area_entered(area: Area2D):
+	if area != self:  # Исключаем саму себя
+		is_overlapping = true
+		glow_effect.visible = true
+		current_area = area
+
+# Срабатывает при выходе из другой области
+func _on_area_exited(area: Area2D):
+	if area != self:
+		is_overlapping = false
+		glow_effect.visible = false
+		current_area = null
+		
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass

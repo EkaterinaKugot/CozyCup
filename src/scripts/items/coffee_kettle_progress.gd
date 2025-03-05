@@ -9,14 +9,18 @@ func _ready() -> void:
 	min_value = 0
 	max_value = max_number_coffee
 	value = 0
+	
 	$"../../AddGrainsShape".disabled = false
+	$"../../StartCoffeeShape".disabled = false
+	
 	if CoffeeMachine.coffee_is_ready == true:
 		value = max_number_coffee
 		get_parent().visible = true
+		$"../CoffeeKettle".z_index = 1
 
 func start_progress() -> void:
 	get_parent().visible = true
-	$"../CoffeeKettle".z_index = 2
+	$"../CoffeeKettle".z_index = 1
 	max_hold_time = CoffeeMachine.number_grains * 2
 	
 	$"../../StartCoffeeShape".disabled = true
@@ -30,7 +34,9 @@ func _process(delta):
 		value = (hold_time / max_hold_time) * max_number_coffee
 		if hold_time >= max_hold_time:
 			is_holding = false
+			hold_time = 0.0
 			$"../../AddGrainsShape".disabled = false
+			$"../../StartCoffeeShape".disabled = false
 			
 			CoffeeMachine.сooking_coffee()
 			CoffeeMachine.use_elements()

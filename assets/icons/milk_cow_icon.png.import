@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c20pi1b43xaj8"
-path="res://.godot/imported/right-arrow.png-6aacc317f4d024b69c4792e7b82b750a.ctex"
+uid="uid://by4qesllhdeup"
+path="res://.godot/imported/milk_cow_icon.png-07dd03c8485f2b987d4668c1c53ffd07.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/right-arrow.png"
-dest_files=["res://.godot/imported/right-arrow.png-6aacc317f4d024b69c4792e7b82b750a.ctex"]
+source_file="res://assets/icons/milk_cow_icon.png"
+dest_files=["res://.godot/imported/milk_cow_icon.png-07dd03c8485f2b987d4668c1c53ffd07.ctex"]
 
 [params]
 

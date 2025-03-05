@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ycold3ynxdma"
-path="res://.godot/imported/free-icon-book-2224395.png-9b2403b78074ac4c455214a44881fff0.ctex"
+uid="uid://bss0crxagdfeg"
+path="res://.godot/imported/water_icon.png-3864cdbb8622792a9f8fd6c58faaf6fa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/free-icon-book-2224395.png"
-dest_files=["res://.godot/imported/free-icon-book-2224395.png-9b2403b78074ac4c455214a44881fff0.ctex"]
+source_file="res://assets/icons/water_icon.png"
+dest_files=["res://.godot/imported/water_icon.png-3864cdbb8622792a9f8fd6c58faaf6fa.ctex"]
 
 [params]
 

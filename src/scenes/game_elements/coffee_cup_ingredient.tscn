@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://cw2sveq4k0vnw"]
+
+[ext_resource type="Texture2D" uid="uid://ba23vrj4v8li2" path="res://assets/icons/grains_medium_icon.png" id="1_6fpd8"]
+
+[node name="CoffeeCupIngredient" type="HBoxContainer"]
+offset_right = 54.0
+offset_bottom = 30.0
+theme_override_constants/separation = 5
+
+[node name="Icon" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("1_6fpd8")
+expand_mode = 1
+
+[node name="Number" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "10"

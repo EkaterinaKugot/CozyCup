@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://q1x88n2h4bdv"]
 
-[ext_resource type="Texture2D" uid="uid://ba23vrj4v8li2" path="res://assets/icons/grain.png" id="1_2raf2"]
+[ext_resource type="Texture2D" uid="uid://ba23vrj4v8li2" path="res://assets/icons/grains_medium_icon.png" id="1_2raf2"]
 
 [node name="GrainsContainer" type="HBoxContainer"]
 offset_right = 54.0

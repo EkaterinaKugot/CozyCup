@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1xxsux85ntph"]
+[gd_scene load_steps=5 format=3 uid="uid://c1xxsux85ntph"]
 
+[ext_resource type="Script" path="res://src/scripts/items/coffee_cup.gd" id="1_3ktfe"]
 [ext_resource type="Texture2D" uid="uid://bn2jkq6v2gura" path="res://assets/items/coffee_cup.png" id="1_5xeig"]
+[ext_resource type="Texture2D" uid="uid://dibqiri6d8edb" path="res://assets/ui/custom_ui/glow_effect/coffee_cup_glow_effect.png" id="2_bi3l6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8umaa"]
 size = Vector2(111, 181.5)
@@ -8,6 +10,12 @@ size = Vector2(111, 181.5)
 [node name="CoffeeCup" type="Area2D"]
 collision_layer = 2
 collision_mask = 2
+script = ExtResource("1_3ktfe")
+
+[node name="GlowEffect" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.8, 0.7)
+texture = ExtResource("2_bi3l6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.8, 0.7)

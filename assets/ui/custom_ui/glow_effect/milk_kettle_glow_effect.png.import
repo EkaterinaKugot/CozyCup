@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkb0syaq75hra"
-path="res://.godot/imported/notebook.png-8a8316d1cc56f5e55c6c149be22bbb5c.ctex"
+uid="uid://blbcetitbry63"
+path="res://.godot/imported/milk_kettle_glow_effect.png-550193886eefc9708f32f0723df6a7dc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/notebook.png"
-dest_files=["res://.godot/imported/notebook.png-8a8316d1cc56f5e55c6c149be22bbb5c.ctex"]
+source_file="res://assets/ui/custom_ui/glow_effect/milk_kettle_glow_effect.png"
+dest_files=["res://.godot/imported/milk_kettle_glow_effect.png-550193886eefc9708f32f0723df6a7dc.ctex"]
 
 [params]
 
