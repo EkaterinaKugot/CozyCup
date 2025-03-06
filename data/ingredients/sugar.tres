@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_5ticw")
-id = "sweetness_sugar"
+id = "sugar"
 name = "Сахар"
 category = 3
 is_basic = true

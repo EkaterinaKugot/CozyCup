@@ -1,7 +1,5 @@
 extends Area2D
 
-var is_overlapping = false
-var current_area: Area2D
 @onready var glow_effect = $GlowEffect
 @onready var coffee_kettle = $"../CoffeeMachine/CoffeeKettle"
 @onready var milk_kettle = $"../MilkFrother/MilkKettle"
@@ -19,6 +17,20 @@ func _ready() -> void:
 	milk_kettle.connect("milk_delivered", add_milk_ingredient)
 	
 	display_ingredients()
+	
+func _input_event(_viewport, event, shape_idx):
+	if OS.get_name() == "Android" or OS.get_name() == "iOS":
+		if event is InputEventScreenTouch and event.pressed:
+			var current_ingredient = get_parent().current_ingredient
+			if current_ingredient != null and \
+			current_ingredient.category == Ingredient.Category.WATER:
+				add_water_ingredient(current_ingredient)
+	else:
+		if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+			var current_ingredient = get_parent().current_ingredient
+			if current_ingredient != null and \
+			current_ingredient.category == Ingredient.Category.WATER:
+				add_water_ingredient(current_ingredient)
 		
 	
 func add_grains_ingredient() -> void:
@@ -38,6 +50,13 @@ func add_milk_ingredient() -> void:
 	
 	MilkFrother.clean_milk_kettle() # очистили чайник
 	clean_milk_kettle.emit()
+	
+	display_ingredients()  # отображаем ингредиенты
+	
+func add_water_ingredient(current_ingredient: Ingredient) -> void:
+	CoffeeCup.add_ingredient(
+		current_ingredient, 1
+	) # добавили в кружку
 	
 	display_ingredients()  # отображаем ингредиенты
 	
@@ -67,16 +86,12 @@ func display_ingredients() -> void:
 # Срабатывает при входе в другую область
 func _on_area_entered(area: Area2D):
 	if area != self:  # Исключаем саму себя
-		is_overlapping = true
 		glow_effect.visible = true
-		current_area = area
 
 # Срабатывает при выходе из другой области
 func _on_area_exited(area: Area2D):
 	if area != self:
-		is_overlapping = false
 		glow_effect.visible = false
-		current_area = null
 		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

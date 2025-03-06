@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7tfrdlqpk6rn"]
+
+[ext_resource type="Texture2D" uid="uid://d0a6triq2vcs4" path="res://assets/items/syrup.png" id="1_0nncs"]
+[ext_resource type="Texture2D" uid="uid://c76sow8muykgs" path="res://assets/ui/custom_ui/glow_effect/syrup.png" id="1_u85sb"]
+[ext_resource type="Texture2D" uid="uid://c3o1qk3a75ofh" path="res://assets/icons/coconut_icon.png" id="2_dw1d7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eoxgb"]
+size = Vector2(141, 287)
+
+[node name="Syrup" type="Area2D"]
+
+[node name="GlowEffect" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_u85sb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0nncs")
+
+[node name="Icon" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(0, 40)
+texture = ExtResource("2_dw1d7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 26.5)
+shape = SubResource("RectangleShape2D_eoxgb")

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://7sgs7voxb6pd"]
+
+[ext_resource type="Texture2D" uid="uid://6t3njahkp3qp" path="res://assets/ui/custom_ui/glow_effect/sugar.png" id="1_061ka"]
+[ext_resource type="Texture2D" uid="uid://cy527i4iqijep" path="res://assets/items/sugar.png" id="2_yunyf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hy5x1"]
+size = Vector2(297, 441)
+
+[node name="Sugar" type="Area2D"]
+
+[node name="GlowEffect" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_061ka")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_yunyf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 2.5)
+shape = SubResource("RectangleShape2D_hy5x1")

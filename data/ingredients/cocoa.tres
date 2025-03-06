@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_6uqm8")
-id = "topping_cocoa"
+id = "cocoa_powder"
 name = "Какао"
 category = 4
 is_basic = true

@@ -36,6 +36,7 @@ enabled=PackedStringArray("res://addons/gut/plugin.cfg")
 [file_customization]
 
 folder_colors={
+"res://assets/items/": "purple",
 "res://src/scenes/game_elements/": "yellow",
 "res://src/scenes/items/": "purple",
 "res://src/scripts/game_elements/": "yellow",
