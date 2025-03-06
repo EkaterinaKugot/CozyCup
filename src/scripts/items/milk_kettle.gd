@@ -8,14 +8,14 @@ var initial_position = Vector2()
 var is_overlapping = false
 var current_area: Area2D
 
-signal сoffee_delivered()
+signal milk_delivered()
 
 func _input_event(_viewport, event, shape_idx):
-	if CoffeeMachine.coffee_is_ready and not $CoffeeKettleProgress.is_holding and \
+	if MilkFrother.milk_is_ready and not $MilkKettleProgress.is_holding and \
 	get_tree().root.get_node("LevelBack").current_ingredient == null and \
 	(event is InputEventScreenTouch or event is InputEventMouseButton):
 		if event.pressed:
-			print("CoffeeKettle ", event)
+			print("MilkKettle ", event)
 			is_dragging = true 
 			mouse_button_pressed = true
 			drag_offset = global_position - get_global_mouse_position()
@@ -24,11 +24,11 @@ func _input_event(_viewport, event, shape_idx):
 			
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	initial_position = global_position
+	initial_position = global_position + Vector2(20, 0)
 	connect("area_entered", _on_area_entered)
 	connect("area_exited", _on_area_exited)
+	
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if is_dragging:
 		if mouse_button_pressed:
@@ -37,8 +37,8 @@ func _process(_delta: float) -> void:
 			is_dragging = false
 			global_position = initial_position
 			if current_area != null and current_area.name == "CoffeeCup":
-				сoffee_delivered.emit()
-			
+				milk_delivered.emit()
+
 # Срабатывает при входе в другую область
 func _on_area_entered(area: Area2D):
 	if area != self:  # Исключаем саму себя

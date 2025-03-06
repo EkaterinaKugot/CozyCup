@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://gqgabx0r6aej"]
+[gd_scene load_steps=9 format=3 uid="uid://gqgabx0r6aej"]
 
 [ext_resource type="Script" path="res://src/scripts/items/milk_frother.gd" id="1_6p48b"]
 [ext_resource type="Texture2D" uid="uid://cc50sqhdyt2nx" path="res://assets/items/MilkFrother.png" id="1_n652f"]
+[ext_resource type="Script" path="res://src/scripts/items/milk_kettle.gd" id="3_2pimj"]
 [ext_resource type="Texture2D" uid="uid://blbcetitbry63" path="res://assets/ui/custom_ui/glow_effect/milk_kettle_glow_effect.png" id="3_lqx8r"]
 [ext_resource type="Texture2D" uid="uid://df7f6cmtf5uwu" path="res://assets/items/milk_kettle.png" id="4_53r7m"]
+[ext_resource type="Script" path="res://src/scripts/items/milk_kettle_progress.gd" id="4_k3ara"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gcnah"]
 size = Vector2(144, 158)
@@ -29,6 +31,9 @@ shape = SubResource("RectangleShape2D_3lgqo")
 [node name="MilkKettle" type="Area2D" parent="."]
 visible = false
 scale = Vector2(0.35, 0.35)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_2pimj")
 
 [node name="MilkKettleProgress" type="TextureProgressBar" parent="MilkKettle"]
 anchors_preset = 8
@@ -42,7 +47,9 @@ offset_right = 352.286
 offset_bottom = 465.0
 grow_horizontal = 2
 grow_vertical = 2
+fill_mode = 3
 texture_progress = ExtResource("3_lqx8r")
+script = ExtResource("4_k3ara")
 
 [node name="MilkKettle" type="Sprite2D" parent="MilkKettle"]
 position = Vector2(45.7143, 185.714)

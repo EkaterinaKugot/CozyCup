@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Global="*res://src/scripts/Autoload/Global.gd"
 CoffeeMachine="*res://src/scripts/Autoload/CoffeeMachine.gd"
 CoffeeCup="*res://src/scripts/Autoload/CoffeeCup.gd"
+MilkFrother="*res://src/scripts/Autoload/MilkFrother.gd"
 
 [display]
 

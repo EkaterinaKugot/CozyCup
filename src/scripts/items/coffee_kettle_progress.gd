@@ -3,17 +3,23 @@ extends TextureProgressBar
 var is_holding: bool = false
 var hold_time: float = 0.0
 var max_hold_time: float 
-var max_number_coffee: int = 10
+var max_number_coffee: int = CoffeeMachine.max_number_elements
+
+var add_grains_shape
+var start_coffee_shape
 
 func _ready() -> void:
 	min_value = 0
 	max_value = max_number_coffee
 	value = 0
 	
-	$"../../AddGrainsShape".disabled = false
-	$"../../StartCoffeeShape".disabled = false
+	add_grains_shape = $"../../AddGrainsShape"
+	start_coffee_shape = $"../../StartCoffeeShape"
 	
-	if CoffeeMachine.coffee_is_ready == true:
+	add_grains_shape.disabled = false
+	start_coffee_shape.disabled = false
+	
+	if CoffeeMachine.coffee_is_ready:
 		value = max_number_coffee
 		get_parent().visible = true
 		$"../CoffeeKettle".z_index = 1
@@ -23,8 +29,8 @@ func start_progress() -> void:
 	$"../CoffeeKettle".z_index = 1
 	max_hold_time = CoffeeMachine.number_grains * 2
 	
-	$"../../StartCoffeeShape".disabled = true
-	$"../../AddGrainsShape".disabled = true
+	start_coffee_shape.disabled = true
+	add_grains_shape.disabled = true
 	
 	is_holding = true
 	
@@ -35,8 +41,8 @@ func _process(delta):
 		if hold_time >= max_hold_time:
 			is_holding = false
 			hold_time = 0.0
-			$"../../AddGrainsShape".disabled = false
-			$"../../StartCoffeeShape".disabled = false
+			add_grains_shape.disabled = false
+			start_coffee_shape.disabled = false
 			
 			CoffeeMachine.сooking_coffee()
 			CoffeeMachine.use_elements()

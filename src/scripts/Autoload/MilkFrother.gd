@@ -31,3 +31,23 @@ var ingredient_in_kettle: Ingredient:
 		return ingredient_in_kettle
 	set(value):
 		ingredient_in_kettle = value
+
+func add_number_milk(number: int) -> void:
+	number_milk += number
+
+func сooking_milk() -> void:
+	milk_is_ready = true
+	number_milk_shots = number_milk
+	ingredient_in_kettle = ingredient
+		
+func use_elements() -> void:
+	number_milk = 0
+	ingredient = null
+	
+func clean_milk_kettle() -> void:
+	milk_is_ready = false
+	number_milk_shots = 0
+	ingredient_in_kettle = null
+
+func check_number_milk(ing: Ingredient, number: int) -> bool:
+	return (ing == ingredient or ingredient == null) and number_milk + number <= max_number_elements

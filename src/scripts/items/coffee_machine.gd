@@ -3,10 +3,11 @@ extends Area2D
 var scene_filling_water = preload("res://src/scenes/game_elements/filling_water.tscn")
 var instance_filling_water = scene_filling_water.instantiate()
 
-@onready var label_grains_container = $GrainsContainer.get_node("NumberGrains")
+@onready var grains_container = $IngredientsContainer
 @onready var coffee_kettle = $CoffeeKettle
 
 func _ready() -> void:
+	grains_container.get_node("Icon").texture = load("res://assets/icons/grains_medium_icon.png")
 	update_label_grains_container()
 	CoffeeMachine.mini_game_is_start = false
 	if check_condition_mini_game():
@@ -37,18 +38,18 @@ func add_grains_pressed(current_ingredient: Ingredient) -> void:
 	if CoffeeMachine.check_number_grains(current_ingredient, number) and \
 	Global.progress.check_number_ingredient(current_ingredient, number):
 		CoffeeMachine.add_number_grains(number)
-		update_label_grains_container() # обновили значение у бака зерен
+		update_label_grains_container() # визуально обновили значение у бака зерен
 		CoffeeMachine.ingredient = current_ingredient # сменили ингредиент
 		
 		Global.progress.sub_number_ingredient(current_ingredient, number) # обновили progress
 		get_parent().instances_ingredients[
 			current_ingredient.category
-			][current_ingredient].update_number() # обновили значение у ингредиента
+			][current_ingredient].update_number() # визуально обновили значение у ингредиента
 		if check_condition_mini_game():
 			start_mini_game()
 
 func update_label_grains_container() -> void:
-	label_grains_container.text = str(CoffeeMachine.number_grains)
+	grains_container.get_node("Number").text = str(CoffeeMachine.number_grains)
 	
 func start_coffee_pressed(current_ingredient: Ingredient) -> void:
 	if CoffeeMachine.number_water >= CoffeeMachine.number_grains and \

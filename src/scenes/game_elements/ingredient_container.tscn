@@ -2,12 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://ba23vrj4v8li2" path="res://assets/icons/grains_medium_icon.png" id="1_2raf2"]
 
-[node name="GrainsContainer" type="HBoxContainer"]
+[node name="IngredientsContainer" type="HBoxContainer"]
 offset_right = 54.0
 offset_bottom = 40.0
 theme_override_constants/separation = 5
 
-[node name="NumberGrains" type="Label" parent="."]
+[node name="Number" type="Label" parent="."]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 30
