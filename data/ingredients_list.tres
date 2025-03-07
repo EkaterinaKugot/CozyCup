@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="IngredientList" load_steps=8 format=3 uid="uid://iqudkibfuj5l"]
+[gd_resource type="Resource" script_class="IngredientList" load_steps=9 format=3 uid="uid://iqudkibfuj5l"]
 
 [ext_resource type="Script" path="res://src/scripts/models/ingredient.gd" id="1_24eqm"]
 [ext_resource type="Resource" uid="uid://ddrr3l80lr5lg" path="res://data/ingredients/cocoa.tres" id="2_4bqtj"]
@@ -7,7 +7,8 @@
 [ext_resource type="Resource" uid="uid://dgqq8q1s6aq7p" path="res://data/ingredients/m_grains.tres" id="4_tq0dj"]
 [ext_resource type="Resource" uid="uid://cba6tsenk25xq" path="res://data/ingredients/sugar.tres" id="5_p0gnv"]
 [ext_resource type="Resource" uid="uid://clp4fqo24snfp" path="res://data/ingredients/water.tres" id="6_k5ik7"]
+[ext_resource type="Resource" uid="uid://4k88u2vowiiv" path="res://data/ingredients/coconut_syrup.tres" id="7_b7vpd"]
 
 [resource]
 script = ExtResource("2_dlohd")
-ingredients = Array[ExtResource("1_24eqm")]([ExtResource("2_4bqtj"), ExtResource("3_evg2t"), ExtResource("4_tq0dj"), ExtResource("5_p0gnv"), ExtResource("6_k5ik7")])
+ingredients = Array[ExtResource("1_24eqm")]([ExtResource("2_4bqtj"), ExtResource("3_evg2t"), ExtResource("4_tq0dj"), ExtResource("5_p0gnv"), ExtResource("6_k5ik7"), ExtResource("7_b7vpd")])

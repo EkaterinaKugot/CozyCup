@@ -61,7 +61,6 @@ func check_condition_mini_game() -> bool:
 	
 func start_mini_game() -> void:
 	CoffeeMachine.mini_game_is_start = true
-	print(instance_filling_water)
 	add_child(instance_filling_water)
 	instance_filling_water.position = Vector2(100, -120)
 	instance_filling_water.get_node("ProgressFillingWater").connect("water_compartment_full", end_mini_game)

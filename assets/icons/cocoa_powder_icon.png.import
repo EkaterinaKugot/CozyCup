@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://5oy1r03yjf66"
-path="res://.godot/imported/cacao_powder.png-91f3594f24fa23443ada24045453a55a.ctex"
+path="res://.godot/imported/cocoa_powder_icon.png-6f61297b406029f5c09434b17bc7f284.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/cacao_powder.png"
-dest_files=["res://.godot/imported/cacao_powder.png-91f3594f24fa23443ada24045453a55a.ctex"]
+source_file="res://assets/icons/cocoa_powder_icon.png"
+dest_files=["res://.godot/imported/cocoa_powder_icon.png-6f61297b406029f5c09434b17bc7f284.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwrm6j6g1x23q"]
+[gd_scene load_steps=6 format=3 uid="uid://dwrm6j6g1x23q"]
 
 [ext_resource type="Script" path="res://src/scripts/items/milk.gd" id="1_5nl32"]
 [ext_resource type="Texture2D" uid="uid://b4q4mh46wfbud" path="res://assets/items/milk_cow.png" id="1_ty6bb"]
@@ -6,6 +6,22 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ryi45"]
 size = Vector2(142, 351)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aa027"]
+bg_color = Color(0.259, 0.259, 0.259, 0.7)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.259, 0.259, 0.259, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 8.0
+expand_margin_top = 1.0
+expand_margin_right = 8.0
+expand_margin_bottom = 1.0
 
 [node name="Milk" type="Area2D"]
 script = ExtResource("1_5nl32")
@@ -28,9 +44,11 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -60.0
+offset_top = 176.0
 offset_right = 20.0
-offset_bottom = -10.0
+offset_bottom = 226.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_aa027")
