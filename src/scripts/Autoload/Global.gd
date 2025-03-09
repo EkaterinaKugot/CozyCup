@@ -11,6 +11,8 @@ var progress_path: String = "user://progress.tres"
 var recipes_path: String = "res://data/recipes_list.tres"
 var ingredients_path: String = "res://data/ingredients_list.tres"
 
+var current_topping: Ingredient
+
 func _ready() -> void:
 	load_recipes()
 	load_ingredients()

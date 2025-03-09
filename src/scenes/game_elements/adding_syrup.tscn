@@ -1,0 +1,68 @@
+[gd_scene load_steps=12 format=3 uid="uid://c57d04apv44wg"]
+
+[ext_resource type="Texture2D" uid="uid://bymqhljpn0qaw" path="res://assets/ui/custom_ui/syrup_under.png" id="1_mqpfq"]
+[ext_resource type="Texture2D" uid="uid://bdj0nu3q1uekc" path="res://assets/ui/custom_ui/syrup_over.png" id="2_3mbgw"]
+[ext_resource type="Texture2D" uid="uid://crgdr34sgr01w" path="res://assets/ui/custom_ui/syrup_progress.png" id="3_voxcj"]
+[ext_resource type="Texture2D" uid="uid://cqnent02kmjpv" path="res://assets/ui/buttons/ready/syrup-idle.png" id="4_hwc0s"]
+[ext_resource type="Texture2D" uid="uid://dgeuiue8eykt" path="res://assets/ui/buttons/ready/syrup-click.png" id="5_hx1i4"]
+[ext_resource type="Script" path="res://src/scripts/game_elements/adding_syrup_button.gd" id="6_802ul"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gse2u"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tgclk"]
+texture = ExtResource("4_hwc0s")
+expand_margin_top = 1.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cvppu"]
+texture = ExtResource("4_hwc0s")
+expand_margin_top = 1.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i341n"]
+texture = ExtResource("5_hx1i4")
+
+[sub_resource type="Theme" id="Theme_6yntb"]
+Button/styles/focus = SubResource("StyleBoxEmpty_gse2u")
+Button/styles/hover = SubResource("StyleBoxTexture_tgclk")
+Button/styles/normal = SubResource("StyleBoxTexture_cvppu")
+Button/styles/pressed = SubResource("StyleBoxTexture_i341n")
+
+[node name="AddingSyrup" type="Control"]
+custom_minimum_size = Vector2(75, 200)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 50.0
+offset_bottom = 150.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+custom_minimum_size = Vector2(50, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -100.0
+offset_right = 25.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 2
+texture_under = ExtResource("1_mqpfq")
+texture_over = ExtResource("2_3mbgw")
+texture_progress = ExtResource("3_voxcj")
+
+[node name="DraggableButton" type="Button" parent="."]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -25.0
+offset_right = 25.0
+offset_bottom = 50.0
+grow_horizontal = 2
+theme = SubResource("Theme_6yntb")
+script = ExtResource("6_802ul")

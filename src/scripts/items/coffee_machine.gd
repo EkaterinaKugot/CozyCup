@@ -6,6 +6,9 @@ var instance_filling_water = scene_filling_water.instantiate()
 @onready var grains_container = $IngredientsContainer
 @onready var coffee_kettle = $CoffeeKettle
 
+signal disabled_bottom_hud()
+signal undisabled_bottom_hud()
+
 func _ready() -> void:
 	grains_container.get_node("Icon").texture = load("res://assets/icons/grains_medium_icon.png")
 	update_label_grains_container()
@@ -55,6 +58,7 @@ func start_coffee_pressed(current_ingredient: Ingredient) -> void:
 	if CoffeeMachine.number_water >= CoffeeMachine.number_grains and \
 	CoffeeMachine.number_grains > 0 and current_ingredient == null:
 		coffee_kettle.get_node("CoffeeKettleProgress").start_progress()
+		disabled_bottom_hud.emit()
 	
 func check_condition_mini_game() -> bool:
 	return not CoffeeMachine.mini_game_is_start and CoffeeMachine.number_water < CoffeeMachine.number_grains
@@ -77,3 +81,7 @@ func end_mini_game() -> void:
 func _on_coffee_cup_clean_coffee_kettle() -> void:
 	coffee_kettle.visible = false
 	coffee_kettle.get_node("CoffeeKettleProgress").value = 0
+
+
+func _undisabled_bottom_hud() -> void:
+	undisabled_bottom_hud.emit()

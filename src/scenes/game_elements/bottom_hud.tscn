@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://d2slfierus85g"]
+[gd_scene load_steps=26 format=3 uid="uid://d2slfierus85g"]
 
 [ext_resource type="Script" path="res://src/scripts/game_elements/bottom_hud.gd" id="1_7fgxh"]
 [ext_resource type="Texture2D" uid="uid://bcjgov88cg1s4" path="res://assets/ui/buttons/ready/left_idle.png" id="1_g447p"]
@@ -7,6 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://dt5avav5ug173" path="res://assets/ui/buttons/ready/bot_click.png" id="4_w1ss6"]
 [ext_resource type="Texture2D" uid="uid://cyakqgeb1obpr" path="res://assets/ui/buttons/ready/right_idle.png" id="5_wnje1"]
 [ext_resource type="Texture2D" uid="uid://dy8p6m5vae8s" path="res://assets/ui/buttons/ready/right_click.png" id="6_82hv4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4g0kv"]
+texture = ExtResource("1_g447p")
+expand_margin_top = 2.0
+modulate_color = Color(0.720467, 0.720468, 0.720467, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ud1a1"]
 
@@ -22,10 +27,16 @@ expand_margin_top = 2.0
 texture = ExtResource("2_6y6t8")
 
 [sub_resource type="Theme" id="Theme_3u7ar"]
+Button/styles/disabled = SubResource("StyleBoxTexture_4g0kv")
 Button/styles/focus = SubResource("StyleBoxEmpty_ud1a1")
 Button/styles/hover = SubResource("StyleBoxTexture_pmkqh")
 Button/styles/normal = SubResource("StyleBoxTexture_cc4ja")
 Button/styles/pressed = SubResource("StyleBoxTexture_froaq")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ortva"]
+texture = ExtResource("3_bwciq")
+expand_margin_top = 2.0
+modulate_color = Color(0.721569, 0.721569, 0.721569, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l8lqx"]
 
@@ -41,10 +52,16 @@ expand_margin_top = 2.0
 texture = ExtResource("4_w1ss6")
 
 [sub_resource type="Theme" id="Theme_knbus"]
+Button/styles/disabled = SubResource("StyleBoxTexture_ortva")
 Button/styles/focus = SubResource("StyleBoxEmpty_l8lqx")
 Button/styles/hover = SubResource("StyleBoxTexture_377hd")
 Button/styles/normal = SubResource("StyleBoxTexture_mosx7")
 Button/styles/pressed = SubResource("StyleBoxTexture_uhmq3")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_svtwo"]
+texture = ExtResource("5_wnje1")
+expand_margin_top = 2.0
+modulate_color = Color(0.721569, 0.721569, 0.721569, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h55cp"]
 
@@ -60,6 +77,7 @@ expand_margin_top = 2.0
 texture = ExtResource("6_82hv4")
 
 [sub_resource type="Theme" id="Theme_6vqrt"]
+Button/styles/disabled = SubResource("StyleBoxTexture_svtwo")
 Button/styles/focus = SubResource("StyleBoxEmpty_h55cp")
 Button/styles/hover = SubResource("StyleBoxTexture_ndsq5")
 Button/styles/normal = SubResource("StyleBoxTexture_5ibsa")

@@ -15,10 +15,11 @@ class_name Recipe
 	Ingredient.Category.MILK: 0,
 	Ingredient.Category.CREAM: 0,
 	Ingredient.Category.GRAINS: 0,
-	Ingredient.Category.SWEETNESS: 0,
+	Ingredient.Category.SYRUP: 0,
 	Ingredient.Category.TOPPING: 0,
 	Ingredient.Category.ICE_CREAM: 0,
 	Ingredient.Category.WATER: 0,
+	Ingredient.Category.SUGAR: 0
 }:
 	get:
 		return ingredients

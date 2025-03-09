@@ -37,7 +37,7 @@ position = Vector2(1150, 475)
 scale = Vector2(0.5, 0.5)
 
 [node name="CoffeeCup" parent="." instance=ExtResource("6_b1l8m")]
-position = Vector2(770, 540)
+position = Vector2(770, 520)
 script = ExtResource("7_lsuh1")
 
 [connection signal="level_hud_visible" from="." to="Hud" method="_on_level_level_hud_visible"]

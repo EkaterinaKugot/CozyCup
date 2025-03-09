@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Recipe" load_steps=2 format=3 uid="uid://c08isl6w3whlc"]
+[gd_resource type="Resource" script_class="Recipe" load_steps=2 format=3 uid="uid://p11qm8a6bnsh"]
 
 [ext_resource type="Script" path="res://src/scripts/models/recipe.gd" id="1_v4a8g"]
 
@@ -6,7 +6,7 @@
 script = ExtResource("1_v4a8g")
 name = "Капучино"
 description = "1 порция зернового кофе
-4 порции теплого взбитого молока"
+4 порции теплого взбитого молок"
 is_basic = true
 ingredients = {
 0: 4,
@@ -15,7 +15,8 @@ ingredients = {
 3: 0,
 4: 0,
 5: 0,
-6: 0
+6: 0,
+7: 0
 }
 steps = Array[int]([2, 0])
 unlock_cost = 0

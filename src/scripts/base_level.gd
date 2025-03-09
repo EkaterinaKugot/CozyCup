@@ -13,8 +13,6 @@ func load_ingredients(ingredients: Dictionary, scene, has_icon: bool = false) ->
 	var count = 0
 	
 	for ingredient in ingredients.keys():
-		if ingredient.id == "sugar":
-			continue
 		var instance = scene.instantiate()
 		instance.connect("ingredient_pressed", change_current_ingredient)
 		instance.ingredient = ingredient
@@ -47,6 +45,8 @@ func change_current_ingredient(ingredient: Ingredient) -> void:
 		var instance = find_instance_by_ingredients(current_ingredient)
 		var glow_effect = instance.get_node("GlowEffect")
 		glow_effect.visible = not glow_effect.visible
+		if current_ingredient.category == Ingredient.Category.SYRUP:
+			instance.delete_mini_game()
 		
 		current_ingredient = ingredient
 	print(current_ingredient)

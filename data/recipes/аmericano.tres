@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Recipe" load_steps=2 format=3 uid="uid://b440u84ssgutb"]
+[gd_resource type="Resource" script_class="Recipe" load_steps=2 format=3 uid="uid://c7qjroe1xs55j"]
 
 [ext_resource type="Script" path="res://src/scripts/models/recipe.gd" id="1_u8oym"]
 
@@ -15,7 +15,8 @@ ingredients = {
 3: 0,
 4: 0,
 5: 0,
-6: 6
+6: 6,
+7: 0
 }
 steps = Array[int]([2, 6])
 unlock_cost = 0

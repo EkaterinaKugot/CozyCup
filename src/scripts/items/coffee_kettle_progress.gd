@@ -8,6 +8,8 @@ var max_number_coffee: int = CoffeeMachine.max_number_elements
 var add_grains_shape
 var start_coffee_shape
 
+signal undisabled_bottom_hud()
+
 func _ready() -> void:
 	min_value = 0
 	max_value = max_number_coffee
@@ -47,3 +49,6 @@ func _process(delta):
 			CoffeeMachine.сooking_coffee()
 			CoffeeMachine.use_elements()
 			$"../..".update_label_grains_container()
+			
+			undisabled_bottom_hud.emit()
+			

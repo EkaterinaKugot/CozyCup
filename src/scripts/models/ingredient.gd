@@ -6,10 +6,11 @@ enum Category {
 	MILK,       # Молочка
 	CREAM, 		# Сливки	
 	GRAINS,     # Зерна
-	SWEETNESS,  # Сладость
+	SYRUP,  	# Сироп
 	TOPPING,    # Посыпка
 	ICE_CREAM,	# Мороженное
 	WATER,		# Вода
+	SUGAR		# Сахар
 }
 
 @export var id: String:

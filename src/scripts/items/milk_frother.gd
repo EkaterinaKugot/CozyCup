@@ -2,7 +2,10 @@ extends Area2D
 
 @onready var milk_container = $IngredientsContainer
 @onready var milk_kettle = $MilkKettle
-		
+
+signal disabled_bottom_hud()
+signal undisabled_bottom_hud()
+
 func _ready() -> void:
 	milk_container.get_node("Icon").texture = load("res://assets/icons/milk_cow_icon.png")
 	update_label_milk_container()
@@ -45,6 +48,7 @@ func add_milk_pressed(current_ingredient: Ingredient) -> void:
 func start_milk_pressed(current_ingredient: Ingredient) -> void:
 	if MilkFrother.number_milk > 0 and current_ingredient == null:
 		milk_kettle.get_node("MilkKettleProgress").start_progress()
+		disabled_bottom_hud.emit()
 
 func update_label_milk_container() -> void:
 	milk_container.get_node("Number").text = str(MilkFrother.number_milk)
@@ -53,3 +57,7 @@ func update_label_milk_container() -> void:
 func _on_coffee_cup_clean_milk_kettle() -> void:
 	milk_kettle.visible = false
 	milk_kettle.get_node("MilkKettleProgress").value = 0
+
+
+func _undisabled_bottom_hud() -> void:
+	undisabled_bottom_hud.emit()

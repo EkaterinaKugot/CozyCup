@@ -9,22 +9,36 @@ func _input_event(_viewport, event, shape_idx):
 			var current_ingredient = get_parent().current_ingredient
 			if current_ingredient != null and \
 			current_ingredient.category != Ingredient.Category.GRAINS and \
-			current_ingredient.category != Ingredient.Category.MILK:
+			current_ingredient.category != Ingredient.Category.MILK and \
+			current_ingredient.category != Ingredient.Category.SYRUP:
 				add_ingredient(current_ingredient)
 	else:
 		if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			var current_ingredient = get_parent().current_ingredient
 			if current_ingredient != null and \
 			current_ingredient.category != Ingredient.Category.GRAINS and \
-			current_ingredient.category != Ingredient.Category.MILK:
+			current_ingredient.category != Ingredient.Category.MILK and \
+			current_ingredient.category != Ingredient.Category.SYRUP:
 				add_ingredient(current_ingredient)
 				
 func add_ingredient(current_ingredient: Ingredient) -> void:
-	CoffeeCup.add_ingredient(
-		current_ingredient, 1
-	) # добавили в кружку
-	
-	display_ingredients()  # отображаем ингредиенты
+	var number = 1
+	if Global.progress.check_number_ingredient(current_ingredient, number):
+		if current_ingredient.category == Ingredient.Category.TOPPING:
+			Global.current_topping = current_ingredient
+			get_tree().change_scene_to_file("res://src/scenes/adding_topping.tscn")
+		else:
+			CoffeeCup.add_ingredient(
+				current_ingredient, 1
+			) # добавили в кружку
+			
+			if current_ingredient.category != Ingredient.Category.WATER:
+				Global.progress.sub_number_ingredient(current_ingredient, number) # обновили progress
+				get_parent().instances_ingredients[
+					current_ingredient.category
+					][current_ingredient].update_number() # визуально обновили значение у ингредиента
+			
+			display_ingredients()  # отображаем ингредиенты
 	
 func display_ingredients() -> void:
 	var array_ingredients = CoffeeCup.array_ingredients() 

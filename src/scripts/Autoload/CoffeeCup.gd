@@ -5,6 +5,12 @@ var added_ingredients: Dictionary:
 		return added_ingredients
 	set(value):
 		added_ingredients = value
+
+var added_topping: Dictionary:
+	get:
+		return added_topping
+	set(value):
+		added_topping = value
 		
 func add_ingredient(ingredient: Ingredient, number: int) -> void:
 	var has_ingredient = false
@@ -16,6 +22,13 @@ func add_ingredient(ingredient: Ingredient, number: int) -> void:
 			
 	if not has_ingredient:
 		added_ingredients[ingredient] = number
+		
 
 func array_ingredients() -> Array:
 	return Array(added_ingredients.keys())
+	
+func add_topping(ingredient: Ingredient, position: Vector2):
+	if ingredient in added_topping.keys():
+		added_topping[ingredient].append(position)
+	else:
+		added_topping[ingredient] = [position]
