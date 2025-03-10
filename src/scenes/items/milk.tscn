@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dwrm6j6g1x23q"]
 
-[ext_resource type="Script" path="res://src/scripts/items/milk.gd" id="1_5nl32"]
+[ext_resource type="Script" path="res://src/scripts/items/base_back_ingredient.gd" id="1_0hwwu"]
 [ext_resource type="Texture2D" uid="uid://b4q4mh46wfbud" path="res://assets/items/milk_cow.png" id="1_ty6bb"]
 [ext_resource type="Texture2D" uid="uid://r3qafe0vd2fo" path="res://assets/ui/custom_ui/glow_effect/milk_glow_effect.png" id="2_gmnoc"]
 
@@ -24,7 +24,7 @@ expand_margin_right = 8.0
 expand_margin_bottom = 1.0
 
 [node name="Milk" type="Area2D"]
-script = ExtResource("1_5nl32")
+script = ExtResource("1_0hwwu")
 
 [node name="GlowEffect" type="Sprite2D" parent="."]
 visible = false

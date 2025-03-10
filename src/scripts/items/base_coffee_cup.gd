@@ -25,7 +25,7 @@ func add_ingredient(current_ingredient: Ingredient) -> void:
 	var number = 1
 	if Global.progress.check_number_ingredient(current_ingredient, number):
 		if current_ingredient.category == Ingredient.Category.TOPPING:
-			Global.current_topping = current_ingredient
+			CoffeeCup.current_topping = current_ingredient
 			get_tree().change_scene_to_file("res://src/scenes/adding_topping.tscn")
 		else:
 			CoffeeCup.add_ingredient(
@@ -62,3 +62,12 @@ func display_ingredients() -> void:
 		y -= 30
 	print("array_ingredients: ", array_ingredients)
 	print("dict_instance: ", dict_instance)
+
+func clean_dict_instance() -> void:
+	for ingredient in dict_instance.keys():
+		if dict_instance[ingredient] != null:
+			dict_instance[ingredient].queue_free()
+	dict_instance = {}
+	
+func _ready() -> void:
+	display_ingredients()

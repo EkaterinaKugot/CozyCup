@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cnho72xiljhho" path="res://assets/items/topping_packet.png" id="1_cjpsx"]
 [ext_resource type="Texture2D" uid="uid://b2qxc0eeqrxin" path="res://assets/ui/custom_ui/glow_effect/topping_packet.png" id="1_ocnoc"]
-[ext_resource type="Script" path="res://src/scripts/items/topping.gd" id="1_ofyt6"]
+[ext_resource type="Script" path="res://src/scripts/items/base_left_ingredient.gd" id="1_s1vi6"]
 [ext_resource type="Texture2D" uid="uid://5oy1r03yjf66" path="res://assets/icons/cocoa_powder_icon.png" id="2_xf12t"]
 [ext_resource type="StyleBox" uid="uid://cftgpy62p6wa8" path="res://assets/themes/number_ingredient.tres" id="5_6oit2"]
 
@@ -10,7 +10,7 @@
 size = Vector2(248, 291)
 
 [node name="Topping" type="Area2D"]
-script = ExtResource("1_ofyt6")
+script = ExtResource("1_s1vi6")
 
 [node name="GlowEffect" type="Sprite2D" parent="."]
 visible = false

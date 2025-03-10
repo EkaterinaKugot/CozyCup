@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://7sgs7voxb6pd"]
 
-[ext_resource type="Script" path="res://src/scripts/items/sugar.gd" id="1_7p3sw"]
 [ext_resource type="Texture2D" uid="uid://6t3njahkp3qp" path="res://assets/ui/custom_ui/glow_effect/sugar.png" id="1_061ka"]
+[ext_resource type="Script" path="res://src/scripts/items/base_left_ingredient.gd" id="1_mgrd2"]
 [ext_resource type="Texture2D" uid="uid://cy527i4iqijep" path="res://assets/items/sugar.png" id="2_yunyf"]
 [ext_resource type="StyleBox" uid="uid://cftgpy62p6wa8" path="res://assets/themes/number_ingredient.tres" id="4_hpagd"]
 
@@ -9,7 +9,7 @@
 size = Vector2(297, 441)
 
 [node name="Sugar" type="Area2D"]
-script = ExtResource("1_7p3sw")
+script = ExtResource("1_mgrd2")
 
 [node name="GlowEffect" type="Sprite2D" parent="."]
 visible = false

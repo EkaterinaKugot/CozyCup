@@ -1,0 +1,28 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://thjmy3qv67jv"]
+
+[ext_resource type="FontFile" uid="uid://uai4bjll1pc1" path="res://assets/fonts/Moderustic-Regular.ttf" id="1_l4dvc"]
+[ext_resource type="Texture2D" uid="uid://bmfw27jxussh1" path="res://assets/ui/buttons/basis/Big_Idle.png" id="2_w3ayj"]
+[ext_resource type="Texture2D" uid="uid://bp8ha1pshqeif" path="res://assets/ui/buttons/basis/Big_Click.png" id="3_aetwq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lbq5p"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vp7ki"]
+content_margin_bottom = 8.0
+texture = ExtResource("2_w3ayj")
+expand_margin_top = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e85hc"]
+content_margin_bottom = 8.0
+texture = ExtResource("2_w3ayj")
+expand_margin_top = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3plpv"]
+texture = ExtResource("3_aetwq")
+
+[resource]
+Button/font_sizes/font_size = 28
+Button/fonts/font = ExtResource("1_l4dvc")
+Button/styles/focus = SubResource("StyleBoxEmpty_lbq5p")
+Button/styles/hover = SubResource("StyleBoxTexture_vp7ki")
+Button/styles/normal = SubResource("StyleBoxTexture_e85hc")
+Button/styles/pressed = SubResource("StyleBoxTexture_3plpv")

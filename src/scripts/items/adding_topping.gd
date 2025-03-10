@@ -22,9 +22,7 @@ func _input_event(_viewport, event, _shape_idx):
 			instance.get_node("Topping").texture = load(
 				"res://assets/items/topping_{0}.png".format([ingredient.id])
 			)
-			instance.position = (Vector2(0, 0) + (event.position - position)) - (
-				instance.get_node("Topping").size / 5
-			)
+			instance.position = Vector2(0, 0) + (event.position - position)
 			
 			add_child(instance)
 			Global.progress.sub_number_ingredient(ingredient, number)
@@ -34,9 +32,18 @@ func _input_event(_viewport, event, _shape_idx):
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var window_size = get_viewport().size - Vector2i(60.0, 60.0)
-	drink.custom_minimum_size = window_size
 	position = window_size / 2
-	ingredient = Global.current_topping
+	ingredient = CoffeeCup.current_topping
+	
+	var assets: String = "res://assets/items/coffee_cup_top.png"
+	if CoffeeCup.check_has_category(Ingredient.Category.MILK) or \
+	CoffeeCup.check_has_category(Ingredient.Category.CREAM):
+		assets = "res://assets/items/coffee_cup_milk.png"
+	elif CoffeeCup.check_has_category(Ingredient.Category.GRAINS):
+		assets = "res://assets/items/coffee_cup_grains.png"
+	elif CoffeeCup.check_has_category(Ingredient.Category.WATER):
+		assets = "res://assets/items/coffee_cup_water.png"
+	drink.texture = load(assets)
 	
 	for ing in CoffeeCup.added_topping.keys():
 		for pos in CoffeeCup.added_topping[ing]:

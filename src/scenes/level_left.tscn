@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://617pjfmwoof0" path="res://assets/bg/Стена_2.png" id="3_wkjqi"]
 [ext_resource type="PackedScene" uid="uid://7sgs7voxb6pd" path="res://src/scenes/items/sugar.tscn" id="5_sp2kb"]
 [ext_resource type="PackedScene" uid="uid://c1xxsux85ntph" path="res://src/scenes/items/coffee_cup.tscn" id="6_b1l8m"]
-[ext_resource type="Script" path="res://src/scripts/items/coffee_cup_left.gd" id="7_lsuh1"]
+[ext_resource type="Script" path="res://src/scripts/items/base_coffee_cup.gd" id="7_fj1v2"]
 
 [node name="LevelLeft" type="Control"]
 layout_mode = 3
@@ -38,7 +38,7 @@ scale = Vector2(0.5, 0.5)
 
 [node name="CoffeeCup" parent="." instance=ExtResource("6_b1l8m")]
 position = Vector2(770, 520)
-script = ExtResource("7_lsuh1")
+script = ExtResource("7_fj1v2")
 
 [connection signal="level_hud_visible" from="." to="Hud" method="_on_level_level_hud_visible"]
 [connection signal="back_button_pressed" from="BottomHud" to="." method="_on_bottom_hud_back_button_pressed"]
