@@ -11,7 +11,7 @@ var current_area: Area2D
 signal milk_delivered()
 
 func _input_event(_viewport, event, shape_idx):
-	if MilkFrother.milk_is_ready and not $MilkKettleProgress.is_holding and \
+	if GameDay.milk_frother.milk_is_ready and not $MilkKettleProgress.is_holding and \
 	get_tree().root.get_node("LevelBack").current_ingredient == null and \
 	(event is InputEventScreenTouch or event is InputEventMouseButton):
 		if event.pressed:

@@ -19,7 +19,7 @@ func _input_event(_viewport, event, shape_idx):
 			(current_ingredient.category == Ingredient.Category.MILK or \
 			current_ingredient.category == Ingredient.Category.CREAM):
 				add_milk_pressed(current_ingredient)
-			elif shape_idx == 1 and not MilkFrother.milk_is_ready:
+			elif shape_idx == 1 and not GameDay.milk_frother.milk_is_ready:
 				start_milk_pressed(current_ingredient)
 	else:
 		if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
@@ -29,16 +29,16 @@ func _input_event(_viewport, event, shape_idx):
 			(current_ingredient.category == Ingredient.Category.MILK or \
 			current_ingredient.category == Ingredient.Category.CREAM):
 				add_milk_pressed(current_ingredient)
-			elif shape_idx == 1 and not MilkFrother.milk_is_ready:
+			elif shape_idx == 1 and not GameDay.milk_frother.milk_is_ready:
 				start_milk_pressed(current_ingredient)
 
 func add_milk_pressed(current_ingredient: Ingredient) -> void:
 	var number = 1
-	if MilkFrother.check_number_milk(current_ingredient, number) and \
+	if GameDay.milk_frother.check_number_milk(current_ingredient, number) and \
 	Global.progress.check_number_ingredient(current_ingredient, number):
-		MilkFrother.add_number_milk(number)
+		GameDay.milk_frother.add_number_milk(number)
 		update_label_milk_container() # визуально обновили значение у бака зерен
-		MilkFrother.ingredient = current_ingredient # сменили ингредиент
+		GameDay.milk_frother.ingredient = current_ingredient # сменили ингредиент
 		
 		Global.progress.sub_number_ingredient(current_ingredient, number) # обновили progress
 		get_parent().instances_ingredients[
@@ -46,12 +46,12 @@ func add_milk_pressed(current_ingredient: Ingredient) -> void:
 			][current_ingredient].update_number() # визуально обновили значение у ингредиента
 
 func start_milk_pressed(current_ingredient: Ingredient) -> void:
-	if MilkFrother.number_milk > 0 and current_ingredient == null:
+	if GameDay.milk_frother.number_milk > 0 and current_ingredient == null:
 		milk_kettle.get_node("MilkKettleProgress").start_progress()
 		disabled_bottom_hud.emit()
 
 func update_label_milk_container() -> void:
-	milk_container.get_node("Number").text = str(MilkFrother.number_milk)
+	milk_container.get_node("Number").text = str(GameDay.milk_frother.number_milk)
 
 
 func _on_coffee_cup_clean_milk_kettle() -> void:

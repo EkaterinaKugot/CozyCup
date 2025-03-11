@@ -12,7 +12,7 @@ signal undisabled_bottom_hud()
 func _ready() -> void:
 	grains_container.get_node("Icon").texture = load("res://assets/icons/grains_medium_icon.png")
 	update_label_grains_container()
-	CoffeeMachine.mini_game_is_start = false
+	GameDay.coffee_machine.mini_game_is_start = false
 	if check_condition_mini_game():
 		start_mini_game()
 	
@@ -24,7 +24,7 @@ func _input_event(_viewport, event, shape_idx):
 			if shape_idx == 0 and current_ingredient != null and \
 			current_ingredient.category == Ingredient.Category.GRAINS:
 				add_grains_pressed(current_ingredient)
-			elif shape_idx == 1 and not CoffeeMachine.coffee_is_ready:
+			elif shape_idx == 1 and not GameDay.coffee_machine.coffee_is_ready:
 				start_coffee_pressed(current_ingredient)
 	else:
 		if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
@@ -33,16 +33,16 @@ func _input_event(_viewport, event, shape_idx):
 			if shape_idx == 0 and current_ingredient != null and \
 			current_ingredient.category == Ingredient.Category.GRAINS:
 				add_grains_pressed(current_ingredient)
-			elif shape_idx == 1 and not CoffeeMachine.coffee_is_ready:
+			elif shape_idx == 1 and not GameDay.coffee_machine.coffee_is_ready:
 				start_coffee_pressed(current_ingredient)
 
 func add_grains_pressed(current_ingredient: Ingredient) -> void:
 	var number = 1
-	if CoffeeMachine.check_number_grains(current_ingredient, number) and \
+	if GameDay.coffee_machine.check_number_grains(current_ingredient, number) and \
 	Global.progress.check_number_ingredient(current_ingredient, number):
-		CoffeeMachine.add_number_grains(number)
+		GameDay.coffee_machine.add_number_grains(number)
 		update_label_grains_container() # визуально обновили значение у бака зерен
-		CoffeeMachine.ingredient = current_ingredient # сменили ингредиент
+		GameDay.coffee_machine.ingredient = current_ingredient # сменили ингредиент
 		
 		Global.progress.sub_number_ingredient(current_ingredient, number) # обновили progress
 		get_parent().instances_ingredients[
@@ -52,19 +52,19 @@ func add_grains_pressed(current_ingredient: Ingredient) -> void:
 			start_mini_game()
 
 func update_label_grains_container() -> void:
-	grains_container.get_node("Number").text = str(CoffeeMachine.number_grains)
+	grains_container.get_node("Number").text = str(GameDay.coffee_machine.number_grains)
 	
 func start_coffee_pressed(current_ingredient: Ingredient) -> void:
-	if CoffeeMachine.number_water >= CoffeeMachine.number_grains and \
-	CoffeeMachine.number_grains > 0 and current_ingredient == null:
+	if GameDay.coffee_machine.number_water >= GameDay.coffee_machine.number_grains and \
+	GameDay.coffee_machine.number_grains > 0 and current_ingredient == null:
 		coffee_kettle.get_node("CoffeeKettleProgress").start_progress()
 		disabled_bottom_hud.emit()
 	
 func check_condition_mini_game() -> bool:
-	return not CoffeeMachine.mini_game_is_start and CoffeeMachine.number_water < CoffeeMachine.number_grains
+	return not GameDay.coffee_machine.mini_game_is_start and GameDay.coffee_machine.number_water < GameDay.coffee_machine.number_grains
 	
 func start_mini_game() -> void:
-	CoffeeMachine.mini_game_is_start = true
+	GameDay.coffee_machine.mini_game_is_start = true
 	add_child(instance_filling_water)
 	instance_filling_water.position = Vector2(100, -120)
 	instance_filling_water.get_node("ProgressFillingWater").connect("water_compartment_full", end_mini_game)
@@ -74,8 +74,8 @@ func end_mini_game() -> void:
 		instance_filling_water.queue_free()
 		
 	instance_filling_water = scene_filling_water.instantiate()
-	CoffeeMachine.fill_number_water()
-	CoffeeMachine.mini_game_is_start = false
+	GameDay.coffee_machine.fill_number_water()
+	GameDay.coffee_machine.mini_game_is_start = false
 
 
 func _on_coffee_cup_clean_coffee_kettle() -> void:

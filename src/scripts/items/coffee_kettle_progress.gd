@@ -3,7 +3,7 @@ extends TextureProgressBar
 var is_holding: bool = false
 var hold_time: float = 0.0
 var max_hold_time: float 
-var max_number_coffee: int = CoffeeMachine.max_number_elements
+var max_number_coffee: int = GameDay.coffee_machine.max_number_elements
 
 var add_grains_shape
 var start_coffee_shape
@@ -21,7 +21,7 @@ func _ready() -> void:
 	add_grains_shape.disabled = false
 	start_coffee_shape.disabled = false
 	
-	if CoffeeMachine.coffee_is_ready:
+	if GameDay.coffee_machine.coffee_is_ready:
 		value = max_number_coffee
 		get_parent().visible = true
 		$"../CoffeeKettle".z_index = 1
@@ -29,7 +29,7 @@ func _ready() -> void:
 func start_progress() -> void:
 	get_parent().visible = true
 	$"../CoffeeKettle".z_index = 1
-	max_hold_time = CoffeeMachine.number_grains * 2
+	max_hold_time = GameDay.coffee_machine.number_grains * 2
 	
 	start_coffee_shape.disabled = true
 	add_grains_shape.disabled = true
@@ -46,8 +46,8 @@ func _process(delta):
 			add_grains_shape.disabled = false
 			start_coffee_shape.disabled = false
 			
-			CoffeeMachine.сooking_coffee()
-			CoffeeMachine.use_elements()
+			GameDay.coffee_machine.сooking_coffee()
+			GameDay.coffee_machine.use_elements()
 			$"../..".update_label_grains_container()
 			
 			undisabled_bottom_hud.emit()

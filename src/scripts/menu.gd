@@ -10,4 +10,5 @@ func _ready() -> void:
 	start_new_day.text = str(Global.progress.day) + " день"
 	
 func on_start_pressed() -> void:
+	GameDay.start_game_day()
 	get_tree().change_scene_to_file("res://src/scenes/level.tscn")

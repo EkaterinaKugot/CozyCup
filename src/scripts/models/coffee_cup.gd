@@ -1,4 +1,5 @@
 extends Node
+class_name CoffeeCup
 
 var added_ingredients: Array[Dictionary]:
 	get:

@@ -26,10 +26,10 @@ func add_ingredient(current_ingredient: Ingredient) -> void:
 	var number = 1
 	if Global.progress.check_number_ingredient(current_ingredient, number):
 		if current_ingredient.category == Ingredient.Category.TOPPING:
-			CoffeeCup.current_topping = current_ingredient
+			GameDay.coffe_cup.current_topping = current_ingredient
 			get_tree().change_scene_to_file("res://src/scenes/adding_topping.tscn")
 		else:
-			CoffeeCup.add_ingredient(
+			GameDay.coffe_cup.add_ingredient(
 				current_ingredient, 1
 			) # добавили в кружку
 			
@@ -44,7 +44,7 @@ func add_ingredient(current_ingredient: Ingredient) -> void:
 func display_ingredients() -> void:
 	var instance_coffee_cup_ingredient
 	if added_instance.size() == 0: # первое отображение на сцене
-		for element in CoffeeCup.added_ingredients:
+		for element in GameDay.coffe_cup.added_ingredients:
 			var ingredient = element.keys()[0]
 			instance_coffee_cup_ingredient = create_new_instance(ingredient)
 			
@@ -52,17 +52,17 @@ func display_ingredients() -> void:
 			label_number.text = str(element[ingredient])
 	else: # повторное обновление на сцене
 		# Проверяем, добавлен новый ингредиент или обновлено количество у старого
-		if CoffeeCup.added_ingredients.size() == added_instance.size(): # обновлено количество у старого
+		if GameDay.coffe_cup.added_ingredients.size() == added_instance.size(): # обновлено количество у старого
 			instance_coffee_cup_ingredient = added_instance[-1].values()[0]
-		elif CoffeeCup.added_ingredients.size() - added_instance.size() == 1: # добавлен новый
-			var ingredient = CoffeeCup.added_ingredients[-1].keys()[0]
+		elif GameDay.coffe_cup.added_ingredients.size() - added_instance.size() == 1: # добавлен новый
+			var ingredient = GameDay.coffe_cup.added_ingredients[-1].keys()[0]
 			instance_coffee_cup_ingredient = create_new_instance(ingredient)
 		else: # ошибка
 			push_error("Error display of ingredients in a cup")
 			
 		if instance_coffee_cup_ingredient != null:
 			var label_number = instance_coffee_cup_ingredient.get_node("Number") # обновляем количество
-			label_number.text = str(CoffeeCup.added_ingredients[-1].values()[0])
+			label_number.text = str(GameDay.coffe_cup.added_ingredients[-1].values()[0])
 
 func create_new_instance(ingredient: Ingredient):
 	var instance_coffee_cup_ingredient = coffee_cup_ingredient.instantiate()

@@ -1,4 +1,5 @@
 extends Node
+class_name CoffeeMachine
 
 var max_number_elements: int = 10:
 	get:

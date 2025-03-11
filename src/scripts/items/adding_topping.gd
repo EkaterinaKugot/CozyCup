@@ -26,27 +26,27 @@ func _input_event(_viewport, event, _shape_idx):
 			
 			add_child(instance)
 			Global.progress.sub_number_ingredient(ingredient, number)
-			CoffeeCup.add_ingredient(ingredient, number)
-			CoffeeCup.add_topping(ingredient, instance.position)
+			GameDay.coffe_cup.add_ingredient(ingredient, number)
+			GameDay.coffe_cup.add_topping(ingredient, instance.position)
 		
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var window_size = get_viewport().size - Vector2i(60.0, 60.0)
 	position = window_size / 2
-	ingredient = CoffeeCup.current_topping
+	ingredient = GameDay.coffe_cup.current_topping
 	
 	var assets: String = "res://assets/items/coffee_cup_top.png"
-	if CoffeeCup.check_has_category(Ingredient.Category.MILK) or \
-	CoffeeCup.check_has_category(Ingredient.Category.CREAM):
+	if GameDay.coffe_cup.check_has_category(Ingredient.Category.MILK) or \
+	GameDay.coffe_cup.check_has_category(Ingredient.Category.CREAM):
 		assets = "res://assets/items/coffee_cup_milk.png"
-	elif CoffeeCup.check_has_category(Ingredient.Category.GRAINS):
+	elif GameDay.coffe_cup.check_has_category(Ingredient.Category.GRAINS):
 		assets = "res://assets/items/coffee_cup_grains.png"
-	elif CoffeeCup.check_has_category(Ingredient.Category.WATER):
+	elif GameDay.coffe_cup.check_has_category(Ingredient.Category.WATER):
 		assets = "res://assets/items/coffee_cup_water.png"
 	drink.texture = load(assets)
 	
-	for ing in CoffeeCup.added_topping.keys():
-		for pos in CoffeeCup.added_topping[ing]:
+	for ing in GameDay.coffe_cup.added_topping.keys():
+		for pos in GameDay.coffe_cup.added_topping[ing]:
 			var instance = scene_topping_top.instantiate()
 			instance.get_node("Topping").texture = load(
 				"res://assets/items/topping_{0}.png".format([ing.id])

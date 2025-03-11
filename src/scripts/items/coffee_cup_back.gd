@@ -16,21 +16,21 @@ func _ready() -> void:
 	display_ingredients()
 	
 func add_grains_ingredient() -> void:
-	CoffeeCup.add_ingredient(
-		CoffeeMachine.ingredient_in_kettle, CoffeeMachine.number_coffee_shots
+	GameDay.coffe_cup.add_ingredient(
+		GameDay.coffee_machine.ingredient_in_kettle, GameDay.coffee_machine.number_coffee_shots
 	) # добавили в кружку
 	
-	CoffeeMachine.clean_coffee_kettle() # очистили чайник
+	GameDay.coffee_machine.clean_coffee_kettle() # очистили чайник
 	clean_coffee_kettle.emit()
 	
 	display_ingredients()  # отображаем ингредиенты
 
 func add_milk_ingredient() -> void:
-	CoffeeCup.add_ingredient(
-		MilkFrother.ingredient_in_kettle, MilkFrother.number_milk_shots
+	GameDay.coffe_cup.add_ingredient(
+		GameDay.milk_frother.ingredient_in_kettle, GameDay.milk_frother.number_milk_shots
 	) # добавили в кружку
 	
-	MilkFrother.clean_milk_kettle() # очистили чайник
+	GameDay.milk_frother.clean_milk_kettle() # очистили чайник
 	clean_milk_kettle.emit()
 	
 	display_ingredients()  # отображаем ингредиенты

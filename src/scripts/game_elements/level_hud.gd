@@ -32,7 +32,7 @@ func on_no_pressed() -> void:
 func on_yes_pressed() -> void:
 	if instance_confirmation_delete != null:
 		instance_confirmation_delete.queue_free()
-	CoffeeCup.clean_coffee_cup()
+	GameDay.coffe_cup.clean_coffee_cup()
 	var coffee_cup = get_tree().current_scene.get_node("CoffeeCup")
 	if coffee_cup != null:
 		coffee_cup.clean_added_instance()
