@@ -21,17 +21,21 @@ func _ready() -> void:
 
 func on_delete_coffee_cup_pressed() -> void:
 	instance_confirmation_delete = scene_confirmation_delete.instantiate()
-	instance_confirmation_delete.connect("no_pressed", on_confirmation_delete_pressed)
-	instance_confirmation_delete.connect("yes_pressed", on_confirmation_delete_pressed)
+	instance_confirmation_delete.connect("no_pressed", on_no_pressed)
+	instance_confirmation_delete.connect("yes_pressed", on_yes_pressed)
 	get_tree().root.add_child(instance_confirmation_delete)
 	
-func on_confirmation_delete_pressed() -> void:
+func on_no_pressed() -> void:
 	if instance_confirmation_delete != null:
 		instance_confirmation_delete.queue_free()
+		
+func on_yes_pressed() -> void:
+	if instance_confirmation_delete != null:
+		instance_confirmation_delete.queue_free()
+	CoffeeCup.clean_coffee_cup()
 	var coffee_cup = get_tree().current_scene.get_node("CoffeeCup")
-	print(coffee_cup)
 	if coffee_cup != null:
-		coffee_cup.clean_dict_instance()
+		coffee_cup.clean_added_instance()
 		coffee_cup.display_ingredients()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.

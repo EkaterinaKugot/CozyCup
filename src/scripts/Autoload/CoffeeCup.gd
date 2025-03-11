@@ -1,6 +1,6 @@
 extends Node
 
-var added_ingredients: Dictionary:
+var added_ingredients: Array[Dictionary]:
 	get:
 		return added_ingredients
 	set(value):
@@ -17,19 +17,10 @@ var current_topping: Ingredient:
 		current_topping = value
 
 func add_ingredient(ingredient: Ingredient, number: int) -> void:
-	var has_ingredient = false
-	for ing in added_ingredients.keys():
-		if ing == ingredient:
-			added_ingredients[ingredient] += number
-			has_ingredient = true
-			break
-			
-	if not has_ingredient:
-		added_ingredients[ingredient] = number
-		
-
-func array_ingredients() -> Array:
-	return Array(added_ingredients.keys())
+	if added_ingredients.size() != 0 and added_ingredients[-1].keys()[0] == ingredient:
+		added_ingredients[-1][ingredient] += number
+	else:
+		added_ingredients.append({ingredient: number})
 	
 func add_topping(ingredient: Ingredient, position: Vector2):
 	if ingredient in added_topping.keys():
@@ -38,12 +29,13 @@ func add_topping(ingredient: Ingredient, position: Vector2):
 		added_topping[ingredient] = [position]
 		
 func clean_coffee_cup() -> void:
-	added_ingredients = {}
+	added_ingredients = []
 	added_topping = {}
 	current_topping = null
 
 func check_has_category(category) -> bool:
-	for ing in added_ingredients.keys():
+	for i in added_ingredients:
+		var ing = i.keys()[0]
 		if ing.category == category:
 			return true
 	return false

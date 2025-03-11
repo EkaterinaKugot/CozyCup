@@ -17,7 +17,6 @@ func on_no_pressed() -> void:
 	get_tree().paused = false
 	
 func on_yes_pressed() -> void:
-	CoffeeCup.clean_coffee_cup()
 	yes_pressed.emit()
 	get_tree().paused = false
 

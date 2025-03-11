@@ -1,7 +1,8 @@
 extends Area2D
 
 var coffee_cup_ingredient = preload("res://src/scenes/game_elements/coffee_cup_ingredient.tscn")
-var dict_instance: Dictionary = {}
+var added_instance: Array[Dictionary] = []
+var pos_y: int = 55
 
 func _input_event(_viewport, event, shape_idx):
 	if OS.get_name() == "Android" or OS.get_name() == "iOS":
@@ -41,33 +42,49 @@ func add_ingredient(current_ingredient: Ingredient) -> void:
 			display_ingredients()  # отображаем ингредиенты
 	
 func display_ingredients() -> void:
-	var array_ingredients = CoffeeCup.array_ingredients() 
-	var y = 50
-	for ingredient in array_ingredients: # отображаем добавленное
-		var instance_coffee_cup_ingredient
-		if ingredient in dict_instance.keys():
-			instance_coffee_cup_ingredient = dict_instance[ingredient]
-		else:
-			instance_coffee_cup_ingredient = coffee_cup_ingredient.instantiate()
-			var icon = instance_coffee_cup_ingredient.get_node("Icon") # добавляем иконку
-			icon.texture = load("res://assets/icons/{0}_icon.png".format([ingredient.id]))
-			instance_coffee_cup_ingredient.position = Vector2(55, y) # устанавливаем позицию
+	var instance_coffee_cup_ingredient
+	if added_instance.size() == 0: # первое отображение на сцене
+		for element in CoffeeCup.added_ingredients:
+			var ingredient = element.keys()[0]
+			instance_coffee_cup_ingredient = create_new_instance(ingredient)
 			
-			add_child(instance_coffee_cup_ingredient)
+			var label_number = instance_coffee_cup_ingredient.get_node("Number") # обновляем количество
+			label_number.text = str(element[ingredient])
+	else: # повторное обновление на сцене
+		# Проверяем, добавлен новый ингредиент или обновлено количество у старого
+		if CoffeeCup.added_ingredients.size() == added_instance.size(): # обновлено количество у старого
+			instance_coffee_cup_ingredient = added_instance[-1].values()[0]
+		elif CoffeeCup.added_ingredients.size() - added_instance.size() == 1: # добавлен новый
+			var ingredient = CoffeeCup.added_ingredients[-1].keys()[0]
+			instance_coffee_cup_ingredient = create_new_instance(ingredient)
+		else: # ошибка
+			push_error("Error display of ingredients in a cup")
 			
-		var label_number = instance_coffee_cup_ingredient.get_node("Number") # обновляем количество
-		label_number.text = str(CoffeeCup.added_ingredients[ingredient])
-		
-		dict_instance[ingredient] = instance_coffee_cup_ingredient
-		y -= 30
-	print("array_ingredients: ", array_ingredients)
-	print("dict_instance: ", dict_instance)
+		if instance_coffee_cup_ingredient != null:
+			var label_number = instance_coffee_cup_ingredient.get_node("Number") # обновляем количество
+			label_number.text = str(CoffeeCup.added_ingredients[-1].values()[0])
 
-func clean_dict_instance() -> void:
-	for ingredient in dict_instance.keys():
-		if dict_instance[ingredient] != null:
-			dict_instance[ingredient].queue_free()
-	dict_instance = {}
+func create_new_instance(ingredient: Ingredient):
+	var instance_coffee_cup_ingredient = coffee_cup_ingredient.instantiate()
+			
+	var icon = instance_coffee_cup_ingredient.get_node("Icon") # добавляем иконку
+	icon.texture = load("res://assets/icons/{0}_icon.png".format([ingredient.id]))
+			
+	instance_coffee_cup_ingredient.position = Vector2(55, pos_y) # устанавливаем позицию
+			
+	pos_y -= 30 # обновляем позицию для следующего ингредиента
+	
+	added_instance.append({ingredient: instance_coffee_cup_ingredient})
+	add_child(instance_coffee_cup_ingredient)
+	return instance_coffee_cup_ingredient
+			
+func clean_added_instance() -> void:
+	for element in added_instance:
+		var instance = element.values()[0]
+		if instance != null:
+			instance.queue_free()
+	added_instance = []
+	pos_y = 55
 	
 func _ready() -> void:
 	display_ingredients()
