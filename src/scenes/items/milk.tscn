@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dwrm6j6g1x23q"]
 
 [ext_resource type="Script" path="res://src/scripts/items/base_back_ingredient.gd" id="1_0hwwu"]
-[ext_resource type="Texture2D" uid="uid://b4q4mh46wfbud" path="res://assets/items/milk_cow.png" id="1_ty6bb"]
+[ext_resource type="Texture2D" uid="uid://b4q4mh46wfbud" path="res://assets/items/cow_milk.png" id="1_ty6bb"]
 [ext_resource type="Texture2D" uid="uid://r3qafe0vd2fo" path="res://assets/ui/custom_ui/glow_effect/milk_glow_effect.png" id="2_gmnoc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ryi45"]

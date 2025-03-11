@@ -1,12 +1,10 @@
-extends Node
-
 class_name Client
 
-var asset_path: String:
+var client_texture: Texture:
 	get:
-		return asset_path
+		return client_path
 	set(value):
-		asset_path = value
+		client_path = value
 var order: Order:
 	get:
 		return order
@@ -17,4 +15,16 @@ var grade: int:
 		return grade
 	set(value):
 		grade = value
-		
+var text: String:
+	get:
+		return text
+	set(value):
+		text = value
+
+
+func _init() -> void:
+	self.client_path = random_client_path()
+	
+	
+func random_client_path() -> String:
+	return Global.clients_list.clients.pick_random()

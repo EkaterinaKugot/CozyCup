@@ -4,17 +4,25 @@ extends Node
 var progress: Progress = null
 var recipes_list: RecipeList = null
 var ingredients_list: IngredientList = null
+var clients_list: ClientsList:
+	get:
+		return clients_list
+	set(value):
+		clients_list = value
 
 var number_basic: int = 100
 
 var progress_path: String = "user://progress.tres"
 var recipes_path: String = "res://data/recipes_list.tres"
 var ingredients_path: String = "res://data/ingredients_list.tres"
+var clients_list_path: String = "res://data/clients_list.tres"
 
 func _ready() -> void:
-	load_recipes()
-	load_ingredients()
+	recipes_list = load_data(recipes_path)
+	ingredients_list = load_data(ingredients_path)
 	load_progress()
+	clients_list = load_data(clients_list_path)
+	clients_list.fill_name_recipe()
 
 # Сохранение данных
 func save_progress() -> void:
@@ -32,21 +40,13 @@ func load_progress() -> void:
 		add_basic_recipes()
 		
 	progress.number_start = 0
-	#print(progress.number_start)
-	#print(progress.opened_ingredients)
 		
-# Загрузка данных рецептов
-func load_recipes() -> void:
-	if ResourceLoader.exists(recipes_path):
-		recipes_list = ResourceLoader.load(recipes_path)
-	#print("Загружено рецептов:", recipes_list.recipes.size())
-
-# Загрузка данных ингредиентов
-func load_ingredients() -> void:
-	if ResourceLoader.exists(ingredients_path):
-		ingredients_list = ResourceLoader.load(ingredients_path)
-	#print("Загружено ингредиентов:", ingredients_list.ingredients.size())
-	
+# Загрузка данных
+func load_data(path: String):
+	if ResourceLoader.exists(path):
+		var data = ResourceLoader.load(path)
+		return data
+		
 # Заполнение базовыми ингредиентами
 func add_basic_ingredients() -> void:
 	for ingredient in ingredients_list.ingredients:

@@ -35,11 +35,13 @@ enabled=PackedStringArray("res://addons/gut/plugin.cfg")
 
 folder_colors={
 "res://assets/items/": "purple",
+"res://data/": "red",
 "res://src/scenes/game_elements/": "yellow",
 "res://src/scenes/items/": "purple",
 "res://src/scripts/game_elements/": "yellow",
 "res://src/scripts/items/": "purple",
-"res://src/scripts/models/": "gray"
+"res://src/scripts/models/": "gray",
+"res://src/scripts/resource/": "red"
 }
 
 [gui]

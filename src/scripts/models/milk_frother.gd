@@ -1,4 +1,3 @@
-extends Node
 class_name MilkFrother
 
 var max_number_elements: int = 10:

@@ -1,4 +1,21 @@
-[gd_scene format=3 uid="uid://cpjjrqwchtdeq"]
+[gd_scene load_steps=4 format=3 uid="uid://cpjjrqwchtdeq"]
+
+[ext_resource type="Texture2D" uid="uid://b8w2t8ntw05l2" path="res://assets/clients/girl1.png" id="1_m8uc8"]
+[ext_resource type="Theme" uid="uid://thjmy3qv67jv" path="res://assets/themes/confirmation_delete.tres" id="2_er6r4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ukj21"]
+bg_color = Color(0.988235, 0.956863, 0.862745, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.960784, 0.878431, 0.635294, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+shadow_color = Color(0.305882, 0.305882, 0.305882, 1)
+shadow_size = 10
+shadow_offset = Vector2(2, 5)
 
 [node name="Client" type="Control"]
 layout_mode = 3
@@ -10,15 +27,36 @@ grow_vertical = 2
 mouse_filter = 1
 
 [node name="Asset" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+custom_minimum_size = Vector2(500, 600)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 100.0
+offset_top = -300.0
+offset_right = 600.0
+offset_bottom = 300.0
+grow_vertical = 2
 mouse_filter = 2
+texture = ExtResource("1_m8uc8")
+expand_mode = 1
+stretch_mode = 6
 
 [node name="DialogWindow" type="PanelContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+custom_minimum_size = Vector2(500, 150)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.0
+offset_top = -225.0
+offset_right = 385.0
+offset_bottom = -57.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ukj21")
 
 [node name="MarginContainer" type="MarginContainer" parent="DialogWindow"]
 layout_mode = 2
@@ -32,14 +70,26 @@ layout_mode = 2
 theme_override_constants/separation = 15
 
 [node name="Text" type="Label" parent="DialogWindow/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+size_flags_vertical = 0
+text = "Кофе ааа рпрпр ыаыва ы рое ыв фыв  фы"
+autowrap_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="DialogWindow/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 50
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 30
 
 [node name="Refuse" type="Button" parent="DialogWindow/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(170, 60)
 layout_mode = 2
+theme = ExtResource("2_er6r4")
+text = "Отказать"
 
 [node name="Accept" type="Button" parent="DialogWindow/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(170, 60)
 layout_mode = 2
+theme = ExtResource("2_er6r4")
+text = "Принять"

@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="RecipeList" load_steps=6 format=3 uid="uid://dop7vgqxhyaxc"]
 
-[ext_resource type="Script" path="res://src/scripts/models/recipe.gd" id="1_38xm7"]
+[ext_resource type="Script" path="res://src/scripts/resource/recipe.gd" id="1_by2aw"]
 [ext_resource type="Resource" uid="uid://ppki8w7b4rv" path="res://data/recipes/espresso.tres" id="2_cfeg3"]
-[ext_resource type="Script" path="res://src/scripts/models/recipes_list.gd" id="2_ib03n"]
 [ext_resource type="Resource" uid="uid://c7qjroe1xs55j" path="res://data/recipes/аmericano.tres" id="3_djhe1"]
 [ext_resource type="Resource" uid="uid://p11qm8a6bnsh" path="res://data/recipes/cappuccino.tres" id="4_1wfjb"]
+[ext_resource type="Script" path="res://src/scripts/resource/recipes_list.gd" id="5_ik57j"]
 
 [resource]
-script = ExtResource("2_ib03n")
-recipes = Array[ExtResource("1_38xm7")]([ExtResource("2_cfeg3"), ExtResource("3_djhe1"), ExtResource("4_1wfjb")])
+script = ExtResource("5_ik57j")
+recipes = Array[ExtResource("1_by2aw")]([ExtResource("2_cfeg3"), ExtResource("3_djhe1"), ExtResource("4_1wfjb")])

@@ -1,5 +1,4 @@
-extends Node
-class_name StagesGamDay
+class_name StagesGameDay
 
 #enum Stage{
 	#PURCHASEINGREDIENTS

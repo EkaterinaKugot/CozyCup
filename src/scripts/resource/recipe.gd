@@ -2,6 +2,9 @@
 extends Resource
 class_name Recipe
 
+@export var id: String:
+	get:
+		return id
 @export var name: String:
 	get:
 		return name

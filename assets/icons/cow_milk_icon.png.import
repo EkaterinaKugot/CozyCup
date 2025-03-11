@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://by4qesllhdeup"
-path="res://.godot/imported/milk_cow_icon.png-07dd03c8485f2b987d4668c1c53ffd07.ctex"
+path="res://.godot/imported/cow_milk_icon.png-a89fb171ba80029921a121f0348855f6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/milk_cow_icon.png"
-dest_files=["res://.godot/imported/milk_cow_icon.png-07dd03c8485f2b987d4668c1c53ffd07.ctex"]
+source_file="res://assets/icons/cow_milk_icon.png"
+dest_files=["res://.godot/imported/cow_milk_icon.png-a89fb171ba80029921a121f0348855f6.ctex"]
 
 [params]
 

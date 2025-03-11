@@ -1,9 +1,10 @@
 [gd_resource type="Resource" script_class="Recipe" load_steps=2 format=3 uid="uid://p11qm8a6bnsh"]
 
-[ext_resource type="Script" path="res://src/scripts/models/recipe.gd" id="1_v4a8g"]
+[ext_resource type="Script" path="res://src/scripts/resource/recipe.gd" id="1_d2456"]
 
 [resource]
-script = ExtResource("1_v4a8g")
+script = ExtResource("1_d2456")
+id = "cappuccino"
 name = "Капучино"
 description = "1 порция зернового кофе
 4 порции теплого взбитого молок"

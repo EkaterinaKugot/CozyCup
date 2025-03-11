@@ -1,9 +1,10 @@
 [gd_resource type="Resource" script_class="Recipe" load_steps=2 format=3 uid="uid://ppki8w7b4rv"]
 
-[ext_resource type="Script" path="res://src/scripts/models/recipe.gd" id="1_ss8ja"]
+[ext_resource type="Script" path="res://src/scripts/resource/recipe.gd" id="1_77pr5"]
 
 [resource]
-script = ExtResource("1_ss8ja")
+script = ExtResource("1_77pr5")
+id = "espresso"
 name = "Эспрессо"
 description = "1 порция зернового кофе"
 is_basic = true
