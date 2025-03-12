@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=2 format=3 uid="uid://yfmnocd0j2ap"]
+
+[ext_resource type="Script" path="res://src/scripts/resource/recipe.gd" id="1_c8eyh"]
+
+[resource]
+script = ExtResource("1_c8eyh")
+id = "raf"
+name = "Раф"
+description = "1 порция зернового кофе
+6 порций теплых сливок"
+is_basic = false
+ingredients = {
+0: 0,
+1: 6,
+2: 1,
+3: 0,
+4: 0,
+5: 0,
+6: 0,
+7: 0
+}
+steps = Array[int]([2, 1])
+unlock_cost = 500

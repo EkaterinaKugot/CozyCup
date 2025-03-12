@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=2 format=3 uid="uid://d2g251vju3wio"]
+
+[ext_resource type="Script" path="res://src/scripts/resource/recipe.gd" id="1_0j7xm"]
+
+[resource]
+script = ExtResource("1_0j7xm")
+id = "latte"
+name = "Латте"
+description = "1 порция зернового кофе
+6 порций теплого взбитого молока"
+is_basic = false
+ingredients = {
+0: 6,
+1: 0,
+2: 1,
+3: 0,
+4: 0,
+5: 0,
+6: 0,
+7: 0
+}
+steps = Array[int]([2, 0])
+unlock_cost = 450

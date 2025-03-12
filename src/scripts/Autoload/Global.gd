@@ -4,25 +4,25 @@ extends Node
 var progress: Progress = null
 var recipes_list: RecipeList = null
 var ingredients_list: IngredientList = null
-var clients_list: ClientsList:
+var order_data: OrderData:
 	get:
-		return clients_list
+		return order_data
 	set(value):
-		clients_list = value
+		order_data = value
 
 var number_basic: int = 100
 
 var progress_path: String = "user://progress.tres"
 var recipes_path: String = "res://data/recipes_list.tres"
 var ingredients_path: String = "res://data/ingredients_list.tres"
-var clients_list_path: String = "res://data/clients_list.tres"
+var order_data_path: String = "res://data/order_data.tres"
 
 func _ready() -> void:
 	recipes_list = load_data(recipes_path)
 	ingredients_list = load_data(ingredients_path)
 	load_progress()
-	clients_list = load_data(clients_list_path)
-	clients_list.fill_name_recipe()
+	order_data = load_data(order_data_path)
+	order_data.fill_name_recipe()
 
 # Сохранение данных
 func save_progress() -> void:

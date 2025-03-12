@@ -154,3 +154,9 @@ func select_ingredients_by_category(category: Ingredient.Category) -> Dictionary
 		if ingredient.category == category:
 			result[ingredient] = opened_ingredients[ingredient]
 	return result
+
+func select_ingredients_by_id(id: String) -> Ingredient:
+	for ingredient in opened_ingredients.keys():
+		if ingredient.id == id:
+			return ingredient
+	return null

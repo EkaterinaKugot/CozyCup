@@ -1,14 +1,14 @@
 extends Resource
-class_name ClientsList
+class_name OrderData
 
 @export var clients: Array[Texture]:  # Массив путей к ассетам клиентов
 	get:
 		return clients
 
 @export var greetings: Array[String] = [
-	"Здравствуйте",
-	"Добрый день",
-	"Привет",
+	"Здравствуйте,",
+	"Добрый день,",
+	"Привет,",
 	""
 ]  # Массив слов приветствия
 		
@@ -62,9 +62,9 @@ class_name ClientsList
 	"chocolate_syrup": "шоколадного сиропа",
 } # Словарь типов сладости
 
-@export var conjunctions: Array[String] = ["и", ","] # Массив союзов
+@export var conjunctions: Array[String] = ["и", ", а также", ","] # Массив союзов
 
-@export var actions: Array[String] = ["добавьте", "посыпьте"] # Массив союзов
+@export var actions: Array[String] = ["добавьте", "посыпьте"] # Массив действия
 
 @export var toppings: Dictionary = {
 	"cocoa_powder": "какао.", 
@@ -76,5 +76,4 @@ class_name ClientsList
 
 func fill_name_recipe() -> void:
 	for recipe in Global.recipes_list.recipes:
-		name_recipe[recipe.id] = recipe.name.to_lower()
-		
+		name_recipe[recipe] = recipe.name.to_lower()

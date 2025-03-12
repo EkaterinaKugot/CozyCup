@@ -1,0 +1,53 @@
+[gd_resource type="Resource" script_class="OrderData" load_steps=4 format=3 uid="uid://fl6jetk3hdv8"]
+
+[ext_resource type="Texture2D" uid="uid://b8w2t8ntw05l2" path="res://assets/clients/girl1.png" id="1_0rwse"]
+[ext_resource type="Texture2D" uid="uid://xr7vnbi2r8p6" path="res://assets/clients/boy1.png" id="2_s33an"]
+[ext_resource type="Script" path="res://src/scripts/resource/order_data.gd" id="3_4b4ma"]
+
+[resource]
+script = ExtResource("3_4b4ma")
+clients = Array[Texture]([ExtResource("1_0rwse"), ExtResource("2_s33an")])
+greetings = Array[String](["Здравствуйте,", "Добрый день,", "Привет,", ""])
+requests = Array[String](["Можно", "Приготовьте", "Сделайте", "Налейте"])
+ownership = Array[String](["мне", ""])
+politeness = Array[String]([", пожалуйста,", ""])
+name_recipe = {}
+roasts = {
+"grains_dark": "темной обжарки",
+"grains_light": "светлой обжарки",
+"grains_medium": "средней обжарки"
+}
+type_milk = {
+"almond_milk": ["с миндальным молоком", "на миндальном молоке"],
+"banana_milk": ["с банановым молоком", "на банановом молоке"],
+"coconut_milk": ["с кокосовым молоком", "на кокосовом молоке"],
+"cow_milk": ["с обычным молоком", "с коровьим молоком", "на обычном молоке", "на коровьем молоке"],
+"oat_milk": ["с овсяным молоком", "на овсяном молоке"],
+"soy_milk": ["с соевым молоком", "на соевом молоке"]
+}
+servings = {
+1: ["с одной порцией"],
+2: ["с двумя порциями", "с двойной порцией"],
+3: ["с тремя порциями", "с тройной порцией"]
+}
+no_sweet = Array[String](["без сахара", "несладкий"])
+sweeteners = {
+"almond_syrup": "миндального сиропа",
+"caramel_syrup": "карамельного сиропа",
+"chocolate_syrup": "шоколадного сиропа",
+"coconut_syrup": "кокосового сиропа",
+"hazelnut_syrup": "фундучного сиропа",
+"peanut_syrup": "арахисового сиропа",
+"pistachio_syrup": "фисташкового сиропа",
+"salted_caramel_syrup": "сиропа с соленой карамелью",
+"sugar": "сахара",
+"vanilla_syrup": "ванильного сиропа"
+}
+conjunctions = Array[String](["и", ", а также", ","])
+actions = Array[String](["добавьте", "посыпьте"])
+toppings = {
+"cinnamon_powder": "корицу.",
+"cocoa_powder": "какао.",
+"coconut_powder": "кокос."
+}
+min_topping = 3

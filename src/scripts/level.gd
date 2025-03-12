@@ -1,10 +1,10 @@
 extends Control
 
 signal level_hud_visible()
+@onready var client_dialog: Control = $ClientDialog
 
 func _ready() -> void:
 	emit_signal("level_hud_visible")
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

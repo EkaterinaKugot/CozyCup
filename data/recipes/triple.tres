@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=2 format=3 uid="uid://by1dpp8n3oe0f"]
+
+[ext_resource type="Script" path="res://src/scripts/resource/recipe.gd" id="1_vscco"]
+
+[resource]
+script = ExtResource("1_vscco")
+id = "triple"
+name = "Трипло"
+description = "3 порции зернового кофе"
+is_basic = false
+ingredients = {
+0: 0,
+1: 0,
+2: 3,
+3: 0,
+4: 0,
+5: 0,
+6: 0,
+7: 0
+}
+steps = Array[int]([2])
+unlock_cost = 300

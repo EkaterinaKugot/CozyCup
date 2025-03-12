@@ -150,6 +150,7 @@ anchor_right = 1.0
 offset_left = -590.0
 offset_bottom = 132.0
 grow_horizontal = 0
+mouse_filter = 2
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 30
@@ -289,6 +290,7 @@ theme = SubResource("Theme_gkvka")
 layout_mode = 1
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 30
@@ -298,6 +300,7 @@ theme_override_constants/margin_bottom = 30
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+mouse_filter = 2
 theme_override_constants/separation = 15
 
 [node name="DateTimePanel" type="PanelContainer" parent="HeaderControl/MarginLeft/HBoxContainer"]

@@ -32,3 +32,6 @@ class_name Recipe
 @export var unlock_cost: int:
 	get:
 		return unlock_cost
+
+func check_category(category: Ingredient.Category) -> bool:
+	return category in steps

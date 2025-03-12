@@ -6,8 +6,8 @@ var instance_filling_water = scene_filling_water.instantiate()
 @onready var grains_container = $IngredientsContainer
 @onready var coffee_kettle = $CoffeeKettle
 
-signal disabled_bottom_hud()
-signal undisabled_bottom_hud()
+signal disabled_bottom_hud
+signal undisabled_bottom_hud
 
 func _ready() -> void:
 	grains_container.get_node("Icon").texture = load("res://assets/icons/grains_medium_icon.png")
