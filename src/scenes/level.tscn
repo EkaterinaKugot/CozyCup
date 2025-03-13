@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dqep1bkdlhaxw"]
+[gd_scene load_steps=9 format=3 uid="uid://dqep1bkdlhaxw"]
 
 [ext_resource type="Texture2D" uid="uid://baha0i2u0uaft" path="res://assets/bg/bg_кофейня.png" id="1_5brse"]
 [ext_resource type="PackedScene" uid="uid://bprqmeqewkl7i" path="res://src/scenes/game_elements/hud.tscn" id="1_bsjtt"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://b3mmanfks1yi6" path="res://assets/bg/ft_кофейня.png" id="2_a14fi"]
 [ext_resource type="PackedScene" uid="uid://d2slfierus85g" path="res://src/scenes/game_elements/bottom_hud.tscn" id="3_c4ymp"]
 [ext_resource type="PackedScene" uid="uid://cpjjrqwchtdeq" path="res://src/scenes/game_elements/client_dialog.tscn" id="5_k5iwc"]
+[ext_resource type="PackedScene" uid="uid://c1xxsux85ntph" path="res://src/scenes/items/coffee_cup.tscn" id="7_xq6jg"]
+[ext_resource type="Script" path="res://src/scripts/items/coffee_cup_front.gd" id="8_0n4ek"]
 
 [node name="Level" type="Control"]
 layout_mode = 3
@@ -46,6 +48,21 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("2_a14fi")
 expand_mode = 1
+
+[node name="ControlCoffeeCup" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 370.0
+offset_top = -140.0
+offset_right = 370.0
+offset_bottom = -140.0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="CoffeeCup" parent="ControlCoffeeCup" instance=ExtResource("7_xq6jg")]
+script = ExtResource("8_0n4ek")
 
 [connection signal="level_hud_visible" from="." to="Hud" method="_on_level_level_hud_visible"]
 [connection signal="back_button_pressed" from="BottomHud" to="." method="_on_bottom_hud_back_button_pressed"]

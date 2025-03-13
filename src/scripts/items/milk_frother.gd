@@ -7,13 +7,12 @@ signal disabled_bottom_hud()
 signal undisabled_bottom_hud()
 
 func _ready() -> void:
-	milk_container.get_node("Icon").texture = load("res://assets/icons/milk_cow_icon.png")
+	milk_container.get_node("Icon").texture = load("res://assets/icons/cow_milk_icon.png")
 	update_label_milk_container()
 
 func _input_event(_viewport, event, shape_idx):
 	if OS.get_name() == "Android" or OS.get_name() == "iOS":
 		if event is InputEventScreenTouch and event.pressed:
-			print(event)
 			var current_ingredient = get_parent().current_ingredient
 			if shape_idx == 0 and current_ingredient != null and \
 			(current_ingredient.category == Ingredient.Category.MILK or \
@@ -23,7 +22,6 @@ func _input_event(_viewport, event, shape_idx):
 				start_milk_pressed(current_ingredient)
 	else:
 		if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-			print(event)
 			var current_ingredient = get_parent().current_ingredient
 			if shape_idx == 0 and current_ingredient != null and \
 			(current_ingredient.category == Ingredient.Category.MILK or \

@@ -22,7 +22,7 @@ func _input_event(_viewport, event, _shape_idx):
 			instance.get_node("Topping").texture = load(
 				"res://assets/items/topping_{0}.png".format([ingredient.id])
 			)
-			instance.position = Vector2(0, 0) + (event.position - position)
+			instance.position = Vector2(0, 0) + (event.position - get_parent().position)
 			
 			add_child(instance)
 			Global.progress.sub_number_ingredient(ingredient, number)
@@ -32,7 +32,6 @@ func _input_event(_viewport, event, _shape_idx):
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var window_size = get_viewport().size - Vector2i(60.0, 60.0)
-	position = window_size / 2
 	ingredient = GameDay.coffe_cup.current_topping
 	
 	var assets: String = "res://assets/items/coffee_cup_top.png"

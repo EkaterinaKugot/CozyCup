@@ -19,7 +19,3 @@ func on_no_pressed() -> void:
 func on_yes_pressed() -> void:
 	yes_pressed.emit()
 	get_tree().paused = false
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

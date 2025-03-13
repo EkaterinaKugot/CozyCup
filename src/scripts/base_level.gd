@@ -49,7 +49,6 @@ func change_current_ingredient(ingredient: Ingredient) -> void:
 			instance.delete_mini_game()
 		
 		current_ingredient = ingredient
-	print(current_ingredient)
 
 func find_instance_by_ingredients(ingredient: Ingredient):
 	var instance

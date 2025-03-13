@@ -15,6 +15,7 @@ var current_topping: Ingredient:
 		return current_topping
 	set(value):
 		current_topping = value
+var is_chosen: bool = false
 
 func add_ingredient(ingredient: Ingredient, number: int) -> void:
 	if added_ingredients.size() != 0 and added_ingredients[-1].keys()[0] == ingredient:

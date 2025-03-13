@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b2vcqjtvo882k"]
 
-[ext_resource type="Script" path="res://src/scripts/game_elements/confirmation_delete.gd" id="1_1wuyh"]
-[ext_resource type="Theme" uid="uid://thjmy3qv67jv" path="res://assets/themes/confirmation_delete.tres" id="1_dv12d"]
+[ext_resource type="Script" path="res://src/scripts/game_elements/confirmation_delete.gd" id="1_nf07h"]
+[ext_resource type="Theme" uid="uid://thjmy3qv67jv" path="res://assets/themes/confirmation_delete.tres" id="2_ybaqs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_66mn1"]
 bg_color = Color(0.119, 0.119, 0.119, 0.7)
@@ -21,7 +21,7 @@ shadow_color = Color(0.307, 0.307, 0.307, 1)
 shadow_size = 10
 shadow_offset = Vector2(2, 5)
 
-[node name="ConfirmationDelete" type="Control"]
+[node name="ActionConfirmation" type="Control"]
 process_mode = 2
 layout_mode = 3
 anchors_preset = 15
@@ -29,7 +29,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_1wuyh")
+script = ExtResource("1_nf07h")
 
 [node name="Bg" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -67,11 +67,10 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Text" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 0
-text = "Вы действительно хотите выкинуть напиток? Все использованные ингредиенты пропадут."
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -84,11 +83,11 @@ theme_override_constants/separation = 50
 [node name="No" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(100, 60)
 layout_mode = 2
-theme = ExtResource("1_dv12d")
+theme = ExtResource("2_ybaqs")
 text = "Нет"
 
 [node name="Yes" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(100, 60)
 layout_mode = 2
-theme = ExtResource("1_dv12d")
+theme = ExtResource("2_ybaqs")
 text = "Да"

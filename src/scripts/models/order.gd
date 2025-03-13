@@ -18,6 +18,9 @@ class_name Order
 	set(value):
 		text = value
 
+const lead_time: float = 40.0
+@export var time_is_exceeded = false
+
 func add_ingredient(ingredient: Ingredient, number: int) -> void:
 	step_ingredient[ingredient] = number
 

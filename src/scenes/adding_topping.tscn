@@ -60,15 +60,20 @@ theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 30
 
-[node name="Drink" type="Area2D" parent="MarginContainer"]
-position = Vector2(640, 360)
+[node name="ControlDrink" type="Control" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="Drink" type="Area2D" parent="MarginContainer/ControlDrink"]
 script = ExtResource("5_mw5q7")
 
-[node name="Drink" type="Sprite2D" parent="MarginContainer/Drink"]
+[node name="Drink" type="Sprite2D" parent="MarginContainer/ControlDrink/Drink"]
 scale = Vector2(0.63, 0.63)
 texture = ExtResource("4_q4dyt")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MarginContainer/Drink"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MarginContainer/ControlDrink/Drink"]
 shape = SubResource("CircleShape2D_6bojv")
 
 [node name="Back" type="Button" parent="MarginContainer"]

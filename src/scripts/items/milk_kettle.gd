@@ -44,7 +44,6 @@ func _on_area_entered(area: Area2D):
 	if area != self:  # Исключаем саму себя
 		is_overlapping = true
 		current_area = area
-		print(current_area)
 
 # Срабатывает при выходе из другой области
 func _on_area_exited(area: Area2D):
