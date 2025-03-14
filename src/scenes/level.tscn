@@ -64,7 +64,6 @@ mouse_filter = 2
 [node name="CoffeeCup" parent="ControlCoffeeCup" instance=ExtResource("7_xq6jg")]
 script = ExtResource("8_0n4ek")
 
-[connection signal="level_hud_visible" from="." to="Hud" method="_on_level_level_hud_visible"]
 [connection signal="back_button_pressed" from="BottomHud" to="." method="_on_bottom_hud_back_button_pressed"]
 [connection signal="left_button_pressed" from="BottomHud" to="." method="_on_bottom_hud_left_button_pressed"]
 [connection signal="right_button_pressed" from="BottomHud" to="." method="_on_bottom_hud_right_button_pressed"]

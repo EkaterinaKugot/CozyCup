@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://dcdx5bo55hlja"]
+
+[ext_resource type="Texture2D" uid="uid://c7n1o5xnuo6eu" path="res://assets/ui/custom_ui/open.png" id="1_wp82n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3cd13"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1ltol"]
+texture = ExtResource("1_wp82n")
+expand_margin_top = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_46k7s"]
+texture = ExtResource("1_wp82n")
+expand_margin_top = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j2ldd"]
+texture = ExtResource("1_wp82n")
+
+[sub_resource type="Theme" id="Theme_l0edl"]
+Button/styles/focus = SubResource("StyleBoxEmpty_3cd13")
+Button/styles/hover = SubResource("StyleBoxTexture_1ltol")
+Button/styles/normal = SubResource("StyleBoxTexture_46k7s")
+Button/styles/pressed = SubResource("StyleBoxTexture_j2ldd")
+
+[node name="Open" type="Button"]
+custom_minimum_size = Vector2(70, 65)
+offset_right = 65.0
+offset_bottom = 65.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_l0edl")

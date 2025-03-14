@@ -23,8 +23,10 @@ func _init() -> void:
 	# Создаем новый заказ и формируем текст
 	self.order = Order.new()
 	self.order.make_order()
+	self.order.calculate_price()
 	print(self.order.text)
 	print(self.order.step_ingredient)
+	print(self.order.price)
 	
 func random_client_texture() -> Texture:
 	return Global.order_data.clients.pick_random()

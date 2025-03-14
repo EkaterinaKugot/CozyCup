@@ -28,7 +28,6 @@ func _ready() -> void:
 func start_timer() -> void:
 	total_time = GameDay.client.order.lead_time
 	timer.max_value = total_time
-	#timer_is_start = true
 	
 func on_delete_coffee_cup_pressed() -> void:
 	instance_confirmation_delete = scene_confirmation_delete.instantiate()
@@ -47,9 +46,13 @@ func on_yes_pressed() -> void:
 	if instance_confirmation_delete != null:
 		instance_confirmation_delete.queue_free()
 	GameDay.coffe_cup.clean_coffee_cup()
-	var coffee_cup = get_tree().current_scene.get_node("CoffeeCup")
+	
+	var coffee_cup
 	if get_tree().current_scene.name == "Level":
-		coffee_cup = get_tree().current_scene.get_node("ControlCoffeeCup").get_node("CoffeeCup")
+		coffee_cup = get_tree().current_scene.get_node("ControlCoffeeCup/CoffeeCup")
+	else:
+		coffee_cup = get_tree().current_scene.get_node("CoffeeCup")
+	
 	if coffee_cup != null:
 		coffee_cup.clean_added_instance()
 		coffee_cup.display_ingredients()

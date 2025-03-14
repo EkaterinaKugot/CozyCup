@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bprqmeqewkl7i"]
+[gd_scene load_steps=37 format=3 uid="uid://bprqmeqewkl7i"]
 
 [ext_resource type="Script" path="res://src/scripts/game_elements/hud.gd" id="1_6ufo0"]
 [ext_resource type="Texture2D" uid="uid://d3o3g53rp42k8" path="res://assets/ui/buttons/ready/Levels-Idle.png" id="2_8o5h3"]
@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://y5yhdnbf6odf" path="res://assets/icons/sunset.png" id="12_dme7n"]
 [ext_resource type="Texture2D" uid="uid://tq1ahgjbl5vn" path="res://assets/icons/rating.png" id="12_owken"]
 [ext_resource type="PackedScene" uid="uid://dhbmvpvb5re8k" path="res://src/scenes/game_elements/level_hud.tscn" id="13_yxiih"]
+[ext_resource type="PackedScene" uid="uid://dcdx5bo55hlja" path="res://src/scenes/game_elements/open.tscn" id="14_yhoyg"]
+[ext_resource type="PackedScene" uid="uid://dkpivu0gqlv5w" path="res://src/scenes/game_elements/close.tscn" id="15_4veul"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pmesg"]
 
@@ -296,28 +298,33 @@ theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 30
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HeaderControl/MarginLeft"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HeaderControl/MarginLeft"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HeaderControl/MarginLeft/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 mouse_filter = 2
 theme_override_constants/separation = 15
 
-[node name="DateTimePanel" type="PanelContainer" parent="HeaderControl/MarginLeft/HBoxContainer"]
+[node name="DateTimePanel" type="PanelContainer" parent="HeaderControl/MarginLeft/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(190, 65)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_onpss")
 
-[node name="IconPanel" type="Panel" parent="HeaderControl/MarginLeft/HBoxContainer/DateTimePanel"]
+[node name="IconPanel" type="Panel" parent="HeaderControl/MarginLeft/VBoxContainer/HBoxContainer/DateTimePanel"]
 custom_minimum_size = Vector2(85, 65)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxEmpty_wasl2")
 
-[node name="TextureRect" type="TextureRect" parent="HeaderControl/MarginLeft/HBoxContainer/DateTimePanel/IconPanel"]
+[node name="TextureRect" type="TextureRect" parent="HeaderControl/MarginLeft/VBoxContainer/HBoxContainer/DateTimePanel/IconPanel"]
 custom_minimum_size = Vector2(72, 72)
 layout_mode = 1
 anchors_preset = 6
@@ -335,40 +342,40 @@ size_flags_vertical = 4
 texture = ExtResource("12_dme7n")
 expand_mode = 1
 
-[node name="TextContainer" type="VBoxContainer" parent="HeaderControl/MarginLeft/HBoxContainer/DateTimePanel"]
+[node name="TextContainer" type="VBoxContainer" parent="HeaderControl/MarginLeft/VBoxContainer/HBoxContainer/DateTimePanel"]
 custom_minimum_size = Vector2(113, 65)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 theme_override_constants/separation = -10
 
-[node name="Day" type="Label" parent="HeaderControl/MarginLeft/HBoxContainer/DateTimePanel/TextContainer"]
+[node name="Day" type="Label" parent="HeaderControl/MarginLeft/VBoxContainer/HBoxContainer/DateTimePanel/TextContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 text = "0 день"
 
-[node name="Time" type="Label" parent="HeaderControl/MarginLeft/HBoxContainer/DateTimePanel/TextContainer"]
+[node name="Time" type="Label" parent="HeaderControl/MarginLeft/VBoxContainer/HBoxContainer/DateTimePanel/TextContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 text = "00:00"
 
-[node name="RatingPanel" type="PanelContainer" parent="HeaderControl/MarginLeft/HBoxContainer"]
+[node name="RatingPanel" type="PanelContainer" parent="HeaderControl/MarginLeft/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(150, 65)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_onpss")
 
-[node name="IconPanel" type="Panel" parent="HeaderControl/MarginLeft/HBoxContainer/RatingPanel"]
+[node name="IconPanel" type="Panel" parent="HeaderControl/MarginLeft/VBoxContainer/HBoxContainer/RatingPanel"]
 custom_minimum_size = Vector2(75, 60)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxEmpty_wasl2")
 
-[node name="TextureRect" type="TextureRect" parent="HeaderControl/MarginLeft/HBoxContainer/RatingPanel/IconPanel"]
+[node name="TextureRect" type="TextureRect" parent="HeaderControl/MarginLeft/VBoxContainer/HBoxContainer/RatingPanel/IconPanel"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 1
 anchors_preset = 6
@@ -386,14 +393,14 @@ size_flags_vertical = 4
 texture = ExtResource("12_owken")
 expand_mode = 1
 
-[node name="TextPanel" type="Panel" parent="HeaderControl/MarginLeft/HBoxContainer/RatingPanel"]
+[node name="TextPanel" type="Panel" parent="HeaderControl/MarginLeft/VBoxContainer/HBoxContainer/RatingPanel"]
 custom_minimum_size = Vector2(75, 65)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxEmpty_kt844")
 
-[node name="Number" type="Label" parent="HeaderControl/MarginLeft/HBoxContainer/RatingPanel/TextPanel"]
+[node name="Number" type="Label" parent="HeaderControl/MarginLeft/VBoxContainer/HBoxContainer/RatingPanel/TextPanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -411,9 +418,24 @@ size_flags_vertical = 6
 text = "???
 "
 
-[node name="LevelHud" parent="HeaderControl/MarginLeft/HBoxContainer" instance=ExtResource("13_yxiih")]
+[node name="LevelHud" parent="HeaderControl/MarginLeft/VBoxContainer/HBoxContainer" instance=ExtResource("13_yxiih")]
 visible = false
 layout_mode = 2
+
+[node name="OpenClose" type="Control" parent="HeaderControl/MarginLeft/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="Open" parent="HeaderControl/MarginLeft/VBoxContainer/OpenClose" instance=ExtResource("14_yhoyg")]
+visible = false
+layout_mode = 1
+offset_right = 70.0
+
+[node name="Close" parent="HeaderControl/MarginLeft/VBoxContainer/OpenClose" instance=ExtResource("15_4veul")]
+visible = false
+layout_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 reset_on_save = false

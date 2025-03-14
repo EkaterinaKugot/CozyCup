@@ -15,7 +15,6 @@ func _ready() -> void:
 	opened_ingredients = {}
 	instances_ingredients = {}
 	value_properties = {}
-	emit_signal("level_hud_visible")
 	
 	WIDTH = get_viewport().size.x
 	HEIGHT = get_viewport().size.y

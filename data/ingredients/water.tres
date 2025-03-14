@@ -8,5 +8,5 @@ id = "water"
 name = "Вода"
 category = 6
 is_basic = true
-purchase_cost = 0
+purchase_cost = 3
 unlock_cost = 0

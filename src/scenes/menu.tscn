@@ -108,5 +108,3 @@ theme = ExtResource("2_301le")
 text = "1 день"
 
 [node name="Hud" parent="." instance=ExtResource("7_f817k")]
-
-[connection signal="level_hud_invisible" from="." to="Hud" method="_on_menu_level_hud_invisible"]

@@ -12,8 +12,6 @@ func _ready() -> void:
 	instances_ingredients = {}
 	value_properties = {}
 	
-	emit_signal("level_hud_visible")
-	
 	value_properties = {
 		Ingredient.Category.SYRUP: {
 			"position": Vector2(80, 210), "scale": Vector2(0.6, 0.6), "idx_position": 1

@@ -15,6 +15,13 @@ var milk_frother: MilkFrother:
 		return milk_frother
 	set(value):
 		milk_frother = value
+
+var statistics: Statistics:
+	get:
+		return statistics
+	set(value):
+		statistics = value
+
 var client: Client:
 	get:
 		return client
@@ -26,39 +33,114 @@ var client_grades: Array[int]:
 	set(value):
 		client_grades = value
 var client_is_waiting: bool = false
+const percentage_price_reduction: int = 15
 
 var order_timer_is_start: bool = false
 var passed_time: float = 0
 
-func start_game_day() -> void:
+var stages_game: StagesGame = StagesGame.new()
+var number_seconds_in_day: int:
+	get:
+		return number_seconds_in_day
+	set(value):
+		number_seconds_in_day = value
+var passed_seconds_in_day: float = 0.0:
+	get:
+		return passed_seconds_in_day
+	set(value):
+		passed_seconds_in_day = value
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	stages_game.start_menu_stage()
+	
+func start_purchase_stage()-> void:
+	stages_game.start_purchase_stage()
+	statistics = Statistics.new()
+	statistics.set_old_rating()
+	
+func start_opening_stage() -> void:
+	stages_game.start_opening_stage()
 	coffe_cup = CoffeeCup.new()
 	coffee_machine = CoffeeMachine.new()
 	milk_frother = MilkFrother.new()
+	
 	client = Client.new()
+	client_grades = []
+	client_is_waiting = false
+	
+	order_timer_is_start = false
+	passed_time = 0
+	
+	statistics = Statistics.new() # УБРАТЬ
+	statistics.set_old_rating()
+	
+func start_game_stage() -> void:
+	stages_game.start_game_stage()
+	number_seconds_in_day = 60 * Global.progress.duration_day
+	passed_seconds_in_day = 0.0
 
-func end_game_day() -> void:
+func start_closing_stage() -> void:
+	stages_game.start_closing_stage()
+	
+func end_closing_stage() -> void:
+	if client.order_accept:
+		client.grade = 1
+		client_grades.append(client.grade)
+	
+	# Обновление рейтинга
+	print(client_grades)
+	var sum_grades: float = 0.0
+	for grade in client_grades:
+		sum_grades += grade
+		
+	if sum_grades != 0.0:
+		Global.progress.change_rating(sum_grades, client_grades.size())
+	
+	statistics.set_new_rating()
+	statistics.calculate_diff_rating()
+	statistics.calculate_full_clients()
+	
+	# Обновления дня
+	Global.progress.add_day()
+	
+	clean_variables()
+
+func clean_variables() -> void:
+	stages_game.start_menu_stage()
 	coffe_cup = null
 	coffee_machine = null
 	milk_frother = null
+	
 	client = null
 	client_grades = []
+	client_is_waiting = false
 	
-func create_new_coffe_cup() -> void:
-	# вызываем сравнение заказа
+	order_timer_is_start = false
+	passed_time = 0
+	passed_seconds_in_day = 0.0
+
+	
+func end_client_service() -> void:
+	# вызываем сравнение заказа и выставление оценки
 	client.grade = comparison_order_with_drink()
+	
+	# вызываем подсчет цены и обновление денег
+	var percent: int = (Global.progress.max_rating - client.grade) * percentage_price_reduction
+	var price: int = client.order.price - (client.order.price * percent / 100) # снижаем оплату за ошибки
+	Global.progress.add_money(price)
+	
 	coffe_cup = CoffeeCup.new()
 	
 func comparison_order_with_drink() -> int:
-	var grade: int = 5
+	var grade: int = Global.progress.max_rating
 	var reference = client.order.step_ingredient
 	var drink: Dictionary = {}
 	
 	# Заполняем словарь drink на основе added_ingredients
 	for ingredient in coffe_cup.added_ingredients:
 		drink[ingredient.keys()[0]] = ingredient.values()[0]
-	print(reference)
-	print(drink)
-	print(client.order.time_is_exceeded)
+
 	# Проверяем, если время превышено
 	if client.order.time_is_exceeded:
 		grade -= 1
@@ -90,15 +172,15 @@ func comparison_order_with_drink() -> int:
 				grade -= 2
 				sequence_incorrect = true
 			break
-	print("grade1 ", grade)
+
 	if not sequence_incorrect: # проверяем последовательность если она ещё не сбита
 		for i in range(ref_keys.size()):
 			var ref_key = ref_keys[i]
 			if drink_keys[i] != ref_key:
 				grade -= 1
 				break
+				
 	# проверяем количество
-	print("grade2 ", grade)
 	for ref_key in ref_keys:
 		if drink.has(ref_key) and drink[ref_key] != reference[ref_key]:
 			if ref_key.category == Ingredient.Category.TOPPING and drink[ref_key] >= 3:
@@ -107,8 +189,8 @@ func comparison_order_with_drink() -> int:
 				grade -= 1
 	# Убедимся, что оценка не опускается ниже 0
 	grade = max(grade, 1)
-	print("grade3 ", grade)
 	return grade
+	
 	
 func create_new_client():
 	client_grades.append(client.grade)
@@ -123,11 +205,13 @@ func start_waiting_client():
 func refuse_order() -> void:
 	client.accept_order()
 	client.grade = 1
+	statistics.add_not_served_clients()
 	
 func start_timer() -> void:
 	client.accept_order()
 	order_timer_is_start = true # Запускаем таймер
 	passed_time = 0 # Задаем время таймера
+	statistics.add_served_clients()
 	
 func end_timer() -> void:
 	order_timer_is_start = false
@@ -142,7 +226,10 @@ func _process(delta: float) -> void:
 			self.client.exceed_time()
 			self.order_timer_is_start = false  # Останавливаем таймер
 			print("timer закончился")
-			
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+	
+	if self.stages_game.current_stage == StagesGame.Stage.GAME:
+		if self.passed_seconds_in_day < self.number_seconds_in_day and not get_tree().paused:
+			self.passed_seconds_in_day += delta
+		else:
+			start_closing_stage()
+		

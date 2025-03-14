@@ -4,11 +4,15 @@ extends CanvasLayer
 @onready var elements_menu = $DroppingMenu
 @onready var animation_elements_menu = $AnimationPlayer
 
-@onready var level_hud = $HeaderControl/MarginLeft/HBoxContainer/LevelHud
+@onready var level_hud = $HeaderControl/MarginLeft/VBoxContainer/HBoxContainer/LevelHud
 
-@onready var label_day = $HeaderControl/MarginLeft/HBoxContainer/DateTimePanel/TextContainer/Day as Label
-@onready var label_time = $HeaderControl/MarginLeft/HBoxContainer/DateTimePanel/TextContainer/Time as Label
-@onready var label_rating = $HeaderControl/MarginLeft/HBoxContainer/RatingPanel/TextPanel/Number as Label
+@onready var label_day: Label = $HeaderControl/MarginLeft/VBoxContainer/HBoxContainer/DateTimePanel/TextContainer/Day
+@onready var label_time: Label = $HeaderControl/MarginLeft/VBoxContainer/HBoxContainer/DateTimePanel/TextContainer/Time
+@onready var label_rating: Label = $HeaderControl/MarginLeft/VBoxContainer/HBoxContainer/RatingPanel/TextPanel/Number
+
+@onready var open_cafe: Button = $HeaderControl/MarginLeft/VBoxContainer/OpenClose/Open
+@onready var close_cafe: Button = $HeaderControl/MarginLeft/VBoxContainer/OpenClose/Close
+
 @onready var label_money = $HeaderControl/MarginRight/Header/MoneyPanel/TextPanel/Money as Label
 @onready var label_diamonds = $HeaderControl/MarginRight/Header/DiamondPanel/TextPanel/Diamonds as Label
 
@@ -16,17 +20,69 @@ extends CanvasLayer
 func _ready() -> void:
 	drop_menu.pressed.connect(on_drop_menu_pressed)
 	
-	label_day.text = str(Global.progress.day) + " день"
-	label_time.text = str(
-		Global.progress.option_duration_day[Global.progress.duration_day][0]
+	open_cafe.pressed.connect(on_open_cafe_pressed)
+	close_cafe.pressed.connect(on_close_cafe_pressed)
+	
+	if GameDay.stages_game.current_stage == StagesGame.Stage.MENU or \
+	GameDay.stages_game.current_stage == StagesGame.Stage.PURCHASE:
+		level_hud.visible = false
+		level_hud.set_process(false) 
+		label_time.text = str(
+			Global.progress.option_duration_day[Global.progress.duration_day][0]
 		) + ":00"
+	else:
+		level_hud.visible = true
+		level_hud.set_process(true) 
+	
+	if GameDay.stages_game.current_stage == StagesGame.Stage.STATISTIC:
+		level_hud.visible = false
+		level_hud.set_process(false) 
+		label_time.text = str(
+			Global.progress.option_duration_day[Global.progress.duration_day][1]
+		) + ":00"
+		
+	if GameDay.stages_game.current_stage == StagesGame.Stage.OPENING:
+		open_cafe.visible = true
+		label_time.text = str(
+			Global.progress.option_duration_day[Global.progress.duration_day][0]
+		) + ":00"
+	
+	label_day.text = str(Global.progress.day) + " день"
 	if fmod(Global.progress.rating, 1) == 0:
 		label_rating.text = str(Global.progress.rating) + ".0"
 	else:
 		label_rating.text = str(Global.progress.rating)
-	
+		
 	label_money.text = str(Global.progress.money)
 	label_diamonds.text = str(Global.progress.diamonds)
+
+func _process(delta: float) -> void:
+	#print("FPS " + str(Engine.get_frames_per_second()))
+	if GameDay.stages_game.current_stage == StagesGame.Stage.CLOSING:
+		close_cafe.visible = true
+		label_time.text = str(
+			Global.progress.option_duration_day[Global.progress.duration_day][1]
+		) + ":00"
+	if GameDay.stages_game.current_stage == StagesGame.Stage.GAME:
+		var hours: int = int(GameDay.passed_seconds_in_day) / 60
+		var minutes: int = int(GameDay.passed_seconds_in_day) - (hours * 60)
+		label_time.text = str(
+			Global.progress.option_duration_day[Global.progress.duration_day][0] + hours
+			) + ":" + str(minutes / Global.progress.size_intervals) + "0"
+	
+	if GameDay.stages_game.current_stage != StagesGame.Stage.OPENING and \
+	GameDay.stages_game.current_stage != StagesGame.Stage.STATISTIC:
+		label_money.text = str(Global.progress.money)
+		
+func on_open_cafe_pressed() -> void:
+	GameDay.start_game_stage()
+	open_cafe.visible = false
+
+func on_close_cafe_pressed() -> void:
+	GameDay.end_closing_stage()
+	close_cafe.visible = false
+	Global.save_progress()
+	get_tree().change_scene_to_file("res://src/scenes/menu.tscn")
 	
 	
 func on_drop_menu_pressed() -> void:
@@ -40,13 +96,3 @@ func on_drop_menu_pressed() -> void:
 		elements_menu.visible = true
 		animation_elements_menu.play("fade_in_elements_menu")
 		elements_menu.set_process(true)
-
-
-func _on_level_level_hud_visible() -> void:
-	level_hud.visible = true
-	level_hud.set_process(true)
-
-
-func _on_menu_level_hud_invisible() -> void:
-	level_hud.visible = false
-	level_hud.set_process(false)

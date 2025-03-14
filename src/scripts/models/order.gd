@@ -18,12 +18,22 @@ class_name Order
 	set(value):
 		text = value
 
-const lead_time: float = 40.0
+@export var price: int = 0: # Текст заказа
+	get:
+		return price
+	set(value):
+		price = value
+		
+const lead_time: float = 35.0
 @export var time_is_exceeded = false
 
 func add_ingredient(ingredient: Ingredient, number: int) -> void:
 	step_ingredient[ingredient] = number
 
+func calculate_price() -> void:
+	for ingredient in step_ingredient.keys():
+		price += ingredient.purchase_cost * step_ingredient[ingredient]
+	
 func add_words(words: String, need_space: bool = true) -> void:
 	if need_space:
 		text += " "

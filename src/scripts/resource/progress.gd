@@ -17,21 +17,33 @@ signal not_enough_diamonds(error_message: String)
 	set(value):
 		assert(value >= 1, "The value of day cannot be less than 1")
 		day = value		
-@export var option_duration_day: Dictionary = {10: [10, 8], 12: [9, 9], 14: [8, 10]}:
+
+@export var option_duration_day: Dictionary = {1: [10, 20], 12: [9, 21], 14: [8, 22]}:
 	get:
 		return option_duration_day
+@export var size_intervals: int = 10:
+	get:
+		return size_intervals
 @export var duration_day: int = option_duration_day.keys()[0]:
 	get:
 		return duration_day
 	set(value):
 		assert(value in option_duration_day.keys(), "The value of duration_day cannot have such a value")
 		duration_day = value
+
 @export var rating: float = 5.0:
 	get:
 		return rating
 	set(value):
 		assert(value >= 1, "The value of rating cannot be less than 1")
 		rating = value		
+@export var number_grades: int = 1:
+	get:
+		return number_grades
+	set(value):
+		number_grades = value
+const max_rating: int = 5
+
 @export var money: int = 100:
 	get:
 		return money
@@ -92,9 +104,15 @@ func change_duration_day_on_12() -> void:
 func change_duration_day_on_14() -> void:
 	duration_day = option_duration_day.keys()[2]
 	
-func change_rating(rating_per_day: float) -> void:
-	assert(rating_per_day >= 1 and rating_per_day <= 5, "The value of rating_per_day should be from 1 to 5")
-	rating = (rating + rating_per_day) / 2
+func change_rating(sum_grades: float, number_grades_per_day: int) -> void:
+	assert(sum_grades >= 0, "The value of sum_grades should be larger or equal to zero")
+	assert(number_grades_per_day >= 0, "The value of number_grades_per_day should be larger or equal to zero")
+	rating = snappedf(( (rating * number_grades) + sum_grades) / (number_grades_per_day + number_grades), 0.1) 
+	add_number_grades(number_grades_per_day)
+
+func add_number_grades(number_grades_per_day: int) -> void:
+	assert(number_grades_per_day >= 0, "The value of number_grades_per_day should be larger or equal to zero")
+	number_grades += number_grades_per_day
 	
 func add_money(value: int) -> void:
 	assert(value >= 0, "The value of value cannot be less than 0")

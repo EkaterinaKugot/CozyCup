@@ -12,21 +12,27 @@ signal undisabled_bottom_hud
 func _ready() -> void:
 	refuse.pressed.connect(on_refuse_pressed)
 	accept.pressed.connect(on_accept_pressed)
-	
-	asset.texture = GameDay.client.client_texture
-	text.text = GameDay.client.order.text
-	
-	if GameDay.client.order_accept: # диалог
-		dialog_window.visible = false
-	else:
-		dialog_window.visible = true
-		disabled_bottom_hud.emit()
-	
-	if GameDay.client_is_waiting: # сам клиент
-		visible = false
-		undisabled_bottom_hud.emit()
-	else:
-		visible = true
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	сlient_display()
+		
+func сlient_display() -> void:
+	if GameDay.stages_game.current_stage == StagesGame.Stage.GAME or \
+	GameDay.stages_game.current_stage == StagesGame.Stage.CLOSING:
+		asset.texture = GameDay.client.client_texture
+		text.text = GameDay.client.order.text
+		if GameDay.client_is_waiting: # ждем клиента
+			visible = false
+			undisabled_bottom_hud.emit()
+		else:
+			visible = true
+			if GameDay.client.order_accept: # заказ принят и клиент ждет напиток
+				dialog_window.visible = false # убираем окно диалога
+				undisabled_bottom_hud.emit()
+			else: # заказ ещё не принят
+				dialog_window.visible = true # показываем окно диалога
+				disabled_bottom_hud.emit()
 	
 func on_refuse_pressed() -> void:
 	visible = false
@@ -40,23 +46,17 @@ func on_accept_pressed() -> void:
 	undisabled_bottom_hud.emit()
 	GameDay.start_timer()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if not visible and not GameDay.client_is_waiting:
-		dialog_window.visible = true
-		visible = true
-		disabled_bottom_hud.emit()
-
 func create_new_client() -> void:
 	GameDay.create_new_client()
-	GameDay.start_waiting_client()
-	asset.texture = GameDay.client.client_texture
-	text.text = GameDay.client.order.text
+	if GameDay.stages_game.current_stage == StagesGame.Stage.GAME:
+		GameDay.start_waiting_client()
+	else:
+		GameDay.client_is_waiting = true
 
 func _on_asset_client_order_is_given() -> void:
 	visible = false
 	GameDay.end_timer()
-	GameDay.create_new_coffe_cup() # создаем новую кружку
+	GameDay.end_client_service() # завершаем обсуживание клиента, создаем новую кружку
 	
 	create_new_client()
 	

@@ -31,8 +31,3 @@ enum Category {
 @export var unlock_cost: int:
 	get:
 		return unlock_cost
-
-func _equals(other: Ingredient) -> bool:
-	if other == null or not (other is Ingredient):
-		return false
-	return self.id == other.id

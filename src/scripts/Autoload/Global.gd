@@ -38,8 +38,9 @@ func load_progress() -> void:
 		progress = Progress.new()
 		add_basic_ingredients()
 		add_basic_recipes()
+		print("new progess")
 		
-	progress.number_start = 0
+	#progress.number_start = 0 
 		
 # Загрузка данных
 func load_data(path: String):

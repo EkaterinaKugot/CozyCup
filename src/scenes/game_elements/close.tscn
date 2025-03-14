@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://dkpivu0gqlv5w"]
+
+[ext_resource type="Texture2D" uid="uid://dqdtm2uuyxish" path="res://assets/ui/custom_ui/close.png" id="1_7ytg0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fb2ut"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gtk6s"]
+texture = ExtResource("1_7ytg0")
+expand_margin_top = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1b8r2"]
+texture = ExtResource("1_7ytg0")
+expand_margin_top = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vw0rq"]
+texture = ExtResource("1_7ytg0")
+
+[sub_resource type="Theme" id="Theme_u48hc"]
+Button/styles/focus = SubResource("StyleBoxEmpty_fb2ut")
+Button/styles/hover = SubResource("StyleBoxTexture_gtk6s")
+Button/styles/normal = SubResource("StyleBoxTexture_1b8r2")
+Button/styles/pressed = SubResource("StyleBoxTexture_vw0rq")
+
+[node name="Close" type="Button"]
+custom_minimum_size = Vector2(70, 65)
+offset_right = 8.0
+offset_bottom = 8.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_u48hc")

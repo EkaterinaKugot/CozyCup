@@ -1,9 +1,8 @@
 extends Control
 
-signal level_hud_visible()
 
 func _ready() -> void:
-	emit_signal("level_hud_visible")
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

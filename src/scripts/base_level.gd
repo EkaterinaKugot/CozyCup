@@ -5,8 +5,6 @@ var current_ingredient: Ingredient = null
 var opened_ingredients: Dictionary
 var instances_ingredients: Dictionary
 var value_properties: Dictionary 
-
-signal level_hud_visible()
 	
 func load_ingredients(ingredients: Dictionary, scene, has_icon: bool = false) -> Dictionary:
 	var result = {}
