@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=2 format=3 uid="uid://cws7m7o8rco7o"]
+
+[ext_resource type="Script" path="res://src/scripts/resource/ingredient.gd" id="1_1swex"]
+
+[resource]
+script = ExtResource("1_1swex")
+id = "peanut_syrup"
+name = "Арахисовый сироп"
+category = 3
+is_basic = true
+purchase_cost = 5
+unlock_cost = 150

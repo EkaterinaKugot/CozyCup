@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=2 format=3 uid="uid://irvluo5ibhrg"]
+
+[ext_resource type="Script" path="res://src/scripts/resource/ingredient.gd" id="1_u2xmh"]
+
+[resource]
+script = ExtResource("1_u2xmh")
+id = "ice_cream"
+name = "Мороженое"
+category = 5
+is_basic = false
+purchase_cost = 12
+unlock_cost = 100

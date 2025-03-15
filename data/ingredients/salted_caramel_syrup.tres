@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=2 format=3 uid="uid://ymlb866g8c8f"]
+
+[ext_resource type="Script" path="res://src/scripts/resource/ingredient.gd" id="1_151ft"]
+
+[resource]
+script = ExtResource("1_151ft")
+id = "salted_caramel_syrup"
+name = "Сироп с соленой карамелью"
+category = 3
+is_basic = true
+purchase_cost = 5
+unlock_cost = 150

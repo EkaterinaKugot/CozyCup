@@ -14,7 +14,13 @@ func load_ingredients(ingredients: Dictionary, scene, has_icon: bool = false) ->
 		var instance = scene.instantiate()
 		instance.connect("ingredient_pressed", change_current_ingredient)
 		instance.ingredient = ingredient
-		var size_x = (100 * count) + 10
+		var n: int = 100
+		if ingredient.category == Ingredient.Category.GRAINS or \
+		ingredient.category == Ingredient.Category.TOPPING:
+			n = 150
+		if ingredient.category == Ingredient.Category.MILK:
+			n = 90
+		var size_x = (n * count) + 10
 		
 		var sprite = instance.get_node("Sprite2D")
 		if sprite:

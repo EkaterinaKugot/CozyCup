@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=2 format=3 uid="uid://d3fadgchafd7n"]
+
+[ext_resource type="Script" path="res://src/scripts/resource/ingredient.gd" id="1_wihty"]
+
+[resource]
+script = ExtResource("1_wihty")
+id = "chocolate_syrup"
+name = "Шоколадный сироп"
+category = 3
+is_basic = true
+purchase_cost = 5
+unlock_cost = 150

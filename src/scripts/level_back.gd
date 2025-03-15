@@ -24,10 +24,10 @@ func _ready() -> void:
 			"position": Vector2(80, 190), "scale": Vector2(0.45, 0.45), "idx_position": 1
 		}, 
 		Ingredient.Category.MILK: {
-			"position": Vector2(1200, 190), "scale": Vector2(0.5, 0.5), "idx_position": -1
+			"position": Vector2(1220, 190), "scale": Vector2(0.5, 0.5), "idx_position": -1
 		},
 		Ingredient.Category.CREAM: {
-			"position": Vector2(900, 475), "scale": Vector2(0.7, 0.7), "idx_position": 1
+			"position": Vector2(950, 475), "scale": Vector2(0.5, 0.5), "idx_position": 1
 		}
 	}
 	
