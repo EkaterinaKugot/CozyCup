@@ -33,7 +33,13 @@ var client_grades: Array[int]:
 	set(value):
 		client_grades = value
 var client_is_waiting: bool = false
-var wait_timer: Timer
+var wait_timer: Timer:
+	get:
+		return wait_timer
+	set(value):
+		wait_timer = value
+const min_wait_timer: int = 5
+const max_wait_timer: int = 60
 const percentage_price_reduction: int = 15
 
 var order_timer_is_start: bool = false
@@ -205,7 +211,8 @@ func create_new_client():
 func start_waiting_client():
 	client_is_waiting = true
 	wait_timer = Timer.new()
-	wait_timer.wait_time = 5.0
+	wait_timer.wait_time = int(randf_range(min_wait_timer, (max_wait_timer/Global.progress.rating)))
+	print(wait_timer.wait_time)
 	wait_timer.one_shot = true
 	wait_timer.connect("timeout", _on_wait_timer_timeout)
 	add_child(wait_timer)
