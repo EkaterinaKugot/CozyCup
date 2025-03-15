@@ -33,6 +33,7 @@ var client_grades: Array[int]:
 	set(value):
 		client_grades = value
 var client_is_waiting: bool = false
+var wait_timer: Timer
 const percentage_price_reduction: int = 15
 
 var order_timer_is_start: bool = false
@@ -126,8 +127,12 @@ func end_client_service() -> void:
 	client.grade = comparison_order_with_drink()
 	
 	# вызываем подсчет цены и обновление денег
+	var price: int
 	var percent: int = (Global.progress.max_rating - client.grade) * percentage_price_reduction
-	var price: int = client.order.price - (client.order.price * percent / 100) # снижаем оплату за ошибки
+	if percent == 1:
+		price = 0
+	else:
+		price = client.order.price - (client.order.price * percent / 100) # снижаем оплату за ошибки
 	Global.progress.add_money(price)
 	
 	coffe_cup = CoffeeCup.new()
@@ -199,9 +204,17 @@ func create_new_client():
 
 func start_waiting_client():
 	client_is_waiting = true
-	await get_tree().create_timer(5.0).timeout
-	client_is_waiting = false
+	wait_timer = Timer.new()
+	wait_timer.wait_time = 5.0
+	wait_timer.one_shot = true
+	wait_timer.connect("timeout", _on_wait_timer_timeout)
+	add_child(wait_timer)
+	wait_timer.start()
 
+func _on_wait_timer_timeout() -> void:
+	client_is_waiting = false
+	wait_timer.queue_free()
+	
 func refuse_order() -> void:
 	client.accept_order()
 	client.grade = 1
@@ -218,6 +231,9 @@ func end_timer() -> void:
 	passed_time = 0 
 	
 func _process(delta: float) -> void:
+	if get_tree().paused:
+		return
+		
 	if self.order_timer_is_start: 
 		if self.passed_time < self.client.order.lead_time:
 			self.passed_time += delta
@@ -228,8 +244,7 @@ func _process(delta: float) -> void:
 			print("timer закончился")
 	
 	if self.stages_game.current_stage == StagesGame.Stage.GAME:
-		if self.passed_seconds_in_day < self.number_seconds_in_day and not get_tree().paused:
+		if self.passed_seconds_in_day < self.number_seconds_in_day:
 			self.passed_seconds_in_day += delta
 		else:
 			start_closing_stage()
-		

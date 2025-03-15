@@ -13,6 +13,7 @@ func print_recipe() -> void:
 func on_exit_pressed() -> void:
 	if get_tree().current_scene.name != "Menu":
 		GameDay.clean_variables()
+		Global.load_progress()
 		get_tree().change_scene_to_file("res://src/scenes/menu.tscn")
 	else:
 		Global.save_progress()

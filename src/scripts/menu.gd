@@ -9,5 +9,5 @@ func _ready() -> void:
 	
 func on_start_pressed() -> void:
 	GameDay.start_opening_stage()
-	#Global.save_progress()
+	Global.save_progress()
 	get_tree().change_scene_to_file("res://src/scenes/level.tscn")

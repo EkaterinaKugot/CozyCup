@@ -33,14 +33,12 @@ func save_progress() -> void:
 func load_progress() -> void:
 	if ResourceLoader.exists(progress_path):
 		#DirAccess.remove_absolute(progress_path)
-		progress = ResourceLoader.load(progress_path)
+		progress = ResourceLoader.load(progress_path, "", 4)
 	else:
 		progress = Progress.new()
 		add_basic_ingredients()
 		add_basic_recipes()
 		print("new progess")
-		
-	#progress.number_start = 0 
 		
 # Загрузка данных
 func load_data(path: String):
