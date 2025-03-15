@@ -11,10 +11,14 @@ var instance_confirmation_delete
 var text_confirmation_delete = "Вы действительно хотите выкинуть напиток? Все использованные ингредиенты пропадут."
 @onready var delete_coffee_cup: Button = $DeleteCoffeeCup
 
+@onready var order: Button = $Order
+signal order_repeat_pressed
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	set_process(false)
 	delete_coffee_cup.pressed.connect(on_delete_coffee_cup_pressed)
+	order.pressed.connect(on_order_pressed)
 	total_time = GameDay.client.order.lead_time
 	timer.min_value = 0
 	timer.max_value = total_time
@@ -23,7 +27,9 @@ func _ready() -> void:
 	elif GameDay.client != null and GameDay.client.order.time_is_exceeded:
 		current_time = total_time
 	timer.value = current_time
-	
+
+func on_order_pressed() -> void:
+	order_repeat_pressed.emit()
 
 func start_timer() -> void:
 	total_time = GameDay.client.order.lead_time

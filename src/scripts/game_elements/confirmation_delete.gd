@@ -13,9 +13,9 @@ func _ready() -> void:
 	yes.pressed.connect(on_yes_pressed)
 	
 func on_no_pressed() -> void:
-	no_pressed.emit()
 	get_tree().paused = false
+	no_pressed.emit()
 	
 func on_yes_pressed() -> void:
-	yes_pressed.emit()
 	get_tree().paused = false
+	yes_pressed.emit()

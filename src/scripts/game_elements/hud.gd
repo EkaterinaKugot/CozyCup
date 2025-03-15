@@ -5,6 +5,7 @@ extends CanvasLayer
 @onready var animation_elements_menu = $AnimationPlayer
 
 @onready var level_hud = $HeaderControl/MarginLeft/VBoxContainer/HBoxContainer/LevelHud
+@onready var order_repeat: Control = $OrderRepeat
 
 @onready var label_day: Label = $HeaderControl/MarginLeft/VBoxContainer/HBoxContainer/DateTimePanel/TextContainer/Day
 @onready var label_time: Label = $HeaderControl/MarginLeft/VBoxContainer/HBoxContainer/DateTimePanel/TextContainer/Time
@@ -96,3 +97,14 @@ func on_drop_menu_pressed() -> void:
 		elements_menu.visible = true
 		animation_elements_menu.play("fade_in_elements_menu")
 		elements_menu.set_process(true)
+
+
+func _on_level_hud_order_repeat_pressed() -> void:
+	if level_hud.visible:
+		if GameDay.client.order_accept:
+			order_repeat.visible = not order_repeat.visible
+		elif GameDay.client_is_waiting:
+			order_repeat.visible = false
+			
+		if order_repeat.visible:
+			order_repeat.get_node("PanelContainer/MarginContainer/Label").text = GameDay.client.order.text
