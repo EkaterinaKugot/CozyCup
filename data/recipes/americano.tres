@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="Recipe" load_steps=2 format=3 uid="uid://c7qjroe1xs55j"]
 
-[ext_resource type="Script" path="res://src/scripts/resource/recipe.gd" id="1_0k2jm"]
+[ext_resource type="Script" path="res://src/scripts/resource/recipe.gd" id="1_07mp4"]
 
 [resource]
-script = ExtResource("1_0k2jm")
+script = ExtResource("1_07mp4")
 id = "americano"
 name = "Американо"
-description = "1 порция зернового кофе
-6 порций воды"
+description = "- 1 порция зернового кофе
+- 6 порций воды"
 is_basic = true
 ingredients = {
 0: 0,

@@ -6,8 +6,8 @@
 script = ExtResource("1_n2r66")
 id = "espressino"
 name = "Эспрессино"
-description = "1 порция зернового кофе
-1 порция теплого взбитого молока"
+description = "- 1 порция зернового кофе
+- 1 порция теплого взбитого молока"
 is_basic = false
 ingredients = {
 0: 1,

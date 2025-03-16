@@ -1,6 +1,7 @@
 extends Control
 
 @onready var exit = $MarginContainer/VBoxContainer/Exit as Button
+@onready var recipes: Button = $MarginContainer/VBoxContainer/Recipes
 
 var scene_confirmation_exit = preload("res://src/scenes/game_elements/action_confirmation.tscn")
 var instance_confirmation_exit
@@ -9,10 +10,11 @@ var text = "Вы действительно хотите выйти? Весь п
 func _ready() -> void:
 	set_process(false)
 	exit.pressed.connect(on_exit_pressed)
-	$MarginContainer/VBoxContainer/Recipes.pressed.connect(print_recipe)
+	recipes.pressed.connect(on_recipes_pressed)
 
-func print_recipe() -> void:
-	print("Recipe")
+func on_recipes_pressed() -> void:
+	GameDay.current_scene = get_tree().current_scene.name
+	get_tree().change_scene_to_file("res://src/scenes/book_recipes.tscn")
 	
 func on_exit_pressed() -> void:
 	if get_tree().current_scene.name != "Menu":

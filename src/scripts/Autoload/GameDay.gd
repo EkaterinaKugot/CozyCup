@@ -57,6 +57,19 @@ var passed_seconds_in_day: float = 0.0:
 	set(value):
 		passed_seconds_in_day = value
 
+var current_scene: String = "Menu":
+	get:
+		return current_scene
+	set(value):
+		current_scene = value
+const scenes: Dictionary = {
+	"Menu": "res://src/scenes/menu.tscn",
+	"Level": "res://src/scenes/level.tscn",
+	"LevelBack": "res://src/scenes/level_back.tscn",
+	"LevelLeft": "res://src/scenes/level_left.tscn",
+	"LevelRight": "res://src/scenes/level_right.tscn"
+}
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	stages_game.start_menu_stage()

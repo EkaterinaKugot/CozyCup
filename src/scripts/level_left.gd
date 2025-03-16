@@ -2,6 +2,7 @@ extends "res://src/scripts/base_level.gd"
 
 var scene_syrup = preload("res://src/scenes/items/syrup.tscn")
 var scene_topping = preload("res://src/scenes/items/topping.tscn")
+var scene_ice_cream = preload("res://src/scenes/items/ice_cream.tscn")
 
 @onready var sugar = $Sugar
 
@@ -20,7 +21,7 @@ func _ready() -> void:
 			"position": Vector2(100, 475), "scale": Vector2(0.6, 0.6), "idx_position": 1
 		},
 		Ingredient.Category.ICE_CREAM: {
-			"position": Vector2(950, 475), "scale": Vector2(0.7, 0.7), "idx_position": 1
+			"position": Vector2(950, 475), "scale": Vector2(0.6, 0.6), "idx_position": 1
 		}
 	}
 	
@@ -44,7 +45,7 @@ func _ready() -> void:
 		opened_ingredients[Ingredient.Category.TOPPING], scene_topping, true
 	)
 	instances_ingredients[Ingredient.Category.ICE_CREAM] = load_ingredients(
-		opened_ingredients[Ingredient.Category.ICE_CREAM], scene_topping # ПОМЕНЯТЬ
+		opened_ingredients[Ingredient.Category.ICE_CREAM], scene_ice_cream
 	)
 	instances_ingredients[Ingredient.Category.SUGAR] = {
 		opened_ingredients[Ingredient.Category.SUGAR].keys()[0]: sugar

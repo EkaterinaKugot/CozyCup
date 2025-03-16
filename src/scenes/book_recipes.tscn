@@ -1,0 +1,252 @@
+[gd_scene load_steps=31 format=3 uid="uid://drkx0don5vq7"]
+
+[ext_resource type="Script" path="res://src/scripts/book_recipes.gd" id="1_316ps"]
+[ext_resource type="Texture2D" uid="uid://ci0dt4why4n6l" path="res://assets/bg/tablet_bg.png" id="1_rjqtc"]
+[ext_resource type="PackedScene" uid="uid://j0yks4gdu6vf" path="res://src/scenes/game_elements/recipe_item.tscn" id="2_7ktaw"]
+[ext_resource type="Texture2D" uid="uid://cvmx55olh0ofh" path="res://assets/ui/buttons/ready/Cross-Idle.png" id="3_midnw"]
+[ext_resource type="Texture2D" uid="uid://xjiqk1awu38v" path="res://assets/ui/buttons/ready/Cross-Click.png" id="4_e7tnu"]
+[ext_resource type="Texture2D" uid="uid://cyakqgeb1obpr" path="res://assets/ui/buttons/ready/right_idle.png" id="5_qxtjk"]
+[ext_resource type="Texture2D" uid="uid://dy8p6m5vae8s" path="res://assets/ui/buttons/ready/right_click.png" id="6_usdba"]
+[ext_resource type="Texture2D" uid="uid://bcjgov88cg1s4" path="res://assets/ui/buttons/ready/left_idle.png" id="7_1yj51"]
+[ext_resource type="Texture2D" uid="uid://trt11lhse2mv" path="res://assets/ui/buttons/ready/left_click.png" id="8_aaqy4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vvgkr"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nklc7"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.792157, 0.678431, 0.682353, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cp0v8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_top = 3
+border_width_right = 3
+border_color = Color(0.792157, 0.678431, 0.682353, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_em4si"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x1ka6"]
+texture = ExtResource("7_1yj51")
+expand_margin_top = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1mxgo"]
+texture = ExtResource("7_1yj51")
+expand_margin_top = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rk6a2"]
+texture = ExtResource("8_aaqy4")
+
+[sub_resource type="Theme" id="Theme_ql6rp"]
+Button/styles/focus = SubResource("StyleBoxEmpty_em4si")
+Button/styles/hover = SubResource("StyleBoxTexture_x1ka6")
+Button/styles/normal = SubResource("StyleBoxTexture_1mxgo")
+Button/styles/pressed = SubResource("StyleBoxTexture_rk6a2")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2xliy"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_bottom = 3
+border_color = Color(0.792157, 0.678431, 0.682353, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eyqkk"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_top = 3
+border_color = Color(0.792157, 0.678431, 0.682353, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_voc38"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u5lvd"]
+texture = ExtResource("5_qxtjk")
+expand_margin_top = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0csyc"]
+texture = ExtResource("5_qxtjk")
+expand_margin_top = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pqk8g"]
+texture = ExtResource("6_usdba")
+
+[sub_resource type="Theme" id="Theme_la7dg"]
+Button/styles/focus = SubResource("StyleBoxEmpty_voc38")
+Button/styles/hover = SubResource("StyleBoxTexture_u5lvd")
+Button/styles/normal = SubResource("StyleBoxTexture_0csyc")
+Button/styles/pressed = SubResource("StyleBoxTexture_pqk8g")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d5gbm"]
+bg_color = Color(1, 1, 1, 0.1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rh8c6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nhdlh"]
+texture = ExtResource("3_midnw")
+expand_margin_top = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pwho2"]
+texture = ExtResource("3_midnw")
+expand_margin_top = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x06bj"]
+texture = ExtResource("4_e7tnu")
+
+[sub_resource type="Theme" id="Theme_ile1b"]
+Button/styles/focus = SubResource("StyleBoxEmpty_rh8c6")
+Button/styles/hover = SubResource("StyleBoxTexture_nhdlh")
+Button/styles/normal = SubResource("StyleBoxTexture_pwho2")
+Button/styles/pressed = SubResource("StyleBoxTexture_x06bj")
+
+[node name="BookRecipes" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_316ps")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_rjqtc")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 110
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 110
+theme_override_constants/margin_bottom = 60
+
+[node name="Panel2" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vvgkr")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Page1" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/Page1"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nklc7")
+
+[node name="RecipeItem" parent="MarginContainer/HBoxContainer/Page1/Panel" instance=ExtResource("2_7ktaw")]
+layout_mode = 1
+
+[node name="Panel2" type="Panel" parent="MarginContainer/HBoxContainer/Page1"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cp0v8")
+
+[node name="RecipeItem" parent="MarginContainer/HBoxContainer/Page1/Panel2" instance=ExtResource("2_7ktaw")]
+layout_mode = 1
+
+[node name="Back" type="Button" parent="MarginContainer/HBoxContainer/Page1/Panel2"]
+custom_minimum_size = Vector2(85, 68)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -68.0
+offset_right = 85.0
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme = SubResource("Theme_ql6rp")
+
+[node name="Page2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/Page2"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2xliy")
+
+[node name="RecipeItem" parent="MarginContainer/HBoxContainer/Page2/Panel" instance=ExtResource("2_7ktaw")]
+layout_mode = 1
+
+[node name="Panel2" type="Panel" parent="MarginContainer/HBoxContainer/Page2"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eyqkk")
+
+[node name="RecipeItem" parent="MarginContainer/HBoxContainer/Page2/Panel2" instance=ExtResource("2_7ktaw")]
+layout_mode = 1
+
+[node name="Next" type="Button" parent="MarginContainer/HBoxContainer/Page2/Panel2"]
+custom_minimum_size = Vector2(85, 68)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -60.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme = SubResource("Theme_la7dg")
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_d5gbm")
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="Close" type="Button" parent="MarginContainer2"]
+custom_minimum_size = Vector2(85, 72)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_ile1b")
+
+[connection signal="clear_recipe" from="." to="MarginContainer/HBoxContainer/Page1/Panel/RecipeItem" method="_on_book_recipes_clear_recipe"]
+[connection signal="clear_recipe" from="." to="MarginContainer/HBoxContainer/Page1/Panel2/RecipeItem" method="_on_book_recipes_clear_recipe"]
+[connection signal="clear_recipe" from="." to="MarginContainer/HBoxContainer/Page2/Panel/RecipeItem" method="_on_book_recipes_clear_recipe"]
+[connection signal="clear_recipe" from="." to="MarginContainer/HBoxContainer/Page2/Panel2/RecipeItem" method="_on_book_recipes_clear_recipe"]
+[connection signal="left_bot" from="." to="MarginContainer/HBoxContainer/Page1/Panel2/RecipeItem" method="_on_book_recipes_change_recipe"]
+[connection signal="left_top" from="." to="MarginContainer/HBoxContainer/Page1/Panel/RecipeItem" method="_on_book_recipes_change_recipe"]
+[connection signal="right_bot" from="." to="MarginContainer/HBoxContainer/Page2/Panel2/RecipeItem" method="_on_book_recipes_change_recipe"]
+[connection signal="right_top" from="." to="MarginContainer/HBoxContainer/Page2/Panel/RecipeItem" method="_on_book_recipes_change_recipe"]

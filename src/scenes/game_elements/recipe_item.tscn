@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://j0yks4gdu6vf"]
+
+[ext_resource type="Script" path="res://src/scripts/game_elements/recipe_item.gd" id="1_10tpe"]
+
+[node name="RecipeItem" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_10tpe")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RecipeImage" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 10
+
+[node name="TextContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="Name" type="Label" parent="HBoxContainer/MarginContainer/TextContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="HBoxContainer/MarginContainer/TextContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 24
+autowrap_mode = 2
