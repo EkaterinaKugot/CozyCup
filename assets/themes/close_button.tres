@@ -1,0 +1,23 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://ckw0hrsxnk1eq"]
+
+[ext_resource type="Texture2D" uid="uid://cvmx55olh0ofh" path="res://assets/ui/buttons/ready/Cross-Idle.png" id="1_4o3kx"]
+[ext_resource type="Texture2D" uid="uid://xjiqk1awu38v" path="res://assets/ui/buttons/ready/Cross-Click.png" id="2_ql6mr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rh8c6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nhdlh"]
+texture = ExtResource("1_4o3kx")
+expand_margin_top = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pwho2"]
+texture = ExtResource("1_4o3kx")
+expand_margin_top = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x06bj"]
+texture = ExtResource("2_ql6mr")
+
+[resource]
+Button/styles/focus = SubResource("StyleBoxEmpty_rh8c6")
+Button/styles/hover = SubResource("StyleBoxTexture_nhdlh")
+Button/styles/normal = SubResource("StyleBoxTexture_pwho2")
+Button/styles/pressed = SubResource("StyleBoxTexture_x06bj")

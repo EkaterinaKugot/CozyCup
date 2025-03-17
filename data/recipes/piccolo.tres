@@ -9,7 +9,7 @@ name = "Пикколо"
 description = "- 1 порция зернового кофе
 - 2 порции теплого взбитого молока
 "
-is_basic = false
+is_basic = true
 ingredients = {
 0: 2,
 1: 0,

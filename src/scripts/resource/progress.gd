@@ -18,7 +18,7 @@ signal not_enough_diamonds(error_message: String)
 		assert(value >= 1, "The value of day cannot be less than 1")
 		day = value		
 
-@export var option_duration_day: Dictionary = {1: [10, 20], 12: [9, 21], 14: [8, 22]}:
+@export var option_duration_day: Dictionary = {10: [10, 20], 12: [9, 21], 14: [8, 22]}:
 	get:
 		return option_duration_day
 @export var size_intervals: int = 10:
@@ -121,6 +121,9 @@ func add_money(value: int) -> void:
 func sub_money(value: int) -> void:
 	assert(value >= 0, "The value of value cannot be less than 0")
 	money -= value
+
+func check_money(number: int) -> bool:
+	return money - number >= 0
 	
 func add_diamonds(value: int) -> void:
 	assert(value >= 0, "The value of value cannot be less than 0")
@@ -130,7 +133,7 @@ func sub_diamonds(value: int) -> void:
 	assert(value >= 0, "The value of value cannot be less than 0")
 	diamonds -= value
 	
-func add_new_opened_ingredients(ingredient: Ingredient, number: int = 3) -> void:
+func add_new_opened_ingredients(ingredient: Ingredient, number: int = 5) -> void:
 	assert(number >= 0, "The value of value cannot be less than 0")
 	opened_ingredients[ingredient] = number
 

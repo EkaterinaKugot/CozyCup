@@ -28,7 +28,6 @@ func _ready() -> void:
 	
 	opened_recipes = Global.progress.opened_recipes
 	create_pages()
-	print(pages)
 	fill_page()
 	
 func create_pages() -> void:
@@ -67,14 +66,12 @@ func on_back_pressed() -> void:
 	if current_idx_page < 0:
 		current_idx_page = pages.size() - 1
 	fill_page()
-	print("back")
 	
 func on_next_pressed() -> void:
 	current_idx_page += 1
 	if current_idx_page == pages.size():
 		current_idx_page = 0
 	fill_page()
-	print("next")
 	
 func on_close_pressed() -> void:
 	get_tree().paused = false

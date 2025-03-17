@@ -18,7 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
+mouse_filter = 2
 script = ExtResource("1_32isi")
 
 [node name="Hud" parent="." instance=ExtResource("1_y6el2")]
@@ -26,12 +26,14 @@ script = ExtResource("1_32isi")
 [node name="BottomHud" parent="." instance=ExtResource("3_l8q3j")]
 
 [node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("2_0wymm")
 expand_mode = 1
 

@@ -67,14 +67,15 @@ const scenes: Dictionary = {
 	"Level": "res://src/scenes/level.tscn",
 	"LevelBack": "res://src/scenes/level_back.tscn",
 	"LevelLeft": "res://src/scenes/level_left.tscn",
-	"LevelRight": "res://src/scenes/level_right.tscn"
+	"LevelRight": "res://src/scenes/level_right.tscn",
+	"Purchase": "res://src/scenes/purchase.tscn"
 }
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	stages_game.start_menu_stage()
 	
-func start_purchase_stage()-> void:
+func start_purchase_stage() -> void:
 	stages_game.start_purchase_stage()
 	statistics = Statistics.new()
 	statistics.set_old_rating()

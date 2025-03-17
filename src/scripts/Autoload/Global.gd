@@ -10,7 +10,7 @@ var order_data: OrderData:
 	set(value):
 		order_data = value
 
-var number_basic: int = 100
+var number_basic: int = 30
 
 var progress_path: String = "user://progress.tres"
 var recipes_path: String = "res://data/recipes_list.tres"

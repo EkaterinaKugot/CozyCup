@@ -9,7 +9,7 @@ name = "Бреве"
 description = "- 1 порция зернового кофе
 - 1 порция теплого взбитого молока
 - 1 порция теплых сливок"
-is_basic = false
+is_basic = true
 ingredients = {
 0: 1,
 1: 1,
@@ -20,5 +20,5 @@ ingredients = {
 6: 0,
 7: 0
 }
-steps = Array[int]([1, 0, 1])
+steps = Array[int]([2, 0, 1])
 unlock_cost = 500
