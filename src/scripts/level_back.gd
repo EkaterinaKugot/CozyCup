@@ -4,7 +4,7 @@ extends "res://src/scripts/base_level.gd"
 var scene_grain_package = preload("res://src/scenes/items/grain_package.tscn")
 var scene_milk = preload("res://src/scenes/items/milk.tscn")
 
-@onready var milk_frother = $MilkFrother
+@onready var milk_frother: Area2D = $MilkFrother
 
 var WIDTH
 var HEIGHT
