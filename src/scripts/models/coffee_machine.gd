@@ -48,7 +48,7 @@ func fill_number_water() -> void:
 func add_number_grains(number: int) -> void:
 	number_grains += number
 
-func сooking_coffee() -> void:
+func cooking_coffee() -> void:
 	coffee_is_ready = true
 	number_coffee_shots = number_grains
 	ingredient_in_kettle = ingredient

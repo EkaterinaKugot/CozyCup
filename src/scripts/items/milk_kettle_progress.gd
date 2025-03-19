@@ -46,7 +46,7 @@ func _process(delta):
 			add_milk_shape.disabled = false
 			start_milk_shape.disabled = false
 			
-			GameDay.milk_frother.сooking_milk()
+			GameDay.milk_frother.cooking_milk()
 			GameDay.milk_frother.use_elements()
 			$"../..".update_label_milk_container()
 			

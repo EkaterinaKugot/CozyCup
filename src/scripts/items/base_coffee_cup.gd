@@ -4,7 +4,7 @@ var coffee_cup_ingredient = preload("res://src/scenes/game_elements/coffee_cup_i
 var added_instance: Array[Dictionary] = []
 var pos_y: int = 55
 
-func _input_event(_viewport, event, shape_idx):
+func _input_event(_viewport, event, _shape_idx):
 	if OS.get_name() == "Android" or OS.get_name() == "iOS":
 		if event is InputEventScreenTouch and event.pressed:
 			var current_ingredient = get_parent().current_ingredient

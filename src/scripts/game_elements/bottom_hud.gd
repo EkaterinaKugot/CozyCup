@@ -4,9 +4,9 @@ extends CanvasLayer
 @onready var back_button = $FooterControl/MarginContainer/Back as Button
 @onready var right_button = $FooterControl/MarginContainer/Right as Button
 
-signal left_button_pressed()
-signal back_button_pressed()
-signal right_button_pressed()
+signal left_button_pressed
+signal back_button_pressed
+signal right_button_pressed
 
 var bottom_hud_disabled_two: bool = false
 
@@ -17,13 +17,13 @@ func _ready() -> void:
 	right_button.pressed.connect(on_right_pressed)
 
 func on_left_pressed() -> void:
-	emit_signal("left_button_pressed")
+	left_button_pressed.emit()
 	
 func on_back_pressed() -> void:
-	emit_signal("back_button_pressed")
+	back_button_pressed.emit()
 	
 func on_right_pressed() -> void:
-	emit_signal("right_button_pressed")
+	right_button_pressed.emit()
 
 func _disabled_bottom_hud() -> void:
 	if left_button.disabled:

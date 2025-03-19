@@ -14,10 +14,10 @@ func _ready() -> void:
 	accept.pressed.connect(on_accept_pressed)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	сlient_display()
+func _process(_delta: float) -> void:
+	client_display()
 		
-func сlient_display() -> void:
+func client_display() -> void:
 	if GameDay.stages_game.current_stage == StagesGame.Stage.GAME or \
 	GameDay.stages_game.current_stage == StagesGame.Stage.CLOSING:
 		asset.texture = GameDay.client.client_texture

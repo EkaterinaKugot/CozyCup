@@ -3,7 +3,7 @@ extends Area2D
 var item_pressed: bool = false
 signal order_is_given
 
-func _input_event(_viewport, event, shape_idx):
+func _input_event(_viewport, event, _shape_idx):
 	if OS.get_name() == "Android" or OS.get_name() == "iOS":
 		if event is InputEventScreenTouch and event.pressed:
 			item_pressed = true

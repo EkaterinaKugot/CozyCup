@@ -31,7 +31,7 @@ func _input_event(_viewport, event, _shape_idx):
 		
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var window_size = get_viewport().size - Vector2i(60.0, 60.0)
+	var _window_size = get_viewport().size - Vector2i(60.0, 60.0)
 	ingredient = GameDay.coffe_cup.current_topping
 	
 	var assets: String = "res://assets/items/coffee_cup_top.png"
@@ -55,5 +55,5 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass

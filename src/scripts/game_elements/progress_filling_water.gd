@@ -29,5 +29,5 @@ func _process(delta):
 		value = (hold_time / max_hold_time) * max_number_water
 		if hold_time >= max_hold_time:
 			is_holding = false
-			emit_signal("water_compartment_full")
+			water_compartment_full.emit()
 			# Здесь можно добавить действие при полном заполнении

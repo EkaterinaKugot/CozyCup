@@ -35,7 +35,7 @@ var ingredient_in_kettle: Ingredient:
 func add_number_milk(number: int) -> void:
 	number_milk += number
 
-func сooking_milk() -> void:
+func cooking_milk() -> void:
 	milk_is_ready = true
 	number_milk_shots = number_milk
 	ingredient_in_kettle = ingredient

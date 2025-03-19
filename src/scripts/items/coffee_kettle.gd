@@ -8,9 +8,9 @@ var initial_position = Vector2()
 var is_overlapping = false
 var current_area: Area2D
 
-signal сoffee_delivered()
+signal coffee_delivered
 
-func _input_event(_viewport, event, shape_idx):
+func _input_event(_viewport, event, _shape_idx):
 	if GameDay.coffee_machine.coffee_is_ready and not $CoffeeKettleProgress.is_holding and \
 	get_tree().root.get_node("LevelBack").current_ingredient == null and \
 	(event is InputEventScreenTouch or event is InputEventMouseButton):
@@ -37,7 +37,7 @@ func _process(_delta: float) -> void:
 			is_dragging = false
 			global_position = initial_position
 			if current_area != null and current_area.name == "CoffeeCup":
-				сoffee_delivered.emit()
+				coffee_delivered.emit()
 			
 # Срабатывает при входе в другую область
 func _on_area_entered(area: Area2D):

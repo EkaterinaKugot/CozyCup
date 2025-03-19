@@ -57,7 +57,7 @@ func _ready() -> void:
 	label_money.text = str(Global.progress.money)
 	label_diamonds.text = str(Global.progress.diamonds)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	#print("FPS " + str(Engine.get_frames_per_second()))
 	if GameDay.stages_game.current_stage == StagesGame.Stage.CLOSING:
 		close_cafe.visible = true

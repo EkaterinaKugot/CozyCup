@@ -24,7 +24,7 @@ class_name Order
 	set(value):
 		price = value
 		
-const lead_time: float = 60.0
+const lead_time: float = 40.0
 @export var time_is_exceeded = false
 
 func add_ingredient(ingredient: Ingredient, number: int) -> void:

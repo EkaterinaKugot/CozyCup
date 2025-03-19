@@ -2,9 +2,6 @@
 extends Resource
 class_name Progress
 
-signal not_enough_money(error_message: String)
-signal not_enough_diamonds(error_message: String)
-
 @export var number_start: int = 0:
 	get:
 		return number_start
@@ -51,7 +48,6 @@ const max_rating: int = 5
 		if value < 0:
 			var error_message = "The value of money cannot be less than 0"
 			push_error(error_message)  # Выводим ошибку в консоль
-			emit_signal("not_enough_money", error_message)  # Отправляем сигнал
 			return
 		money = value	
 @export var diamonds: int = 30:
@@ -62,7 +58,6 @@ const max_rating: int = 5
 			if value < 0:
 				var error_message = "The value of diamonds cannot be less than 0"
 				push_error(error_message)  # Выводим ошибку в консоль
-				emit_signal("not_enough_diamonds", error_message)  # Отправляем сигнал
 				return
 		diamonds = value
 

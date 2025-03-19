@@ -10,7 +10,7 @@ signal clean_milk_kettle()
 func _ready() -> void:
 	connect("area_entered", _on_area_entered)
 	connect("area_exited", _on_area_exited)
-	coffee_kettle.connect("сoffee_delivered", add_grains_ingredient)
+	coffee_kettle.connect("coffee_delivered", add_grains_ingredient)
 	milk_kettle.connect("milk_delivered", add_milk_ingredient)
 	
 	display_ingredients()
@@ -47,5 +47,5 @@ func _on_area_exited(area: Area2D):
 		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass

@@ -46,7 +46,7 @@ func _process(delta):
 			add_grains_shape.disabled = false
 			start_coffee_shape.disabled = false
 			
-			GameDay.coffee_machine.сooking_coffee()
+			GameDay.coffee_machine.cooking_coffee()
 			GameDay.coffee_machine.use_elements()
 			$"../..".update_label_grains_container()
 			
