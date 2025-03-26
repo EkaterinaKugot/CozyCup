@@ -23,7 +23,7 @@ func add_ingredient(ingredient: Ingredient, number: int) -> void:
 	else:
 		added_ingredients.append({ingredient: number})
 	
-func add_topping(ingredient: Ingredient, position: Vector2):
+func add_topping(ingredient: Ingredient, position: Vector2) -> void:
 	if ingredient in added_topping.keys():
 		added_topping[ingredient].append(position)
 	else:

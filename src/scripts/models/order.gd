@@ -1,31 +1,31 @@
 class_name Order
 
-@export var recipe: Recipe:
+var recipe: Recipe:
 	get:
 		return recipe
 	set(value):
 		recipe = value
 		
-@export var step_ingredient: Dictionary: # Ингредиенты из рецепта + дополнительные
+var step_ingredient: Dictionary: # Ингредиенты из рецепта + дополнительные
 	get:
 		return step_ingredient
 	set(value):
 		step_ingredient = value
 		
-@export var text: String: # Текст заказа
+var text: String: # Текст заказа
 	get:
 		return text
 	set(value):
 		text = value
 
-@export var price: int = 0: # Текст заказа
+var price: int = 0: # Текст заказа
 	get:
 		return price
 	set(value):
 		price = value
 		
 const lead_time: float = 40.0
-@export var time_is_exceeded = false
+var time_is_exceeded: bool = false
 
 func add_ingredient(ingredient: Ingredient, number: int) -> void:
 	step_ingredient[ingredient] = number
@@ -119,7 +119,7 @@ func make_order() -> void:
 		var topping = order_data.toppings[ingredient_topping.id]
 		add_words(topping)
 		
-		var number = 3
+		var number = order_data.min_topping
 		add_ingredient(ingredient_topping, number)
 		
 func add_introductory_words(order_data: OrderData) -> void:

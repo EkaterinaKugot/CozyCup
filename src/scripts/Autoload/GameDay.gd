@@ -1,3 +1,4 @@
+# GameDay.gd
 extends Node
 
 var coffe_cup: CoffeeCup:
@@ -146,11 +147,11 @@ func end_client_service() -> void:
 	# вызываем сравнение заказа и выставление оценки
 	client.grade = comparison_order_with_drink()
 	
-	# вызываем подсчет цены и обновление денег
+	# обновляем оплату
 	var price: int
 	var percent: int = (Global.progress.max_rating - client.grade) * percentage_price_reduction
-	if percent == 1:
-		price = 0
+	if client.grade == 1:
+		price = 0 # если оценка клиента = 1
 	else:
 		price = client.order.price - (client.order.price * percent / 100) # снижаем оплату за ошибки
 	Global.progress.add_money(price)
@@ -217,16 +218,15 @@ func comparison_order_with_drink() -> int:
 	return grade
 	
 	
-func create_new_client():
+func create_new_client() -> void:
 	client_grades.append(client.grade)
 	client = Client.new()
 	print(client_grades)
 
-func start_waiting_client():
+func start_waiting_client() -> void:
 	client_is_waiting = true
 	wait_timer = Timer.new()
 	wait_timer.wait_time = int(randf_range(min_wait_timer, (max_wait_timer/Global.progress.rating)))
-	print(wait_timer.wait_time)
 	wait_timer.one_shot = true
 	wait_timer.connect("timeout", _on_wait_timer_timeout)
 	add_child(wait_timer)

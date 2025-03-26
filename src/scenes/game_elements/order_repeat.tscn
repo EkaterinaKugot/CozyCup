@@ -48,6 +48,6 @@ theme_override_constants/margin_bottom = 10
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-text = "Кофе"
+text = "Добрый день, сделайте латте на банановом молоке с двойной порцией сахара и посыпте корицу"
 horizontal_alignment = 3
 autowrap_mode = 2

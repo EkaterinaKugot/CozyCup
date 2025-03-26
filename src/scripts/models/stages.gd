@@ -9,7 +9,7 @@ enum Stage{
 	MENU
 }
 
-@export var current_stage: Stage:
+var current_stage: Stage:
 	get:
 		return current_stage
 	set(value):

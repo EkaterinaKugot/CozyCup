@@ -1,48 +1,48 @@
 class_name Statistics
 
-@export var old_rating: float:
+var old_rating: float:
 	get:
 		return old_rating
 	set(value):
 		old_rating = value
-@export var new_rating: float:
+var new_rating: float:
 	get:
 		return new_rating
 	set(value):
 		new_rating = value
-@export var diff_rating: float:
+var diff_rating: float:
 	get:
 		return diff_rating
 	set(value):
 		diff_rating = value
 
-@export var served_clients: int = 0:
+var served_clients: int = 0:
 	get:
 		return served_clients
 	set(value):
 		served_clients = value
-@export var not_served_clients: int = 0:
+var not_served_clients: int = 0:
 	get:
 		return not_served_clients
 	set(value):
 		not_served_clients = value
-@export var full_clients: int = 0:
+var full_clients: int = 0:
 	get:
 		return full_clients
 	set(value):
 		full_clients = value
 		
-@export var consumption: int = 0: # расход
+var consumption: int = 0: # расход
 	get:
 		return consumption
 	set(value):
 		consumption = value
-@export var income: int = 0: # доход
+var income: int = 0: # доход
 	get:
 		return income
 	set(value):
 		income = value
-@export var profit: int: # прибыль
+var profit: int: # прибыль
 	get:
 		return profit
 	set(value):
