@@ -7,6 +7,6 @@ script = ExtResource("1_taqwk")
 id = "cream"
 name = "Сливки"
 category = 1
-is_basic = true
+is_basic = false
 purchase_cost = 12
 unlock_cost = 100

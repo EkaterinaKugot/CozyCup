@@ -105,6 +105,6 @@ custom_minimum_size = Vector2(300, 110)
 layout_mode = 2
 size_flags_horizontal = 10
 theme = ExtResource("2_301le")
-text = "1 день"
+text = "Играть"
 
 [node name="Hud" parent="." instance=ExtResource("7_f817k")]

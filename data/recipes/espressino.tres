@@ -8,7 +8,7 @@ id = "espressino"
 name = "Эспрессино"
 description = "- 1 порция зернового кофе
 - 1 порция теплого взбитого молока"
-is_basic = true
+is_basic = false
 ingredients = {
 0: 1,
 1: 0,

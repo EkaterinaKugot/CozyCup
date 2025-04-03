@@ -7,6 +7,6 @@ script = ExtResource("1_uia3i")
 id = "almond_milk"
 name = "Миндальное молоко"
 category = 0
-is_basic = true
+is_basic = false
 purchase_cost = 10
 unlock_cost = 200

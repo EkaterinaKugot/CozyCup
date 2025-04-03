@@ -8,7 +8,7 @@ id = "flat_white"
 name = "Флэт уайт"
 description = "- 1 порция зернового кофе
 - 3 порции теплого немного взбитого молока"
-is_basic = true
+is_basic = false
 ingredients = {
 0: 3,
 1: 0,

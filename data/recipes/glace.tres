@@ -9,7 +9,7 @@ name = "Глясе"
 description = "- 1 порция зернового кофе
 - 5 порций воды
 - 1 порция мороженого"
-is_basic = true
+is_basic = false
 ingredients = {
 0: 0,
 1: 0,

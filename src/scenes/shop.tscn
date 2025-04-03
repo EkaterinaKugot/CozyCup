@@ -1,0 +1,191 @@
+[gd_scene load_steps=12 format=3 uid="uid://hbvdh51lru5"]
+
+[ext_resource type="Texture2D" uid="uid://ci0dt4why4n6l" path="res://assets/bg/tablet_bg.png" id="1_kmtx0"]
+[ext_resource type="Script" path="res://src/scripts/shop.gd" id="1_xau0s"]
+[ext_resource type="PackedScene" uid="uid://bprqmeqewkl7i" path="res://src/scenes/game_elements/hud.tscn" id="2_r5gya"]
+[ext_resource type="Theme" uid="uid://ckw0hrsxnk1eq" path="res://assets/themes/close_button.tres" id="4_6x25n"]
+[ext_resource type="Theme" uid="uid://bdam5vlc7w1rf" path="res://assets/themes/tabs.tres" id="4_hhmlk"]
+[ext_resource type="ButtonGroup" uid="uid://co0qf3isyysfj" path="res://assets/themes/shop_button_group.tres" id="5_u12df"]
+[ext_resource type="Texture2D" uid="uid://cd300oxv62qlj" path="res://assets/icons/book.png" id="6_njfm1"]
+[ext_resource type="Texture2D" uid="uid://cvdq8ljidp581" path="res://assets/icons/ingredients.png" id="7_iyxwl"]
+[ext_resource type="Texture2D" uid="uid://b6cmgj6nx8ucb" path="res://assets/icons/improvements.png" id="8_obj0n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vi1nf"]
+bg_color = Color(0.921569, 0.847059, 0.854902, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q1npy"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xau0s")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_kmtx0")
+expand_mode = 1
+
+[node name="Hud" parent="." instance=ExtResource("2_r5gya")]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 94
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 102
+theme_override_constants/margin_bottom = 57
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = -5
+
+[node name="Tabs" type="Panel" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vi1nf")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Tabs"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.5
+offset_top = -113.0
+offset_right = 42.5
+offset_bottom = 113.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/separation = 3
+
+[node name="Recipes" type="CheckButton" parent="MarginContainer/HBoxContainer/Tabs/HBoxContainer"]
+custom_minimum_size = Vector2(85, 72)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme = ExtResource("4_hhmlk")
+button_pressed = true
+button_group = ExtResource("5_u12df")
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/HBoxContainer/Tabs/HBoxContainer/Recipes"]
+custom_minimum_size = Vector2(55, 55)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.5
+offset_top = -27.5
+offset_right = 27.5
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_njfm1")
+expand_mode = 1
+
+[node name="Ingredients" type="CheckButton" parent="MarginContainer/HBoxContainer/Tabs/HBoxContainer"]
+custom_minimum_size = Vector2(85, 72)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme = ExtResource("4_hhmlk")
+button_group = ExtResource("5_u12df")
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/HBoxContainer/Tabs/HBoxContainer/Ingredients"]
+custom_minimum_size = Vector2(55, 55)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.5
+offset_top = -27.5
+offset_right = 27.5
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_iyxwl")
+expand_mode = 1
+
+[node name="Improvements" type="CheckButton" parent="MarginContainer/HBoxContainer/Tabs/HBoxContainer"]
+custom_minimum_size = Vector2(85, 72)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme = ExtResource("4_hhmlk")
+button_group = ExtResource("5_u12df")
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/HBoxContainer/Tabs/HBoxContainer/Improvements"]
+custom_minimum_size = Vector2(55, 55)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.5
+offset_top = -27.5
+offset_right = 27.5
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_obj0n")
+expand_mode = 1
+
+[node name="ShopItems" type="Panel" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_q1npy")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ShopItems"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 105
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="Close" type="Button" parent="MarginContainer2"]
+custom_minimum_size = Vector2(85, 72)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("4_6x25n")

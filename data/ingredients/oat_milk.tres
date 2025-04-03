@@ -7,6 +7,6 @@ script = ExtResource("1_x6uh2")
 id = "oat_milk"
 name = "Овсяное молоко"
 category = 0
-is_basic = true
+is_basic = false
 purchase_cost = 10
 unlock_cost = 200

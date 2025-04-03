@@ -7,6 +7,6 @@ script = ExtResource("1_wihty")
 id = "chocolate_syrup"
 name = "Шоколадный сироп"
 category = 3
-is_basic = true
+is_basic = false
 purchase_cost = 5
 unlock_cost = 150
