@@ -13,7 +13,8 @@ extends Control
 @onready var plus: Button = $MarginContainer/VBoxContainer/HBoxContainer/Plus
 
 var ingredient: Ingredient
-
+var x_icon: float = 135.5
+var min_size: Vector2 = Vector2(50, 50)
 
 signal change_number_purchase(ingredient: Ingredient, number: int)
 
@@ -62,9 +63,13 @@ func _on_purchase_ingredient_item_visible(
 	if ingredient1.category == Ingredient.Category.SYRUP:
 		ingredient_image.texture = load("res://assets/items/syrup.png")
 		icon.texture = load("res://assets/icons/{0}_icon.png".format([ingredient1.id]))
+		icon.custom_minimum_size = min_size
+		icon.size = icon.custom_minimum_size
 	elif ingredient1.category == Ingredient.Category.TOPPING:
 		ingredient_image.texture = load("res://assets/items/topping_packet.png")
 		icon.texture = load("res://assets/icons/{0}_icon.png".format([ingredient1.id]))
+		icon.custom_minimum_size = min_size + Vector2(20, 20)
+		icon.size = icon.custom_minimum_size
 	else:
 		ingredient_image.texture = load("res://assets/items/{0}.png".format([ingredient1.id]))
 		icon.texture = null

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://hbvdh51lru5"]
+[gd_scene load_steps=20 format=3 uid="uid://hbvdh51lru5"]
 
 [ext_resource type="Texture2D" uid="uid://ci0dt4why4n6l" path="res://assets/bg/tablet_bg.png" id="1_kmtx0"]
 [ext_resource type="Script" path="res://src/scripts/shop.gd" id="1_xau0s"]
@@ -9,12 +9,41 @@
 [ext_resource type="Texture2D" uid="uid://cd300oxv62qlj" path="res://assets/icons/book.png" id="6_njfm1"]
 [ext_resource type="Texture2D" uid="uid://cvdq8ljidp581" path="res://assets/icons/ingredients.png" id="7_iyxwl"]
 [ext_resource type="Texture2D" uid="uid://b6cmgj6nx8ucb" path="res://assets/icons/improvements.png" id="8_obj0n"]
+[ext_resource type="PackedScene" uid="uid://cfhrpvsuf2nou" path="res://src/scenes/game_elements/shop_item.tscn" id="9_oo0uv"]
+[ext_resource type="Theme" uid="uid://dc7y8rpii2h2f" path="res://assets/themes/back_button.tres" id="10_dsbid"]
+[ext_resource type="Theme" uid="uid://blt6xo6vlubib" path="res://assets/themes/next_button.tres" id="11_lniff"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vi1nf"]
 bg_color = Color(0.921569, 0.847059, 0.854902, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q1npy"]
 bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oiqw2"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_right = 3
+border_color = Color(0.792157, 0.678431, 0.682353, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6klg2"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_color = Color(0.792157, 0.678431, 0.682353, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8jpj5"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_right = 3
+border_color = Color(0.792157, 0.678431, 0.682353, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tkvvp"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_right = 3
+border_color = Color(0.792157, 0.678431, 0.682353, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1khyu"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_color = Color(0.792157, 0.678431, 0.682353, 1)
 
 [node name="Shop" type="Control"]
 layout_mode = 3
@@ -163,15 +192,102 @@ size_flags_horizontal = 3
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_q1npy")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ShopItems"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/ShopItems"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 55
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="RecipeContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ShopItems/MarginContainer"]
+layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/ShopItems/MarginContainer/RecipeContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_oiqw2")
+
+[node name="ShopItem" parent="MarginContainer/HBoxContainer/ShopItems/MarginContainer/RecipeContainer/Panel" instance=ExtResource("9_oo0uv")]
+layout_mode = 1
+
+[node name="Panel2" type="Panel" parent="MarginContainer/HBoxContainer/ShopItems/MarginContainer/RecipeContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_6klg2")
+
+[node name="ShopItem" parent="MarginContainer/HBoxContainer/ShopItems/MarginContainer/RecipeContainer/Panel2" instance=ExtResource("9_oo0uv")]
+layout_mode = 1
+
+[node name="IngredientContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ShopItems/MarginContainer"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/ShopItems/MarginContainer/IngredientContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_8jpj5")
+
+[node name="ShopItem" parent="MarginContainer/HBoxContainer/ShopItems/MarginContainer/IngredientContainer/Panel" instance=ExtResource("9_oo0uv")]
+layout_mode = 1
+
+[node name="Panel2" type="Panel" parent="MarginContainer/HBoxContainer/ShopItems/MarginContainer/IngredientContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_tkvvp")
+
+[node name="ShopItem" parent="MarginContainer/HBoxContainer/ShopItems/MarginContainer/IngredientContainer/Panel2" instance=ExtResource("9_oo0uv")]
+layout_mode = 1
+
+[node name="Panel3" type="Panel" parent="MarginContainer/HBoxContainer/ShopItems/MarginContainer/IngredientContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_1khyu")
+
+[node name="ShopItem" parent="MarginContainer/HBoxContainer/ShopItems/MarginContainer/IngredientContainer/Panel3" instance=ExtResource("9_oo0uv")]
+layout_mode = 1
+
+[node name="ImprovementContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ShopItems/MarginContainer"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ShopItems"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -68.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+mouse_filter = 2
+
+[node name="Back" type="Button" parent="MarginContainer/HBoxContainer/ShopItems/HBoxContainer"]
+custom_minimum_size = Vector2(85, 68)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+theme = ExtResource("10_dsbid")
+
+[node name="Next" type="Button" parent="MarginContainer/HBoxContainer/ShopItems/HBoxContainer"]
+custom_minimum_size = Vector2(85, 68)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+theme = ExtResource("11_lniff")
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 0
@@ -189,3 +305,9 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = ExtResource("4_6x25n")
+
+[connection signal="ingredients_pressed" from="." to="MarginContainer/HBoxContainer/ShopItems/MarginContainer/IngredientContainer/Panel/ShopItem" method="_on_shop_ingredients_pressed"]
+[connection signal="ingredients_pressed" from="." to="MarginContainer/HBoxContainer/ShopItems/MarginContainer/IngredientContainer/Panel2/ShopItem" method="_on_shop_ingredients_pressed"]
+[connection signal="ingredients_pressed" from="." to="MarginContainer/HBoxContainer/ShopItems/MarginContainer/IngredientContainer/Panel3/ShopItem" method="_on_shop_ingredients_pressed"]
+[connection signal="recipes_pressed" from="." to="MarginContainer/HBoxContainer/ShopItems/MarginContainer/RecipeContainer/Panel/ShopItem" method="_on_shop_recipes_pressed"]
+[connection signal="recipes_pressed" from="." to="MarginContainer/HBoxContainer/ShopItems/MarginContainer/RecipeContainer/Panel2/ShopItem" method="_on_shop_recipes_pressed"]

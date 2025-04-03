@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://bk6jdlk4y4u57"]
+
+[ext_resource type="Texture2D" uid="uid://dg1phuse0q2r7" path="res://assets/recipes/breve.png" id="1_bbkvo"]
+
+[node name="RecipeElement" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 250)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 265.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="Image" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+size_flags_horizontal = 10
+mouse_filter = 2
+texture = ExtResource("1_bbkvo")
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "- 1 порция зернового кофе
+- 1 порция теплого взбитого молока
+- 1 порция теплых сливок"
+autowrap_mode = 2
