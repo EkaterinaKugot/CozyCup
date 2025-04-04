@@ -9,4 +9,4 @@ name = "Кокосовое молоко"
 category = 0
 is_basic = false
 purchase_cost = 10
-unlock_cost = 200
+unlock_cost = 300

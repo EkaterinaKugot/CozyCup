@@ -9,4 +9,4 @@ name = "Зерна темной обжарки"
 category = 2
 is_basic = false
 purchase_cost = 15
-unlock_cost = 300
+unlock_cost = 400

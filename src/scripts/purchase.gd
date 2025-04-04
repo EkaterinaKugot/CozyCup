@@ -98,9 +98,9 @@ func create_pages() -> void:
 func sort_ingredients(ingredients: Array) -> Array:
 	var result: Array = []
 	
-	for cat in categories:
+	for category in categories:
 		for ingredient in ingredients:
-			if ingredient.category == cat:
+			if ingredient.category == category:
 				result.append(ingredient)
 	return result
 

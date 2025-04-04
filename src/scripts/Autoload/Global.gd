@@ -57,3 +57,19 @@ func add_basic_recipes() -> void:
 	for recipe in recipes_list.recipes:
 		if recipe.is_basic and not progress.opened_recipes.has(recipe):
 			progress.add_new_opened_recipes(recipe)
+			
+func select_not_opened_ingredients() -> Array[Ingredient]:
+	var result: Array[Ingredient]
+	var opened_ingredients: Array = Array(progress.opened_ingredients.keys())
+	for ingredient in ingredients_list.ingredients:
+		if not opened_ingredients.has(ingredient):
+			result.append(ingredient)
+	return result
+	
+func select_not_opened_recipes() -> Array[Recipe]:
+	var result: Array[Recipe]
+	var opened_recipes: Array[Recipe] = progress.opened_recipes
+	for recipe in recipes_list.recipes:
+		if not opened_recipes.has(recipe):
+			result.append(recipe)
+	return result

@@ -1,7 +1,12 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://dc7y8rpii2h2f"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://dc7y8rpii2h2f"]
 
 [ext_resource type="Texture2D" uid="uid://bcjgov88cg1s4" path="res://assets/ui/buttons/ready/left_idle.png" id="1_nmecm"]
 [ext_resource type="Texture2D" uid="uid://trt11lhse2mv" path="res://assets/ui/buttons/ready/left_click.png" id="2_258lj"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_je3vw"]
+texture = ExtResource("1_nmecm")
+expand_margin_top = 2.0
+modulate_color = Color(0.807843, 0.807843, 0.807843, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_em4si"]
 
@@ -17,6 +22,7 @@ expand_margin_top = 2.0
 texture = ExtResource("2_258lj")
 
 [resource]
+Button/styles/disabled = SubResource("StyleBoxTexture_je3vw")
 Button/styles/focus = SubResource("StyleBoxEmpty_em4si")
 Button/styles/hover = SubResource("StyleBoxTexture_x1ka6")
 Button/styles/normal = SubResource("StyleBoxTexture_1mxgo")

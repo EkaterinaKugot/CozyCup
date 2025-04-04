@@ -9,4 +9,4 @@ name = "Фисташковый сироп"
 category = 3
 is_basic = false
 purchase_cost = 5
-unlock_cost = 150
+unlock_cost = 250

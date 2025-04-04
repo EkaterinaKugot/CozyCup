@@ -44,6 +44,7 @@ autowrap_mode = 2
 [node name="RecipeElement" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_1jlem")]
 layout_mode = 2
 size_flags_vertical = 6
+theme_override_constants/separation = -5
 
 [node name="IngredientElement" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_lcic7")]
 visible = false

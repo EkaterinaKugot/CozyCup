@@ -1,7 +1,12 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://blt6xo6vlubib"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://blt6xo6vlubib"]
 
 [ext_resource type="Texture2D" uid="uid://cyakqgeb1obpr" path="res://assets/ui/buttons/ready/right_idle.png" id="1_jbekp"]
 [ext_resource type="Texture2D" uid="uid://dy8p6m5vae8s" path="res://assets/ui/buttons/ready/right_click.png" id="2_qab5r"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_55ltg"]
+texture = ExtResource("1_jbekp")
+expand_margin_top = 2.0
+modulate_color = Color(0.807843, 0.807843, 0.807843, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_voc38"]
 
@@ -17,6 +22,7 @@ expand_margin_top = 2.0
 texture = ExtResource("2_qab5r")
 
 [resource]
+Button/styles/disabled = SubResource("StyleBoxTexture_55ltg")
 Button/styles/focus = SubResource("StyleBoxEmpty_voc38")
 Button/styles/hover = SubResource("StyleBoxTexture_u5lvd")
 Button/styles/normal = SubResource("StyleBoxTexture_0csyc")

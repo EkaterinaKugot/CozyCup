@@ -9,4 +9,4 @@ name = "Кокос"
 category = 4
 is_basic = false
 purchase_cost = 3
-unlock_cost = 100
+unlock_cost = 200

@@ -13,7 +13,6 @@ extends Control
 @onready var plus: Button = $MarginContainer/VBoxContainer/HBoxContainer/Plus
 
 var ingredient: Ingredient
-var x_icon: float = 135.5
 var min_size: Vector2 = Vector2(50, 50)
 
 signal change_number_purchase(ingredient: Ingredient, number: int)

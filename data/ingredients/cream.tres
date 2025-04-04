@@ -9,4 +9,4 @@ name = "Сливки"
 category = 1
 is_basic = false
 purchase_cost = 12
-unlock_cost = 100
+unlock_cost = 300
