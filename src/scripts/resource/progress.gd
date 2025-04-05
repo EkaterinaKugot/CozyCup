@@ -15,7 +15,7 @@ class_name Progress
 		assert(value >= 1, "The value of day cannot be less than 1")
 		day = value		
 
-@export var option_duration_day: Dictionary = {10: [10, 20], 12: [9, 21], 14: [8, 22]}:
+@export var option_duration_day: Dictionary = {1: [10, 20], 12: [9, 21], 14: [8, 22]}:
 	get:
 		return option_duration_day
 @export var size_intervals: int = 10:
@@ -41,7 +41,7 @@ class_name Progress
 		number_grades = value
 const max_rating: int = 5
 
-@export var money: int = 490:
+@export var money: int = 100:
 	get:
 		return money
 	set(value):
@@ -50,7 +50,7 @@ const max_rating: int = 5
 			push_error(error_message)  # Выводим ошибку в консоль
 			return
 		money = value	
-@export var diamonds: int = 30:
+@export var diamonds: int = 10:
 	get:
 		return diamonds
 	set(value):

@@ -17,7 +17,9 @@ func on_recipes_pressed() -> void:
 	get_tree().change_scene_to_file("res://src/scenes/book_recipes.tscn")
 	
 func on_exit_pressed() -> void:
-	if get_tree().current_scene.name != "Menu":
+	if GameDay.stages_game.current_stage == StagesGame.Stage.STATISTIC:
+		go_to_menu()
+	elif GameDay.stages_game.current_stage != StagesGame.Stage.MENU:
 		instance_confirmation_exit = scene_confirmation_exit.instantiate()
 		instance_confirmation_exit.connect("no_pressed", _on_no_pressed)
 		instance_confirmation_exit.connect("yes_pressed", _on_yes_pressed)
@@ -37,6 +39,10 @@ func _on_yes_pressed() -> void:
 	if instance_confirmation_exit != null:
 		instance_confirmation_exit.queue_free()
 	
-	GameDay.clean_variables()
 	Global.load_progress()
+	go_to_menu()
+
+func go_to_menu() -> void:
+	GameDay.start_menu_stage()
+	GameDay.clean_variables()
 	get_tree().change_scene_to_file("res://src/scenes/menu.tscn")

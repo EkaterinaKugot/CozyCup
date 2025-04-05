@@ -55,6 +55,11 @@ func change_number_purchase(ingredient: Ingredient, number: int) -> void:
 		money += element.purchase_cost * basket[element]
 		
 	amout.text = str(money)
+	
+	if Global.progress.check_money(money):
+		buy.disabled = false
+	else:
+		buy.disabled = true
 
 func on_buy_pressed() -> void:
 	if not Global.progress.check_money(money): # проверяем, что хватает денег
@@ -71,6 +76,8 @@ func on_buy_pressed() -> void:
 	fill_page()
 	
 	amout.text = str(0)
+	
+	GameDay.statistic.add_consumption(money)
 	
 func on_close_pressed() -> void:
 	GameDay.start_opening_stage()

@@ -1,4 +1,4 @@
-class_name Statistics
+class_name Statistic
 
 var old_rating: float:
 	get:
@@ -55,7 +55,7 @@ func set_new_rating() -> void:
 	new_rating = Global.progress.rating
 	
 func calculate_diff_rating() -> void:
-	diff_rating = old_rating - new_rating
+	diff_rating = new_rating - old_rating
 	
 func add_served_clients() -> void:
 	served_clients += 1

@@ -17,11 +17,11 @@ var milk_frother: MilkFrother:
 	set(value):
 		milk_frother = value
 
-var statistics: Statistics:
+var statistic: Statistic:
 	get:
-		return statistics
+		return statistic
 	set(value):
-		statistics = value
+		statistic = value
 
 var client: Client:
 	get:
@@ -74,12 +74,16 @@ const scenes: Dictionary = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	start_menu_stage()
+	
+func start_menu_stage() -> void:
 	stages_game.start_menu_stage()
+	statistic = null
 	
 func start_purchase_stage() -> void:
 	stages_game.start_purchase_stage()
-	statistics = Statistics.new()
-	statistics.set_old_rating()
+	statistic = Statistic.new()
+	statistic.set_old_rating()
 	
 func start_opening_stage() -> void:
 	stages_game.start_opening_stage()
@@ -93,9 +97,6 @@ func start_opening_stage() -> void:
 	
 	order_timer_is_start = false
 	passed_time = 0
-	
-	statistics = Statistics.new() # УБРАТЬ
-	statistics.set_old_rating()
 	
 func start_game_stage() -> void:
 	stages_game.start_game_stage()
@@ -119,17 +120,21 @@ func end_closing_stage() -> void:
 	if sum_grades != 0.0:
 		Global.progress.change_rating(sum_grades, client_grades.size())
 	
-	statistics.set_new_rating()
-	statistics.calculate_diff_rating()
-	statistics.calculate_full_clients()
+	statistic.set_new_rating()
+	statistic.calculate_diff_rating()
+	statistic.calculate_full_clients()
+	statistic.calculate_profit()
 	
 	# Обновления дня
 	Global.progress.add_day()
 	
 	clean_variables()
+	start_statistic_stage()
 
+func start_statistic_stage() -> void:
+	stages_game.start_statistic_stage()
+	
 func clean_variables() -> void:
-	stages_game.start_menu_stage()
 	coffe_cup = null
 	coffee_machine = null
 	milk_frother = null
@@ -155,6 +160,8 @@ func end_client_service() -> void:
 	else:
 		price = client.order.price - (client.order.price * percent / 100) # снижаем оплату за ошибки
 	Global.progress.add_money(price)
+	
+	statistic.add_income(price)
 	
 	coffe_cup = CoffeeCup.new()
 	
@@ -239,13 +246,13 @@ func _on_wait_timer_timeout() -> void:
 func refuse_order() -> void:
 	client.accept_order()
 	client.grade = 1
-	statistics.add_not_served_clients()
+	statistic.add_not_served_clients()
 	
 func start_timer() -> void:
 	client.accept_order()
 	order_timer_is_start = true # Запускаем таймер
 	passed_time = 0 # Задаем время таймера
-	statistics.add_served_clients()
+	statistic.add_served_clients()
 	
 func end_timer() -> void:
 	order_timer_is_start = false

@@ -64,7 +64,7 @@ func _process(_delta: float) -> void:
 		label_time.text = str(
 			Global.progress.option_duration_day[Global.progress.duration_day][1]
 		) + ":00"
-	if GameDay.stages_game.current_stage == StagesGame.Stage.GAME:
+	elif GameDay.stages_game.current_stage == StagesGame.Stage.GAME:
 		var hours: int = int(GameDay.passed_seconds_in_day) / 60
 		var minutes: int = int(GameDay.passed_seconds_in_day) - (hours * 60)
 		label_time.text = str(
@@ -83,7 +83,7 @@ func on_close_cafe_pressed() -> void:
 	GameDay.end_closing_stage()
 	close_cafe.visible = false
 	Global.save_progress()
-	get_tree().change_scene_to_file("res://src/scenes/menu.tscn")
+	get_tree().change_scene_to_file("res://src/scenes/statistic.tscn") # На сцену статистики
 	
 	
 func on_drop_menu_pressed() -> void:

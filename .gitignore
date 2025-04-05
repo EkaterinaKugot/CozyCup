@@ -16,3 +16,5 @@ mono_crash.*.json
 
 # Export
 android/
+apk/
+*.apk

@@ -11,6 +11,7 @@ grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
+theme_override_constants/separation = 5
 
 [node name="Image" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(0, 250)
