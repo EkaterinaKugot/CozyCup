@@ -17,6 +17,7 @@ extends CanvasLayer
 @onready var label_money = $HeaderControl/MarginRight/Header/MoneyPanel/TextPanel/Money as Label
 @onready var label_diamonds = $HeaderControl/MarginRight/Header/DiamondPanel/TextPanel/Diamonds as Label
 
+@onready var ready_circle: Panel = $HeaderControl/MarginRight/Header/DiamondPanel/Button/Ready
 
 func _ready() -> void:
 	drop_menu.pressed.connect(on_drop_menu_pressed)
@@ -74,6 +75,11 @@ func _process(_delta: float) -> void:
 	if GameDay.stages_game.current_stage != StagesGame.Stage.OPENING and \
 	GameDay.stages_game.current_stage != StagesGame.Stage.STATISTIC:
 		label_money.text = str(Global.progress.money)
+	
+	if GameDay.daily_tasks_ready:
+		ready_circle.visible = true
+	else:
+		ready_circle.visible = false
 		
 func on_open_cafe_pressed() -> void:
 	GameDay.start_game_stage()
