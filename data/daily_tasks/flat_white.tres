@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DailyTask" load_steps=3 format=3 uid="uid://csxwnr3cm7tk4"]
+
+[ext_resource type="Script" path="res://src/scripts/resource/daily_task.gd" id="1_ry20g"]
+[ext_resource type="Resource" uid="uid://bojljp4f1r1h0" path="res://data/recipes/flat_white.tres" id="1_t5m1t"]
+
+[resource]
+script = ExtResource("1_ry20g")
+id = "flat_white"
+task_text = "Приготовить 5 стаканов флэт уайт."
+reward = 5
+target_value = 5
+recipe = ExtResource("1_t5m1t")

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DailyTask" load_steps=3 format=3 uid="uid://5qfxava7ia8y"]
+
+[ext_resource type="Script" path="res://src/scripts/resource/daily_task.gd" id="1_bf5bg"]
+[ext_resource type="Resource" uid="uid://3aefjld65vp1" path="res://data/recipes/glace.tres" id="1_yjbxj"]
+
+[resource]
+script = ExtResource("1_bf5bg")
+id = "glace"
+task_text = "Приготовить 5 стаканов глясе."
+reward = 5
+target_value = 5
+recipe = ExtResource("1_yjbxj")

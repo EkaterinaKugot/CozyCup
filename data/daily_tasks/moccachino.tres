@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DailyTask" load_steps=3 format=3 uid="uid://bc685ld4cchq4"]
+
+[ext_resource type="Resource" uid="uid://cxmpo1uitj48f" path="res://data/recipes/moccachino.tres" id="1_0qtdy"]
+[ext_resource type="Script" path="res://src/scripts/resource/daily_task.gd" id="1_tm7al"]
+
+[resource]
+script = ExtResource("1_tm7al")
+id = "moccachino"
+task_text = "Приготовить 5 стаканов моккачино."
+reward = 5
+target_value = 5
+recipe = ExtResource("1_0qtdy")

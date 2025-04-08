@@ -72,9 +72,6 @@ const scenes: Dictionary = {
 	"Purchase": "res://src/scenes/purchase.tscn"
 }
 
-var daily_tasks_ready: bool = false
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	start_menu_stage()
 	

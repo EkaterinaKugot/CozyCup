@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DailyTask" load_steps=2 format=3 uid="uid://dnd8cn8w7ql4k"]
+
+[ext_resource type="Script" path="res://src/scripts/resource/daily_task.gd" id="1_hcokt"]
+
+[resource]
+script = ExtResource("1_hcokt")
+id = "serving"
+task_text = "Обслужить 20 клиентов на оценку 5."
+reward = 5
+target_value = 20

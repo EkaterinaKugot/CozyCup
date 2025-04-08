@@ -10,12 +10,13 @@ var order_data: OrderData:
 	set(value):
 		order_data = value
 
-var number_basic: int = 30
+var number_basic_ingredient: int = 30
 
 var progress_path: String = "user://progress.tres"
 var recipes_path: String = "res://data/recipes_list.tres"
 var ingredients_path: String = "res://data/ingredients_list.tres"
 var order_data_path: String = "res://data/order_data.tres"
+var daily_tasks_path: String = "res://data/daily_tasks_manager.tres"
 
 func _ready() -> void:
 	recipes_list = load_data(recipes_path)
@@ -23,6 +24,7 @@ func _ready() -> void:
 	load_progress()
 	order_data = load_data(order_data_path)
 	order_data.fill_name_recipe()
+	
 
 # Сохранение данных
 func save_progress() -> void:
@@ -38,8 +40,10 @@ func load_progress() -> void:
 		progress = Progress.new()
 		add_basic_ingredients()
 		add_basic_recipes()
+		progress.daily_tasks = DailyTasksManager.new()
+		progress.daily_tasks.check_and_update_tasks()
 		print("new progess")
-		
+	
 # Загрузка данных
 func load_data(path: String):
 	if ResourceLoader.exists(path):
@@ -50,7 +54,7 @@ func load_data(path: String):
 func add_basic_ingredients() -> void:
 	for ingredient in ingredients_list.ingredients:
 		if ingredient.is_basic and not progress.opened_ingredients.keys().has(ingredient):
-			progress.add_new_opened_ingredients(ingredient, number_basic)
+			progress.add_new_opened_ingredients(ingredient, number_basic_ingredient)
 			
 # Заполнение базовыми рецептами
 func add_basic_recipes() -> void:

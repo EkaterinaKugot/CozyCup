@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DailyTask" load_steps=3 format=3 uid="uid://b8jnny3ayhq3x"]
+
+[ext_resource type="Script" path="res://src/scripts/resource/daily_task.gd" id="1_83ce0"]
+[ext_resource type="Resource" uid="uid://uposwh4e2bsw" path="res://data/recipes/piccolo.tres" id="1_mx237"]
+
+[resource]
+script = ExtResource("1_83ce0")
+id = "piccolo"
+task_text = "Приготовить 5 стаканов пикколо."
+reward = 5
+target_value = 5
+recipe = ExtResource("1_mx237")

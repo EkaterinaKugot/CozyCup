@@ -17,13 +17,18 @@ extends CanvasLayer
 @onready var label_money = $HeaderControl/MarginRight/Header/MoneyPanel/TextPanel/Money as Label
 @onready var label_diamonds = $HeaderControl/MarginRight/Header/DiamondPanel/TextPanel/Diamonds as Label
 
-@onready var ready_circle: Panel = $HeaderControl/MarginRight/Header/DiamondPanel/Button/Ready
+@onready var ready_circle: Panel = $HeaderControl/MarginRight/Header/DiamondPanel/DailyTasks/Ready
+@onready var daily_tasks: Button = $HeaderControl/MarginRight/Header/DiamondPanel/DailyTasks
+
+var scene_daily_tasks = preload("res://src/scenes/game_elements/daily_tasks.tscn")
+var instance_daily_tasks
 
 func _ready() -> void:
 	drop_menu.pressed.connect(on_drop_menu_pressed)
 	
 	open_cafe.pressed.connect(on_open_cafe_pressed)
 	close_cafe.pressed.connect(on_close_cafe_pressed)
+	daily_tasks.pressed.connect(on_daily_tasks_pressed)
 	
 	if GameDay.stages_game.current_stage == StagesGame.Stage.MENU or \
 	GameDay.stages_game.current_stage == StagesGame.Stage.PURCHASE:
@@ -76,10 +81,20 @@ func _process(_delta: float) -> void:
 	GameDay.stages_game.current_stage != StagesGame.Stage.STATISTIC:
 		label_money.text = str(Global.progress.money)
 	
-	if GameDay.daily_tasks_ready:
+	if Global.progress.daily_tasks.check_need_accept():
 		ready_circle.visible = true
 	else:
 		ready_circle.visible = false
+
+func on_daily_tasks_pressed() -> void:
+	instance_daily_tasks = scene_daily_tasks.instantiate()
+	instance_daily_tasks.connect("ok_pressed", on_ok_pressed)
+
+	get_tree().root.add_child(instance_daily_tasks)
+
+func on_ok_pressed() -> void:
+	if instance_daily_tasks != null:
+		instance_daily_tasks.queue_free()
 		
 func on_open_cafe_pressed() -> void:
 	GameDay.start_game_stage()

@@ -277,14 +277,14 @@ grow_vertical = 2
 texture = ExtResource("6_difm8")
 expand_mode = 1
 
-[node name="Button" type="Button" parent="HeaderControl/MarginRight/Header/DiamondPanel"]
+[node name="DailyTasks" type="Button" parent="HeaderControl/MarginRight/Header/DiamondPanel"]
 custom_minimum_size = Vector2(44, 44)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 theme = SubResource("Theme_fqo6a")
 
-[node name="Ready" type="Panel" parent="HeaderControl/MarginRight/Header/DiamondPanel/Button"]
+[node name="Ready" type="Panel" parent="HeaderControl/MarginRight/Header/DiamondPanel/DailyTasks"]
 visible = false
 custom_minimum_size = Vector2(12, 12)
 layout_mode = 1

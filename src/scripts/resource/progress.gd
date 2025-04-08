@@ -86,7 +86,9 @@ const max_rating: int = 5
 	set(value):
 		assert(value >= 0 and value <= 10, "The value of sounds should be from 0 to 10")
 		sounds = value
-	
+
+@export var daily_tasks: DailyTasksManager
+
 func add_number_start() -> void:
 	number_start += 1
 	

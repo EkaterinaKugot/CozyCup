@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DailyTask" load_steps=3 format=3 uid="uid://disy15t66m74u"]
+
+[ext_resource type="Resource" uid="uid://p11qm8a6bnsh" path="res://data/recipes/cappuccino.tres" id="1_cea4q"]
+[ext_resource type="Script" path="res://src/scripts/resource/daily_task.gd" id="1_el1qa"]
+
+[resource]
+script = ExtResource("1_el1qa")
+id = "cappuccino"
+task_text = "Приготовить 5 стаканов капучино."
+reward = 5
+target_value = 5
+recipe = ExtResource("1_cea4q")

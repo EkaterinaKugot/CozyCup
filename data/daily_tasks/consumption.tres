@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DailyTask" load_steps=2 format=3 uid="uid://bq3bg2p2c18vj"]
+
+[ext_resource type="Script" path="res://src/scripts/resource/daily_task.gd" id="1_2spv8"]
+
+[resource]
+script = ExtResource("1_2spv8")
+id = "consumption"
+task_text = "Потратить 500 монет."
+reward = 5
+target_value = 500

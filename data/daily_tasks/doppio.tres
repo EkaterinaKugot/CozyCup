@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DailyTask" load_steps=3 format=3 uid="uid://vvovwey0bx5v"]
+
+[ext_resource type="Script" path="res://src/scripts/resource/daily_task.gd" id="1_dekbd"]
+[ext_resource type="Resource" uid="uid://cowckbmjs2rjk" path="res://data/recipes/doppio.tres" id="1_x0syt"]
+
+[resource]
+script = ExtResource("1_dekbd")
+id = "doppio"
+task_text = "Приготовить 5 стаканов доппио."
+reward = 5
+target_value = 5
+recipe = ExtResource("1_x0syt")

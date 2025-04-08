@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DailyTask" load_steps=2 format=3 uid="uid://cn2d58rd46pfy"]
+
+[ext_resource type="Script" path="res://src/scripts/resource/daily_task.gd" id="1_8rxuo"]
+
+[resource]
+script = ExtResource("1_8rxuo")
+id = "entrance"
+task_text = "Зайти в игру 1 раз."
+reward = 1
+target_value = 1
