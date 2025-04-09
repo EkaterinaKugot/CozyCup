@@ -12,7 +12,6 @@ signal coffee_delivered
 
 func _input_event(_viewport, event, _shape_idx):
 	if GameDay.coffee_machine.coffee_is_ready and not $CoffeeKettleProgress.is_holding and \
-	get_tree().root.get_node("LevelBack").current_ingredient == null and \
 	(event is InputEventScreenTouch or event is InputEventMouseButton):
 		if event.pressed:
 			print("CoffeeKettle ", event)
