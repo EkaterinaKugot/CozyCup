@@ -6,21 +6,23 @@ extends Control
 @onready var ingredients: CheckButton = $MarginContainer/HBoxContainer/Tabs/HBoxContainer/Ingredients
 @onready var improvements: CheckButton = $MarginContainer/HBoxContainer/Tabs/HBoxContainer/Improvements
 
-@onready var recipe_container: HBoxContainer = $MarginContainer/HBoxContainer/ShopItems/MarginContainer/RecipeContainer
-@onready var ingredient_container: HBoxContainer = $MarginContainer/HBoxContainer/ShopItems/MarginContainer/IngredientContainer
-@onready var improvement_container: HBoxContainer = $MarginContainer/HBoxContainer/ShopItems/MarginContainer/ImprovementContainer
+@onready var recipe_container: HBoxContainer = $MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer/RecipeContainer
+@onready var ingredient_container: HBoxContainer = $MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer/IngredientContainer
+@onready var improvement_container: HBoxContainer = $MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer/ImprovementContainer
 
-@onready var all_opened: Label = $MarginContainer/HBoxContainer/ShopItems/MarginContainer/AllOpened
+@onready var all_opened: Label = $MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer/AllOpened
 
 @onready var back: Button = $MarginContainer/HBoxContainer/ShopItems/HBoxContainer/Back
 @onready var next: Button = $MarginContainer/HBoxContainer/ShopItems/HBoxContainer/Next
 
-@onready var shop_recipe1: Control = $MarginContainer/HBoxContainer/ShopItems/MarginContainer/RecipeContainer/Panel/ShopItem
-@onready var shop_recipe2: Control = $MarginContainer/HBoxContainer/ShopItems/MarginContainer/RecipeContainer/Panel2/ShopItem
+@onready var shop_recipe1: Control = $MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer/RecipeContainer/Panel/ShopItem
+@onready var shop_recipe2: Control = $MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer/RecipeContainer/Panel2/ShopItem
 
-@onready var shop_ingredient1: Control = $MarginContainer/HBoxContainer/ShopItems/MarginContainer/IngredientContainer/Panel/ShopItem
-@onready var shop_ingredient2: Control = $MarginContainer/HBoxContainer/ShopItems/MarginContainer/IngredientContainer/Panel2/ShopItem
-@onready var shop_ingredient3: Control = $MarginContainer/HBoxContainer/ShopItems/MarginContainer/IngredientContainer/Panel3/ShopItem
+@onready var shop_ingredient1: Control = $MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer/IngredientContainer/Panel/ShopItem
+@onready var shop_ingredient2: Control = $MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer/IngredientContainer/Panel2/ShopItem
+@onready var shop_ingredient3: Control = $MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer/IngredientContainer/Panel3/ShopItem
+
+@onready var name_tab: Label = $MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer/NameTab
 
 signal recipes_pressed
 signal ingredients_pressed
@@ -177,6 +179,7 @@ func on_recipes_pressed(is_switched: bool = true) -> void:
 	recipe_container.visible = true
 	ingredient_container.visible = false
 	improvement_container.visible = false
+	name_tab.text = "Новые рецепты"
 	recipes_pressed.emit()
 	if not_opened_recipes.size() == 0:
 		all_opened.visible = true
@@ -195,6 +198,7 @@ func on_ingredients_pressed(is_switched: bool = true) -> void:
 	recipe_container.visible = false
 	ingredient_container.visible = true
 	improvement_container.visible = false
+	name_tab.text = "Новые ингредиенты"
 	ingredients_pressed.emit()
 	if not_opened_ingredients.size() == 0:
 		all_opened.visible = true
@@ -213,6 +217,7 @@ func on_improvements_pressed(is_switched: bool = true) -> void:
 	recipe_container.visible = false
 	ingredient_container.visible = false
 	improvement_container.visible = true
+	name_tab.text = "Новые улучшения"
 	
 	all_opened.visible = true
 	disabled_buttons()

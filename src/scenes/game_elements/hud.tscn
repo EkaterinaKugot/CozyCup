@@ -52,7 +52,12 @@ Button/styles/normal = SubResource("StyleBoxTexture_77qag")
 Button/styles/pressed = SubResource("StyleBoxTexture_wfy53")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p2i8o"]
-bg_color = Color(1, 0, 0, 1)
+bg_color = Color(1, 0.312295, 0.248026, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.842634, 7.26774e-06, 1.15514e-06, 1)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
@@ -451,14 +456,20 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 mouse_filter = 2
 
-[node name="Open" parent="HeaderControl/MarginLeft/VBoxContainer/OpenClose" instance=ExtResource("14_yhoyg")]
-visible = false
-layout_mode = 1
-offset_right = 70.0
+[node name="MarginContainer" type="MarginContainer" parent="HeaderControl/MarginLeft/VBoxContainer/OpenClose"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_constants/margin_left = 100
 
-[node name="Close" parent="HeaderControl/MarginLeft/VBoxContainer/OpenClose" instance=ExtResource("15_4veul")]
+[node name="Open" parent="HeaderControl/MarginLeft/VBoxContainer/OpenClose/MarginContainer" instance=ExtResource("14_yhoyg")]
 visible = false
-layout_mode = 1
+layout_mode = 2
+
+[node name="Close" parent="HeaderControl/MarginLeft/VBoxContainer/OpenClose/MarginContainer" instance=ExtResource("15_4veul")]
+visible = false
+layout_mode = 2
 
 [node name="OrderRepeat" parent="." instance=ExtResource("16_npf4d")]
 visible = false

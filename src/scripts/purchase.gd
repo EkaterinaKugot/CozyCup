@@ -7,9 +7,9 @@ extends Control
 @onready var buy: Button = $MarginContainer/TabletHud/Buy
 @onready var amout: Label = $MarginContainer/TabletHud/AmountPurchase/Amout
 
-@onready var ingredient_item1: Control = $MarginContainer/MarginContainer/HBoxContainer/Panel/IngredientItem
-@onready var ingredient_item2: Control = $MarginContainer/MarginContainer/HBoxContainer/Panel2/IngredientItem
-@onready var ingredient_item3: Control = $MarginContainer/MarginContainer/HBoxContainer/Panel3/IngredientItem
+@onready var ingredient_item1: Control = $MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/Panel/IngredientItem
+@onready var ingredient_item2: Control = $MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/Panel2/IngredientItem
+@onready var ingredient_item3: Control = $MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/Panel3/IngredientItem
 
 signal clear_ingredients
 signal ingredient_item1_visible(ingredient: Ingredient, number: int, number_purchase: int)

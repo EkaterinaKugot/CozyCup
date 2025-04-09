@@ -44,7 +44,7 @@ func add_milk_pressed(current_ingredient: Ingredient) -> void:
 			][current_ingredient].update_number() # визуально обновили значение у ингредиента
 
 func start_milk_pressed(current_ingredient: Ingredient) -> void:
-	if GameDay.milk_frother.number_milk > 0 and current_ingredient == null:
+	if GameDay.milk_frother.number_milk > 0:
 		milk_kettle.get_node("MilkKettleProgress").start_progress()
 		disabled_bottom_hud.emit()
 

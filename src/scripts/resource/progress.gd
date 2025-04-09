@@ -15,10 +15,10 @@ class_name Progress
 		assert(value >= 1, "The value of day cannot be less than 1")
 		day = value		
 
-@export var option_duration_day: Dictionary = {1: [10, 20], 12: [9, 21], 14: [8, 22]}:
+@export var option_duration_day: Dictionary = {5: [10, 20], 12: [9, 21], 14: [8, 22]}:
 	get:
 		return option_duration_day
-@export var size_intervals: int = 10:
+@export var size_intervals: int = 15:
 	get:
 		return size_intervals
 @export var duration_day: int = option_duration_day.keys()[0]:
@@ -41,7 +41,7 @@ class_name Progress
 		number_grades = value
 const max_rating: int = 5
 
-@export var money: int = 100:
+@export var money: int = 1000:
 	get:
 		return money
 	set(value):
@@ -118,6 +118,8 @@ func add_money(value: int) -> void:
 func sub_money(value: int) -> void:
 	assert(value >= 0, "The value of value cannot be less than 0")
 	money -= value
+	if daily_tasks.get_task(3).id == "consumption":
+		Global.progress.daily_tasks.update_progress(3, value)
 
 func check_money(number: int) -> bool:
 	return money - number >= 0

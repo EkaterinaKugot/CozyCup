@@ -74,6 +74,7 @@ const scenes: Dictionary = {
 
 func _ready() -> void:
 	start_menu_stage()
+	Global.progress.daily_tasks.update_progress(1, 1)
 	
 func start_menu_stage() -> void:
 	stages_game.start_menu_stage()
@@ -160,9 +161,18 @@ func end_client_service() -> void:
 		price = client.order.price - (client.order.price * percent / 100) # снижаем оплату за ошибки
 	Global.progress.add_money(price)
 	
+	if client.order.recipe == Global.progress.daily_tasks.get_task(2).recipe:
+		Global.progress.daily_tasks.update_progress(2, 1)
+	
+	if Global.progress.daily_tasks.get_task(3).id == "serving" and client.grade == 5:
+		Global.progress.daily_tasks.update_progress(3, 1)
+	elif Global.progress.daily_tasks.get_task(3).id == "income":
+		Global.progress.daily_tasks.update_progress(3, price)
+		
 	statistic.add_income(price)
 	
 	coffe_cup = CoffeeCup.new()
+	
 	
 func comparison_order_with_drink() -> int:
 	var grade: int = Global.progress.max_rating

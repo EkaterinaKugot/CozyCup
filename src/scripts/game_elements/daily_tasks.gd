@@ -7,9 +7,9 @@ extends Control
 @onready var ok: Button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Ok
 
 signal clear_all
-signal fill_task_1(task_dict: Dictionary)
-signal fill_task_2(task_dict: Dictionary)
-signal fill_task_3(task_dict: Dictionary)
+signal fill_task_1(idx: int)
+signal fill_task_2(idx: int)
+signal fill_task_3(idx: int)
 signal ok_pressed
 
 func _ready() -> void:
@@ -23,7 +23,7 @@ func on_ok_pressed() -> void:
 	
 func fill_task() -> void:
 	clear_all.emit()
-	fill_task_1.emit(Global.progress.daily_tasks.active_tasks[1])
-	fill_task_2.emit(Global.progress.daily_tasks.active_tasks[2])
-	fill_task_3.emit(Global.progress.daily_tasks.active_tasks[3])
+	fill_task_1.emit(1)
+	fill_task_2.emit(2)
+	fill_task_3.emit(3)
 	

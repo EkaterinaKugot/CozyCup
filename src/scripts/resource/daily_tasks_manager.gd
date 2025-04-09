@@ -8,28 +8,28 @@ enum TaskStatus {
 }
 
 @export var tasks: Dictionary = {
-	1: [preload("res://data/daily_tasks/entrance.tres")],
+	1: [load("res://data/daily_tasks/entrance.tres")],
 	2: [
-		preload("res://data/daily_tasks/americano.tres"),
-		preload("res://data/daily_tasks/breve.tres"),
-		preload("res://data/daily_tasks/cappuccino.tres"),
-		preload("res://data/daily_tasks/doppio.tres"),
-		preload("res://data/daily_tasks/espressino.tres"),
-		preload("res://data/daily_tasks/espresso.tres"),
-		preload("res://data/daily_tasks/flat_white.tres"),
-		preload("res://data/daily_tasks/glace.tres"),
-		preload("res://data/daily_tasks/latte.tres"),
-		preload("res://data/daily_tasks/moccachino.tres"),
-		preload("res://data/daily_tasks/piccolo.tres"),
-		preload("res://data/daily_tasks/raf.tres"),
-		preload("res://data/daily_tasks/triple.tres")
+		load("res://data/daily_tasks/americano.tres"),
+		load("res://data/daily_tasks/breve.tres"),
+		load("res://data/daily_tasks/cappuccino.tres"),
+		load("res://data/daily_tasks/doppio.tres"),
+		load("res://data/daily_tasks/espressino.tres"),
+		load("res://data/daily_tasks/espresso.tres"),
+		load("res://data/daily_tasks/flat_white.tres"),
+		load("res://data/daily_tasks/glace.tres"),
+		load("res://data/daily_tasks/latte.tres"),
+		load("res://data/daily_tasks/moccachino.tres"),
+		load("res://data/daily_tasks/piccolo.tres"),
+		load("res://data/daily_tasks/raf.tres"),
+		load("res://data/daily_tasks/triple.tres")
 	],
 	3: [
-		preload("res://data/daily_tasks/consumption.tres"), 
-		preload("res://data/daily_tasks/income.tres"),
-		preload("res://data/daily_tasks/serving.tres")
+		load("res://data/daily_tasks/consumption.tres"), 
+		load("res://data/daily_tasks/income.tres"),
+		load("res://data/daily_tasks/serving.tres")
 	]  
-} # Словарь с всеми DailyTask
+} # Словарь со всеми DailyTask
 
 @export var active_tasks: Dictionary = {}
 @export var last_update_unix: int = 0
@@ -53,6 +53,28 @@ func generate_daily_tasks() -> void:
 		else:
 			task = tasks[i].pick_random()
 		active_tasks[i] = {task: {"current_progress": 0, "status": TaskStatus.IN_PROGRESS}}
+	
+func update_progress(idx: int, value: int) -> void:
+	if get_status(idx) == TaskStatus.IN_PROGRESS:
+		active_tasks[idx].values()[0]["current_progress"] = clamp(
+			active_tasks[idx].values()[0]["current_progress"] + value, 0,  get_task(idx).target_value
+		)
+		_change_status_to_accept(idx)
+
+func _change_status_to_accept(idx: int) -> void:
+	if active_tasks[idx].values()[0][
+		"current_progress"
+		] >= get_task(idx).target_value:
+		active_tasks[idx].values()[0]["status"] = TaskStatus.ACCEPT
+
+func change_status_to_perfomed(idx: int) -> void:
+	active_tasks[idx].values()[0]["status"] = TaskStatus.PERFOMED
+
+func get_status(idx: int) -> TaskStatus:
+	return active_tasks[idx].values()[0]["status"]
+	
+func get_task(idx: int) -> DailyTask:
+	return active_tasks[idx].keys()[0]
 	
 func check_and_update_tasks() -> void:
 	var current_time = Time.get_datetime_dict_from_system()

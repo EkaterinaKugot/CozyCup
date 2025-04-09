@@ -15,7 +15,7 @@ extends Control
 @onready var open: Button = $MarginContainer/VBoxContainer/Open
 
 var item # Ingredient or Recipe
-var min_size: Vector2 = Vector2(70, 70)
+var min_size: Vector2 = Vector2(50, 50)
 
 signal open_item(item)
 
