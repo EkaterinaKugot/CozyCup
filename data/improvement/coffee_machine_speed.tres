@@ -6,6 +6,6 @@
 script = ExtResource("1_c0pm2")
 id = "coffee_machine_speed"
 name = "Готовка кофе х2"
-description = "Кофе в кофемашине готовится быстрее в 2 раза."
+description = "Кофе в 2 раза быстрее готовится в кофемашине."
 improvement = 2.0
 unlock_cost = 150

@@ -163,7 +163,6 @@ func fill_page(
 						ingredient_item1_visible.emit(item)
 
 func open_item(item) -> void:
-	print(Global.progress.opened_ingredients)
 	if item in not_opened_recipes:
 		Global.progress.sub_money(item.unlock_cost)
 		Global.progress.add_new_opened_recipes(item)
@@ -179,7 +178,6 @@ func open_item(item) -> void:
 		Global.progress.add_new_improvement(item)
 		update_data()
 		on_improvements_pressed(false)
-	print(Global.progress.opened_ingredients)
 	
 func on_close_pressed() -> void:
 	get_tree().change_scene_to_file("res://src/scenes/menu.tscn")

@@ -42,6 +42,16 @@ var ingredient_in_kettle: Ingredient:
 	set(value):
 		ingredient_in_kettle = value
 
+var water_tank_full: Improvement = Global.select_improvement_by_id("water_tank_full"):
+	get:
+		return water_tank_full
+	set(value):
+		water_tank_full = value
+
+func _init() -> void:
+	if Global.progress.has_improvement(water_tank_full):
+		number_water = max_number_elements
+	
 func fill_number_water() -> void:
 	number_water = max_number_elements
 	
@@ -54,7 +64,10 @@ func cooking_coffee() -> void:
 	ingredient_in_kettle = ingredient
 		
 func use_elements() -> void:
-	number_water -= number_grains
+	if Global.progress.has_improvement(water_tank_full):
+		number_water = max_number_elements
+	else:
+		number_water -= number_grains
 	number_grains = 0
 	ingredient = null
 	

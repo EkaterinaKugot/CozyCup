@@ -4,9 +4,12 @@ var is_holding: bool = false
 var hold_time: float = 0.0
 var max_hold_time: float 
 var max_number_coffee: int = GameDay.coffee_machine.max_number_elements
+var speed: int = 2
 
 var add_grains_shape
 var start_coffee_shape
+
+var coffee_machine_speed: Improvement = Global.select_improvement_by_id("coffee_machine_speed")
 
 signal undisabled_bottom_hud()
 
@@ -25,11 +28,14 @@ func _ready() -> void:
 		value = max_number_coffee
 		get_parent().visible = true
 		$"../CoffeeKettle".z_index = 1
+	
+	if Global.progress.has_improvement(coffee_machine_speed):
+		speed /= int(coffee_machine_speed.improvement)
 
 func start_progress() -> void:
 	get_parent().visible = true
 	$"../CoffeeKettle".z_index = 1
-	max_hold_time = GameDay.coffee_machine.number_grains * 2
+	max_hold_time = GameDay.coffee_machine.number_grains * speed
 	
 	start_coffee_shape.disabled = true
 	add_grains_shape.disabled = true

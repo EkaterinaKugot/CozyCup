@@ -4,9 +4,12 @@ var is_holding: bool = false
 var hold_time: float = 0.0
 var max_hold_time: float 
 var max_number_milk: int = GameDay.milk_frother.max_number_elements
+var speed: int = 2
 
 var add_milk_shape
 var start_milk_shape
+
+var milk_frother_speed: Improvement = Global.select_improvement_by_id("milk_frother_speed")
 
 signal undisabled_bottom_hud()
 
@@ -25,11 +28,14 @@ func _ready() -> void:
 		value = max_number_milk
 		get_parent().visible = true
 		$"../MilkKettle".z_index = 1
+		
+	if Global.progress.has_improvement(milk_frother_speed):
+		speed /= int(milk_frother_speed.improvement)
 
 func start_progress() -> void:
 	get_parent().visible = true
 	$"../MilkKettle".z_index = 1
-	max_hold_time = GameDay.milk_frother.number_milk * 2
+	max_hold_time = GameDay.milk_frother.number_milk * speed
 	
 	start_milk_shape.disabled = true
 	add_milk_shape.disabled = true

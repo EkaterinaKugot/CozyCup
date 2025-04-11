@@ -40,7 +40,11 @@ var wait_timer: Timer:
 	set(value):
 		wait_timer = value
 const min_wait_timer: int = 5
-const max_wait_timer: int = 60
+var max_wait_timer: int = 60
+
+var clients_come_faster: Improvement
+var increased_income: Improvement
+
 const percentage_price_reduction: int = 15
 
 var order_timer_is_start: bool = false
@@ -75,6 +79,8 @@ const scenes: Dictionary = {
 func _ready() -> void:
 	start_menu_stage()
 	Global.progress.daily_tasks.update_progress(1, 1)
+	clients_come_faster = Global.select_improvement_by_id("clients_come_faster")
+	increased_income = Global.select_improvement_by_id("increased_income")
 	
 func start_menu_stage() -> void:
 	stages_game.start_menu_stage()
@@ -100,8 +106,12 @@ func start_opening_stage() -> void:
 	
 func start_game_stage() -> void:
 	stages_game.start_game_stage()
+	if Global.progress.has_improvement(clients_come_faster) and max_wait_timer == 60:
+		max_wait_timer = int(max_wait_timer / clients_come_faster.improvement)
+		
 	number_seconds_in_day = 60 * Global.progress.duration_day
 	passed_seconds_in_day = 0.0
+	print(max_wait_timer)
 
 func start_closing_stage() -> void:
 	stages_game.start_closing_stage()
@@ -159,6 +169,10 @@ func end_client_service() -> void:
 		price = 0 # если оценка клиента = 1
 	else:
 		price = client.order.price - (client.order.price * percent / 100) # снижаем оплату за ошибки
+	print(client.grade, " ", price)
+	if Global.progress.has_improvement(increased_income):
+		price += price * increased_income.improvement / 100
+	print(price)
 	Global.progress.add_money(price)
 	
 	if client.order.recipe == Global.progress.daily_tasks.get_task(2).recipe:

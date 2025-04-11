@@ -6,6 +6,6 @@
 script = ExtResource("1_sphuq")
 id = "milk_frother_speed"
 name = "Готовка молока х2"
-description = "Молоко в капучинаторе готовится быстрее в 2 раза."
+description = "Молоко в 2 раза быстрее готовится в капучинаторе."
 improvement = 2.0
 unlock_cost = 150

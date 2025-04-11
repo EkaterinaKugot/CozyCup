@@ -166,7 +166,7 @@ func add_new_improvement(improvement: Improvement) -> void:
 	if not opened_improvements.has(improvement):
 		opened_improvements.append(improvement)
 
-func check_improvement(improvement: Improvement) -> bool:
+func has_improvement(improvement: Improvement) -> bool:
 	return opened_improvements.has(improvement)
 	
 func add_music(value: int) -> void:
