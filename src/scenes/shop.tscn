@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://hbvdh51lru5"]
+[gd_scene load_steps=22 format=3 uid="uid://hbvdh51lru5"]
 
 [ext_resource type="Texture2D" uid="uid://ci0dt4why4n6l" path="res://assets/bg/tablet_bg.png" id="1_kmtx0"]
 [ext_resource type="Script" path="res://src/scripts/shop.gd" id="1_xau0s"]
@@ -41,6 +41,16 @@ border_width_right = 3
 border_color = Color(0.792157, 0.678431, 0.682353, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1khyu"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_color = Color(0.792157, 0.678431, 0.682353, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f0uu4"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_right = 3
+border_color = Color(0.792157, 0.678431, 0.682353, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qtj0t"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_left = 3
 border_color = Color(0.792157, 0.678431, 0.682353, 1)
@@ -278,6 +288,22 @@ size_flags_vertical = 3
 mouse_filter = 2
 theme_override_constants/separation = 0
 
+[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer/ImprovementContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_f0uu4")
+
+[node name="ShopItem" parent="MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer/ImprovementContainer/Panel" instance=ExtResource("9_oo0uv")]
+layout_mode = 1
+
+[node name="Panel2" type="Panel" parent="MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer/ImprovementContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_qtj0t")
+
+[node name="ShopItem" parent="MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer/ImprovementContainer/Panel2" instance=ExtResource("9_oo0uv")]
+layout_mode = 1
+
 [node name="AllOpened" type="Label" parent="MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer"]
 visible = false
 layout_mode = 2
@@ -335,13 +361,18 @@ theme = ExtResource("4_6x25n")
 [connection signal="clear_items" from="." to="MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer/IngredientContainer/Panel/ShopItem" method="_on_shop_clear_items"]
 [connection signal="clear_items" from="." to="MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer/IngredientContainer/Panel2/ShopItem" method="_on_shop_clear_items"]
 [connection signal="clear_items" from="." to="MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer/IngredientContainer/Panel3/ShopItem" method="_on_shop_clear_items"]
+[connection signal="clear_items" from="." to="MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer/ImprovementContainer/Panel/ShopItem" method="_on_shop_clear_items"]
+[connection signal="clear_items" from="." to="MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer/ImprovementContainer/Panel2/ShopItem" method="_on_shop_clear_items"]
+[connection signal="improvement_item1_visible" from="." to="MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer/ImprovementContainer/Panel/ShopItem" method="_on_shop_improvement_visible"]
+[connection signal="improvement_item2_visible" from="." to="MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer/ImprovementContainer/Panel2/ShopItem" method="_on_shop_improvement_visible"]
+[connection signal="improvement_pressed" from="." to="MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer/RecipeContainer/Panel2/ShopItem" method="_on_shop_improvement_pressed"]
+[connection signal="improvement_pressed" from="." to="MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer/ImprovementContainer/Panel/ShopItem" method="_on_shop_improvement_pressed"]
 [connection signal="ingredient_item1_visible" from="." to="MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer/IngredientContainer/Panel/ShopItem" method="_on_shop_ingredient_visible"]
 [connection signal="ingredient_item2_visible" from="." to="MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer/IngredientContainer/Panel2/ShopItem" method="_on_shop_ingredient_visible"]
 [connection signal="ingredient_item3_visible" from="." to="MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer/IngredientContainer/Panel3/ShopItem" method="_on_shop_ingredient_visible"]
 [connection signal="ingredients_pressed" from="." to="MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer/IngredientContainer/Panel/ShopItem" method="_on_shop_ingredients_pressed"]
 [connection signal="ingredients_pressed" from="." to="MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer/IngredientContainer/Panel2/ShopItem" method="_on_shop_ingredients_pressed"]
 [connection signal="ingredients_pressed" from="." to="MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer/IngredientContainer/Panel3/ShopItem" method="_on_shop_ingredients_pressed"]
-[connection signal="ingredients_pressed" from="." to="MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer/IngredientContainer/Panel3/ShopItem" method="_on_shop_ingredient_visible"]
 [connection signal="recipe_item1_visible" from="." to="MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer/RecipeContainer/Panel/ShopItem" method="_on_shop_recipe_visible"]
 [connection signal="recipe_item2_visible" from="." to="MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer/RecipeContainer/Panel2/ShopItem" method="_on_shop_recipe_visible"]
 [connection signal="recipes_pressed" from="." to="MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer/RecipeContainer/Panel/ShopItem" method="_on_shop_recipes_pressed"]

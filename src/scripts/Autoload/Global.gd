@@ -4,6 +4,7 @@ extends Node
 var progress: Progress = null
 var recipes_list: RecipeList = null
 var ingredients_list: IngredientList = null
+var improvements_list: ImprovementsList = null
 var order_data: OrderData:
 	get:
 		return order_data
@@ -16,11 +17,12 @@ var progress_path: String = "user://progress.tres"
 var recipes_path: String = "res://data/recipes_list.tres"
 var ingredients_path: String = "res://data/ingredients_list.tres"
 var order_data_path: String = "res://data/order_data.tres"
-var daily_tasks_path: String = "res://data/daily_tasks_manager.tres"
+var improvements_path: String = "res://data/improvements_list.tres"
 
 func _ready() -> void:
 	recipes_list = load_data(recipes_path)
 	ingredients_list = load_data(ingredients_path)
+	improvements_list = load_data(improvements_path)
 	load_progress()
 	order_data = load_data(order_data_path)
 	order_data.fill_name_recipe()
@@ -40,7 +42,7 @@ func load_progress() -> void:
 		progress = Progress.new()
 		add_basic_ingredients()
 		add_basic_recipes()
-		progress.daily_tasks = DailyTasksManager.new()
+		progress.daily_tasks = DailyTasks.new()
 		progress.daily_tasks.check_and_update_tasks()
 		print("new progess")
 	
@@ -77,3 +79,20 @@ func select_not_opened_recipes() -> Array[Recipe]:
 		if not opened_recipes.has(recipe):
 			result.append(recipe)
 	return result
+
+func select_not_opened_improvements() -> Array[Improvement]:
+	var result: Array[Improvement]
+	var opened_improvements: Array[Improvement] = progress.opened_improvements
+	for improvement in improvements_list.improvements:
+		if not opened_improvements.has(improvement):
+			result.append(improvement)
+	return result
+	
+func select_improvement_by_id(id: String) -> Improvement:
+	var result: Improvement
+	for improvement in improvements_list.improvements:
+		if improvement.id == id:
+			result = improvement
+			break
+	return result
+		

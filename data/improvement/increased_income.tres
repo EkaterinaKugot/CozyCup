@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Improvement" load_steps=2 format=3 uid="uid://c4v7g1kig31nd"]
+
+[ext_resource type="Script" path="res://src/scripts/resource/improvement.gd" id="1_go8as"]
+
+[resource]
+script = ExtResource("1_go8as")
+id = "increased_income"
+name = "Доход + 10%"
+description = "Доход с каждого заказа увеличивается на 10%."
+improvement = 10.0
+unlock_cost = 200

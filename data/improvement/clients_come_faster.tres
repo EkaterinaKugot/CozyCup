@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Improvement" load_steps=2 format=3 uid="uid://dq4mmvm3teor5"]
+
+[ext_resource type="Script" path="res://src/scripts/resource/improvement.gd" id="1_0uggq"]
+
+[resource]
+script = ExtResource("1_0uggq")
+id = "clients_come_faster"
+name = "Ожидание клиентов"
+description = "Новые клиенты в 1.5 раза быстрее приходять в кафе."
+improvement = 1.5
+unlock_cost = 100

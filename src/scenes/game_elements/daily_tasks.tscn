@@ -1,7 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://py1tve6esavj"]
+[gd_scene load_steps=14 format=3 uid="uid://py1tve6esavj"]
 
-[ext_resource type="PackedScene" uid="uid://bocyphpjbs4bh" path="res://src/scripts/game_elements/task.tscn" id="1_f5dbl"]
-[ext_resource type="Script" path="res://src/scripts/game_elements/daily_tasks.gd" id="1_glurd"]
+[ext_resource type="PackedScene" uid="uid://bocyphpjbs4bh" path="res://src/scenes/game_elements/task.tscn" id="1_f5dbl"]
+[ext_resource type="Script" path="res://src/scripts/game_elements/daily_tasks_scene.gd" id="1_glurd"]
 [ext_resource type="Theme" uid="uid://thjmy3qv67jv" path="res://assets/themes/confirmation_delete.tres" id="2_yi2nl"]
 [ext_resource type="Texture2D" uid="uid://do2l3uo0afuqe" path="res://assets/ui/buttons/ready/video_idle.png" id="3_vpesf"]
 [ext_resource type="Texture2D" uid="uid://bwgwdxp13wl8k" path="res://assets/ui/buttons/ready/video_click.png" id="4_e156v"]
@@ -24,6 +24,11 @@ shadow_color = Color(0.305882, 0.305882, 0.305882, 1)
 shadow_size = 10
 shadow_offset = Vector2(2, 5)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3oenr"]
+texture = ExtResource("3_vpesf")
+expand_margin_top = 2.0
+modulate_color = Color(0.807843, 0.807843, 0.807843, 1)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ntofp"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oj0j8"]
@@ -38,6 +43,7 @@ expand_margin_top = 2.0
 texture = ExtResource("4_e156v")
 
 [sub_resource type="Theme" id="Theme_ha0l0"]
+Button/styles/disabled = SubResource("StyleBoxTexture_3oenr")
 Button/styles/focus = SubResource("StyleBoxEmpty_ntofp")
 Button/styles/hover = SubResource("StyleBoxTexture_oj0j8")
 Button/styles/normal = SubResource("StyleBoxTexture_0sn35")
@@ -113,32 +119,34 @@ layout_mode = 2
 layout_mode = 2
 theme_override_constants/separation = 50
 
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="NumberAds" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "10 x"
+vertical_alignment = 1
+
+[node name="Ads" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 65)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme = SubResource("Theme_ha0l0")
+
 [node name="Ok" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(80, 65)
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 2
 size_flags_vertical = 4
 theme = ExtResource("2_yi2nl")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 24
 text = "ОК"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 10
-
-[node name="Ads" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(80, 65)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-theme = SubResource("Theme_ha0l0")
-
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "x 10"
-vertical_alignment = 1
 
 [connection signal="clear_all" from="." to="PanelContainer/MarginContainer/VBoxContainer/Task" method="_on_daily_tasks_clear_all"]
 [connection signal="clear_all" from="." to="PanelContainer/MarginContainer/VBoxContainer/Task2" method="_on_daily_tasks_clear_all"]

@@ -14,11 +14,13 @@ mouse_filter = 2
 theme_override_constants/separation = 5
 
 [node name="Image" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(0, 250)
+custom_minimum_size = Vector2(213, 265)
 layout_mode = 2
 size_flags_horizontal = 10
 mouse_filter = 2
 texture = ExtResource("1_bbkvo")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="."]
 custom_minimum_size = Vector2(220, 0)

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Improvement" load_steps=2 format=3 uid="uid://b3ptsorgqcrg8"]
+
+[ext_resource type="Script" path="res://src/scripts/resource/improvement.gd" id="1_tropd"]
+
+[resource]
+script = ExtResource("1_tropd")
+id = "water_tank_full"
+name = "Бак воды полон"
+description = "Бак воды у кофемашины всегда полон."
+improvement = 10.0
+unlock_cost = 125

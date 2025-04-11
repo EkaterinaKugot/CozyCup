@@ -6,6 +6,9 @@ extends Control
 
 @onready var ok: Button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Ok
 
+@onready var ads: Button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/Ads
+@onready var number_ads: Label = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/NumberAds
+
 signal clear_all
 signal fill_task_1(idx: int)
 signal fill_task_2(idx: int)
@@ -16,7 +19,16 @@ func _ready() -> void:
 	get_tree().paused = true
 	ok.pressed.connect(on_ok_pressed)
 	fill_task()
+	
+	if Global.progress.daily_tasks.current_number_ads == 0:
+		ads.disabled = true
+	else:
+		ads.disabled = false
+	update_number_ads()
 
+func update_number_ads() -> void:
+	number_ads.text = str(Global.progress.daily_tasks.current_number_ads) + " x"
+	
 func on_ok_pressed() -> void:
 	get_tree().paused = false
 	ok_pressed.emit()
@@ -27,3 +39,5 @@ func fill_task() -> void:
 	fill_task_2.emit(2)
 	fill_task_3.emit(3)
 	
+func _process(_delta: float) -> void:
+	pass

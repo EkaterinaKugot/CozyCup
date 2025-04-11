@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Improvement" load_steps=2 format=3 uid="uid://dgcd4g8gpb5sr"]
+
+[ext_resource type="Script" path="res://src/scripts/resource/improvement.gd" id="1_sphuq"]
+
+[resource]
+script = ExtResource("1_sphuq")
+id = "milk_frother_speed"
+name = "Готовка молока х2"
+description = "Молоко в капучинаторе готовится быстрее в 2 раза."
+improvement = 2.0
+unlock_cost = 150

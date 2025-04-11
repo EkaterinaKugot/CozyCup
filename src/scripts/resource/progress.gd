@@ -15,7 +15,7 @@ class_name Progress
 		assert(value >= 1, "The value of day cannot be less than 1")
 		day = value		
 
-@export var option_duration_day: Dictionary = {5: [10, 20], 12: [9, 21], 14: [8, 22]}:
+@export var option_duration_day: Dictionary = {5: [10, 20]}:
 	get:
 		return option_duration_day
 @export var size_intervals: int = 15:
@@ -41,7 +41,7 @@ class_name Progress
 		number_grades = value
 const max_rating: int = 5
 
-@export var money: int = 1000:
+@export var money: int = 100:
 	get:
 		return money
 	set(value):
@@ -50,7 +50,7 @@ const max_rating: int = 5
 			push_error(error_message)  # Выводим ошибку в консоль
 			return
 		money = value	
-@export var diamonds: int = 10:
+@export var diamonds: int = 0:
 	get:
 		return diamonds
 	set(value):
@@ -73,6 +73,12 @@ const max_rating: int = 5
 	set(value):
 		assert(value.size() >= 0, "The size of opened_recipes cannot be less than 0")
 		opened_recipes = value
+@export var opened_improvements: Array[Improvement] = []:
+	get:
+		return opened_improvements
+	set(value):
+		assert(value.size() >= 0, "The size of opened_recipes cannot be less than 0")
+		opened_improvements = value
 
 @export var music: int = 7:
 	get:
@@ -87,7 +93,8 @@ const max_rating: int = 5
 		assert(value >= 0 and value <= 10, "The value of sounds should be from 0 to 10")
 		sounds = value
 
-@export var daily_tasks: DailyTasksManager
+@export var daily_tasks: DailyTasks
+
 
 func add_number_start() -> void:
 	number_start += 1
@@ -131,6 +138,9 @@ func add_diamonds(value: int) -> void:
 func sub_diamonds(value: int) -> void:
 	assert(value >= 0, "The value of value cannot be less than 0")
 	diamonds -= value
+
+func check_diamonds(number: int) -> bool:
+	return diamonds - number >= 0
 	
 func add_new_opened_ingredients(ingredient: Ingredient, number: int = 5) -> void:
 	assert(number >= 0, "The value of value cannot be less than 0")
@@ -152,6 +162,13 @@ func check_number_ingredient(ingredient: Ingredient, number: int) -> bool:
 func add_new_opened_recipes(recipe: Recipe) -> void:
 	opened_recipes.append(recipe)
 
+func add_new_improvement(improvement: Improvement) -> void:
+	if not opened_improvements.has(improvement):
+		opened_improvements.append(improvement)
+
+func check_improvement(improvement: Improvement) -> bool:
+	return opened_improvements.has(improvement)
+	
 func add_music(value: int) -> void:
 	assert(value >= 0, "The value of value cannot be less than 0")
 	music += value
@@ -180,3 +197,11 @@ func select_ingredients_by_id(id: String) -> Ingredient:
 		if ingredient.id == id:
 			return ingredient
 	return null
+	
+func select_improvement_by_id(id: String) -> Improvement:
+	var result: Improvement
+	for improvement in opened_improvements:
+		if improvement.id == id:
+			result = improvement
+			break
+	return result

@@ -1,5 +1,5 @@
 extends Resource
-class_name DailyTasksManager
+class_name DailyTasks
 
 enum TaskStatus { 
 	IN_PROGRESS, 
@@ -34,6 +34,13 @@ enum TaskStatus {
 @export var active_tasks: Dictionary = {}
 @export var last_update_unix: int = 0
 
+@export var current_number_ads: int = 10
+@export var max_number_ads: int = 10
+
+func sub_ads() -> void:
+	if current_number_ads != 0:
+		current_number_ads -= 1
+		
 func check_need_accept() -> bool:
 	for task in active_tasks.values():
 		if task.values()[0]["status"] == TaskStatus.ACCEPT:
@@ -53,6 +60,8 @@ func generate_daily_tasks() -> void:
 		else:
 			task = tasks[i].pick_random()
 		active_tasks[i] = {task: {"current_progress": 0, "status": TaskStatus.IN_PROGRESS}}
+	
+	current_number_ads = max_number_ads
 	
 func update_progress(idx: int, value: int) -> void:
 	if get_status(idx) == TaskStatus.IN_PROGRESS:

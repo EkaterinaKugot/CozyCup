@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfhrpvsuf2nou"]
+[gd_scene load_steps=6 format=3 uid="uid://cfhrpvsuf2nou"]
 
 [ext_resource type="PackedScene" uid="uid://bk6jdlk4y4u57" path="res://src/scenes/game_elements/recipe_element.tscn" id="1_1jlem"]
 [ext_resource type="Script" path="res://src/scripts/game_elements/shop_item.gd" id="1_qknpl"]
 [ext_resource type="PackedScene" uid="uid://ba0eiues04534" path="res://src/scenes/game_elements/ingredient_element.tscn" id="2_lcic7"]
 [ext_resource type="Theme" uid="uid://cuxkfo2hoq3nw" path="res://assets/themes/big_button.tres" id="3_vs5hy"]
+[ext_resource type="Texture2D" uid="uid://bmnlpw1ki5x8d" path="res://assets/icons/money.png" id="4_8jah8"]
 
 [node name="ShopItem" type="Control"]
 layout_mode = 3
@@ -68,6 +69,13 @@ text = "Цена:"
 layout_mode = 2
 theme_override_colors/font_color = Color(0.964706, 0.341176, 0.533333, 1)
 text = "300"
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("4_8jah8")
+expand_mode = 1
 
 [node name="Open" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(150, 60)

@@ -53,9 +53,9 @@ func _on_daily_tasks_fill_task(idx: int) -> void:
 	progress.text = str(task_dict[task]["current_progress"]) + "/" + str(task.target_value)
 	number_reward.text = str(task.reward)
 	
-	if task_dict[task]["status"] == DailyTasksManager.TaskStatus.ACCEPT:
+	if task_dict[task]["status"] == DailyTasks.TaskStatus.ACCEPT:
 		change_status_accept()
-	elif task_dict[task]["status"] == DailyTasksManager.TaskStatus.PERFOMED:
+	elif task_dict[task]["status"] == DailyTasks.TaskStatus.PERFOMED:
 		change_status_performed()
 	else:
 		change_status_in_progress()

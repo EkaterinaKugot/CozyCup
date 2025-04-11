@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ImprovementsList" load_steps=8 format=3 uid="uid://ctvn4kjnlc4pw"]
+
+[ext_resource type="Script" path="res://src/scripts/resource/improvement.gd" id="1_5r7jx"]
+[ext_resource type="Script" path="res://src/scripts/resource/improvements_list.gd" id="2_8766s"]
+[ext_resource type="Resource" uid="uid://fy0qy6bhg4xo" path="res://data/improvement/coffee_machine_speed.tres" id="2_qfci1"]
+[ext_resource type="Resource" uid="uid://dgcd4g8gpb5sr" path="res://data/improvement/milk_frother_speed.tres" id="3_rks5t"]
+[ext_resource type="Resource" uid="uid://c4v7g1kig31nd" path="res://data/improvement/increased_income.tres" id="4_stn46"]
+[ext_resource type="Resource" uid="uid://dq4mmvm3teor5" path="res://data/improvement/clients_come_faster.tres" id="5_1yyfr"]
+[ext_resource type="Resource" uid="uid://b3ptsorgqcrg8" path="res://data/improvement/water_tank_full.tres" id="6_slsqe"]
+
+[resource]
+script = ExtResource("2_8766s")
+improvements = Array[ExtResource("1_5r7jx")]([ExtResource("2_qfci1"), ExtResource("3_rks5t"), ExtResource("4_stn46"), ExtResource("5_1yyfr"), ExtResource("6_slsqe")])

@@ -22,10 +22,14 @@ extends Control
 @onready var shop_ingredient2: Control = $MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer/IngredientContainer/Panel2/ShopItem
 @onready var shop_ingredient3: Control = $MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer/IngredientContainer/Panel3/ShopItem
 
+@onready var shop_improvement1: Control = $MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer/ImprovementContainer/Panel/ShopItem
+@onready var shop_improvement2: Control = $MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer/ImprovementContainer/Panel2/ShopItem
+
 @onready var name_tab: Label = $MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer/NameTab
 
 signal recipes_pressed
 signal ingredients_pressed
+signal improvement_pressed
 
 signal ingredient_item1_visible(ingredient: Ingredient)
 signal ingredient_item2_visible(ingredient: Ingredient)
@@ -33,6 +37,9 @@ signal ingredient_item3_visible(ingredient: Ingredient)
 
 signal recipe_item1_visible(recipe: Recipe)
 signal recipe_item2_visible(recipe: Recipe)
+
+signal improvement_item1_visible(improvement: Improvement)
+signal improvement_item2_visible(improvement: Improvement)
 
 signal clear_items
 
@@ -55,6 +62,11 @@ var current_page_recipe: int = 0
 var not_opened_recipes: Array[Recipe]
 const number_recipes: int = 2
 
+var pages_improvements: Array[Array]
+var current_page_improvement: int = 0
+var not_opened_improvements: Array[Improvement]
+const number_improvements: int = 2
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	close.pressed.connect(on_close_pressed)
@@ -71,6 +83,8 @@ func _ready() -> void:
 	shop_ingredient1.connect("open_item", open_item)
 	shop_ingredient2.connect("open_item", open_item)
 	shop_ingredient3.connect("open_item", open_item)
+	shop_improvement1.connect("open_item", open_item)
+	shop_improvement2.connect("open_item", open_item)
 	
 	update_data()
 	
@@ -80,9 +94,11 @@ func _ready() -> void:
 func update_data() -> void:
 	not_opened_ingredients = Global.select_not_opened_ingredients()
 	not_opened_recipes = Global.select_not_opened_recipes()
+	not_opened_improvements = Global.select_not_opened_improvements()
 	
 	pages_ingredients = create_pages(not_opened_ingredients, number_ingredients, true)
 	pages_recipes = create_pages(not_opened_recipes, number_recipes)
+	pages_improvements = create_pages(not_opened_improvements, number_improvements)
 	
 func create_pages(
 	not_opened_items: Array, number_items: int, is_ingredients: bool = false
@@ -134,19 +150,17 @@ func fill_page(
 					elif type_data == Recipe:
 						recipe_item2_visible.emit(item)
 					else:
-						pass
+						improvement_item2_visible.emit(item)
 				elif idx_items % number_items == number_items - 2:
 					if type_data == Ingredient:
 						ingredient_item2_visible.emit(item)
 					elif type_data == Recipe:
 						recipe_item1_visible.emit(item)
 					else:
-						pass
+						improvement_item1_visible.emit(item)
 				else:
 					if type_data == Ingredient:
 						ingredient_item1_visible.emit(item)
-					else:
-						pass
 
 func open_item(item) -> void:
 	print(Global.progress.opened_ingredients)
@@ -160,8 +174,11 @@ func open_item(item) -> void:
 		Global.progress.add_new_opened_ingredients(item)
 		update_data()
 		on_ingredients_pressed(false)
-	else:
-		pass
+	elif item in not_opened_improvements:
+		Global.progress.sub_diamonds(item.unlock_cost)
+		Global.progress.add_new_improvement(item)
+		update_data()
+		on_improvements_pressed(false)
 	print(Global.progress.opened_ingredients)
 	
 func on_close_pressed() -> void:
@@ -218,9 +235,19 @@ func on_improvements_pressed(is_switched: bool = true) -> void:
 	ingredient_container.visible = false
 	improvement_container.visible = true
 	name_tab.text = "Новые улучшения"
-	
-	all_opened.visible = true
-	disabled_buttons()
+	improvement_pressed.emit()
+	if not_opened_improvements.size() == 0:
+		all_opened.visible = true
+		clear_items.emit()
+		disabled_buttons()
+	else:
+		all_opened.visible = false
+		included_buttons()
+		if is_switched:
+			current_page_improvement = 0
+		elif current_page_improvement == pages_improvements.size():
+			current_page_improvement -= 1
+		fill_page(pages_improvements, current_page_improvement, number_improvements, Improvement)
 
 func on_back_pressed() -> void:
 	if recipe_container.visible:
@@ -229,8 +256,9 @@ func on_back_pressed() -> void:
 	elif ingredient_container.visible:
 		current_page_ingredient = leaf_back(current_page_ingredient, pages_ingredients)
 		fill_page(pages_ingredients, current_page_ingredient, number_ingredients, Ingredient)
-	else:
-		pass
+	elif improvement_container.visible:
+		current_page_improvement = leaf_back(current_page_improvement, pages_improvements)
+		fill_page(pages_improvements, current_page_improvement, number_improvements, Improvement)
 
 func leaf_back(current_page: int, pages: Array) -> int:
 	current_page -= 1
@@ -245,9 +273,10 @@ func on_next_pressed() -> void:
 	elif ingredient_container.visible:
 		current_page_ingredient = leaf_next(current_page_ingredient, pages_ingredients)
 		fill_page(pages_ingredients, current_page_ingredient, number_ingredients, Ingredient)
-	else:
-		pass
-
+	elif improvement_container.visible:
+		current_page_improvement = leaf_next(current_page_improvement, pages_improvements)
+		fill_page(pages_improvements, current_page_improvement, number_improvements, Improvement)
+		
 func leaf_next(current_page: int, pages: Array) -> int:
 	current_page += 1
 	if current_page == pages.size():
