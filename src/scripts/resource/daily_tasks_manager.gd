@@ -62,6 +62,7 @@ func generate_daily_tasks() -> void:
 		active_tasks[i] = {task: {"current_progress": 0, "status": TaskStatus.IN_PROGRESS}}
 	
 	current_number_ads = max_number_ads
+	update_progress(1, 1)
 	
 func update_progress(idx: int, value: int) -> void:
 	if get_status(idx) == TaskStatus.IN_PROGRESS:

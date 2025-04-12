@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://py1tve6esavj"]
+[gd_scene load_steps=15 format=3 uid="uid://py1tve6esavj"]
 
 [ext_resource type="PackedScene" uid="uid://bocyphpjbs4bh" path="res://src/scenes/game_elements/task.tscn" id="1_f5dbl"]
 [ext_resource type="Script" path="res://src/scripts/game_elements/daily_tasks_scene.gd" id="1_glurd"]
 [ext_resource type="Theme" uid="uid://thjmy3qv67jv" path="res://assets/themes/confirmation_delete.tres" id="2_yi2nl"]
 [ext_resource type="Texture2D" uid="uid://do2l3uo0afuqe" path="res://assets/ui/buttons/ready/video_idle.png" id="3_vpesf"]
 [ext_resource type="Texture2D" uid="uid://bwgwdxp13wl8k" path="res://assets/ui/buttons/ready/video_click.png" id="4_e156v"]
+[ext_resource type="Script" path="res://addons/GodotAndroidYandexAds/yandex_ads.gd" id="6_upwwm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5w4yy"]
 bg_color = Color(0.117647, 0.117647, 0.117647, 0.701961)
@@ -147,6 +148,10 @@ theme = ExtResource("2_yi2nl")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 24
 text = "ОК"
+
+[node name="YandexAds" type="Node" parent="."]
+script = ExtResource("6_upwwm")
+rewarded_id = "R-M-15035387-1"
 
 [connection signal="clear_all" from="." to="PanelContainer/MarginContainer/VBoxContainer/Task" method="_on_daily_tasks_clear_all"]
 [connection signal="clear_all" from="." to="PanelContainer/MarginContainer/VBoxContainer/Task2" method="_on_daily_tasks_clear_all"]
