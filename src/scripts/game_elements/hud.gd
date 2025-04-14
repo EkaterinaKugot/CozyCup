@@ -87,6 +87,7 @@ func _process(_delta: float) -> void:
 func on_daily_tasks_pressed() -> void:
 	if instance_daily_tasks != null:
 		instance_daily_tasks.queue_free()
+		get_tree().paused = false
 	else:
 		instance_daily_tasks = scene_daily_tasks.instantiate()
 		instance_daily_tasks.connect("ok_pressed", on_ok_pressed)
