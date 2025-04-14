@@ -118,12 +118,14 @@ layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 50
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 4
+mouse_filter = 2
 theme_override_constants/separation = 10
 
 [node name="NumberAds" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
@@ -151,6 +153,7 @@ text = "ОК"
 
 [node name="YandexAds" type="Node" parent="."]
 script = ExtResource("6_upwwm")
+interstitial_id = "R-M-15035387-2"
 rewarded_id = "R-M-15035387-1"
 
 [connection signal="clear_all" from="." to="PanelContainer/MarginContainer/VBoxContainer/Task" method="_on_daily_tasks_clear_all"]

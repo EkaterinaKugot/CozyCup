@@ -15,9 +15,7 @@ extends CanvasLayer
 @onready var close_cafe: Button = $HeaderControl/MarginLeft/VBoxContainer/OpenClose/MarginContainer/Close
 
 @onready var label_money = $HeaderControl/MarginRight/Header/MoneyPanel/TextPanel/Money as Label
-@onready var label_diamonds = $HeaderControl/MarginRight/Header/DiamondPanel/TextPanel/Diamonds as Label
 
-@onready var ready_circle: Panel = $HeaderControl/MarginRight/Header/DiamondPanel/DailyTasks/Ready
 @onready var daily_tasks: Button = $HeaderControl/MarginRight/Header/DiamondPanel/DailyTasks
 
 var scene_daily_tasks = preload("res://src/scenes/game_elements/daily_tasks.tscn")
@@ -61,7 +59,6 @@ func _ready() -> void:
 		label_rating.text = str(Global.progress.rating)
 		
 	label_money.text = str(Global.progress.money)
-	label_diamonds.text = str(Global.progress.diamonds)
 	
 	Global.progress.daily_tasks.check_and_update_tasks()
 
@@ -87,22 +84,15 @@ func _process(_delta: float) -> void:
 	GameDay.stages_game.current_stage != StagesGame.Stage.STATISTIC:
 		label_money.text = str(Global.progress.money)
 	
-	if Global.progress.daily_tasks.check_need_accept():
-		ready_circle.visible = true
-	else:
-		ready_circle.visible = false
-	
-	label_diamonds.text = str(Global.progress.diamonds)
-
-func update_diamonds() -> void:
-	label_diamonds.text = str(Global.progress.diamonds)
-	
 func on_daily_tasks_pressed() -> void:
-	instance_daily_tasks = scene_daily_tasks.instantiate()
-	instance_daily_tasks.connect("ok_pressed", on_ok_pressed)
-	
-	Global.progress.daily_tasks.check_and_update_tasks()
-	get_tree().root.add_child(instance_daily_tasks)
+	if instance_daily_tasks != null:
+		instance_daily_tasks.queue_free()
+	else:
+		instance_daily_tasks = scene_daily_tasks.instantiate()
+		instance_daily_tasks.connect("ok_pressed", on_ok_pressed)
+		
+		Global.progress.daily_tasks.check_and_update_tasks()
+		get_tree().root.add_child(instance_daily_tasks)
 
 func on_ok_pressed() -> void:
 	if instance_daily_tasks != null:

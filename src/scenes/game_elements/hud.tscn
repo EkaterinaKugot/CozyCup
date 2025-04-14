@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bprqmeqewkl7i"]
+[gd_scene load_steps=40 format=3 uid="uid://bprqmeqewkl7i"]
 
 [ext_resource type="Script" path="res://src/scripts/game_elements/hud.gd" id="1_6ufo0"]
 [ext_resource type="Texture2D" uid="uid://d3o3g53rp42k8" path="res://assets/ui/buttons/ready/Levels-Idle.png" id="2_8o5h3"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c65w4lmqn7u0" path="res://assets/ui/custom_ui/сurrency_panel2.png" id="3_u1a13"]
 [ext_resource type="Texture2D" uid="uid://c51t6ui5sjq7g" path="res://assets/icons/wallet.png" id="4_2nyt5"]
 [ext_resource type="PackedScene" uid="uid://dg81uujaakw1n" path="res://src/scenes/game_elements/dropping_menu.tscn" id="4_arens"]
+[ext_resource type="Script" path="res://src/scripts/game_elements/diamond_panel.gd" id="5_y1ts0"]
 [ext_resource type="Texture2D" uid="uid://cqmve1yby7eg0" path="res://assets/icons/diamond.png" id="6_difm8"]
 [ext_resource type="Texture2D" uid="uid://bmjw6bkfnvbtb" path="res://assets/ui/buttons/ready/add_diamod_idle.png" id="7_rqvsb"]
 [ext_resource type="Texture2D" uid="uid://bpiorlx61fb4q" path="res://assets/ui/buttons/ready/add_diamod_click.png" id="8_dp3d2"]
@@ -230,11 +231,13 @@ texture = ExtResource("4_2nyt5")
 expand_mode = 1
 
 [node name="DiamondPanel" type="PanelContainer" parent="HeaderControl/MarginRight/Header"]
+process_mode = 3
 custom_minimum_size = Vector2(210, 72)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_pmesg")
+script = ExtResource("5_y1ts0")
 
 [node name="TextPanel" type="Panel" parent="HeaderControl/MarginRight/Header/DiamondPanel"]
 custom_minimum_size = Vector2(170, 61)
