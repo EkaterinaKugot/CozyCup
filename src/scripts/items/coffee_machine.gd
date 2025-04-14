@@ -55,6 +55,9 @@ func update_label_grains_container() -> void:
 func start_coffee_pressed(current_ingredient: Ingredient) -> void:
 	if GameDay.coffee_machine.number_water >= GameDay.coffee_machine.number_grains and \
 	GameDay.coffee_machine.number_grains > 0:
+		if current_ingredient != null:
+			get_parent().unvisible_ingredient()
+			get_parent().current_ingredient = null
 		coffee_kettle.get_node("CoffeeKettleProgress").start_progress()
 		disabled_bottom_hud.emit()
 	

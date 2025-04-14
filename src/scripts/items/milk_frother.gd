@@ -45,6 +45,9 @@ func add_milk_pressed(current_ingredient: Ingredient) -> void:
 
 func start_milk_pressed(current_ingredient: Ingredient) -> void:
 	if GameDay.milk_frother.number_milk > 0:
+		if current_ingredient != null:
+			get_parent().unvisible_ingredient()
+			get_parent().current_ingredient = null
 		milk_kettle.get_node("MilkKettleProgress").start_progress()
 		disabled_bottom_hud.emit()
 

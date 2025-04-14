@@ -46,14 +46,16 @@ func change_current_ingredient(ingredient: Ingredient) -> void:
 	elif current_ingredient == null:
 		current_ingredient = ingredient
 	else:
-		var instance = find_instance_by_ingredients(current_ingredient)
-		var glow_effect = instance.get_node("GlowEffect")
-		glow_effect.visible = not glow_effect.visible
-		if current_ingredient.category == Ingredient.Category.SYRUP:
-			instance.delete_mini_game()
-		
+		unvisible_ingredient()
 		current_ingredient = ingredient
 
+func unvisible_ingredient() -> void:
+	var instance = find_instance_by_ingredients(current_ingredient)
+	var glow_effect = instance.get_node("GlowEffect")
+	glow_effect.visible = not glow_effect.visible
+	if current_ingredient.category == Ingredient.Category.SYRUP:
+		instance.delete_mini_game()
+		
 func find_instance_by_ingredients(ingredient: Ingredient):
 	var instance
 	for ingr in instances_ingredients[ingredient.category].keys():

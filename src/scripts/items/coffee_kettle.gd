@@ -15,6 +15,9 @@ func _input_event(_viewport, event, _shape_idx):
 	(event is InputEventScreenTouch or event is InputEventMouseButton):
 		if event.pressed:
 			print("CoffeeKettle ", event)
+			if get_tree().current_scene.current_ingredient != null:
+				get_tree().current_scene.unvisible_ingredient()
+				get_tree().current_scene.current_ingredient = null
 			is_dragging = true 
 			mouse_button_pressed = true
 			drag_offset = global_position - get_global_mouse_position()
