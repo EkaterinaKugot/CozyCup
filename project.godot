@@ -15,10 +15,15 @@ run/main_scene="res://src/scenes/menu.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://assets/themes/default_bus_layout.tres"
+
 [autoload]
 
 Global="*res://src/scripts/Autoload/Global.gd"
 GameDay="*res://src/scripts/Autoload/GameDay.gd"
+MusicsAndSounds="*res://src/scripts/Autoload/MusicsAndSounds.gd"
 
 [display]
 

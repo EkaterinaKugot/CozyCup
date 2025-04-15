@@ -88,6 +88,9 @@ func on_daily_tasks_pressed() -> void:
 	if instance_daily_tasks != null:
 		instance_daily_tasks.queue_free()
 		get_tree().paused = false
+		
+		if elements_menu.instance_settings != null:
+			get_tree().paused = true
 	else:
 		instance_daily_tasks = scene_daily_tasks.instantiate()
 		instance_daily_tasks.connect("ok_pressed", on_ok_pressed)
@@ -98,6 +101,9 @@ func on_daily_tasks_pressed() -> void:
 func on_ok_pressed() -> void:
 	if instance_daily_tasks != null:
 		instance_daily_tasks.queue_free()
+	
+	if elements_menu.instance_settings != null:
+		get_tree().paused = true
 		
 func on_open_cafe_pressed() -> void:
 	GameDay.start_game_stage()

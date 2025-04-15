@@ -2,6 +2,10 @@ extends Control
 
 @onready var exit = $MarginContainer/VBoxContainer/Exit as Button
 @onready var recipes: Button = $MarginContainer/VBoxContainer/Recipes
+@onready var settings: Button = $MarginContainer/VBoxContainer/Settings
+
+var scene_settings = preload("res://src/scenes/game_elements/settings.tscn")
+var instance_settings
 
 var scene_confirmation_exit = preload("res://src/scenes/game_elements/action_confirmation.tscn")
 var instance_confirmation_exit
@@ -11,7 +15,25 @@ func _ready() -> void:
 	set_process(false)
 	exit.pressed.connect(on_exit_pressed)
 	recipes.pressed.connect(on_recipes_pressed)
+	settings.pressed.connect(on_settings_pressed)
 
+func on_settings_pressed() -> void:
+	instance_settings = scene_settings.instantiate()
+	instance_settings.connect("cancel_pressed", on_cancel_pressed)
+	instance_settings.connect("apply_pressed", on_apply_pressed)
+	get_tree().root.add_child(instance_settings)
+
+func on_cancel_pressed() -> void:
+	if instance_settings != null:
+		instance_settings.queue_free()
+	Global.load_settings()
+	MusicsAndSounds.update_music_volume()
+
+func on_apply_pressed() -> void:
+	if instance_settings != null:
+		instance_settings.queue_free()
+	Global.save_settings()
+	
 func on_recipes_pressed() -> void:
 	GameDay.current_scene = get_tree().current_scene.name
 	get_tree().change_scene_to_file("res://src/scenes/book_recipes.tscn")

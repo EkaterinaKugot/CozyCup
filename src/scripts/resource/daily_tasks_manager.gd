@@ -37,6 +37,9 @@ enum TaskStatus {
 @export var current_number_ads: int = 10
 @export var max_number_ads: int = 10
 
+func _init() -> void:
+	check_and_update_tasks()
+	
 func sub_ads() -> void:
 	if current_number_ads != 0:
 		current_number_ads -= 1

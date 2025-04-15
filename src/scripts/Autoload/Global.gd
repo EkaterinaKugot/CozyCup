@@ -2,6 +2,7 @@
 extends Node
 
 var progress: Progress = null
+var settings: Settings = null
 var recipes_list: RecipeList = null
 var ingredients_list: IngredientList = null
 var improvements_list: ImprovementsList = null
@@ -11,9 +12,9 @@ var order_data: OrderData:
 	set(value):
 		order_data = value
 
-var number_basic_ingredient: int = 30
-
 var progress_path: String = "user://progress.tres"
+var settings_path: String = "user://settings.tres"
+
 var recipes_path: String = "res://data/recipes_list.tres"
 var ingredients_path: String = "res://data/ingredients_list.tres"
 var order_data_path: String = "res://data/order_data.tres"
@@ -23,7 +24,10 @@ func _ready() -> void:
 	recipes_list = load_data(recipes_path)
 	ingredients_list = load_data(ingredients_path)
 	improvements_list = load_data(improvements_path)
+	
 	load_progress()
+	load_settings()
+	
 	order_data = load_data(order_data_path)
 	order_data.fill_name_recipe()
 	
@@ -32,19 +36,29 @@ func _ready() -> void:
 func save_progress() -> void:
 	var error_code = ResourceSaver.save(progress, progress_path)
 	print("Сохранение завершено с кодом:", error_code)
+	
+func save_settings() -> void:
+	var error_code = ResourceSaver.save(settings, settings_path)
+	print("Сохранение завершено с кодом:", error_code)
 
 # Загрузка данных прогресса
 func load_progress() -> void:
 	if ResourceLoader.exists(progress_path):
-		#DirAccess.remove_absolute(progress_path)
 		progress = ResourceLoader.load(progress_path, "", 4)
 	else:
 		progress = Progress.new()
 		add_basic_ingredients()
 		add_basic_recipes()
 		progress.daily_tasks = DailyTasks.new()
-		progress.daily_tasks.check_and_update_tasks()
 		print("new progess")
+		
+# Загрузка настроек
+func load_settings() -> void:
+	if ResourceLoader.exists(settings_path):
+		settings = ResourceLoader.load(settings_path, "", 4)
+	else:
+		settings = Settings.new()
+		save_settings()
 	
 # Загрузка данных
 func load_data(path: String):
@@ -56,7 +70,7 @@ func load_data(path: String):
 func add_basic_ingredients() -> void:
 	for ingredient in ingredients_list.ingredients:
 		if ingredient.is_basic and not progress.opened_ingredients.keys().has(ingredient):
-			progress.add_new_opened_ingredients(ingredient, number_basic_ingredient)
+			progress.add_new_opened_ingredients(ingredient, progress.number_basic_ingredient)
 			
 # Заполнение базовыми рецептами
 func add_basic_recipes() -> void:

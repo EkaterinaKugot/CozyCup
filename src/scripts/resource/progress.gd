@@ -80,21 +80,9 @@ const max_rating: int = 5
 		assert(value.size() >= 0, "The size of opened_recipes cannot be less than 0")
 		opened_improvements = value
 
-@export var music: int = 7:
-	get:
-		return music
-	set(value):
-		assert(value >= 0 and value <= 10, "The value of music should be from 0 to 10")
-		music = value	
-@export var sounds: int = 7:
-	get:
-		return sounds
-	set(value):
-		assert(value >= 0 and value <= 10, "The value of sounds should be from 0 to 10")
-		sounds = value
-
 @export var daily_tasks: DailyTasks
 
+const number_basic_ingredient: int = 30
 
 func add_number_start() -> void:
 	number_start += 1
@@ -126,7 +114,7 @@ func sub_money(value: int) -> void:
 	assert(value >= 0, "The value of value cannot be less than 0")
 	money -= value
 	if daily_tasks.get_task(3).id == "consumption":
-		Global.progress.daily_tasks.update_progress(3, value)
+		daily_tasks.update_progress(3, value)
 
 func check_money(number: int) -> bool:
 	return money - number >= 0
@@ -168,22 +156,6 @@ func add_new_improvement(improvement: Improvement) -> void:
 
 func has_improvement(improvement: Improvement) -> bool:
 	return opened_improvements.has(improvement)
-	
-func add_music(value: int) -> void:
-	assert(value >= 0, "The value of value cannot be less than 0")
-	music += value
-	
-func sub_music(value: int) -> void:
-	assert(value >= 0, "The value of value cannot be less than 0")
-	music -= value
-	
-func add_sounds(value: int) -> void:
-	assert(value >= 0, "The value of value cannot be less than 0")
-	sounds += value
-	
-func sub_sounds(value: int) -> void:
-	assert(value >= 0, "The value of value cannot be less than 0")
-	sounds -= value
 	
 func select_ingredients_by_category(category: Ingredient.Category) -> Dictionary:
 	var result = {}
