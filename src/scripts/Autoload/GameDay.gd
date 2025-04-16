@@ -78,9 +78,13 @@ const scenes: Dictionary = {
 
 func _ready() -> void:
 	start_menu_stage()
-	Global.progress.daily_tasks.update_progress(1, 1)
+	
 	clients_come_faster = Global.select_improvement_by_id("clients_come_faster")
 	increased_income = Global.select_improvement_by_id("increased_income")
+	call_deferred("_update_progress")
+	
+func _update_progress():
+	Global.progress.daily_tasks.update_progress(1, 1)
 	
 func start_menu_stage() -> void:
 	stages_game.start_menu_stage()
