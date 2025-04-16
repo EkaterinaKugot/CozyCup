@@ -7,7 +7,7 @@ class_name Settings
 	set(value):
 		assert(value >= 0 and value <= 10, "The value of music should be from 0 to 10")
 		music = value	
-@export var sounds: int = 5:
+@export var sounds: int = 7:
 	get:
 		return sounds
 	set(value):

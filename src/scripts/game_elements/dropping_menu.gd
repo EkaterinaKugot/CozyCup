@@ -27,7 +27,8 @@ func on_cancel_pressed() -> void:
 	if instance_settings != null:
 		instance_settings.queue_free()
 	Global.load_settings()
-	MusicsAndSounds.update_music_volume()
+	Audio.update_music_volume()
+	Audio.update_sound_volume()
 
 func on_apply_pressed() -> void:
 	if instance_settings != null:

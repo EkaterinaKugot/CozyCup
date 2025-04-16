@@ -41,12 +41,14 @@ func start_progress() -> void:
 	add_grains_shape.disabled = true
 	
 	is_holding = true
+	Audio.play_sound(Audio.coffee_player, Audio.coffee)
 	
 func _process(delta):
 	if is_holding:
 		hold_time += delta
 		value = (hold_time / max_hold_time) * max_number_coffee
 		if hold_time >= max_hold_time:
+			Audio.play_sound(Audio.coffee_player, null)
 			is_holding = false
 			hold_time = 0.0
 			add_grains_shape.disabled = false

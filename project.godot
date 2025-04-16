@@ -23,7 +23,7 @@ buses/default_bus_layout="res://assets/themes/default_bus_layout.tres"
 
 Global="*res://src/scripts/Autoload/Global.gd"
 GameDay="*res://src/scripts/Autoload/GameDay.gd"
-MusicsAndSounds="*res://src/scripts/Autoload/MusicsAndSounds.gd"
+Audio="*res://src/scripts/Autoload/Audio.gd"
 
 [display]
 

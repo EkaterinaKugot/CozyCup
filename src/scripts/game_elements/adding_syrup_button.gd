@@ -32,6 +32,7 @@ func _gui_input(event):
 		
 		# Проверяем, достигла ли кнопка низа
 		if new_y >= max_y:
+			Audio.play_sound(Audio.sound_player, Audio.syrup)
 			dragging = false
 			mini_game_end.emit()
 			
@@ -45,7 +46,3 @@ func _ready() -> void:
 	position.y = 0
 	max_y = get_parent().size.y - size.y
 	min_y = 0.0
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass

@@ -111,7 +111,7 @@ func start_game_stage() -> void:
 		
 	number_seconds_in_day = 60 * Global.progress.duration_day
 	passed_seconds_in_day = 0.0
-	print(max_wait_timer)
+	Audio.play_sound(Audio.sound_player, Audio.client)
 
 func start_closing_stage() -> void:
 	stages_game.start_closing_stage()
@@ -247,7 +247,6 @@ func comparison_order_with_drink() -> int:
 	grade = max(grade, 1)
 	return grade
 	
-	
 func create_new_client() -> void:
 	client_grades.append(client.grade)
 	client = Client.new()
@@ -265,6 +264,9 @@ func start_waiting_client() -> void:
 func _on_wait_timer_timeout() -> void:
 	client_is_waiting = false
 	wait_timer.queue_free()
+	if stages_game.current_stage == StagesGame.Stage.GAME or \
+		stages_game.current_stage == StagesGame.Stage.CLOSING:
+		Audio.play_sound(Audio.sound_player, Audio.client)
 	
 func refuse_order() -> void:
 	client.accept_order()

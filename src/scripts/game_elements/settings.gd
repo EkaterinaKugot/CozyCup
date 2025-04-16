@@ -40,7 +40,7 @@ func on_music_pressed() -> void:
 	numder_music.text = str(music_slider.value)
 	
 	Global.settings.change_music(music_slider.value)
-	MusicsAndSounds.update_music_volume()
+	Audio.update_music_volume()
 
 func music_slider_changed(_value: float) -> void:
 	numder_music.text = str(music_slider.value)
@@ -50,7 +50,7 @@ func music_slider_changed(_value: float) -> void:
 		music_button.button_pressed = false
 	
 	Global.settings.change_music(music_slider.value)
-	MusicsAndSounds.update_music_volume()
+	Audio.update_music_volume()
 	
 func on_sound_pressed() -> void:
 	if sound_button.button_pressed:
@@ -61,6 +61,7 @@ func on_sound_pressed() -> void:
 	number_sound.text = str(sound_slider.value)
 	
 	Global.settings.change_sounds(sound_slider.value)
+	Audio.update_sound_volume()
 	
 func sound_slider_changed(_value: float) -> void:
 	number_sound.text = str(sound_slider.value)
@@ -70,6 +71,7 @@ func sound_slider_changed(_value: float) -> void:
 		sound_button.button_pressed = false
 		
 	Global.settings.change_sounds(sound_slider.value)
+	Audio.update_sound_volume()
 
 func on_cancel_pressed() -> void:
 	get_tree().paused = false
