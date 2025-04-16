@@ -38,6 +38,10 @@ func add_ingredient(current_ingredient: Ingredient) -> void:
 				get_parent().instances_ingredients[
 					current_ingredient.category
 					][current_ingredient].update_number() # визуально обновили значение у ингредиента
+				if current_ingredient.category == Ingredient.Category.SUGAR:
+					Audio.play_sound(Audio.sound_player, Audio.sugar)
+			else:
+				Audio.play_sound(Audio.sound_player, Audio.liquid)
 			
 			display_ingredients()  # отображаем ингредиенты
 	

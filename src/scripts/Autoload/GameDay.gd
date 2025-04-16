@@ -291,10 +291,10 @@ func _process(delta: float) -> void:
 		if self.passed_time < self.client.order.lead_time:
 			self.passed_time += delta
 		else:
+			Audio.play_sound(Audio.sound_player, Audio.timer)
 			self.passed_time = 0 
 			self.client.exceed_time()
 			self.order_timer_is_start = false  # Останавливаем таймер
-			print("timer закончился")
 	
 	if self.stages_game.current_stage == StagesGame.Stage.GAME:
 		if self.passed_seconds_in_day < self.number_seconds_in_day:

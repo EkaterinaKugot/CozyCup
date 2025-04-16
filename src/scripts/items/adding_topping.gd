@@ -18,6 +18,7 @@ func _input_event(_viewport, event, _shape_idx):
 	if item_pressed:
 		item_pressed = false
 		if Global.progress.check_number_ingredient(ingredient, number):
+			Audio.play_sound(Audio.sound_player, Audio.sugar)
 			var instance = scene_topping_top.instantiate()
 			instance.get_node("Topping").texture = load(
 				"res://assets/items/topping_{0}.png".format([ingredient.id])
