@@ -1,22 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://7sgs7voxb6pd"]
+[gd_scene load_steps=7 format=3 uid="uid://7sgs7voxb6pd"]
 
 [ext_resource type="Texture2D" uid="uid://b43f7xmliv2av" path="res://assets/ui/custom_ui/glow_effect/sugar.png" id="1_061ka"]
 [ext_resource type="Script" path="res://src/scripts/items/base_left_ingredient.gd" id="1_mgrd2"]
+[ext_resource type="Texture2D" uid="uid://iyxndp1s3uxw" path="res://assets/ui/custom_ui/shadow/sugar_shadow.png" id="2_fjdoo"]
 [ext_resource type="Texture2D" uid="uid://bvcvxruxrgqqr" path="res://assets/items/sugar.png" id="3_m2fp4"]
 [ext_resource type="StyleBox" uid="uid://cftgpy62p6wa8" path="res://assets/themes/number_ingredient.tres" id="4_hpagd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hy5x1"]
-size = Vector2(288.5, 411)
+size = Vector2(274.125, 411)
 
 [node name="Sugar" type="Area2D"]
 script = ExtResource("1_mgrd2")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+texture = ExtResource("2_fjdoo")
 
 [node name="GlowEffect" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("1_061ka")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(1.1, 1)
 texture = ExtResource("3_m2fp4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

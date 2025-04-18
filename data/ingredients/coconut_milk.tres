@@ -7,6 +7,6 @@ script = ExtResource("1_5dpy8")
 id = "coconut_milk"
 name = "Кокосовое молоко"
 category = 0
-is_basic = false
+is_basic = true
 purchase_cost = 10
 unlock_cost = 300

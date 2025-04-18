@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c7tfrdlqpk6rn"]
+[gd_scene load_steps=8 format=3 uid="uid://c7tfrdlqpk6rn"]
 
 [ext_resource type="Texture2D" uid="uid://d0a6triq2vcs4" path="res://assets/items/syrup.png" id="1_0nncs"]
 [ext_resource type="Script" path="res://src/scripts/items/syrup.gd" id="1_qm008"]
 [ext_resource type="Texture2D" uid="uid://c76sow8muykgs" path="res://assets/ui/custom_ui/glow_effect/syrup.png" id="1_u85sb"]
 [ext_resource type="Texture2D" uid="uid://c3o1qk3a75ofh" path="res://assets/icons/coconut_syrup_icon.png" id="2_dw1d7"]
+[ext_resource type="Texture2D" uid="uid://bkoch5bwwt1q0" path="res://assets/ui/custom_ui/shadow/syrup_shadow.png" id="2_q74ns"]
 [ext_resource type="StyleBox" uid="uid://cftgpy62p6wa8" path="res://assets/themes/number_ingredient.tres" id="5_8xsgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eoxgb"]
@@ -11,6 +12,9 @@ size = Vector2(141, 287)
 
 [node name="Syrup" type="Area2D"]
 script = ExtResource("1_qm008")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+texture = ExtResource("2_q74ns")
 
 [node name="GlowEffect" type="Sprite2D" parent="."]
 visible = false

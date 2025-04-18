@@ -26,7 +26,7 @@ func _input_event(_viewport, event, _shape_idx):
 			
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	initial_position = global_position + Vector2(20, 0)
+	initial_position = global_position
 	connect("area_entered", _on_area_entered)
 	connect("area_exited", _on_area_exited)
 	

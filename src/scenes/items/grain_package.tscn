@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b07v0wat56pqh"]
+[gd_scene load_steps=7 format=3 uid="uid://b07v0wat56pqh"]
 
 [ext_resource type="Script" path="res://src/scripts/items/base_back_ingredient.gd" id="1_r8mam"]
 [ext_resource type="Texture2D" uid="uid://bn8u1ne0p6er4" path="res://assets/items/grains_medium.png" id="1_v76cu"]
+[ext_resource type="Texture2D" uid="uid://c3o2b843dhw6g" path="res://assets/ui/custom_ui/shadow/grains_shadow.png" id="2_eskj2"]
 [ext_resource type="Texture2D" uid="uid://cpxst8w7g556y" path="res://assets/ui/custom_ui/glow_effect/grains_glow_effect.png" id="2_mqdsk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqbj2"]
@@ -25,6 +26,9 @@ expand_margin_bottom = 1.0
 
 [node name="GrainPackage" type="Area2D"]
 script = ExtResource("1_r8mam")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+texture = ExtResource("2_eskj2")
 
 [node name="GlowEffect" type="Sprite2D" parent="."]
 visible = false

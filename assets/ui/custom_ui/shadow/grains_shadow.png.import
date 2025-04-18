@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bleec3k0n8sgs"
-path="res://.godot/imported/MilkFrother.png-646701e74e522793938bbf571037c12c.ctex"
+uid="uid://c3o2b843dhw6g"
+path="res://.godot/imported/grains_shadow.png-509f13e0faaf97864c7aaa7a22f2bd08.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/items/MilkFrother.png"
-dest_files=["res://.godot/imported/MilkFrother.png-646701e74e522793938bbf571037c12c.ctex"]
+source_file="res://assets/ui/custom_ui/shadow/grains_shadow.png"
+dest_files=["res://.godot/imported/grains_shadow.png-509f13e0faaf97864c7aaa7a22f2bd08.ctex"]
 
 [params]
 

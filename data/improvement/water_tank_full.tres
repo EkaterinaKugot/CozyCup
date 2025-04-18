@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_tropd")
 id = "water_tank_full"
-name = "Бак воды полон"
+name = "Полный бак воды"
 description = "Бак воды у кофемашины всегда полон."
 improvement = 10.0
 unlock_cost = 125

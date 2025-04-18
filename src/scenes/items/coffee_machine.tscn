@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://d1kugduqhbikx"]
+[gd_scene load_steps=10 format=3 uid="uid://d1kugduqhbikx"]
 
 [ext_resource type="Texture2D" uid="uid://btv1t20p7klb8" path="res://assets/items/CoffeeMachine.png" id="1_8v32c"]
 [ext_resource type="Script" path="res://src/scripts/items/coffee_machine.gd" id="1_iglmr"]
+[ext_resource type="Texture2D" uid="uid://n46l6ulcl70r" path="res://assets/ui/custom_ui/shadow/coffee_machine_shadow.png" id="2_vhekg"]
 [ext_resource type="Texture2D" uid="uid://bd7faejcftw22" path="res://assets/ui/custom_ui/glow_effect/coffee_kettle_glow_effect.png" id="3_1i3ar"]
 [ext_resource type="Texture2D" uid="uid://byy4svjurdk5x" path="res://assets/items/coffee_kettle.png" id="4_gth6k"]
 [ext_resource type="Script" path="res://src/scripts/items/coffee_kettle_progress.gd" id="4_mavwi"]
@@ -15,6 +16,10 @@ size = Vector2(228, 153)
 
 [node name="CoffeeMachine" type="Area2D"]
 script = ExtResource("1_iglmr")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_vhekg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.35, 0.35)

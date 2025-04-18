@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bleec3k0n8sgs"
-path="res://.godot/imported/MilkFrother.png-646701e74e522793938bbf571037c12c.ctex"
+uid="uid://n46l6ulcl70r"
+path="res://.godot/imported/coffee_machine_shadow.png-117c69c83a9bafa90c1b16f812b95bec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/items/MilkFrother.png"
-dest_files=["res://.godot/imported/MilkFrother.png-646701e74e522793938bbf571037c12c.ctex"]
+source_file="res://assets/ui/custom_ui/shadow/coffee_machine_shadow.png"
+dest_files=["res://.godot/imported/coffee_machine_shadow.png-117c69c83a9bafa90c1b16f812b95bec.ctex"]
 
 [params]
 

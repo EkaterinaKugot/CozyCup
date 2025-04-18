@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://tgtg1i8048sh"]
+[gd_scene load_steps=6 format=3 uid="uid://tgtg1i8048sh"]
 
 [ext_resource type="Script" path="res://src/scripts/items/base_back_ingredient.gd" id="1_4k0ru"]
 [ext_resource type="Texture2D" uid="uid://bw5qusjlf6ftr" path="res://assets/ui/custom_ui/glow_effect/jug_water_glow_effect.png" id="1_or8nx"]
+[ext_resource type="Texture2D" uid="uid://cxqgpc4auajg4" path="res://assets/ui/custom_ui/shadow/jug_water_shadow.png" id="2_vbict"]
 [ext_resource type="Texture2D" uid="uid://dmteedqhrsv1s" path="res://assets/items/jug_water.png" id="3_tv1cn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mabat"]
@@ -9,6 +10,9 @@ size = Vector2(175.5, 272.75)
 
 [node name="JugWater" type="Area2D"]
 script = ExtResource("1_4k0ru")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+texture = ExtResource("2_vbict")
 
 [node name="GlowEffect" type="Sprite2D" parent="."]
 visible = false
@@ -18,4 +22,5 @@ texture = ExtResource("1_or8nx")
 texture = ExtResource("3_tv1cn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_mabat")
