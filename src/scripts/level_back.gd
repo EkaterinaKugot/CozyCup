@@ -18,7 +18,7 @@ func _ready() -> void:
 	
 	WIDTH = get_viewport().size.x
 	HEIGHT = get_viewport().size.y
-	milk_frother.position = Vector2(1150, 475)
+	milk_frother.position = Vector2(1125, 490)
 	value_properties = {
 		Ingredient.Category.GRAINS: {
 			"position": Vector2(80, 190), "scale": Vector2(0.45, 0.45), "idx_position": 1

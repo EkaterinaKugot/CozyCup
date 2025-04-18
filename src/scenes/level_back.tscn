@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://src/scripts/level_back.gd" id="1_32isi"]
 [ext_resource type="PackedScene" uid="uid://bprqmeqewkl7i" path="res://src/scenes/game_elements/hud.tscn" id="1_y6el2"]
-[ext_resource type="Texture2D" uid="uid://uagg8pnp32t1" path="res://assets/bg/Стена_1.png" id="2_0wymm"]
 [ext_resource type="PackedScene" uid="uid://d2slfierus85g" path="res://src/scenes/game_elements/bottom_hud.tscn" id="3_l8q3j"]
+[ext_resource type="Texture2D" uid="uid://daw834y5oob4d" path="res://assets/bg/wall.png" id="4_g0yp7"]
 [ext_resource type="PackedScene" uid="uid://d1kugduqhbikx" path="res://src/scenes/items/coffee_machine.tscn" id="5_tnew2"]
 [ext_resource type="PackedScene" uid="uid://gqgabx0r6aej" path="res://src/scenes/items/milk_frother.tscn" id="6_5p2x0"]
 [ext_resource type="PackedScene" uid="uid://q1x88n2h4bdv" path="res://src/scenes/game_elements/ingredient_container.tscn" id="6_nfdi1"]
@@ -34,7 +34,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("2_0wymm")
+texture = ExtResource("4_g0yp7")
 expand_mode = 1
 
 [node name="CoffeeMachine" parent="." instance=ExtResource("5_tnew2")]
@@ -48,12 +48,12 @@ offset_right = 42.0
 offset_bottom = -58.0
 
 [node name="JugWater" parent="." instance=ExtResource("10_apwmq")]
-position = Vector2(571, 444)
+position = Vector2(568, 461)
 scale = Vector2(0.9, 0.9)
 
 [node name="MilkFrother" parent="." instance=ExtResource("6_5p2x0")]
-position = Vector2(1130, 475)
-scale = Vector2(0.85, 0.85)
+position = Vector2(1125, 490)
+scale = Vector2(0.9, 0.9)
 
 [node name="IngredientsContainer" parent="MilkFrother" instance=ExtResource("6_nfdi1")]
 anchors_preset = 8

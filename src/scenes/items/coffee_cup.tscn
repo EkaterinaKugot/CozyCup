@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://c1xxsux85ntph"]
 
-[ext_resource type="Texture2D" uid="uid://bn2jkq6v2gura" path="res://assets/items/coffee_cup.png" id="1_5xeig"]
 [ext_resource type="Texture2D" uid="uid://dibqiri6d8edb" path="res://assets/ui/custom_ui/glow_effect/coffee_cup_glow_effect.png" id="2_bi3l6"]
+[ext_resource type="Texture2D" uid="uid://dqwyexn4rq5bp" path="res://assets/items/cofee_cup.png" id="2_latha"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8umaa"]
-size = Vector2(111, 181.5)
+size = Vector2(140.875, 183.75)
 
 [node name="CoffeeCup" type="Area2D"]
 collision_layer = 2
@@ -12,12 +12,10 @@ collision_mask = 2
 
 [node name="GlowEffect" type="Sprite2D" parent="."]
 visible = false
-scale = Vector2(0.8, 0.7)
 texture = ExtResource("2_bi3l6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.8, 0.7)
-texture = ExtResource("1_5xeig")
+texture = ExtResource("2_latha")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_8umaa")

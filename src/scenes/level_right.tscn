@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bprqmeqewkl7i" path="res://src/scenes/game_elements/hud.tscn" id="1_kh0xy"]
 [ext_resource type="Script" path="res://src/scripts/level_right.gd" id="1_tb5dc"]
 [ext_resource type="PackedScene" uid="uid://d2slfierus85g" path="res://src/scenes/game_elements/bottom_hud.tscn" id="2_d8wyd"]
-[ext_resource type="Texture2D" uid="uid://617pjfmwoof0" path="res://assets/bg/Стена_2.png" id="3_enmkr"]
+[ext_resource type="Texture2D" uid="uid://cfjsyudjqqpld" path="res://assets/bg/wall_left.png" id="4_b31ii"]
 
 [node name="LevelRight" type="Control"]
 layout_mode = 3
@@ -26,7 +26,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_enmkr")
+texture = ExtResource("4_b31ii")
 expand_mode = 1
 flip_h = true
 

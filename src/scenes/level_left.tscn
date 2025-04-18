@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/scripts/level_left.gd" id="1_2q1b1"]
 [ext_resource type="PackedScene" uid="uid://bprqmeqewkl7i" path="res://src/scenes/game_elements/hud.tscn" id="1_tddnu"]
 [ext_resource type="PackedScene" uid="uid://d2slfierus85g" path="res://src/scenes/game_elements/bottom_hud.tscn" id="2_7xy5e"]
-[ext_resource type="Texture2D" uid="uid://617pjfmwoof0" path="res://assets/bg/Стена_2.png" id="3_wkjqi"]
+[ext_resource type="Texture2D" uid="uid://cfjsyudjqqpld" path="res://assets/bg/wall_left.png" id="4_6n48x"]
 [ext_resource type="PackedScene" uid="uid://7sgs7voxb6pd" path="res://src/scenes/items/sugar.tscn" id="5_sp2kb"]
 [ext_resource type="PackedScene" uid="uid://c1xxsux85ntph" path="res://src/scenes/items/coffee_cup.tscn" id="6_b1l8m"]
 [ext_resource type="Script" path="res://src/scripts/items/base_coffee_cup.gd" id="7_fj1v2"]
@@ -29,12 +29,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_wkjqi")
+texture = ExtResource("4_6n48x")
 expand_mode = 1
 
 [node name="Sugar" parent="." instance=ExtResource("5_sp2kb")]
-position = Vector2(1150, 475)
-scale = Vector2(0.5, 0.5)
+position = Vector2(1150, 485)
+scale = Vector2(0.6, 0.6)
 
 [node name="CoffeeCup" parent="." instance=ExtResource("6_b1l8m")]
 position = Vector2(770, 520)

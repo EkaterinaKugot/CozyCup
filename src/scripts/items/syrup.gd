@@ -24,7 +24,7 @@ func _input_event(_viewport, event, _shape_idx):
 		
 func start_mini_game() -> void:
 	get_parent().add_child(instance_adding_syrup)
-	instance_adding_syrup.position = get_parent().get_node("CoffeeCup").position - Vector2(140, 100)
+	instance_adding_syrup.position = get_parent().get_node("CoffeeCup").position - Vector2(160, 100)
 	instance_adding_syrup.get_node("DraggableButton").connect("mini_game_end", mini_game_end)
 
 func mini_game_end() -> void:

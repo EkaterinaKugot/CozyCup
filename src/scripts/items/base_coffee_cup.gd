@@ -74,7 +74,7 @@ func create_new_instance(ingredient: Ingredient):
 	var icon = instance_coffee_cup_ingredient.get_node("Icon") # добавляем иконку
 	icon.texture = load("res://assets/icons/{0}_icon.png".format([ingredient.id]))
 			
-	instance_coffee_cup_ingredient.position = Vector2(55, pos_y) # устанавливаем позицию
+	instance_coffee_cup_ingredient.position = Vector2(70, pos_y) # устанавливаем позицию
 			
 	pos_y -= 30 # обновляем позицию для следующего ингредиента
 	

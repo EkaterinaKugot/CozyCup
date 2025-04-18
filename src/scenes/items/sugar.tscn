@@ -1,12 +1,12 @@
 [gd_scene load_steps=6 format=3 uid="uid://7sgs7voxb6pd"]
 
-[ext_resource type="Texture2D" uid="uid://6t3njahkp3qp" path="res://assets/ui/custom_ui/glow_effect/sugar.png" id="1_061ka"]
+[ext_resource type="Texture2D" uid="uid://b43f7xmliv2av" path="res://assets/ui/custom_ui/glow_effect/sugar.png" id="1_061ka"]
 [ext_resource type="Script" path="res://src/scripts/items/base_left_ingredient.gd" id="1_mgrd2"]
-[ext_resource type="Texture2D" uid="uid://cy527i4iqijep" path="res://assets/items/sugar.png" id="2_yunyf"]
+[ext_resource type="Texture2D" uid="uid://bvcvxruxrgqqr" path="res://assets/items/sugar.png" id="3_m2fp4"]
 [ext_resource type="StyleBox" uid="uid://cftgpy62p6wa8" path="res://assets/themes/number_ingredient.tres" id="4_hpagd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hy5x1"]
-size = Vector2(297, 441)
+size = Vector2(288.5, 411)
 
 [node name="Sugar" type="Area2D"]
 script = ExtResource("1_mgrd2")
@@ -16,10 +16,10 @@ visible = false
 texture = ExtResource("1_061ka")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_yunyf")
+scale = Vector2(1.1, 1)
+texture = ExtResource("3_m2fp4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 2.5)
 shape = SubResource("RectangleShape2D_hy5x1")
 
 [node name="Number" type="Label" parent="."]
@@ -28,12 +28,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = 223.0
-offset_right = 20.0
-offset_bottom = 290.0
+offset_left = -2.5
+offset_top = 210.0
+offset_right = 2.5
+offset_bottom = 264.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 45
+theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = ExtResource("4_hpagd")

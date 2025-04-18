@@ -2,6 +2,8 @@ extends Node
 
 var music_player: AudioStreamPlayer
 var sound_player: AudioStreamPlayer
+var client_player: AudioStreamPlayer
+var timer_player: AudioStreamPlayer
 var coffee_player: AudioStreamPlayer
 var milk_player: AudioStreamPlayer
 
@@ -34,10 +36,18 @@ func _ready() -> void:
 	milk_player = AudioStreamPlayer.new()
 	milk_player.bus = "Sound"
 	
+	timer_player = AudioStreamPlayer.new()
+	timer_player.bus = "Sound"
+	
+	client_player = AudioStreamPlayer.new()
+	client_player.bus = "Sound"
+	
 	add_child(music_player)
 	add_child(sound_player)
 	add_child(coffee_player)
 	add_child(milk_player)
+	add_child(timer_player)
+	add_child(client_player)
 	
 	update_music_volume()
 	update_sound_volume()
@@ -69,6 +79,8 @@ func update_sound_volume() -> void:
 	sound_player.volume_db = db
 	coffee_player.volume_db = db
 	milk_player.volume_db = db
+	timer_player.volume_db = db
+	client_player.volume_db = db
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
