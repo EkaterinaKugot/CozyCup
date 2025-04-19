@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmbrqeblvxk8o"
-path="res://.godot/imported/americano.png-40b516167766ec586d857b2fe4231366.ctex"
+uid="uid://cu0rrui0hidxx"
+path="res://.godot/imported/ice_cream_shadow.png-c57bd7a663acadb2427ff9a355080375.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/americano.png"
-dest_files=["res://.godot/imported/americano.png-40b516167766ec586d857b2fe4231366.ctex"]
+source_file="res://assets/ui/custom_ui/shadow/ice_cream_shadow.png"
+dest_files=["res://.godot/imported/ice_cream_shadow.png-c57bd7a663acadb2427ff9a355080375.ctex"]
 
 [params]
 

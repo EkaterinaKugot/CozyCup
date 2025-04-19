@@ -9,7 +9,7 @@ var speed: int = 2
 var add_grains_shape
 var start_coffee_shape
 
-var coffee_machine_speed: Improvement = Global.select_improvement_by_id("coffee_machine_speed")
+var coffee_kettle: Improvement = Global.select_improvement_by_id("coffee_kettle")
 
 signal undisabled_bottom_hud()
 
@@ -29,8 +29,8 @@ func _ready() -> void:
 		get_parent().visible = true
 		$"../CoffeeKettle".z_index = 1
 	
-	if Global.progress.has_improvement(coffee_machine_speed):
-		speed /= int(coffee_machine_speed.improvement)
+	if Global.progress.has_improvement(coffee_kettle):
+		speed /= int(coffee_kettle.improvement)
 
 func start_progress() -> void:
 	get_parent().visible = true

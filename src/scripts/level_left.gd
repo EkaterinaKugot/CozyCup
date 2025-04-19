@@ -21,7 +21,7 @@ func _ready() -> void:
 			"position": Vector2(100, 475), "scale": Vector2(0.6, 0.6), "idx_position": 1
 		},
 		Ingredient.Category.ICE_CREAM: {
-			"position": Vector2(950, 475), "scale": Vector2(0.6, 0.6), "idx_position": 1
+			"position": Vector2(960, 475), "scale": Vector2(0.75, 0.7), "idx_position": 1
 		}
 	}
 	

@@ -39,13 +39,20 @@ expand_mode = 1
 
 [node name="CoffeeMachine" parent="." instance=ExtResource("5_tnew2")]
 position = Vector2(181, 495)
-scale = Vector2(1.1, 1.1)
+scale = Vector2(1.07, 1.07)
 
 [node name="IngredientsContainer" parent="CoffeeMachine" instance=ExtResource("6_nfdi1")]
-offset_left = -12.0
-offset_top = -98.0
-offset_right = 42.0
-offset_bottom = -58.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -101.869
+offset_right = 27.0
+offset_bottom = -61.8692
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="JugWater" parent="." instance=ExtResource("10_apwmq")]
 position = Vector2(568, 470)

@@ -17,6 +17,7 @@ const milk = preload("res://assets/sounds/milk.MP3")
 const syrup = preload("res://assets/sounds/syrup.MP3")
 const sugar = preload("res://assets/sounds/sugar.MP3")
 const timer = preload("res://assets/sounds/timer.MP3")
+const pay = preload("res://assets/sounds/pay.MP3")
 
 var music_volume: float
 var sound_volume: float

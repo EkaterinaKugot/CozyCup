@@ -89,7 +89,7 @@ func _ready() -> void:
 	update_data()
 	
 	# вызываем для рецептов, так как она изначальная
-	fill_page(pages_recipes, current_page_recipe, number_recipes, Recipe)
+	on_recipes_pressed(true)
 
 func update_data() -> void:
 	not_opened_ingredients = Global.select_not_opened_ingredients()
@@ -198,6 +198,7 @@ func on_recipes_pressed(is_switched: bool = true) -> void:
 	recipes_pressed.emit()
 	if not_opened_recipes.size() == 0:
 		all_opened.visible = true
+		recipe_container.visible = false
 		clear_items.emit()
 		disabled_buttons()
 	else:
@@ -217,6 +218,7 @@ func on_ingredients_pressed(is_switched: bool = true) -> void:
 	ingredients_pressed.emit()
 	if not_opened_ingredients.size() == 0:
 		all_opened.visible = true
+		ingredient_container.visible = false
 		clear_items.emit()
 		disabled_buttons()
 	else:
@@ -236,6 +238,7 @@ func on_improvements_pressed(is_switched: bool = true) -> void:
 	improvement_pressed.emit()
 	if not_opened_improvements.size() == 0:
 		all_opened.visible = true
+		improvement_container.visible = false
 		clear_items.emit()
 		disabled_buttons()
 	else:

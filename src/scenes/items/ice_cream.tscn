@@ -1,25 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://clgqit4dng6cm"]
+[gd_scene load_steps=7 format=3 uid="uid://clgqit4dng6cm"]
 
 [ext_resource type="Texture2D" uid="uid://bridpco5okhxu" path="res://assets/ui/custom_ui/glow_effect/ice_cream_glow_effect.png" id="1_47h68"]
 [ext_resource type="Script" path="res://src/scripts/items/base_left_ingredient.gd" id="1_s6ais"]
-[ext_resource type="Texture2D" uid="uid://bqww44onvr6e" path="res://assets/items/ice_cream.png" id="2_avnw0"]
+[ext_resource type="Texture2D" uid="uid://cu0rrui0hidxx" path="res://assets/ui/custom_ui/shadow/ice_cream_shadow.png" id="2_inwah"]
 [ext_resource type="StyleBox" uid="uid://cftgpy62p6wa8" path="res://assets/themes/number_ingredient.tres" id="3_48vim"]
+[ext_resource type="Texture2D" path="res://assets/items/ice_cream1.png" id="3_stw1r"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p1lyj"]
-radius = 142.0
-height = 332.0
+radius = 95.0
+height = 340.0
 
 [node name="IceCream" type="Area2D"]
 script = ExtResource("1_s6ais")
 
 [node name="Shadow" type="Sprite2D" parent="."]
+texture = ExtResource("2_inwah")
 
 [node name="GlowEffect" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("1_47h68")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_avnw0")
+texture = ExtResource("3_stw1r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_p1lyj")
@@ -30,12 +32,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = 164.0
-offset_right = 20.0
-offset_bottom = 218.0
+offset_left = -2.5
+offset_top = 162.0
+offset_right = 2.5
+offset_bottom = 209.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 38
+theme_override_font_sizes/font_size = 34
 theme_override_styles/normal = ExtResource("3_48vim")

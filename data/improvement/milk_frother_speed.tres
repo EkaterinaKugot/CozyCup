@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_sphuq")
-id = "milk_frother_speed"
+id = "milk_kettle"
 name = "Готовка молока х2"
 description = "Молоко в 2 раза быстрее готовится в капучинаторе."
 improvement = 2.0

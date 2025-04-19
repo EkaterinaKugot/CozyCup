@@ -1,42 +1,39 @@
 [gd_scene load_steps=10 format=3 uid="uid://d1kugduqhbikx"]
 
-[ext_resource type="Texture2D" uid="uid://btv1t20p7klb8" path="res://assets/items/CoffeeMachine.png" id="1_8v32c"]
 [ext_resource type="Script" path="res://src/scripts/items/coffee_machine.gd" id="1_iglmr"]
 [ext_resource type="Texture2D" uid="uid://n46l6ulcl70r" path="res://assets/ui/custom_ui/shadow/coffee_machine_shadow.png" id="2_vhekg"]
-[ext_resource type="Texture2D" uid="uid://bd7faejcftw22" path="res://assets/ui/custom_ui/glow_effect/coffee_kettle_glow_effect.png" id="3_1i3ar"]
-[ext_resource type="Texture2D" uid="uid://byy4svjurdk5x" path="res://assets/items/coffee_kettle.png" id="4_gth6k"]
+[ext_resource type="Texture2D" uid="uid://ddkeb5u08krft" path="res://assets/items/CoffeeMachine.png" id="3_3hiat"]
 [ext_resource type="Script" path="res://src/scripts/items/coffee_kettle_progress.gd" id="4_mavwi"]
+[ext_resource type="Texture2D" uid="uid://02r0jfhh8l1f" path="res://assets/ui/custom_ui/glow_effect/coffee_kettle_glow_effect.png" id="5_52bhy"]
 [ext_resource type="Script" path="res://src/scripts/items/coffee_kettle.gd" id="5_gvenk"]
+[ext_resource type="Texture2D" uid="uid://cg5oc43vba31p" path="res://assets/items/coffee_kettle.png" id="7_enawa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qrcfm"]
-size = Vector2(218.495, 153.375)
+size = Vector2(180.75, 150)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5b4dt"]
-size = Vector2(228, 153)
+size = Vector2(209, 165)
 
 [node name="CoffeeMachine" type="Area2D"]
 script = ExtResource("1_iglmr")
 
 [node name="Shadow" type="Sprite2D" parent="."]
-scale = Vector2(0.35, 0.35)
 texture = ExtResource("2_vhekg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.35, 0.35)
-texture = ExtResource("1_8v32c")
+texture = ExtResource("3_3hiat")
 
 [node name="AddGrainsShape" type="CollisionShape2D" parent="."]
-position = Vector2(-8.2475, -76.6875)
+position = Vector2(0, -83)
 shape = SubResource("RectangleShape2D_qrcfm")
 
 [node name="StartCoffeeShape" type="CollisionShape2D" parent="."]
-position = Vector2(-3, 76.5)
+position = Vector2(0, 74.5)
 shape = SubResource("RectangleShape2D_5b4dt")
 
 [node name="CoffeeKettle" type="Area2D" parent="."]
 visible = false
-position = Vector2(27, 51)
-scale = Vector2(0.35, 0.35)
+position = Vector2(17, 55)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("5_gvenk")
@@ -47,20 +44,22 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -312.5
-offset_top = -217.0
-offset_right = 312.5
-offset_bottom = 217.0
+offset_left = -108.5
+offset_top = -81.0
+offset_right = 108.5
+offset_bottom = 81.0
 grow_horizontal = 2
 grow_vertical = 2
 fill_mode = 3
-texture_progress = ExtResource("3_1i3ar")
+texture_progress = ExtResource("5_52bhy")
 script = ExtResource("4_mavwi")
 
 [node name="CoffeeKettle" type="Sprite2D" parent="CoffeeKettle"]
-texture = ExtResource("4_gth6k")
+texture = ExtResource("7_enawa")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CoffeeKettle"]
-polygon = PackedVector2Array(-168.571, -140, -120, -151.429, 17.1429, -151.429, 68.5714, -142.857, 154.286, -145.714, 188.571, -120, 240, 28.5714, 225.714, 62.8571, 140, 111.429, 122.857, 131.429, 125.714, 140, 88.5714, 148.571, -45.7143, 154.286, -191.429, 145.714, -208.571, 140, -200, 131.429, -225.714, 114.286, -220, 5.71428, -202.857, -68.5714, -185.714, -117.143)
+visible = false
+position = Vector2(10, -4)
+polygon = PackedVector2Array(-79, -42, -69, -43, -62, -48, -50, -51, -37, -53, -14, -53, 2, -50, 14, -46, 16, -43, 16, -40, 14, -37, 14, -33, 37, -37, 50, -34, 59, -26, 64, -12, 65, 10, 61, 26, 51, 38, 35, 45, 28, 46, 20, 55, 11, 59, -6, 61, -32, 62, -58, 60, -73, 57, -79, 50, -83, 40, -83, 28, -81, 18, -78, 7, -69, -14, -67, -22, -68, -28, -73, -32, -80, -37, -80, -41)
 
 [connection signal="undisabled_bottom_hud" from="CoffeeKettle/CoffeeKettleProgress" to="." method="_undisabled_bottom_hud"]

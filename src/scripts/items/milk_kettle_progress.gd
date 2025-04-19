@@ -9,7 +9,7 @@ var speed: int = 2
 var add_milk_shape
 var start_milk_shape
 
-var milk_frother_speed: Improvement = Global.select_improvement_by_id("milk_frother_speed")
+var milk_kettle: Improvement = Global.select_improvement_by_id("milk_kettle")
 
 signal undisabled_bottom_hud()
 
@@ -29,8 +29,8 @@ func _ready() -> void:
 		get_parent().visible = true
 		$"../MilkKettle".z_index = 1
 		
-	if Global.progress.has_improvement(milk_frother_speed):
-		speed /= int(milk_frother_speed.improvement)
+	if Global.progress.has_improvement(milk_kettle):
+		speed /= int(milk_kettle.improvement)
 
 func start_progress() -> void:
 	get_parent().visible = true

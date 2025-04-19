@@ -179,9 +179,11 @@ func end_client_service() -> void:
 	print(price)
 	Global.progress.add_money(price)
 	
+	Audio.play_sound(Audio.client_player, Audio.pay)
 	if client.order.recipe == Global.progress.daily_tasks.get_task(2).recipe:
 		Global.progress.daily_tasks.update_progress(2, 1)
 	
+	# Обновляем ежедневные задания
 	if Global.progress.daily_tasks.get_task(3).id == "serving" and client.grade == 5:
 		Global.progress.daily_tasks.update_progress(3, 1)
 	elif Global.progress.daily_tasks.get_task(3).id == "income":

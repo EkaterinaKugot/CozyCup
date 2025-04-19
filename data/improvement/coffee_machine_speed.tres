@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_c0pm2")
-id = "coffee_machine_speed"
+id = "coffee_kettle"
 name = "Готовка кофе х2"
 description = "Кофе в 2 раза быстрее готовится в кофемашине."
 improvement = 2.0
