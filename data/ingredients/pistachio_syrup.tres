@@ -7,6 +7,6 @@ script = ExtResource("1_jsnhx")
 id = "pistachio_syrup"
 name = "Фисташковый сироп"
 category = 3
-is_basic = true
+is_basic = false
 purchase_cost = 5
 unlock_cost = 250

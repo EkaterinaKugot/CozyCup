@@ -7,6 +7,6 @@ script = ExtResource("1_06t8k")
 id = "coconut_powder"
 name = "Кокос"
 category = 4
-is_basic = true
+is_basic = false
 purchase_cost = 3
 unlock_cost = 200

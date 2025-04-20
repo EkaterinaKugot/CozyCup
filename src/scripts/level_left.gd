@@ -15,7 +15,7 @@ func _ready() -> void:
 	
 	value_properties = {
 		Ingredient.Category.SYRUP: {
-			"position": Vector2(80, 210), "scale": Vector2(0.6, 0.6), "idx_position": 1
+			"position": Vector2(80, 210), "scale": Vector2(0.55, 0.55), "idx_position": 1
 		}, 
 		Ingredient.Category.TOPPING: {
 			"position": Vector2(100, 475), "scale": Vector2(0.6, 0.6), "idx_position": 1

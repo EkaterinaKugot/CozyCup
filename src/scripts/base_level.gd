@@ -15,10 +15,9 @@ func load_ingredients(ingredients: Dictionary, scene, has_icon: bool = false) ->
 		instance.connect("ingredient_pressed", change_current_ingredient)
 		instance.ingredient = ingredient
 		var n: int = 100
-		if ingredient.category == Ingredient.Category.GRAINS:
+		if ingredient.category == Ingredient.Category.GRAINS or \
+		ingredient.category == Ingredient.Category.TOPPING:
 			n = 150
-		elif ingredient.category == Ingredient.Category.TOPPING:
-			n = 165
 		elif ingredient.category == Ingredient.Category.MILK:
 			n = 90
 		var size_x = (n * count) + 10

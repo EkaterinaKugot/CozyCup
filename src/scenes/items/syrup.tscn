@@ -8,7 +8,7 @@
 [ext_resource type="StyleBox" uid="uid://cftgpy62p6wa8" path="res://assets/themes/number_ingredient.tres" id="5_8xsgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eoxgb"]
-size = Vector2(141, 287)
+size = Vector2(141, 323)
 
 [node name="Syrup" type="Area2D"]
 script = ExtResource("1_qm008")
@@ -30,10 +30,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -141.0
-offset_top = -180.5
-offset_right = -77.0
-offset_bottom = -116.5
+offset_left = -119.5
+offset_top = -173.0
+offset_right = -55.5
+offset_bottom = -109.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_dw1d7")
@@ -41,7 +41,8 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 26.5)
+visible = false
+position = Vector2(-0.5, 8.5)
 shape = SubResource("RectangleShape2D_eoxgb")
 
 [node name="Number" type="Label" parent="."]
@@ -53,9 +54,9 @@ anchor_bottom = 0.5
 offset_left = -20.0
 offset_top = 170.0
 offset_right = 20.0
-offset_bottom = 224.0
+offset_bottom = 219.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 38
+theme_override_font_sizes/font_size = 36
 theme_override_styles/normal = ExtResource("5_8xsgy")

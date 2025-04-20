@@ -14,6 +14,7 @@ extends Control
 
 var ingredient: Ingredient
 var min_size: Vector2 = Vector2(45, 45)
+var start_position: Vector2 = Vector2(138.5, 117.5)
 
 signal change_number_purchase(ingredient: Ingredient, number: int)
 
@@ -64,11 +65,13 @@ func _on_purchase_ingredient_item_visible(
 		icon.texture = load("res://assets/icons/{0}_icon.png".format([ingredient1.id]))
 		icon.custom_minimum_size = min_size
 		icon.size = icon.custom_minimum_size
+		icon.position = start_position
 	elif ingredient1.category == Ingredient.Category.TOPPING:
 		ingredient_image.texture = load("res://assets/items/topping_packet.png")
 		icon.texture = load("res://assets/icons/{0}_icon.png".format([ingredient1.id]))
-		icon.custom_minimum_size = min_size + Vector2(20, 20)
+		icon.custom_minimum_size = min_size + Vector2(30, 30)
 		icon.size = icon.custom_minimum_size
+		icon.position = start_position + Vector2(0, -30)
 	else:
 		ingredient_image.texture = load("res://assets/items/{0}.png".format([ingredient1.id]))
 		icon.texture = null

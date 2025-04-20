@@ -17,6 +17,7 @@ extends Control
 
 var item # Ingredient or Recipe
 var min_size: Vector2 = Vector2(50, 50)
+var icon_y: float = 127.5
 
 signal open_item(item)
 
@@ -85,11 +86,13 @@ func _on_shop_ingredient_visible(ingredient: Ingredient) -> void:
 		ingredient_icon.texture = load("res://assets/icons/{0}_icon.png".format([ingredient.id]))
 		ingredient_icon.custom_minimum_size = min_size
 		ingredient_icon.size = ingredient_icon.custom_minimum_size
+		ingredient_icon.position.y = icon_y
 	elif ingredient.category == Ingredient.Category.TOPPING:
 		ingredient_image.texture = load("res://assets/items/topping_packet.png")
 		ingredient_icon.texture = load("res://assets/icons/{0}_icon.png".format([ingredient.id]))
-		ingredient_icon.custom_minimum_size = min_size + Vector2(20, 20)
+		ingredient_icon.custom_minimum_size = min_size + Vector2(30, 30)
 		ingredient_icon.size = ingredient_icon.custom_minimum_size
+		ingredient_icon.position.y = icon_y - 30
 	else:
 		ingredient_image.texture = load("res://assets/items/{0}.png".format([ingredient.id]))
 		ingredient_icon.texture = null
