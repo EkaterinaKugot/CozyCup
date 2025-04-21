@@ -39,9 +39,9 @@ func add_ingredient(current_ingredient: Ingredient) -> void:
 					current_ingredient.category
 					][current_ingredient].update_number() # визуально обновили значение у ингредиента
 				if current_ingredient.category == Ingredient.Category.SUGAR:
-					Audio.play_sound(Audio.sound_player, Audio.sugar)
+					Audio.play_sound(Audio.sound_player, "sugar")
 			else:
-				Audio.play_sound(Audio.sound_player, Audio.liquid)
+				Audio.play_sound(Audio.sound_player, "liquid")
 			
 			display_ingredients()  # отображаем ингредиенты
 	

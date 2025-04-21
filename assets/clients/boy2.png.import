@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3mmanfks1yi6"
-path="res://.godot/imported/ft_кофейня.png-29d502b6686de1ec628ede73b45ad1e4.ctex"
+uid="uid://d0w32naq1yhg2"
+path="res://.godot/imported/boy2.png-1af579787ff59f780f31454e331b64f2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bg/ft_кофейня.png"
-dest_files=["res://.godot/imported/ft_кофейня.png-29d502b6686de1ec628ede73b45ad1e4.ctex"]
+source_file="res://assets/clients/boy2.png"
+dest_files=["res://.godot/imported/boy2.png-1af579787ff59f780f31454e331b64f2.ctex"]
 
 [params]
 

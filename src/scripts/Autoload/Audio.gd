@@ -7,17 +7,19 @@ var timer_player: AudioStreamPlayer
 var coffee_player: AudioStreamPlayer
 var milk_player: AudioStreamPlayer
 
-const menu_music = preload("res://assets/sounds/menu.mp3")
-const game_music = preload("res://assets/sounds/game.mp3")
-const button_click = preload("res://assets/sounds/button_click.MP3")
-const client = preload("res://assets/sounds/client.MP3")
-const liquid = preload("res://assets/sounds/liquid.MP3")
-const coffee = preload("res://assets/sounds/coffee.MP3")
-const milk = preload("res://assets/sounds/milk.MP3")
-const syrup = preload("res://assets/sounds/syrup.MP3")
-const sugar = preload("res://assets/sounds/sugar.MP3")
-const timer = preload("res://assets/sounds/timer.MP3")
-const pay = preload("res://assets/sounds/pay.MP3")
+const sounds = {
+	"menu_music": preload("res://assets/sounds/menu.mp3"),
+	"game_music": preload("res://assets/sounds/game.mp3"),
+	"button_click": preload("res://assets/sounds/button_click.MP3"),
+	"client": preload("res://assets/sounds/client.MP3"),
+	"liquid": preload("res://assets/sounds/liquid.MP3"),
+	"coffee": preload("res://assets/sounds/coffee.MP3"),
+	"milk": preload("res://assets/sounds/milk.MP3"),
+	"syrup": preload("res://assets/sounds/syrup.MP3"),
+	"sugar": preload("res://assets/sounds/sugar.MP3"),
+	"timer": preload("res://assets/sounds/timer.MP3"),
+	"pay": preload("res://assets/sounds/pay.MP3"),
+}
 
 var music_volume: float
 var sound_volume: float
@@ -57,14 +59,14 @@ func _ready() -> void:
 	
 func _on_node_added(node: Node) -> void:
 	if node is Button:
-		node.pressed.connect(play_sound.bind(sound_player, button_click))
+		node.pressed.connect(play_sound.bind(sound_player, "button_click"))
 
-func play_sound(player: AudioStreamPlayer, sound) -> void:
+func play_sound(player: AudioStreamPlayer, name_sound: String) -> void:
 	if player.playing:
 		player.stop()
 	
-	if sound != null:
-		player.stream = sound
+	if name_sound != "" and sounds.has(name_sound):
+		player.stream = sounds[name_sound]
 		player.play()
 		
 func update_music_volume() -> void:
@@ -86,12 +88,12 @@ func update_sound_volume() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if GameDay.stages_game.current_stage == StagesGame.Stage.MENU and \
-	music_player.stream != menu_music or not music_player.playing:
+	music_player.stream != sounds["menu_music"] or not music_player.playing:
 		music_player.stop()
-		music_player.stream = menu_music
+		music_player.stream = sounds["menu_music"]
 		music_player.play()
 	elif GameDay.stages_game.current_stage != StagesGame.Stage.MENU and \
-	music_player.stream != game_music or not music_player.playing:
+	music_player.stream != sounds["game_music"] or not music_player.playing:
 		music_player.stop()
-		music_player.stream = game_music
+		music_player.stream = sounds["game_music"]
 		music_player.play()

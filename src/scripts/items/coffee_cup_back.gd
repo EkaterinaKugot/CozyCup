@@ -16,7 +16,7 @@ func _ready() -> void:
 	display_ingredients()
 	
 func add_grains_ingredient() -> void:
-	Audio.play_sound(Audio.sound_player, Audio.liquid)
+	Audio.play_sound(Audio.sound_player, "liquid")
 	GameDay.coffe_cup.add_ingredient(
 		GameDay.coffee_machine.ingredient_in_kettle, GameDay.coffee_machine.number_coffee_shots
 	) # добавили в кружку
@@ -27,7 +27,7 @@ func add_grains_ingredient() -> void:
 	display_ingredients()  # отображаем ингредиенты
 
 func add_milk_ingredient() -> void:
-	Audio.play_sound(Audio.sound_player, Audio.liquid)
+	Audio.play_sound(Audio.sound_player, "liquid")
 	GameDay.coffe_cup.add_ingredient(
 		GameDay.milk_frother.ingredient_in_kettle, GameDay.milk_frother.number_milk_shots
 	) # добавили в кружку

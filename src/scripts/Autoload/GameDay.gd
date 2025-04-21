@@ -115,7 +115,7 @@ func start_game_stage() -> void:
 		
 	number_seconds_in_day = 60 * Global.progress.duration_day
 	passed_seconds_in_day = 0.0
-	Audio.play_sound(Audio.client_player, Audio.client)
+	Audio.play_sound(Audio.client_player, "client")
 
 func start_closing_stage() -> void:
 	stages_game.start_closing_stage()
@@ -179,7 +179,7 @@ func end_client_service() -> void:
 	print(price)
 	Global.progress.add_money(price)
 	
-	Audio.play_sound(Audio.client_player, Audio.pay)
+	Audio.play_sound(Audio.client_player, "pay")
 	if client.order.recipe == Global.progress.daily_tasks.get_task(2).recipe:
 		Global.progress.daily_tasks.update_progress(2, 1)
 	
@@ -272,7 +272,7 @@ func _on_wait_timer_timeout() -> void:
 	wait_timer.queue_free()
 	if stages_game.current_stage == StagesGame.Stage.GAME or \
 		stages_game.current_stage == StagesGame.Stage.CLOSING:
-		Audio.play_sound(Audio.client_player, Audio.client)
+		Audio.play_sound(Audio.client_player, "client")
 	
 func refuse_order() -> void:
 	client.accept_order()
@@ -297,7 +297,7 @@ func _process(delta: float) -> void:
 		if self.passed_time < self.client.order.lead_time:
 			self.passed_time += delta
 		else:
-			Audio.play_sound(Audio.timer_player, Audio.timer)
+			Audio.play_sound(Audio.timer_player,"timer")
 			self.passed_time = 0 
 			self.client.exceed_time()
 			self.order_timer_is_start = false  # Останавливаем таймер

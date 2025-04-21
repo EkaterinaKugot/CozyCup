@@ -41,14 +41,14 @@ func start_progress() -> void:
 	add_milk_shape.disabled = true
 	
 	is_holding = true
-	Audio.play_sound(Audio.milk_player, Audio.milk)
+	Audio.play_sound(Audio.milk_player, "milk")
 	
 func _process(delta):
 	if is_holding:
 		hold_time += delta
 		value = (hold_time / max_hold_time) * max_number_milk
 		if hold_time >= max_hold_time:
-			Audio.play_sound(Audio.milk_player, null)
+			Audio.play_sound(Audio.milk_player, "")
 			is_holding = false
 			hold_time = 0.0
 			add_milk_shape.disabled = false

@@ -32,7 +32,7 @@ func _gui_input(event):
 		
 		# Проверяем, достигла ли кнопка низа
 		if new_y >= max_y:
-			Audio.play_sound(Audio.sound_player, Audio.syrup)
+			Audio.play_sound(Audio.sound_player, "syrup")
 			dragging = false
 			mini_game_end.emit()
 			
