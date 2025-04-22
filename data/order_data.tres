@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="OrderData" load_steps=13 format=3 uid="uid://fl6jetk3hdv8"]
+[gd_resource type="Resource" script_class="OrderData" load_steps=14 format=3 uid="uid://fl6jetk3hdv8"]
 
 [ext_resource type="Texture2D" uid="uid://ciwmeyf1wdie7" path="res://assets/clients/boy1.png" id="1_b14n8"]
 [ext_resource type="Texture2D" uid="uid://d0w32naq1yhg2" path="res://assets/clients/boy2.png" id="2_usci0"]
@@ -12,10 +12,11 @@
 [ext_resource type="Texture2D" uid="uid://b1tp2hef14a6q" path="res://assets/clients/girl4.png" id="9_so2of"]
 [ext_resource type="Texture2D" uid="uid://cj2ilt3s1s5i1" path="res://assets/clients/girl5.png" id="10_snr3x"]
 [ext_resource type="Texture2D" uid="uid://circ01hvxlg8m" path="res://assets/clients/girl6.png" id="11_36c4s"]
+[ext_resource type="Texture2D" uid="uid://uilykwue3lr5" path="res://assets/clients/girl7.png" id="12_krrn1"]
 
 [resource]
 script = ExtResource("3_4b4ma")
-clients = Array[Texture]([ExtResource("1_b14n8"), ExtResource("2_usci0"), ExtResource("3_q4rly"), ExtResource("4_fwbpu"), ExtResource("5_x1fuq"), ExtResource("6_ral74"), ExtResource("7_pbguj"), ExtResource("8_v1yyv"), ExtResource("9_so2of"), ExtResource("10_snr3x"), ExtResource("11_36c4s")])
+clients = Array[Texture]([ExtResource("1_b14n8"), ExtResource("2_usci0"), ExtResource("3_q4rly"), ExtResource("4_fwbpu"), ExtResource("5_x1fuq"), ExtResource("6_ral74"), ExtResource("7_pbguj"), ExtResource("8_v1yyv"), ExtResource("9_so2of"), ExtResource("10_snr3x"), ExtResource("11_36c4s"), ExtResource("12_krrn1")])
 greetings = Array[String](["Здравствуйте,", "Добрый день,", "Привет,", ""])
 requests = Array[String](["Можно", "Приготовьте", "Сделайте", "Налейте"])
 ownership = Array[String](["мне", ""])

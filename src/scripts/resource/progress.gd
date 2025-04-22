@@ -41,7 +41,7 @@ class_name Progress
 		number_grades = value
 const max_rating: int = 5
 
-@export var money: int = 10000:
+@export var money: int = 100:
 	get:
 		return money
 	set(value):
