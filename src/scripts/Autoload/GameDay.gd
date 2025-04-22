@@ -73,7 +73,9 @@ const scenes: Dictionary = {
 	"LevelBack": "res://src/scenes/level_back.tscn",
 	"LevelLeft": "res://src/scenes/level_left.tscn",
 	"LevelRight": "res://src/scenes/level_right.tscn",
-	"Purchase": "res://src/scenes/purchase.tscn"
+	"Purchase": "res://src/scenes/purchase.tscn",
+	"Shop": "res://src/scenes/shop.tscn",
+	"Statistic": "res://src/scenes/statistic.tscn"
 }
 
 func _ready() -> void:
@@ -178,6 +180,7 @@ func end_client_service() -> void:
 		price += price * increased_income.improvement / 100
 	print(price)
 	Global.progress.add_money(price)
+	get_tree().current_scene.get_node("Hud").show_changing_money(price, true)
 	
 	Audio.play_sound(Audio.client_player, "pay")
 	if client.order.recipe == Global.progress.daily_tasks.get_task(2).recipe:

@@ -75,36 +75,51 @@ theme_override_constants/margin_bottom = 57
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_vvgkr")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Книга рецептов"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 mouse_filter = 2
 theme_override_constants/separation = 0
 
-[node name="Page1" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="Page1" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 theme_override_constants/separation = 0
 
-[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/Page1"]
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/Page1"]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_nklc7")
 
-[node name="RecipeItem" parent="MarginContainer/HBoxContainer/Page1/Panel" instance=ExtResource("2_7ktaw")]
+[node name="RecipeItem" parent="MarginContainer/VBoxContainer/HBoxContainer/Page1/Panel" instance=ExtResource("2_7ktaw")]
 layout_mode = 1
 
-[node name="Panel2" type="Panel" parent="MarginContainer/HBoxContainer/Page1"]
+[node name="Panel2" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/Page1"]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_cp0v8")
 
-[node name="RecipeItem" parent="MarginContainer/HBoxContainer/Page1/Panel2" instance=ExtResource("2_7ktaw")]
+[node name="RecipeItem" parent="MarginContainer/VBoxContainer/HBoxContainer/Page1/Panel2" instance=ExtResource("2_7ktaw")]
 layout_mode = 1
 
-[node name="Back" type="Button" parent="MarginContainer/HBoxContainer/Page1/Panel2"]
+[node name="Back" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/Page1/Panel2"]
 custom_minimum_size = Vector2(85, 68)
 layout_mode = 1
 anchors_preset = 2
@@ -117,31 +132,31 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 theme = ExtResource("4_7ucp7")
 
-[node name="Page2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="Page2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 theme_override_constants/separation = 0
 
-[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/Page2"]
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/Page2"]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_2xliy")
 
-[node name="RecipeItem" parent="MarginContainer/HBoxContainer/Page2/Panel" instance=ExtResource("2_7ktaw")]
+[node name="RecipeItem" parent="MarginContainer/VBoxContainer/HBoxContainer/Page2/Panel" instance=ExtResource("2_7ktaw")]
 layout_mode = 1
 
-[node name="Panel2" type="Panel" parent="MarginContainer/HBoxContainer/Page2"]
+[node name="Panel2" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/Page2"]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_eyqkk")
 
-[node name="RecipeItem" parent="MarginContainer/HBoxContainer/Page2/Panel2" instance=ExtResource("2_7ktaw")]
+[node name="RecipeItem" parent="MarginContainer/VBoxContainer/HBoxContainer/Page2/Panel2" instance=ExtResource("2_7ktaw")]
 layout_mode = 1
 
-[node name="Next" type="Button" parent="MarginContainer/HBoxContainer/Page2/Panel2"]
+[node name="Next" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/Page2/Panel2"]
 custom_minimum_size = Vector2(85, 68)
 layout_mode = 1
 anchors_preset = 3
@@ -182,11 +197,11 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = ExtResource("6_6s241")
 
-[connection signal="clear_recipe" from="." to="MarginContainer/HBoxContainer/Page1/Panel/RecipeItem" method="_on_book_recipes_clear_recipe"]
-[connection signal="clear_recipe" from="." to="MarginContainer/HBoxContainer/Page1/Panel2/RecipeItem" method="_on_book_recipes_clear_recipe"]
-[connection signal="clear_recipe" from="." to="MarginContainer/HBoxContainer/Page2/Panel/RecipeItem" method="_on_book_recipes_clear_recipe"]
-[connection signal="clear_recipe" from="." to="MarginContainer/HBoxContainer/Page2/Panel2/RecipeItem" method="_on_book_recipes_clear_recipe"]
-[connection signal="left_bot" from="." to="MarginContainer/HBoxContainer/Page1/Panel2/RecipeItem" method="_on_book_recipes_change_recipe"]
-[connection signal="left_top" from="." to="MarginContainer/HBoxContainer/Page1/Panel/RecipeItem" method="_on_book_recipes_change_recipe"]
-[connection signal="right_bot" from="." to="MarginContainer/HBoxContainer/Page2/Panel2/RecipeItem" method="_on_book_recipes_change_recipe"]
-[connection signal="right_top" from="." to="MarginContainer/HBoxContainer/Page2/Panel/RecipeItem" method="_on_book_recipes_change_recipe"]
+[connection signal="clear_recipe" from="." to="MarginContainer/VBoxContainer/HBoxContainer/Page1/Panel/RecipeItem" method="_on_book_recipes_clear_recipe"]
+[connection signal="clear_recipe" from="." to="MarginContainer/VBoxContainer/HBoxContainer/Page1/Panel2/RecipeItem" method="_on_book_recipes_clear_recipe"]
+[connection signal="clear_recipe" from="." to="MarginContainer/VBoxContainer/HBoxContainer/Page2/Panel/RecipeItem" method="_on_book_recipes_clear_recipe"]
+[connection signal="clear_recipe" from="." to="MarginContainer/VBoxContainer/HBoxContainer/Page2/Panel2/RecipeItem" method="_on_book_recipes_clear_recipe"]
+[connection signal="left_bot" from="." to="MarginContainer/VBoxContainer/HBoxContainer/Page1/Panel2/RecipeItem" method="_on_book_recipes_change_recipe"]
+[connection signal="left_top" from="." to="MarginContainer/VBoxContainer/HBoxContainer/Page1/Panel/RecipeItem" method="_on_book_recipes_change_recipe"]
+[connection signal="right_bot" from="." to="MarginContainer/VBoxContainer/HBoxContainer/Page2/Panel2/RecipeItem" method="_on_book_recipes_change_recipe"]
+[connection signal="right_top" from="." to="MarginContainer/VBoxContainer/HBoxContainer/Page2/Panel/RecipeItem" method="_on_book_recipes_change_recipe"]

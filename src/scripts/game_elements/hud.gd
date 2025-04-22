@@ -14,12 +14,19 @@ extends CanvasLayer
 @onready var open_cafe: Button = $HeaderControl/MarginLeft/VBoxContainer/OpenClose/MarginContainer/Open
 @onready var close_cafe: Button = $HeaderControl/MarginLeft/VBoxContainer/OpenClose/MarginContainer/Close
 
-@onready var label_money = $HeaderControl/MarginRight/Header/MoneyPanel/TextPanel/Money as Label
+@onready var label_money: Label = $HeaderControl/MarginRight/Header/VBoxContainer/MoneyPanel/TextPanel/Money
+@onready var changing_money: Label = $HeaderControl/MarginRight/Header/VBoxContainer/ChangingMoney
 
-@onready var daily_tasks: Button = $HeaderControl/MarginRight/Header/DiamondPanel/DailyTasks
+@onready var changing_diamonds: Label = $HeaderControl/MarginRight/Header/VBoxContainer2/ChangingDiamonds
+
+@onready var daily_tasks: Button = $HeaderControl/MarginRight/Header/VBoxContainer2/DiamondPanel/DailyTasks
+@onready var diamonds_container: VBoxContainer = $HeaderControl/MarginRight/Header/VBoxContainer2
 
 var scene_daily_tasks = preload("res://src/scenes/game_elements/daily_tasks.tscn")
 var instance_daily_tasks
+
+const good_color: Color = Color.FOREST_GREEN
+const bad_color: Color = Color.RED
 
 func _ready() -> void:
 	drop_menu.pressed.connect(on_drop_menu_pressed)
@@ -89,7 +96,7 @@ func on_daily_tasks_pressed() -> void:
 		instance_daily_tasks.queue_free()
 		get_tree().paused = false
 		
-		if elements_menu.instance_settings != null:
+		if elements_menu.instance_settings != null or get_parent().instance_info != null:
 			get_tree().paused = true
 	else:
 		instance_daily_tasks = scene_daily_tasks.instantiate()
@@ -102,7 +109,8 @@ func on_ok_pressed() -> void:
 	if instance_daily_tasks != null:
 		instance_daily_tasks.queue_free()
 	
-	if elements_menu.instance_settings != null:
+	if elements_menu.instance_settings != null or \
+	(get_tree().current_scene.name == "Menu" and get_parent().instance_info != null):
 		get_tree().paused = true
 		
 func on_open_cafe_pressed() -> void:
@@ -128,7 +136,23 @@ func on_drop_menu_pressed() -> void:
 		animation_elements_menu.play("fade_in_elements_menu")
 		elements_menu.set_process(true)
 
-
+func show_changing_money(number_money: int, is_positive: bool = true) -> void:
+	if is_positive:
+		changing_money.text = "+"
+		changing_money.add_theme_color_override("font_color", good_color)
+	else:
+		changing_money.text = "-"
+		changing_money.add_theme_color_override("font_color", bad_color)
+	changing_money.text += str(abs(number_money))
+	
+	changing_money.visible = true
+	animation_elements_menu.play("fade_in_money")
+	await animation_elements_menu.animation_finished
+	
+	animation_elements_menu.play("fade_out_money")
+	await animation_elements_menu.animation_finished
+	changing_money.visible = false
+	
 func _on_level_hud_order_repeat_pressed() -> void:
 	if level_hud.visible:
 		if GameDay.client.order_accept:

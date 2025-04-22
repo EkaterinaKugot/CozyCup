@@ -74,7 +74,9 @@ func _on_interstitial_closed():
 	print("Межстраничная реклама закрыта")
 	if is_waiting_for_interstitial:
 		is_waiting_for_interstitial = false
-		Global.progress.add_diamonds(1)
+		var reward = 1
+		Global.progress.add_diamonds(reward)
+		get_tree().current_scene.get_node("Hud").diamonds_container.show_changing_diamonds(reward, true)
 		
 		Global.progress.daily_tasks.sub_ads()
 		update_number_ads()

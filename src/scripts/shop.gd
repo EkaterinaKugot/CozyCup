@@ -27,6 +27,8 @@ extends Control
 
 @onready var name_tab: Label = $MarginContainer/HBoxContainer/ShopItems/MarginContainer/VBoxContainer/NameTab
 
+@onready var hud: CanvasLayer = $Hud
+
 signal recipes_pressed
 signal ingredients_pressed
 signal improvement_pressed
@@ -165,16 +167,19 @@ func fill_page(
 func open_item(item) -> void:
 	if item in not_opened_recipes:
 		Global.progress.sub_money(item.unlock_cost)
+		hud.show_changing_money(item.unlock_cost, false)
 		Global.progress.add_new_opened_recipes(item)
 		update_data()
 		on_recipes_pressed(false)
 	elif item in not_opened_ingredients:
 		Global.progress.sub_money(item.unlock_cost)
+		hud.show_changing_money(item.unlock_cost, false)
 		Global.progress.add_new_opened_ingredients(item)
 		update_data()
 		on_ingredients_pressed(false)
 	elif item in not_opened_improvements:
 		Global.progress.sub_diamonds(item.unlock_cost)
+		hud.diamonds_container.show_changing_diamonds(item.unlock_cost, false)
 		Global.progress.add_new_improvement(item)
 		update_data()
 		on_improvements_pressed(false)

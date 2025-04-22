@@ -21,6 +21,7 @@ func on_accept_pressed() -> void:
 	change_status_performed()
 	Global.progress.daily_tasks.change_status_to_perfomed(idx_task)
 	Global.progress.add_diamonds(task.reward)
+	get_tree().current_scene.get_node("Hud").diamonds_container.show_changing_diamonds(task.reward, true)
 	
 func change_status_in_progress() -> void:
 	in_progress.visible = true

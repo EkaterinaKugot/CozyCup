@@ -1,13 +1,13 @@
 extends Control
 
 @onready var close: Button = $MarginContainer2/Close
-@onready var back: Button = $MarginContainer/HBoxContainer/Page1/Panel2/Back
-@onready var next: Button = $MarginContainer/HBoxContainer/Page2/Panel2/Next
+@onready var back: Button = $MarginContainer/VBoxContainer/HBoxContainer/Page1/Panel2/Back
+@onready var next: Button = $MarginContainer/VBoxContainer/HBoxContainer/Page2/Panel2/Next
 
-@onready var recipe_item_left_top: Control = $MarginContainer/HBoxContainer/Page1/Panel/RecipeItem
-@onready var recipe_item_left_bot: Control = $MarginContainer/HBoxContainer/Page1/Panel2/RecipeItem
-@onready var recipe_item_right_top: Control = $MarginContainer/HBoxContainer/Page2/Panel/RecipeItem
-@onready var recipe_item_right_bot: Control = $MarginContainer/HBoxContainer/Page2/Panel2/RecipeItem
+@onready var recipe_item_left_top: Control = $MarginContainer/VBoxContainer/HBoxContainer/Page1/Panel/RecipeItem
+@onready var recipe_item_left_bot: Control = $MarginContainer/VBoxContainer/HBoxContainer/Page1/Panel2/RecipeItem
+@onready var recipe_item_right_top: Control = $MarginContainer/VBoxContainer/HBoxContainer/Page2/Panel/RecipeItem
+@onready var recipe_item_right_bot: Control = $MarginContainer/VBoxContainer/HBoxContainer/Page2/Panel2/RecipeItem
 
 signal left_top(recipe: Recipe)
 signal left_bot(recipe: Recipe)

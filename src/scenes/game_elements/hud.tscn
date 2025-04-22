@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bprqmeqewkl7i"]
+[gd_scene load_steps=44 format=3 uid="uid://bprqmeqewkl7i"]
 
 [ext_resource type="Script" path="res://src/scripts/game_elements/hud.gd" id="1_6ufo0"]
 [ext_resource type="Texture2D" uid="uid://d3o3g53rp42k8" path="res://assets/ui/buttons/ready/Levels-Idle.png" id="2_8o5h3"]
@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c65w4lmqn7u0" path="res://assets/ui/custom_ui/сurrency_panel2.png" id="3_u1a13"]
 [ext_resource type="Texture2D" uid="uid://c51t6ui5sjq7g" path="res://assets/icons/wallet.png" id="4_2nyt5"]
 [ext_resource type="PackedScene" uid="uid://dg81uujaakw1n" path="res://src/scenes/game_elements/dropping_menu.tscn" id="4_arens"]
-[ext_resource type="Script" path="res://src/scripts/game_elements/diamond_panel.gd" id="5_y1ts0"]
+[ext_resource type="Script" path="res://src/scripts/game_elements/diamond_container.gd" id="5_m27bw"]
 [ext_resource type="Texture2D" uid="uid://cqmve1yby7eg0" path="res://assets/icons/diamond.png" id="6_difm8"]
 [ext_resource type="Texture2D" uid="uid://bmjw6bkfnvbtb" path="res://assets/ui/buttons/ready/add_diamod_idle.png" id="7_rqvsb"]
 [ext_resource type="Texture2D" uid="uid://bpiorlx61fb4q" path="res://assets/ui/buttons/ready/add_diamod_click.png" id="8_dp3d2"]
@@ -108,6 +108,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HeaderControl/MarginRight/Header/VBoxContainer2/ChangingDiamonds:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_4d317"]
 resource_name = "fade_in_drop_menu"
@@ -141,11 +153,71 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_evygx"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HeaderControl/MarginRight/Header/VBoxContainer/ChangingMoney:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_34pb4"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HeaderControl/MarginRight/Header/VBoxContainer/ChangingMoney:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wuahu"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HeaderControl/MarginRight/Header/VBoxContainer2/ChangingDiamonds:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_pm22o"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HeaderControl/MarginRight/Header/VBoxContainer2/ChangingDiamonds:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nbm8w"]
 _data = {
 "RESET": SubResource("Animation_fr6rt"),
+"fade_in_diamonds": SubResource("Animation_wuahu"),
 "fade_in_elements_menu": SubResource("Animation_4d317"),
-"fade_out_elements_menu": SubResource("Animation_k00y3")
+"fade_in_money": SubResource("Animation_evygx"),
+"fade_out_diamonds": SubResource("Animation_pm22o"),
+"fade_out_elements_menu": SubResource("Animation_k00y3"),
+"fade_out_money": SubResource("Animation_34pb4")
 }
 
 [node name="Hud" type="CanvasLayer"]
@@ -178,21 +250,29 @@ size_flags_horizontal = 8
 size_flags_vertical = 0
 theme_override_constants/separation = 10
 
-[node name="MoneyPanel" type="PanelContainer" parent="HeaderControl/MarginRight/Header"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HeaderControl/MarginRight/Header"]
+custom_minimum_size = Vector2(200, 72)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = -7
+
+[node name="MoneyPanel" type="PanelContainer" parent="HeaderControl/MarginRight/Header/VBoxContainer"]
 custom_minimum_size = Vector2(200, 72)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_pmesg")
 
-[node name="TextPanel" type="Panel" parent="HeaderControl/MarginRight/Header/MoneyPanel"]
+[node name="TextPanel" type="Panel" parent="HeaderControl/MarginRight/Header/VBoxContainer/MoneyPanel"]
 custom_minimum_size = Vector2(160, 61)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_6xf34")
 
-[node name="Money" type="Label" parent="HeaderControl/MarginRight/Header/MoneyPanel/TextPanel"]
+[node name="Money" type="Label" parent="HeaderControl/MarginRight/Header/VBoxContainer/MoneyPanel/TextPanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -207,13 +287,13 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "0"
 
-[node name="IconPanel" type="Panel" parent="HeaderControl/MarginRight/Header/MoneyPanel"]
+[node name="IconPanel" type="Panel" parent="HeaderControl/MarginRight/Header/VBoxContainer/MoneyPanel"]
 custom_minimum_size = Vector2(72, 72)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_30mh1")
 
-[node name="TextureRect" type="TextureRect" parent="HeaderControl/MarginRight/Header/MoneyPanel/IconPanel"]
+[node name="TextureRect" type="TextureRect" parent="HeaderControl/MarginRight/Header/VBoxContainer/MoneyPanel/IconPanel"]
 custom_minimum_size = Vector2(44, 44)
 layout_mode = 1
 anchors_preset = 8
@@ -230,23 +310,41 @@ grow_vertical = 2
 texture = ExtResource("4_2nyt5")
 expand_mode = 1
 
-[node name="DiamondPanel" type="PanelContainer" parent="HeaderControl/MarginRight/Header"]
+[node name="ChangingMoney" type="Label" parent="HeaderControl/MarginRight/Header/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "0"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HeaderControl/MarginRight/Header"]
+process_mode = 3
+custom_minimum_size = Vector2(210, 72)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = -7
+script = ExtResource("5_m27bw")
+
+[node name="DiamondPanel" type="PanelContainer" parent="HeaderControl/MarginRight/Header/VBoxContainer2"]
 process_mode = 3
 custom_minimum_size = Vector2(210, 72)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_pmesg")
-script = ExtResource("5_y1ts0")
 
-[node name="TextPanel" type="Panel" parent="HeaderControl/MarginRight/Header/DiamondPanel"]
+[node name="TextPanel" type="Panel" parent="HeaderControl/MarginRight/Header/VBoxContainer2/DiamondPanel"]
 custom_minimum_size = Vector2(170, 61)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_6xf34")
 
-[node name="Diamonds" type="Label" parent="HeaderControl/MarginRight/Header/DiamondPanel/TextPanel"]
+[node name="Diamonds" type="Label" parent="HeaderControl/MarginRight/Header/VBoxContainer2/DiamondPanel/TextPanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -255,20 +353,20 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -4.5
 offset_top = -15.0
-offset_right = 24.5
+offset_right = 10.5
 offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "0
 "
 
-[node name="IconPanel" type="Panel" parent="HeaderControl/MarginRight/Header/DiamondPanel"]
+[node name="IconPanel" type="Panel" parent="HeaderControl/MarginRight/Header/VBoxContainer2/DiamondPanel"]
 custom_minimum_size = Vector2(72, 72)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_30mh1")
 
-[node name="TextureRect" type="TextureRect" parent="HeaderControl/MarginRight/Header/DiamondPanel/IconPanel"]
+[node name="TextureRect" type="TextureRect" parent="HeaderControl/MarginRight/Header/VBoxContainer2/DiamondPanel/IconPanel"]
 custom_minimum_size = Vector2(44, 44)
 layout_mode = 1
 anchors_preset = 8
@@ -285,14 +383,14 @@ grow_vertical = 2
 texture = ExtResource("6_difm8")
 expand_mode = 1
 
-[node name="DailyTasks" type="Button" parent="HeaderControl/MarginRight/Header/DiamondPanel"]
+[node name="DailyTasks" type="Button" parent="HeaderControl/MarginRight/Header/VBoxContainer2/DiamondPanel"]
 custom_minimum_size = Vector2(44, 44)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 theme = SubResource("Theme_fqo6a")
 
-[node name="Ready" type="Panel" parent="HeaderControl/MarginRight/Header/DiamondPanel/DailyTasks"]
+[node name="Ready" type="Panel" parent="HeaderControl/MarginRight/Header/VBoxContainer2/DiamondPanel/DailyTasks"]
 visible = false
 custom_minimum_size = Vector2(12, 12)
 layout_mode = 1
@@ -306,6 +404,17 @@ offset_top = -10.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_p2i8o")
+
+[node name="ChangingDiamonds" type="Label" parent="HeaderControl/MarginRight/Header/VBoxContainer2"]
+process_mode = 3
+visible = false
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "0"
+horizontal_alignment = 1
 
 [node name="Control" type="Control" parent="HeaderControl/MarginRight/Header"]
 custom_minimum_size = Vector2(5, 0)
@@ -489,6 +598,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
 reset_on_save = false
 libraries = {
 "": SubResource("AnimationLibrary_nbm8w")

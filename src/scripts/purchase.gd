@@ -11,6 +11,8 @@ extends Control
 @onready var ingredient_item2: Control = $MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/Panel2/IngredientItem
 @onready var ingredient_item3: Control = $MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/Panel3/IngredientItem
 
+@onready var hud: CanvasLayer = $Hud
+
 signal clear_ingredients
 signal ingredient_item1_visible(ingredient: Ingredient, number: int, number_purchase: int)
 signal ingredient_item2_visible(ingredient: Ingredient, number: int, number_purchase: int)
@@ -66,6 +68,7 @@ func on_buy_pressed() -> void:
 		return
 
 	Global.progress.sub_money(money)
+	hud.show_changing_money(money, false)
 	for ingredient in basket.keys():
 		if basket[ingredient] > 0:
 			Global.progress.add_number_ingredient(ingredient, basket[ingredient])
