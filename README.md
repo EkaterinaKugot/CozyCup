@@ -1,4 +1,4 @@
-# CozuCup
+# Cozy Cup
 
 ## Лицензия
 
