@@ -4,12 +4,15 @@ extends "res://src/scripts/base_level.gd"
 var scene_grain_package = preload("res://src/scenes/items/grain_package.tscn")
 var scene_milk = preload("res://src/scenes/items/milk.tscn")
 
+@onready var bottom_hud: CanvasLayer = $BottomHud
+
 @onready var milk_frother: Area2D = $MilkFrother
 
 var WIDTH
 var HEIGHT
 
 func _ready() -> void:
+	bottom_hud.hide_button("left")
 	current_ingredient = null
 
 	opened_ingredients = {}
@@ -63,11 +66,6 @@ func _ready() -> void:
 
 func _on_bottom_hud_back_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://src/scenes/level.tscn")
-
-
-func _on_bottom_hud_left_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://src/scenes/level_right.tscn")
-
 
 func _on_bottom_hud_right_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://src/scenes/level_left.tscn")

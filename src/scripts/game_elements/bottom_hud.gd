@@ -24,6 +24,21 @@ func on_back_pressed() -> void:
 	
 func on_right_pressed() -> void:
 	right_button_pressed.emit()
+		
+func hide_button(hide_name: String) -> void:
+	if hide_name == "left":
+		left_button.visible = false
+		right_button.visible = true
+		back_button.visible = true
+	elif hide_name == "right":
+		left_button.visible = true
+		right_button.visible = false
+		back_button.visible = true
+	else:
+		left_button.visible = true
+		right_button.visible = true
+		back_button.visible = false
+		
 
 func _disabled_bottom_hud() -> void:
 	if left_button.disabled:

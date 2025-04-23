@@ -80,7 +80,6 @@ position = Vector2(770, 520)
 script = ExtResource("10_qdd1k")
 
 [connection signal="back_button_pressed" from="BottomHud" to="." method="_on_bottom_hud_back_button_pressed"]
-[connection signal="left_button_pressed" from="BottomHud" to="." method="_on_bottom_hud_left_button_pressed"]
 [connection signal="right_button_pressed" from="BottomHud" to="." method="_on_bottom_hud_right_button_pressed"]
 [connection signal="disabled_bottom_hud" from="CoffeeMachine" to="BottomHud" method="_disabled_bottom_hud"]
 [connection signal="undisabled_bottom_hud" from="CoffeeMachine" to="BottomHud" method="_undisabled_bottom_hud"]

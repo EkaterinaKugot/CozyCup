@@ -40,6 +40,5 @@ scale = Vector2(0.6, 0.6)
 position = Vector2(770, 520)
 script = ExtResource("7_fj1v2")
 
-[connection signal="back_button_pressed" from="BottomHud" to="." method="_on_bottom_hud_back_button_pressed"]
 [connection signal="left_button_pressed" from="BottomHud" to="." method="_on_bottom_hud_left_button_pressed"]
 [connection signal="right_button_pressed" from="BottomHud" to="." method="_on_bottom_hud_right_button_pressed"]

@@ -5,8 +5,10 @@ var scene_topping = preload("res://src/scenes/items/topping.tscn")
 var scene_ice_cream = preload("res://src/scenes/items/ice_cream.tscn")
 
 @onready var sugar = $Sugar
+@onready var bottom_hud: CanvasLayer = $BottomHud
 
 func _ready() -> void:
+	bottom_hud.hide_button("back")
 	current_ingredient = null
 
 	opened_ingredients = {}
@@ -59,10 +61,6 @@ func _ready() -> void:
 	sugar.ingredient = opened_ingredients[Ingredient.Category.SUGAR].keys()[0]
 	sugar.update_number()
 	sugar.connect("ingredient_pressed", change_current_ingredient)
-
-func _on_bottom_hud_back_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://src/scenes/level_right.tscn")
-
 
 func _on_bottom_hud_left_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://src/scenes/level_back.tscn")
