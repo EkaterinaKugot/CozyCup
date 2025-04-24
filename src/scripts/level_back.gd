@@ -12,7 +12,6 @@ var WIDTH
 var HEIGHT
 
 func _ready() -> void:
-	bottom_hud.hide_button("left")
 	current_ingredient = null
 
 	opened_ingredients = {}
@@ -62,10 +61,11 @@ func _ready() -> void:
 	}
 	jug_water.ingredient = instances_ingredients[Ingredient.Category.WATER].keys()[0]
 	jug_water.connect("ingredient_pressed", change_current_ingredient)
-	
 
-func _on_bottom_hud_back_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://src/scenes/level.tscn")
 
 func _on_bottom_hud_right_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://src/scenes/level_left.tscn")
+
+
+func _on_bottom_hud_left_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://src/scenes/level.tscn")

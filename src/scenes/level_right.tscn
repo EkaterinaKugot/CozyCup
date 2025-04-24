@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://qjh5ccrnt7lj"]
+[gd_scene load_steps=5 format=3 uid="uid://b3ryea36ckfsl"]
 
 [ext_resource type="PackedScene" uid="uid://bprqmeqewkl7i" path="res://src/scenes/game_elements/hud.tscn" id="1_kh0xy"]
 [ext_resource type="Script" path="res://src/scripts/level_right.gd" id="1_tb5dc"]
@@ -30,6 +30,5 @@ texture = ExtResource("4_b31ii")
 expand_mode = 1
 flip_h = true
 
-[connection signal="back_button_pressed" from="BottomHud" to="." method="_on_bottom_hud_back_button_pressed"]
 [connection signal="left_button_pressed" from="BottomHud" to="." method="_on_bottom_hud_left_button_pressed"]
 [connection signal="right_button_pressed" from="BottomHud" to="." method="_on_bottom_hud_right_button_pressed"]

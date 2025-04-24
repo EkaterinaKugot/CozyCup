@@ -8,7 +8,6 @@ var scene_ice_cream = preload("res://src/scenes/items/ice_cream.tscn")
 @onready var bottom_hud: CanvasLayer = $BottomHud
 
 func _ready() -> void:
-	bottom_hud.hide_button("back")
 	current_ingredient = null
 
 	opened_ingredients = {}
