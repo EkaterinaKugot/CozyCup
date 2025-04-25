@@ -59,7 +59,10 @@ func _ready() -> void:
 			Global.progress.option_duration_day[Global.progress.duration_day][0]
 		) + ":00"
 	
-	label_day.text = str(Global.progress.day) + " день"
+	if GameDay.stages_game.current_stage == StagesGame.Stage.STATISTIC:
+		label_day.text = str(Global.progress.day-1) + " день"
+	else:
+		label_day.text = str(Global.progress.day) + " день"
 	if fmod(Global.progress.rating, 1) == 0:
 		label_rating.text = str(Global.progress.rating) + ".0"
 	else:

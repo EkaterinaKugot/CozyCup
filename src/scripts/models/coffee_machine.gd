@@ -1,6 +1,6 @@
 class_name CoffeeMachine
 
-var max_number_elements: int = 10:
+var max_number_elements: int = 5:
 	get:
 		return max_number_elements
 var number_water: int = 0:
