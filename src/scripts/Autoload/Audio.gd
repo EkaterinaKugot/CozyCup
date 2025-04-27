@@ -1,3 +1,4 @@
+# Audio.gd
 extends Node
 
 var music_player: AudioStreamPlayer
@@ -7,7 +8,7 @@ var timer_player: AudioStreamPlayer
 var coffee_player: AudioStreamPlayer
 var milk_player: AudioStreamPlayer
 
-const sounds = {
+const sounds: Dictionary = {
 	"menu_music": preload("res://assets/sounds/menu.mp3"),
 	"game_music": preload("res://assets/sounds/game.mp3"),
 	"button_click": preload("res://assets/sounds/button_click.MP3"),

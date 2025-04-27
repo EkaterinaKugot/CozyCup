@@ -89,20 +89,14 @@ func add_number_start() -> void:
 	
 func add_day() -> void:
 	day += 1
-
-func change_duration_day_on_12() -> void:
-	duration_day = option_duration_day.keys()[1]
-	
-func change_duration_day_on_14() -> void:
-	duration_day = option_duration_day.keys()[2]
 	
 func change_rating(sum_grades: float, number_grades_per_day: int) -> void:
 	assert(sum_grades >= 0, "The value of sum_grades should be larger or equal to zero")
 	assert(number_grades_per_day >= 0, "The value of number_grades_per_day should be larger or equal to zero")
 	rating = snappedf(( (rating * number_grades) + sum_grades) / (number_grades_per_day + number_grades), 0.1) 
-	add_number_grades(number_grades_per_day)
+	_add_number_grades(number_grades_per_day)
 
-func add_number_grades(number_grades_per_day: int) -> void:
+func _add_number_grades(number_grades_per_day: int) -> void:
 	assert(number_grades_per_day >= 0, "The value of number_grades_per_day should be larger or equal to zero")
 	number_grades += number_grades_per_day
 	

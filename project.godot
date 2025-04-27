@@ -13,7 +13,8 @@ config_version=5
 config/name="CozyCup"
 run/main_scene="res://src/scenes/menu.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://assets/icons/icon_coffee.png"
+config/windows_native_icon="res://assets/icons/icon_coffee.ico"
 
 [audio]
 
