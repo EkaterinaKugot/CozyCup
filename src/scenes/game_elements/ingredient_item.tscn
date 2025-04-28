@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmic4yn75i1yx"]
+[gd_scene load_steps=7 format=3 uid="uid://bmic4yn75i1yx"]
 
 [ext_resource type="Texture2D" uid="uid://d0a6triq2vcs4" path="res://assets/items/syrup.png" id="1_580nm"]
 [ext_resource type="Script" path="res://src/scripts/game_elements/ingredient_item.gd" id="1_dq6px"]
 [ext_resource type="Texture2D" uid="uid://d232pajv06dd7" path="res://assets/icons/caramel_syrup_icon.png" id="2_67ua1"]
 [ext_resource type="Theme" uid="uid://baf6sokgkklwt" path="res://assets/themes/small_button.tres" id="3_o4jvi"]
 [ext_resource type="StyleBox" uid="uid://dxyxhi4usme83" path="res://assets/themes/panel_for_label.tres" id="4_cl7df"]
+[ext_resource type="Texture2D" uid="uid://bmnlpw1ki5x8d" path="res://assets/icons/money.png" id="4_pa4lp"]
 
 [node name="IngredientItem" type="Control"]
 layout_mode = 3
@@ -104,6 +105,13 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.964706, 0.341176, 0.533333, 1)
 text = "15"
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("4_pa4lp")
+expand_mode = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
