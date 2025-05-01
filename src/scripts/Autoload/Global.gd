@@ -35,11 +35,9 @@ func _ready() -> void:
 # Сохранение данных
 func save_progress() -> void:
 	var error_code = ResourceSaver.save(progress, progress_path)
-	print("Сохранение завершено с кодом:", error_code)
 	
 func save_settings() -> void:
 	var error_code = ResourceSaver.save(settings, settings_path)
-	print("Сохранение завершено с кодом:", error_code)
 
 # Загрузка данных прогресса
 func load_progress() -> void:
@@ -50,7 +48,6 @@ func load_progress() -> void:
 		add_basic_ingredients()
 		add_basic_recipes()
 		progress.daily_tasks = DailyTasks.new()
-		print("new progess")
 		
 # Загрузка настроек
 func load_settings() -> void:

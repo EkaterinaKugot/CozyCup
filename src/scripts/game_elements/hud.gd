@@ -73,7 +73,6 @@ func _ready() -> void:
 	Global.progress.daily_tasks.check_and_update_tasks()
 
 func _process(_delta: float) -> void:
-	#print("FPS " + str(Engine.get_frames_per_second()))
 	if GameDay.stages_game.current_stage == StagesGame.Stage.CLOSING:
 		close_cafe.visible = true
 		label_time.text = str(

@@ -128,7 +128,6 @@ func end_closing_stage() -> void:
 		client_grades.append(client.grade)
 	
 	# Обновление рейтинга
-	print(client_grades)
 	var sum_grades: float = 0.0
 	for grade in client_grades:
 		sum_grades += grade
@@ -175,10 +174,9 @@ func end_client_service() -> void:
 		price = 0 # если оценка клиента = 1
 	else:
 		price = client.order.price - (client.order.price * percent / 100) # снижаем оплату за ошибки
-	print(client.grade, " ", price)
 	if Global.progress.has_improvement(increased_income):
 		price += price * increased_income.improvement / 100
-	print(price)
+
 	Global.progress.add_money(price)
 	get_tree().current_scene.get_node("Hud").show_changing_money(price, true)
 	
@@ -259,7 +257,7 @@ func comparison_order_with_drink() -> int:
 func create_new_client() -> void:
 	client_grades.append(client.grade)
 	client = Client.new()
-	print(client_grades)
+
 
 func start_waiting_client() -> void:
 	client_is_waiting = true

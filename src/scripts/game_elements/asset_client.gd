@@ -10,7 +10,6 @@ func _input_event(_viewport, event, _shape_idx):
 	else:
 		if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			item_pressed = true
-			print("client touch")
 	if item_pressed and GameDay.client != null and GameDay.client.order_accept and \
 	GameDay.coffe_cup.is_chosen:
 		item_pressed = false

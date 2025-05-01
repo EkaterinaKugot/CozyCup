@@ -10,4 +10,4 @@
 
 [resource]
 script = ExtResource("2_8766s")
-improvements = Array[ExtResource("1_5r7jx")]([ExtResource("2_qfci1"), ExtResource("3_rks5t"), ExtResource("4_stn46"), ExtResource("5_1yyfr"), ExtResource("6_slsqe")])
+improvements = Array[ExtResource("1_5r7jx")]([ExtResource("5_1yyfr"), ExtResource("6_slsqe"), ExtResource("2_qfci1"), ExtResource("3_rks5t"), ExtResource("4_stn46")])
