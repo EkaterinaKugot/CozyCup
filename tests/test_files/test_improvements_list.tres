@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ImprovementsList" load_steps=4 format=3 uid="uid://coem1eljsh6xm"]
+
+[ext_resource type="Script" path="res://src/scripts/resource/improvement.gd" id="1_p8q6k"]
+[ext_resource type="Script" path="res://src/scripts/resource/improvements_list.gd" id="2_0mb62"]
+[ext_resource type="Resource" uid="uid://dlg6cxmcxfyom" path="res://tests/test_files/test_water_tank_full.tres" id="2_whco4"]
+
+[resource]
+script = ExtResource("2_0mb62")
+improvements = Array[ExtResource("1_p8q6k")]([ExtResource("2_whco4")])

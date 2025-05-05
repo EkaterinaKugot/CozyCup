@@ -139,7 +139,6 @@ func add_introductory_words(order_data: OrderData) -> void:
 	var politeness = order_data.politeness.pick_random()
 	if politeness != "":
 		add_words(politeness, false)
-	
 	var name_recipe = order_data.name_recipe[self.recipe]
 	add_words(name_recipe)
 

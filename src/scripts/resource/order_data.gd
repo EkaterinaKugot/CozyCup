@@ -10,7 +10,11 @@ class_name OrderData
 	"Добрый день,",
 	"Привет,",
 	""
-]  # Массив слов приветствия
+]: # Массив слов приветствия
+	get:
+		return greetings
+	set(value):
+		greetings = value
 		
 @export var requests: Array[String] = [
 	"Можно",

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Settings" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://src/scripts/resource/settings.gd" id="1_ohsom"]
+
+[resource]
+script = ExtResource("1_ohsom")
+music = 5
+sounds = 7

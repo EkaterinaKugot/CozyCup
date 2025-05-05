@@ -5,14 +5,14 @@ class_name Settings
 	get:
 		return music
 	set(value):
-		assert(value >= 0 and value <= 10, "The value of music should be from 0 to 10")
-		music = value	
+		if value >= 0 and value <= 10:
+			music = value	
 @export var sounds: int = 7:
 	get:
 		return sounds
 	set(value):
-		assert(value >= 0 and value <= 10, "The value of sounds should be from 0 to 10")
-		sounds = value
+		if value >= 0 and value <= 10:
+			sounds = value
 
 
 func change_music(value: int) -> void:

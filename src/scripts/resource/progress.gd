@@ -107,7 +107,7 @@ func add_money(value: int) -> void:
 func sub_money(value: int) -> void:
 	assert(value >= 0, "The value of value cannot be less than 0")
 	money -= value
-	if daily_tasks.get_task(3).id == "consumption":
+	if daily_tasks.get_task(3) != null and daily_tasks.get_task(3).id == "consumption":
 		daily_tasks.update_progress(3, value)
 
 func check_money(number: int) -> bool:

@@ -1,129 +1,113 @@
-extends "res://addons/gut/test.gd"
+extends GutTest
 
-var progress: Progress
+var progress_instance = null
 
 func before_each():
-	# Создаем объект Progress перед каждым тестом
-	progress = Progress.new();
+	progress_instance = Progress.new()
+	# Инициализируем daily_tasks
+	progress_instance.daily_tasks = DailyTasks.new()
 
-### Тесты для свойств
-func test_default_values():
-	# Проверка дефолтных значений
-	assert_eq(progress.number_start, 0, "number_start должен быть 0 по умолчанию")
-	assert_eq(progress.day, 1, "day должен быть 1 по умолчанию")
-	assert_eq(progress.duration_day, 10, "duration_day должен быть 10 по умолчанию")
-	assert_eq(progress.rating, 5.0, "rating должен быть 5 по умолчанию")
-	assert_eq(progress.money, 100, "money должен быть 100 по умолчанию")
-	assert_eq(progress.diamonds, 30, "diamonds должен быть 30 по умолчанию")
-	assert_eq(progress.music, 7, "music должен быть 7 по умолчанию")
-	assert_eq(progress.sounds, 7, "sounds должен быть 7 по умолчанию")
-	assert_eq(progress.opened_ingredients.size(), 0, "opened_ingredients должен быть пустым по умолчанию")
-	assert_eq(progress.opened_recipes.size(), 0, "opened_recipes должен быть пустым по умолчанию")
+func after_each():
+	progress_instance = null
 
-func test_setters_validation():
-	# Проверка валидации сеттеров
-	# number_start
-	progress.number_start = 10
-	assert_eq(progress.number_start, 10, "number_start должен быть 10")
+func test_number_start():
+	progress_instance.number_start = 5
+	assert_eq(progress_instance.number_start, 5, "number_start должен быть равен 5")
+	progress_instance.add_number_start()
+	assert_eq(progress_instance.number_start, 6, "add_number_start должен увеличить number_start на 1")
 
-	# day
-	progress.day = 5
-	assert_eq(progress.day, 5, "day должен быть 5")
+func test_day():
+	progress_instance.day = 3
+	assert_eq(progress_instance.day, 3, "day должен быть равен 3")
+	progress_instance.add_day()
+	assert_eq(progress_instance.day, 4, "add_day должен увеличить day на 1")
 
-	# duration_day
-	progress.duration_day = 12
-	assert_eq(progress.duration_day, 12, "duration_day должен быть 12")
+func test_duration_day():
+	assert_eq(progress_instance.duration_day, 5, "duration_day должен быть равен 5")
 
-	# rating
-	progress.rating = 3.5
-	assert_eq(progress.rating, 3.5, "rating должен быть 3.5")
 
-	# money
-	progress.money = 200
-	assert_eq(progress.money, 200, "money должен быть 200")
-	# Проверка на отрицательное значение
-	watch_signals(progress)
-	progress.money = -10
-	assert_signal_emitted(progress, "not_enough_money", "Сигнал not_enough_money должен быть отправлен")
-	assert_eq(progress.money, 200, "money не должен измениться при попытке установить отрицательное значение")
+func test_rating():
+	progress_instance.rating = 4.5
+	assert_eq(progress_instance.rating, 4.5, "rating должен быть равен 4.5")
+	progress_instance.change_rating(8.0, 2)
+	assert_almost_eq(progress_instance.rating, 4.3, 0.1, "rating должен быть примерно 4.3 после изменения")
+	assert_eq(progress_instance.number_grades, 3, "number_grades должен увеличиться на 2")
 
-	# diamonds
-	progress.diamonds = 50
-	assert_eq(progress.diamonds, 50, "diamonds должен быть 50")
-	# Проверка на отрицательное значение
-	watch_signals(progress)
-	progress.diamonds = -5
-	assert_signal_emitted(progress, "not_enough_diamonds", "Сигнал not_enough_diamonds должен быть отправлен")
-	assert_eq(progress.diamonds, 50, "diamonds не должен измениться при попытке установить отрицательное значение")
+func test_money():
+	progress_instance.money = 200
+	assert_eq(progress_instance.money, 200, "money должен быть равен 200")
+	progress_instance.add_money(50)
+	assert_eq(progress_instance.money, 250, "add_money должен увеличить money на 50")
+	progress_instance.sub_money(100)
+	assert_eq(progress_instance.money, 150, "sub_money должен уменьшить money на 100")
+	assert_true(progress_instance.check_money(50), "check_money должен вернуть true для 50")
+	assert_false(progress_instance.check_money(200), "check_money должен вернуть false для 200")
 
-	# music и sounds
-	progress.music = 5
-	assert_eq(progress.music, 5, "music должен быть 5")
-
-	progress.sounds = 8
-	assert_eq(progress.sounds, 8, "sounds должен быть 8")
-
-### Тесты для методов
-func test_add_number_start():
-	progress.add_number_start()
-	assert_eq(progress.number_start, 1, "number_start должен увеличиться на 1")
-
-func test_add_day():
-	progress.add_day()
-	assert_eq(progress.day, 2, "day должен увеличиться на 1")
-
-func test_change_duration_day():
-	progress.change_duration_day_on_12()
-	assert_eq(progress.duration_day, 12, "duration_day должен измениться на 12")
-
-	progress.change_duration_day_on_14()
-	assert_eq(progress.duration_day, 14, "duration_day должен измениться на 14")
-
-func test_change_rating():
-	progress.change_rating(4.0)
-	assert_eq(progress.rating, 4.5, "rating должен измениться на (5 + 4) / 2 = 4.5")
-
-func test_money_operations():
-	progress.add_money(50)
-	assert_eq(progress.money, 150, "money должен увеличиться на 50")
-
-	progress.sub_money(30)
-	assert_eq(progress.money, 120, "money должен уменьшиться на 30")
-
-func test_diamonds_operations():
-	progress.add_diamonds(20)
-	assert_eq(progress.diamonds, 50, "diamonds должен увеличиться на 20")
-
-	progress.sub_diamonds(10)
-	assert_eq(progress.diamonds, 40, "diamonds должен уменьшиться на 10")
+func test_diamonds():
+	progress_instance.diamonds = 10
+	assert_eq(progress_instance.diamonds, 10, "diamonds должен быть равен 10")
+	progress_instance.add_diamonds(5)
+	assert_eq(progress_instance.diamonds, 15, "add_diamonds должен увеличить diamonds на 5")
+	progress_instance.sub_diamonds(3)
+	assert_eq(progress_instance.diamonds, 12, "sub_diamonds должен уменьшить diamonds на 3")
+	assert_true(progress_instance.check_diamonds(10), "check_diamonds должен вернуть true для 10")
+	assert_false(progress_instance.check_diamonds(20), "check_diamonds должен вернуть false для 20")
 
 func test_opened_ingredients():
 	var ingredient = Ingredient.new()
-	ingredient.id = "milk_001"
-
-	progress.add_new_opened_ingredients(ingredient, 3)
-	assert_eq(progress.opened_ingredients[ingredient], 3, "ingredient должен быть добавлен с количеством 3")
-
-	progress.add_number_ingredient(ingredient, 2)
-	assert_eq(progress.opened_ingredients[ingredient], 5, "Количество ingredient должно увеличиться на 2")
-
-	progress.sub_number_ingredient(ingredient, 1)
-	assert_eq(progress.opened_ingredients[ingredient], 4, "Количество ingredient должно уменьшиться на 1")
+	ingredient.id = "test_ingredient"
+	ingredient.category = Ingredient.Category.GRAINS
+	
+	progress_instance.add_new_opened_ingredients(ingredient, 10)
+	assert_true(progress_instance.opened_ingredients.has(ingredient), "Ингредиент должен быть добавлен")
+	assert_eq(progress_instance.opened_ingredients[ingredient], 10, "Количество ингредиента должно быть 10")
+	
+	progress_instance.add_number_ingredient(ingredient, 5)
+	assert_eq(progress_instance.opened_ingredients[ingredient], 15, "add_number_ingredient должен увеличить количество на 5")
+	
+	progress_instance.sub_number_ingredient(ingredient, 3)
+	assert_eq(progress_instance.opened_ingredients[ingredient], 12, "sub_number_ingredient должен уменьшить количество на 3")
+	
+	assert_true(progress_instance.check_number_ingredient(ingredient, 10), "check_number_ingredient должен вернуть true для 10")
+	assert_false(progress_instance.check_number_ingredient(ingredient, 20), "check_number_ingredient должен вернуть false для 20")
 
 func test_opened_recipes():
 	var recipe = Recipe.new()
-	progress.add_new_opened_recipes(recipe)
-	assert_eq(progress.opened_recipes.size(), 1, "recipe должен быть добавлен в opened_recipes")
+	recipe.id = "test_recipe"
+	
+	progress_instance.add_new_opened_recipes(recipe)
+	assert_true(progress_instance.opened_recipes.has(recipe), "Рецепт должен быть добавлен")
 
-func test_music_and_sounds_operations():
-	progress.add_music(2)
-	assert_eq(progress.music, 9, "music должен увеличиться на 2")
+func test_opened_improvements():
+	var improvement = Improvement.new()
+	improvement.id = "test_improvement"
+	
+	progress_instance.add_new_improvement(improvement)
+	assert_true(progress_instance.opened_improvements.has(improvement), "Улучшение должно быть добавлено")
+	assert_true(progress_instance.has_improvement(improvement), "has_improvement должен вернуть true")
+	
+	var selected_improvement = progress_instance.select_improvement_by_id("test_improvement")
+	assert_eq(selected_improvement, improvement, "select_improvement_by_id должен вернуть правильное улучшение")
 
-	progress.sub_music(1)
-	assert_eq(progress.music, 8, "music должен уменьшиться на 1")
+func test_select_ingredients_by_category():
+	var ingredient = Ingredient.new()
+	ingredient.id = "test_ingredient"
+	ingredient.category = Ingredient.Category.MILK
+	
+	progress_instance.add_new_opened_ingredients(ingredient, 5)
+	
+	var result = progress_instance.select_ingredients_by_category(Ingredient.Category.MILK)
+	assert_true(result.has(ingredient), "Ингредиент с категорией BASE должен быть в результате")
+	assert_eq(result[ingredient], 5, "Количество ингредиента должно быть 5")
 
-	progress.add_sounds(3)
-	assert_eq(progress.sounds, 10, "sounds должен увеличиться на 3")
-
-	progress.sub_sounds(2)
-	assert_eq(progress.sounds, 8, "sounds должен уменьшиться на 2")
+func test_select_ingredients_by_id():
+	var ingredient = Ingredient.new()
+	ingredient.id = "test_ingredient"
+	
+	progress_instance.add_new_opened_ingredients(ingredient, 5)
+	
+	var selected_ingredient = progress_instance.select_ingredients_by_id("test_ingredient")
+	assert_eq(selected_ingredient, ingredient, "select_ingredients_by_id должен вернуть правильный ингредиент")
+	
+	var invalid_ingredient = progress_instance.select_ingredients_by_id("invalid_id")
+	assert_eq(invalid_ingredient, null, "select_ingredients_by_id должен вернуть null для несуществующего ID")

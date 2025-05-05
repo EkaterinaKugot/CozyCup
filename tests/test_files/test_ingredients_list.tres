@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="IngredientList" load_steps=8 format=3 uid="uid://3knqxaftjnsr"]
+
+[ext_resource type="Script" path="res://src/scripts/resource/ingredient.gd" id="1_tlrpd"]
+[ext_resource type="Script" path="res://src/scripts/resource/ingredients_list.gd" id="2_1meqg"]
+[ext_resource type="Resource" uid="uid://dr8p1qfueh75k" path="res://tests/test_files/test_ingredients/test_cow_milk.tres" id="2_ipddi"]
+[ext_resource type="Resource" uid="uid://hvnvtdk6xx2i" path="res://tests/test_files/test_ingredients/test_grains_medium.tres" id="3_air68"]
+[ext_resource type="Resource" uid="uid://cs2ip8i8l1dp" path="res://tests/test_files/test_ingredients/test_coconut_syrup.tres" id="4_hqpns"]
+[ext_resource type="Resource" uid="uid://jhn7i2fhnf3f" path="res://tests/test_files/test_ingredients/test_sugar.tres" id="5_lcd7k"]
+[ext_resource type="Resource" uid="uid://cr01007dp5cmn" path="res://tests/test_files/test_ingredients/test_cocoa_powder.tres" id="6_8j8s0"]
+
+[resource]
+script = ExtResource("2_1meqg")
+ingredients = Array[ExtResource("1_tlrpd")]([ExtResource("2_ipddi"), ExtResource("3_air68"), ExtResource("4_hqpns"), ExtResource("5_lcd7k"), ExtResource("6_8j8s0")])

@@ -45,8 +45,8 @@ func use_elements() -> void:
 	ingredient = null
 	
 func clean_milk_kettle() -> void:
-	milk_is_ready = false
 	number_milk_shots = 0
+	milk_is_ready = false
 	ingredient_in_kettle = null
 
 func check_number_milk(ing: Ingredient, number: int) -> bool:

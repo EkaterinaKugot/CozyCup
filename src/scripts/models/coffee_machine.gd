@@ -72,8 +72,8 @@ func use_elements() -> void:
 	ingredient = null
 	
 func clean_coffee_kettle() -> void:
-	coffee_is_ready = false
 	number_coffee_shots = 0
+	coffee_is_ready = false
 	ingredient_in_kettle = null
 
 func check_number_grains(ing: Ingredient, number: int) -> bool:

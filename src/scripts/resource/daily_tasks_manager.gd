@@ -87,7 +87,10 @@ func get_status(idx: int) -> TaskStatus:
 	return active_tasks[idx].values()[0]["status"]
 	
 func get_task(idx: int) -> DailyTask:
-	return active_tasks[idx].keys()[0]
+	if active_tasks.size() > idx:
+		return active_tasks[idx].keys()[0]
+	else:
+		return null
 	
 func check_and_update_tasks() -> void:
 	var current_time = Time.get_datetime_dict_from_system()
