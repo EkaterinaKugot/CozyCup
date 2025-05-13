@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bx5wo4fkisuya"
-path="res://.godot/imported/bot_idle.png-5e52e26d55e493b48ba272fb88fc4723.ctex"
+uid="uid://bf8q1chk2yme"
+path="res://.godot/imported/cofee_cup_ice_cream.png-e8493a643e50db710fd4503238241d44.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/buttons/ready/bot_idle.png"
-dest_files=["res://.godot/imported/bot_idle.png-5e52e26d55e493b48ba272fb88fc4723.ctex"]
+source_file="res://assets/items/cofee_cup_ice_cream.png"
+dest_files=["res://.godot/imported/cofee_cup_ice_cream.png-e8493a643e50db710fd4503238241d44.ctex"]
 
 [params]
 

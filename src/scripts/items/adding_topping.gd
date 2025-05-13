@@ -7,6 +7,8 @@ var scene_topping_top = preload("res://src/scenes/items/topping_top.tscn")
 var ingredient: Ingredient
 var number = 1
 
+signal update_number
+
 func _input_event(_viewport, event, _shape_idx):
 	if OS.get_name() == "Android" or OS.get_name() == "iOS":
 		if event is InputEventScreenTouch and event.pressed :
@@ -29,6 +31,7 @@ func _input_event(_viewport, event, _shape_idx):
 			Global.progress.sub_number_ingredient(ingredient, number)
 			GameDay.coffe_cup.add_ingredient(ingredient, number)
 			GameDay.coffe_cup.add_topping(ingredient, instance.position)
+			update_number.emit()
 		
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

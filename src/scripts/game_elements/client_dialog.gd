@@ -53,15 +53,14 @@ func create_new_client() -> void:
 	else:
 		GameDay.client_is_waiting = true
 
-func _on_asset_client_order_is_given() -> void:
+func _on_asset_client_order_is_given(cup: Area2D) -> void:
 	visible = false
 	GameDay.end_timer()
 	GameDay.end_client_service() # завершаем обсуживание клиента, создаем новую кружку
 	
 	create_new_client()
 	
-	var coffee_cup = get_tree().current_scene.get_node("ControlCoffeeCup").get_node("CoffeeCup")
-	if coffee_cup != null:
-		coffee_cup.clean_added_instance() # визуально очистили
-		coffee_cup.display_ingredients()
-		coffee_cup.get_node("GlowEffect").visible = false
+	if cup != null:
+		cup.clean_added_instance() # визуально очистили
+		cup.display_ingredients()
+		cup.get_node("GlowEffect").visible = false

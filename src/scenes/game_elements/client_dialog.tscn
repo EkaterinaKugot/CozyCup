@@ -1,12 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cpjjrqwchtdeq"]
+[gd_scene load_steps=6 format=3 uid="uid://cpjjrqwchtdeq"]
 
 [ext_resource type="Script" path="res://src/scripts/game_elements/client_dialog.gd" id="1_hx7u7"]
 [ext_resource type="Theme" uid="uid://thjmy3qv67jv" path="res://assets/themes/confirmation_delete.tres" id="2_o3tn0"]
-[ext_resource type="Script" path="res://src/scripts/game_elements/asset_client.gd" id="2_uwfm5"]
 [ext_resource type="Texture2D" uid="uid://ciwmeyf1wdie7" path="res://assets/clients/boy1.png" id="3_qnniu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bmek1"]
-size = Vector2(347, 383)
+size = Vector2(347, 273)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ukj21"]
 bg_color = Color(0.988235, 0.956863, 0.862745, 1)
@@ -35,7 +34,6 @@ script = ExtResource("1_hx7u7")
 [node name="AssetClient" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("2_uwfm5")
 
 [node name="Asset" type="TextureRect" parent="AssetClient"]
 custom_minimum_size = Vector2(500, 600)
@@ -53,7 +51,7 @@ expand_mode = 1
 stretch_mode = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AssetClient"]
-position = Vector2(366.5, 296.5)
+position = Vector2(366.5, 241.5)
 shape = SubResource("RectangleShape2D_bmek1")
 
 [node name="DialogWindow" type="PanelContainer" parent="."]
@@ -108,5 +106,3 @@ custom_minimum_size = Vector2(170, 60)
 layout_mode = 2
 theme = ExtResource("2_o3tn0")
 text = "Принять"
-
-[connection signal="order_is_given" from="AssetClient" to="." method="_on_asset_client_order_is_given"]

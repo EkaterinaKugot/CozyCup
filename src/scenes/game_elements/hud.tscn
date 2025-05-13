@@ -408,7 +408,6 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_p2i8o")
 [node name="ChangingDiamonds" type="Label" parent="HeaderControl/MarginRight/Header/VBoxContainer2"]
 process_mode = 3
 visible = false
-modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -502,14 +501,14 @@ size_flags_vertical = 6
 text = "00:00"
 
 [node name="RatingPanel" type="PanelContainer" parent="HeaderControl/MarginLeft/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(150, 65)
+custom_minimum_size = Vector2(130, 65)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_onpss")
 
 [node name="IconPanel" type="Panel" parent="HeaderControl/MarginLeft/VBoxContainer/HBoxContainer/RatingPanel"]
-custom_minimum_size = Vector2(75, 60)
+custom_minimum_size = Vector2(65, 60)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4

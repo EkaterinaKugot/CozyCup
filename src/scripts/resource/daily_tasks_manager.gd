@@ -87,7 +87,7 @@ func get_status(idx: int) -> TaskStatus:
 	return active_tasks[idx].values()[0]["status"]
 	
 func get_task(idx: int) -> DailyTask:
-	if active_tasks.size() > idx:
+	if active_tasks.size() >= idx:
 		return active_tasks[idx].keys()[0]
 	else:
 		return null

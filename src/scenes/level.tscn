@@ -68,3 +68,4 @@ script = ExtResource("8_0n4ek")
 [connection signal="right_button_pressed" from="BottomHud" to="." method="_on_bottom_hud_right_button_pressed"]
 [connection signal="disabled_bottom_hud" from="ClientDialog" to="BottomHud" method="_disabled_bottom_hud"]
 [connection signal="undisabled_bottom_hud" from="ClientDialog" to="BottomHud" method="_undisabled_bottom_hud"]
+[connection signal="order_is_given" from="ControlCoffeeCup/CoffeeCup" to="ClientDialog" method="_on_asset_client_order_is_given"]

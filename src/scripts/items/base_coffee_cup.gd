@@ -4,6 +4,9 @@ var coffee_cup_ingredient = preload("res://src/scenes/game_elements/coffee_cup_i
 var added_instance: Array[Dictionary] = []
 var pos_y: int = 55
 
+@onready var asset_cup: Sprite2D = $Sprite2D
+@onready var shadow: Sprite2D = $Shadow
+
 func _input_event(_viewport, event, _shape_idx):
 	if OS.get_name() == "Android" or OS.get_name() == "iOS":
 		if event is InputEventScreenTouch and event.pressed:
@@ -46,6 +49,7 @@ func add_ingredient(current_ingredient: Ingredient) -> void:
 			display_ingredients()  # отображаем ингредиенты
 	
 func display_ingredients() -> void:
+	_display_drink()
 	var instance_coffee_cup_ingredient
 	if added_instance.size() == 0: # первое отображение на сцене
 		for element in GameDay.coffe_cup.added_ingredients:
@@ -68,6 +72,19 @@ func display_ingredients() -> void:
 			var label_number = instance_coffee_cup_ingredient.get_node("Number") # обновляем количество
 			label_number.text = str(GameDay.coffe_cup.added_ingredients[-1].values()[0])
 
+func _display_drink() -> void:
+	var assets: String = "res://assets/items/cofee_cup.png"
+	if GameDay.coffe_cup.check_has_category(Ingredient.Category.MILK) or \
+	GameDay.coffe_cup.check_has_category(Ingredient.Category.CREAM):
+		assets = "res://assets/items/cofee_cup_milk.png"
+	elif GameDay.coffe_cup.check_has_category(Ingredient.Category.GRAINS):
+		assets = "res://assets/items/cofee_cup_coffee.png"
+		if GameDay.coffe_cup.check_has_category(Ingredient.Category.ICE_CREAM):
+			assets = "res://assets/items/cofee_cup_ice_cream.png"
+	elif GameDay.coffe_cup.check_has_category(Ingredient.Category.WATER):
+		assets = "res://assets/items/cofee_cup_water.png"
+	asset_cup.texture = load(assets)
+	
 func create_new_instance(ingredient: Ingredient):
 	var instance_coffee_cup_ingredient = coffee_cup_ingredient.instantiate()
 			

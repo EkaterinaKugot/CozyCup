@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://bapqsknn5td0s"]
+[gd_scene load_steps=16 format=3 uid="uid://bapqsknn5td0s"]
 
+[ext_resource type="Script" path="res://src/scripts/adding_topping.gd" id="1_ixios"]
 [ext_resource type="Texture2D" uid="uid://c3gpxuv5pptsq" path="res://assets/bg/стойка.png" id="1_o6b3o"]
 [ext_resource type="PackedScene" uid="uid://bprqmeqewkl7i" path="res://src/scenes/game_elements/hud.tscn" id="2_uds1p"]
 [ext_resource type="Texture2D" uid="uid://cvmx55olh0ofh" path="res://assets/ui/buttons/ready/Cross-Idle.png" id="4_7iuc2"]
@@ -7,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://d2mnuvqp3pr6g" path="res://assets/items/coffee_cup_milk.png" id="4_q4dyt"]
 [ext_resource type="Texture2D" uid="uid://xjiqk1awu38v" path="res://assets/ui/buttons/ready/Cross-Click.png" id="5_3bf6v"]
 [ext_resource type="Script" path="res://src/scripts/items/adding_topping.gd" id="5_mw5q7"]
+[ext_resource type="Texture2D" uid="uid://5oy1r03yjf66" path="res://assets/icons/cocoa_powder_icon.png" id="6_aw3sa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6bojv"]
 radius = 215.002
@@ -38,6 +40,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+script = ExtResource("1_ixios")
 
 [node name="Bg" type="TextureRect" parent="."]
 layout_mode = 1
@@ -79,6 +82,27 @@ texture = ExtResource("4_q4dyt")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MarginContainer/ControlDrink/Drink"]
 shape = SubResource("CircleShape2D_6bojv")
 
+[node name="Topping" type="HBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 5
+
+[node name="Asset" type="TextureRect" parent="MarginContainer/Topping"]
+custom_minimum_size = Vector2(110, 90)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("6_aw3sa")
+expand_mode = 1
+
+[node name="Number" type="Label" parent="MarginContainer/Topping"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 60
+text = "0"
+
 [node name="Back" type="Button" parent="MarginContainer"]
 custom_minimum_size = Vector2(85, 72)
 layout_mode = 2
@@ -88,4 +112,5 @@ mouse_default_cursor_shape = 2
 theme = SubResource("Theme_m578n")
 script = ExtResource("4_a514j")
 
+[connection signal="update_number" from="MarginContainer/ControlDrink/Drink" to="." method="_on_drink_update_number"]
 [connection signal="pressed" from="MarginContainer/Back" to="MarginContainer/Back" method="_on_pressed"]
