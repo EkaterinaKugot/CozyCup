@@ -116,7 +116,7 @@ mouse_filter = 2
 theme_override_constants/separation = 10
 
 [node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(85, 67)
+custom_minimum_size = Vector2(85, 72)
 layout_mode = 2
 mouse_filter = 2
 

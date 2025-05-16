@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6lxh76xi8v46"
-path="res://.godot/imported/under_water.png-f149f4382bb4876528c1e2283781a92a.ctex"
+uid="uid://c4wvhr830s131"
+path="res://.godot/imported/boy7.png-1346f9580675e24bb7130dbc639d13b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/custom_ui/under_water.png"
-dest_files=["res://.godot/imported/under_water.png-f149f4382bb4876528c1e2283781a92a.ctex"]
+source_file="res://assets/clients/boy7.png"
+dest_files=["res://.godot/imported/boy7.png-1346f9580675e24bb7130dbc639d13b0.ctex"]
 
 [params]
 
