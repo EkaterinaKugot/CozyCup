@@ -77,6 +77,7 @@ const scenes: Dictionary = {
 	"Shop": "res://src/scenes/shop.tscn",
 	"Statistic": "res://src/scenes/statistic.tscn"
 }
+var training_show = false
 
 func _ready() -> void:
 	start_menu_stage()

@@ -1,0 +1,133 @@
+[gd_scene load_steps=9 format=3 uid="uid://dmts8mjxpbrqn"]
+
+[ext_resource type="Script" path="res://src/scripts/game_elements/training.gd" id="1_1ab4h"]
+[ext_resource type="Theme" uid="uid://thjmy3qv67jv" path="res://assets/themes/confirmation_delete.tres" id="1_m0p1v"]
+[ext_resource type="Script" path="res://src/scripts/game_elements/video_rect.gd" id="2_wulsd"]
+[ext_resource type="VideoStream" path="res://assets/sounds/traning.ogv" id="3_b46jm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ksgq"]
+bg_color = Color(0.117647, 0.117647, 0.117647, 0.701961)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fmnpf"]
+bg_color = Color(0.988235, 0.956863, 0.862745, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.960784, 0.878431, 0.635294, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.305882, 0.305882, 0.305882, 1)
+shadow_size = 10
+shadow_offset = Vector2(2, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_32ku8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.136188, 0.273547, 0.350472, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_kg1mp"]
+viewport_path = NodePath("Panel/PanelContainer/MarginContainer/VBoxContainer/SubViewport")
+
+[node name="Training" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1ab4h")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3ksgq")
+
+[node name="PanelContainer" type="PanelContainer" parent="Panel"]
+custom_minimum_size = Vector2(850, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -425.0
+offset_top = -229.0
+offset_right = 425.0
+offset_bottom = 289.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fmnpf")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Panel/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Обучение"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Text" type="Label" parent="Panel/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Перед началом советуем посмотреть обучающий ролик."
+horizontal_alignment = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="Panel/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_32ku8")
+
+[node name="TextureRect" type="TextureRect" parent="Panel/PanelContainer/MarginContainer/VBoxContainer/PanelContainer"]
+custom_minimum_size = Vector2(700, 350)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+texture = SubResource("ViewportTexture_kg1mp")
+expand_mode = 1
+script = ExtResource("2_wulsd")
+
+[node name="SubViewport" type="SubViewport" parent="Panel/PanelContainer/MarginContainer/VBoxContainer"]
+size = Vector2i(2096, 1088)
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Panel/PanelContainer/MarginContainer/VBoxContainer/SubViewport"]
+offset_right = 2096.0
+offset_bottom = 1088.0
+stream = ExtResource("3_b46jm")
+volume_db = -10.0
+autoplay = true
+loop = true
+
+[node name="Ok" type="Button" parent="Panel/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(80, 65)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("1_m0p1v")
+theme_override_font_sizes/font_size = 24
+text = "ОК"

@@ -112,7 +112,8 @@ func on_ok_pressed() -> void:
 		instance_daily_tasks.queue_free()
 	
 	if elements_menu.instance_settings != null or \
-	(get_tree().current_scene.name == "Menu" and get_parent().instance_info != null):
+	(get_tree().current_scene.name == "Menu" and get_parent().instance_info != null) or \
+	(get_tree().current_scene.name == "Menu" and get_parent().instance_training != null):
 		get_tree().paused = true
 		
 func on_open_cafe_pressed() -> void:
