@@ -18,7 +18,7 @@ var text: String: # Текст заказа
 	set(value):
 		text = value
 
-var price: int = 0: # Текст заказа
+var price: int = 0: # Стоимость заказа
 	get:
 		return price
 	set(value):
@@ -33,6 +33,7 @@ func add_ingredient(ingredient: Ingredient, number: int) -> void:
 func calculate_price() -> void:
 	for ingredient in step_ingredient.keys():
 		price += ingredient.purchase_cost * step_ingredient[ingredient]
+	price = int(price * 100 / 70)
 	
 func add_words(words: String, need_space: bool = true) -> void:
 	if need_space:
